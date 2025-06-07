@@ -47,7 +47,7 @@ function styleNavLink(link, isActive, isMobile) {
     const underline = !isMobile ? link.querySelector('span') : null;
 
     if (isActive) {
-        link.classList.add('text-emerald-400');
+        link.classList.add('text-primary-400');
         link.classList.remove('text-gray-300');
         if (isMobile && link.classList.contains('hover:bg-gray-800')) {
             link.classList.add('bg-gray-800');
@@ -57,7 +57,7 @@ function styleNavLink(link, isActive, isMobile) {
             underline.classList.remove('scale-x-0');
         }
     } else {
-        link.classList.remove('text-emerald-400');
+        link.classList.remove('text-primary-400');
         if (isMobile) link.classList.remove('bg-gray-800');
         link.classList.add('text-gray-300');
         if (underline) {

@@ -158,12 +158,53 @@ class HomeController
             ]
         ];
         
+        // FAQ Data
+        $faqData = [
+            'categories' => [
+                'Umum' => [
+                    [
+                        'question' => 'Apa saja layanan utama yang ditawarkan oleh Antosa Architect?',
+                        'answer' => 'Kami menawarkan layanan desain arsitektur, interior, konsultasi, dan manajemen konstruksi.'
+                    ],
+                    [
+                        'question' => 'Bagaimana proses kerja sama dengan Antosa Architect?',
+                        'answer' => 'Proses dimulai dari konsultasi, penentuan kebutuhan, desain konsep, pengembangan desain, hingga pelaksanaan dan pengawasan.'
+                    ],
+                    [
+                        'question' => 'Berapa lama waktu yang dibutuhkan untuk menyelesaikan proyek?',
+                        'answer' => 'Waktu pengerjaan tergantung pada skala dan kompleksitas proyek. Rata-rata proyek residensial memakan waktu 3-6 bulan.'
+                    ]
+                ],
+                'Desain' => [
+                    [
+                        'question' => 'Bagaimana proses desain berjalan?',
+                        'answer' => 'Proses desain meliputi konsultasi awal, pengumpulan data, pembuatan konsep, revisi, hingga finalisasi desain.'
+                    ],
+                    [
+                        'question' => 'Apakah bisa revisi desain?',
+                        'answer' => 'Tentu, kami menyediakan beberapa kali revisi sesuai kesepakatan awal agar hasil sesuai harapan Anda.'
+                    ]
+                ],
+                'Biaya' => [
+                    [
+                        'question' => 'Bagaimana sistem pembayaran jasa?',
+                        'answer' => 'Pembayaran dilakukan bertahap sesuai progres pekerjaan, dengan sistem termin yang jelas dan transparan.'
+                    ],
+                    [
+                        'question' => 'Apakah konsultasi awal dikenakan biaya?',
+                        'answer' => 'Konsultasi awal gratis tanpa biaya, silakan hubungi kami untuk membuat janji.'
+                    ]
+                ]
+            ]
+        ];
+
         // Combine all data
         $viewData = [
             'about' => $aboutData,
             'services' => $servicesData,
             'portfolio' => $portfolioData,
             'testimonials' => $testimonialData,
+            'faq' => $faqData
         ];
         
         // Render the home page view

@@ -17,7 +17,7 @@ $hero_slides = [
 ];
 ?>
 <!-- Hero Section -->
-<section id="home" class="relative min-h-screen flex flex-col text-white overflow-hidden">
+<section id="home" class="relative min-h-screen flex flex-col text-white overflow-hidden scroll-mt-20 bg-black">
     <!-- Slider Container -->
     <div id="hero-slider" class="absolute inset-0 w-full h-full">
         <?php foreach ($hero_slides as $index => $slide): ?>
@@ -35,12 +35,12 @@ $hero_slides = [
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-12 flex justify-between items-start">
             <!-- Spatial Vision Box -->
             <div class="bg-black/70 p-4 md:p-6 rounded-lg max-w-[280px] sm:max-w-xs backdrop-blur-sm shadow-lg">
-                <h2 class="text-lg md:text-xl font-semibold text-emerald-400 mb-2 font-sans">Spatial Vision</h2>
+                <h2 class="text-lg md:text-xl font-semibold text-primary-400 mb-2 font-sans">Spatial Vision</h2>
                 <p class="text-xs md:text-sm text-gray-300 font-sans font-normal">Menghadirkan keseimbangan sempurna antara estetika dan fungsionalitas ruang.</p>
             </div>
 
             <!-- Featured Badge -->
-            <div class="bg-emerald-500 text-black px-3 py-1 rounded-full text-xs font-semibold flex items-center shadow-md">
+            <div class="bg-primary-500 text-black px-3 py-1 rounded-full text-xs font-semibold flex items-center shadow-md">
                 <svg class="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
                 Featured
             </div>
@@ -49,11 +49,11 @@ $hero_slides = [
         <!-- Main Hero Text (Centered) -->
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center flex-grow flex flex-col justify-center py-10 md:py-0">
             <h1 class="font-sans text-5xl md:text-7xl font-black text-white leading-tight mb-6 text-shadow">
-                Bangun Rumah <span class="text-emerald-400">Impian Anda</span>
+                Bangun Rumah <span class="text-primary-400">Impian Anda</span>
             </h1>
             <p class="text-xl md:text-2xl font-sans font-normal text-gray-300 max-w-2xl mx-auto mb-10 text-shadow"><?= htmlspecialchars($hero['subtitle'] ?? 'Desain modern, konstruksi berkualitas, dan solusi yang berkelanjutan untuk mewujudkan hunian ideal sesuai gaya hidup Anda.') ?></p>
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="#contact" class="bg-emerald-500 hover:bg-emerald-600 text-black font-sans font-bold py-3.5 px-8 rounded-md transition-all hover:scale-105 text-sm uppercase tracking-wider flex items-center justify-center">
+                <a href="#contact" class="bg-primary-500 hover:bg-primary-600 text-black font-sans font-bold py-3.5 px-8 rounded-md transition-all hover:scale-105 text-sm uppercase tracking-wider flex items-center justify-center">
                     Mulai Konsultasi Gratis <i class="fas fa-arrow-right ml-2 text-xs"></i>
                 </a>
                 <a href="#portfolio" class="bg-black/50 hover:bg-black/70 border border-gray-700 text-white font-sans font-bold py-3.5 px-8 rounded-md transition-all hover:scale-105 text-sm uppercase tracking-wider backdrop-blur-sm flex items-center justify-center">
@@ -80,27 +80,26 @@ $hero_slides = [
 </section>
 
 <!-- About Section -->
-<section id="about" class="py-20 bg-secondary-50 dark:bg-black">
+<section id="about" class="py-20 bg-black text-white scroll-mt-20">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 opacity-0 translate-y-8 transition-all duration-700 ease-out">
-            <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4"><?= $about['title'] ?></h2>
-            <div class="w-24 h-1 bg-primary-500 mx-auto mb-8"></div>
-            <p class="font-sans font-normal max-w-3xl mx-auto text-secondary-600 dark:text-dark-300 text-lg"><?= $about['description'] ?></p>
+            <h2 class="font-sans text-3xl sm:text-4xl font-black text-white mb-4"><?= $about['title'] ?></h2>
+            <div class="w-24 h-1 bg-emerald-400 mx-auto mb-8"></div>
+            <p class="font-sans font-normal max-w-3xl mx-auto text-gray-300 text-lg"><?= $about['description'] ?></p>
         </div>
-        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <?php foreach ($about['team'] as $index => $member): ?>
-            <div class="bg-white dark:bg-dark-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all hover:scale-[1.02] opacity-0 translate-y-8 transition-all duration-500 ease-out stagger-item" style="transition-delay: <?= 0.1 * ($index + 1) ?>s;">
-                <div class="w-24 h-24 rounded-full bg-primary-100 dark:bg-dark-800 mx-auto mb-4 flex items-center justify-center transform transition-transform hover:rotate-12">
-                    <i class="fas fa-quote-left text-5xl text-primary-200 dark:text-dark-600 opacity-50 absolute top-6 left-6 -z-10"></i>
+            <div class="bg-dark-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all hover:scale-[1.02] opacity-0 translate-y-8 transition-all duration-500 ease-out stagger-item" style="transition-delay: <?= 0.1 * ($index + 1) ?>s;">
+                <div class="w-24 h-24 rounded-full bg-primary-100 mx-auto mb-4 flex items-center justify-center transform transition-transform hover:rotate-12">
+                    <i class="fas fa-quote-left text-5xl text-primary-400 opacity-50 absolute top-6 left-6 -z-10"></i>
                 </div>
-                <h3 class="font-sans font-bold text-xl mb-2 text-center dark:text-dark-100"><?= $member['name'] ?></h3>
-                <p class="font-sans font-medium text-primary-600 dark:text-primary-400 mb-3 text-center"><?= $member['position'] ?></p>
-                <p class="font-sans font-normal text-secondary-700 dark:text-dark-300 italic text-lg mb-6 leading-relaxed"><?= $member['bio'] ?></p>
+                <h3 class="font-sans font-bold text-xl mb-2 text-center text-white"><?= $member['name'] ?></h3>
+                <p class="font-sans font-medium text-primary-400 mb-3 text-center"><?= $member['position'] ?></p>
+                <p class="font-sans font-normal text-gray-300 italic text-lg mb-6 leading-relaxed"><?= $member['bio'] ?></p>
                 <div class="mt-4 flex justify-center items-center space-x-3">
-                    <a href="#" class="text-secondary-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-secondary-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"><i class="fab fa-twitter"></i></a>
-                    <a href="mailto:<?= strtolower(str_replace(' ', '.', $member['name'])) ?>@antosa.com" class="text-secondary-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"><i class="fas fa-envelope"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="mailto:<?= strtolower(str_replace(' ', '.', $member['name'])) ?>@antosa.com" class="text-gray-400 hover:text-primary-400 transition-colors"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -109,7 +108,7 @@ $hero_slides = [
 </section>
 
 <!-- Services Section -->
-<section id="services" class="py-20">
+<section id="services" class="py-20 scroll-mt-20 bg-black">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 opacity-0 translate-y-8 transition-all duration-700 ease-out">
             <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4"><?= $services['title'] ?></h2>
@@ -133,13 +132,13 @@ $hero_slides = [
         <div id="panel-layanan" class="content-panel">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <?php foreach ($services['services'] as $index => $service): ?>
-            <div class="bg-white dark:bg-dark-900 p-8 rounded-lg shadow-md hover:shadow-xl border-t-4 border-primary-500 dark:border-primary-400 transition-all duration-300 group opacity-0 translate-y-8 transition-all duration-500 ease-out stagger-item" 
+            <div class="bg-dark-900 p-8 rounded-lg shadow-md hover:shadow-xl border-t-4 border-emerald-400 transition-all duration-300 group opacity-0 translate-y-8 transition-all duration-500 ease-out stagger-item" 
                  data-service="<?= strtolower(str_replace(' ', '-', $service['title'])) ?>">
                 <div class="w-16 h-16 rounded-full bg-primary-100 dark:bg-dark-800 flex items-center justify-center mb-6 group-hover:bg-primary-500 dark:group-hover:bg-primary-600 transition-colors transform-gpu group-hover:rotate-y-180">
                     <i class="fas fa-<?= $service['icon'] ?> text-2xl text-primary-600 dark:text-primary-400 group-hover:text-white dark:group-hover:text-gray-100 transition-colors"></i>
                 </div>
-                <h3 class="font-sans font-bold text-xl mb-3 dark:text-dark-100"><?= $service['title'] ?></h3>
-                <p class="font-sans font-normal text-secondary-600 dark:text-dark-300 mb-4"><?= $service['description'] ?></p>
+                <h3 class="font-sans font-bold text-xl mb-3 text-white"><?= $service['title'] ?></h3>
+                <p class="font-sans font-normal text-gray-300 mb-4"><?= $service['description'] ?></p>
                 <div class="mt-4 pt-4 border-t border-secondary-100 dark:border-dark-700 hidden group-hover:block transition-all overflow-hidden">
                     <a href="#contact" class="font-sans text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium transition-colors flex items-center">
                         <span>Konsultasi <?= $service['title'] ?></span>
@@ -172,7 +171,7 @@ $hero_slides = [
 </section>
 
 <!-- Portfolio Section -->
-<section id="portfolio" class="py-20 bg-secondary-50 dark:bg-black">
+<section id="portfolio" class="py-20 bg-black scroll-mt-20">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 opacity-0 translate-y-8 transition-all duration-700 ease-out">
             <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4"><?= $portfolio['title'] ?></h2>
@@ -199,7 +198,7 @@ $hero_slides = [
         <!-- Portfolio Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
             <?php foreach ($portfolio['projects'] as $index => $project): ?>
-            <div class="portfolio-item group overflow-hidden rounded-lg shadow-md bg-white dark:bg-dark-900 opacity-0 translate-y-10 transition-all duration-500 ease-out" 
+            <div class="portfolio-item group overflow-hidden rounded-lg shadow-md bg-dark-900 opacity-0 translate-y-10 transition-all duration-500 ease-out" 
                  data-category="<?= $project['category'] ?>" 
                  style="transition-delay: <?= 0.05 * ($index + 1) ?>s;">
                 <div class="relative overflow-hidden">
@@ -246,9 +245,9 @@ $hero_slides = [
                 </div>
                 
                 <div class="p-6">
-                    <h3 class="font-sans font-bold text-xl mb-2 dark:text-dark-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"><?= $project['title'] ?></h3>
-                    <p class="font-sans font-normal text-secondary-600 dark:text-dark-300 mb-4"><?= substr($project['description'] ?? '', 0, 100) ?>...</p>
-                    <a href="#" class="font-sans text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium inline-flex items-center group" 
+                    <h3 class="font-sans font-bold text-xl mb-2 text-white group-hover:text-emerald-400 transition-colors"><?= $project['title'] ?></h3>
+                    <p class="font-sans font-normal text-gray-300 mb-4"><?= substr($project['description'] ?? '', 0, 100) ?>...</p>
+                    <a href="#" class="font-sans text-emerald-400 hover:text-emerald-300 font-medium inline-flex items-center group" 
                        onclick="openProjectModal('<?= htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8') ?>', '<?= $imageUrl ?>', '<?= htmlspecialchars($project['description'] ?? '', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['category'], ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['client'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['year'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['location'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['area'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>'); return false;">
                         Lihat Detail 
                         <svg class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -263,7 +262,7 @@ $hero_slides = [
 </section>
 
 <!-- Testimonials Section -->
-<section id="testimonials" class="py-20 bg-white dark:bg-black">
+<section id="testimonials" class="py-20 bg-black scroll-mt-20">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 opacity-0 translate-y-8 transition-all duration-700 ease-out">
             <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4"><?= $testimonials['title'] ?></h2>
@@ -302,10 +301,53 @@ $hero_slides = [
     </div>
 </section>
 
-
+<!-- FAQ Section -->
+<section id="faq" class="py-20 bg-black text-white scroll-mt-20">
+  <div class="container mx-auto px-4">
+    <h2 class="font-sans text-3xl sm:text-4xl font-black mb-4 text-center">Pertanyaan Umum</h2>
+    <p class="mb-10 text-center text-gray-400">Temukan jawaban atas pertanyaan yang sering diajukan tentang layanan kami.</p>
+    <div class="flex flex-col md:flex-row gap-8">
+      <!-- Categories -->
+      <aside class="md:w-1/4">
+        <div class="bg-dark-900 rounded-xl shadow-lg border border-dark-700 p-4">
+          <?php $firstCat = true; foreach ($faq['categories'] as $cat => $items): ?>
+            <button type="button"
+              class="faq-category w-full text-left px-4 py-3 mb-2 rounded-lg transition font-medium flex items-center gap-2
+                <?php if ($firstCat) {echo 'bg-primary-500 text-white shadow';} else {echo 'bg-dark-800 text-gray-300 hover:bg-dark-700';} ?>"
+              data-category="<?= htmlspecialchars($cat) ?>">
+              <?php if ($cat === 'Umum'): ?><i class="fa fa-question-circle"></i><?php elseif ($cat === 'Desain'): ?><i class="fa fa-pencil-ruler"></i><?php elseif ($cat === 'Biaya'): ?><i class="fa fa-wallet"></i><?php endif; ?>
+              <?= htmlspecialchars($cat) ?>
+            </button>
+          <?php $firstCat = false; endforeach; ?>
+        </div>
+      </aside>
+      <!-- Questions/Answers -->
+      <div class="md:w-3/4">
+        <?php $firstPanel = true; foreach ($faq['categories'] as $cat => $items): ?>
+          <div class="faq-panel <?php if (!$firstPanel) echo 'hidden'; ?>" data-category="<?= htmlspecialchars($cat) ?>">
+            <?php foreach ($items as $q): ?>
+              <div class="faq-item bg-dark-900 border border-dark-700 rounded-xl shadow mb-4 overflow-hidden">
+                <button type="button" class="faq-question w-full flex justify-between items-center px-6 py-4 text-base md:text-lg font-semibold text-left focus:outline-none">
+                  <span><?= htmlspecialchars($q['question']) ?></span>
+                  <span class="faq-toggle-icon ml-2 transition"><i class="fa fa-chevron-down"></i></span>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6 text-gray-300 text-sm md:text-base leading-relaxed border-t border-dark-800"><?= htmlspecialchars($q['answer']) ?></div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        <?php $firstPanel = false; endforeach; ?>
+      </div>
+    </div>
+    <div class="mt-10 text-center bg-dark-900 rounded-xl shadow-lg border border-dark-700 p-6">
+      <span class="font-bold text-lg">Masih punya pertanyaan?</span>
+      <p class="text-gray-400 mb-2">Tim kami siap membantu menjawab segala pertanyaan Anda tentang layanan kami.</p>
+      <a href="#contact" class="text-emerald-400 hover:underline font-medium">Hubungi Kami <i class="fa fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
 
 <!-- Contact Section -->
-<section id="contact" class="py-20">
+<section id="contact" class="py-20 bg-black scroll-mt-20">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 opacity-0 translate-y-8 transition-all duration-700 ease-out">
             <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4">Hubungi Kami</h2>

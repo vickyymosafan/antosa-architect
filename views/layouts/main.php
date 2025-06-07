@@ -106,42 +106,46 @@
     <!-- Custom CSS -->
     
 </head>
-    <body class="font-sans text-dark-200 bg-black">
+    <body class="font-sans text-white bg-black">
     <!-- Header/Navbar -->
-    <header class="fixed w-full bg-dark-950 shadow-lg z-50 transition-all duration-300 ease-in-out">
+    <header class="fixed w-full bg-black shadow-lg z-50 transition-all duration-300 ease-in-out">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-3">
                 <!-- Logo -->
                 <a href="<?= url('/') ?>" class="block group">
                     <img src="assets/images/4.webp" alt="Antosa Architect Logo" class="h-10 transition-transform duration-300 group-hover:scale-105">
-                    <div class="h-[3px] bg-emerald-500 mt-[2px] w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
+                    <div class="h-[3px] bg-primary-400 mt-[2px] w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
                 </a>
                 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-5 lg:space-x-7 mx-auto">
-                    <a href="#home" class="nav-item text-sm font-medium text-emerald-400 relative py-2 group">
+                    <a href="#home" class="nav-item text-sm font-medium text-primary-400 relative py-2 group active:text-primary-400 aria-current:text-primary-400">
                         Beranda
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-emerald-400 transform scale-x-100 transition-transform duration-300 ease-out"></span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-100 transition-transform duration-300 ease-out group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
                     </a>
-                    <a href="#about" class="nav-item text-sm font-medium text-dark-300 hover:text-emerald-400 transition-colors relative py-2 group">
+                    <a href="#about" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
                         Tentang Kami
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center"></span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
                     </a>
-                    <a href="#services" class="nav-item text-sm font-medium text-dark-300 hover:text-emerald-400 transition-colors relative py-2 group">
+                    <a href="#services" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
                         Layanan
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center"></span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
                     </a>
-                    <a href="#portfolio" class="nav-item text-sm font-medium text-dark-300 hover:text-emerald-400 transition-colors relative py-2 group">
+                    <a href="#portfolio" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
                         Portfolio
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center"></span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
                     </a>
-                    <a href="#testimonials" class="nav-item text-sm font-medium text-dark-300 hover:text-emerald-400 transition-colors relative py-2 group">
+                    <a href="#testimonials" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
                         Testimonial
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center"></span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
                     </a>
-                    <a href="#contact" class="nav-item text-sm font-medium text-dark-300 hover:text-emerald-400 transition-colors relative py-2 group">
+                    <a href="#faq" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
+                        FAQ
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
+                    </a>
+                    <a href="#contact" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
                         Kontak
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center"></span>
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
                     </a>
                 </nav>
 
@@ -162,13 +166,14 @@
             </div>
             
             <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="md:hidden hidden bg-dark-950">
+            <div id="mobile-menu" class="md:hidden hidden bg-black">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="#home" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-emerald-400 hover:bg-dark-800">Beranda</a>
-                    <a href="#about" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">Tentang Kami</a>
-                    <a href="#services" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">Layanan</a>
+                    <a href="#home" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-emerald-400 hover:bg-emerald-900">Beranda</a>
+                    <a href="#about" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-white hover:text-emerald-400 hover:bg-emerald-900">Tentang Kami</a>
+                    <a href="#services" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-white hover:text-emerald-400 hover:bg-emerald-900">Layanan</a>
                     <a href="#portfolio" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">Portfolio</a>
                     <a href="#testimonials" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">Testimonial</a>
+                    <a href="#faq" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">FAQ</a>
                     <a href="#contact" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">Kontak</a>
                 </div>
                 <div class="pt-4 pb-3 border-t border-dark-700">
@@ -192,6 +197,7 @@
     <script src="/assets/js/content-toggle.js" defer></script>
     <script src="/assets/js/hero-slider.js" defer></script>
     <script src="/assets/js/home-portfolio.js" defer></script>
+    <script src="/assets/js/faq.js" defer></script>
 
     <?php require_once 'partials/footer.php'; ?>
 </body>
