@@ -33,10 +33,10 @@ $serviceLinks = [
 ];
 
 $contactInfo = [
-    ['icon' => 'fas fa-map-marker-alt', 'lines' => ['Jl. Arsitek Modern No. 42', 'Jakarta Pusat, 10110'], 'type' => 'address'],
-    ['icon' => 'fas fa-phone-alt', 'text' => '+62 812 3456 7890', 'type' => 'phone', 'url' => 'tel:+6281234567890'],
-    ['icon' => 'fas fa-envelope', 'text' => 'hello@antosaarchitect.com', 'type' => 'email', 'url' => 'mailto:hello@antosaarchitect.com'],
-    ['icon' => 'fas fa-clock', 'text' => 'Senin - Jumat: 09:00 - 17:00 WIB', 'type' => 'hours'],
+    ['icon' => 'fas fa-map-marker-alt', 'lines' => ['Bernady Land, Cluster Camelia Blok E6, Puring, Slawu, Kec. Patrang, Kabupaten Jember, Jawa Timur 68116'], 'type' => 'address'],
+    ['icon' => 'fas fa-phone-alt', 'text' => '+62 851 8952 3863', 'type' => 'phone', 'url' => 'tel:+6285189523863'],
+    ['icon' => 'fas fa-envelope', 'text' => 'info@antosaarchitect.com', 'type' => 'email', 'url' => 'mailto:info@antosaarchitect.com'],
+    ['icon' => 'fas fa-clock', 'text' => 'Senin - Jumat: 08:00 - 17:00 WIB', 'type' => 'hours'],
 ];
 
 // Styling variables for consistency and easier updates

@@ -7,7 +7,7 @@
 // Site information
 define('SITE_NAME', 'Antosa Architect');
 define('SITE_DESCRIPTION', 'Mewujudkan Desain Impian Anda');
-define('SITE_URL', 'http://localhost:8000');
+define('SITE_URL', 'http://localhost/arsitek');
 
 // Directory paths
 define('ROOT_DIR', dirname(__DIR__));
@@ -19,8 +19,8 @@ define('STORAGE_DIR', ROOT_DIR . '/storage');
 
 // Contact information
 define('COMPANY_EMAIL', 'info@antosa-architect.com');
-define('COMPANY_PHONE', '+62 812 3456 7890');
-define('COMPANY_ADDRESS', 'Jl. Arsitektur Modern No. 123, Jakarta, Indonesia');
+define('COMPANY_PHONE', '+62 851 8952 3863');
+define('COMPANY_ADDRESS', 'Bernady Land, Cluster Camelia Blok E6, Puring, Slawu, Kec. Patrang, Kabupaten Jember, Jawa Timur 68116');
 define('OFFICE_HOURS', 'Senin - Jumat: 08:00 - 17:00');
 
 // Social media
