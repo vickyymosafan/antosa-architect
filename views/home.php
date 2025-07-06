@@ -400,29 +400,29 @@ $hero_slides = [
                             <!-- Subtle Gradient Overlay -->
                             <div class="absolute inset-0 bg-gradient-to-br from-<?= $layout['accent'] ?>-500/[0.01] to-transparent"></div>
 
-                            <!-- Premium Content Container -->
-                            <div class="relative z-10 p-6 h-full flex flex-col">
+                            <!-- Optimized Content Container -->
+                            <div class="relative z-10 p-6 h-full flex flex-col justify-between">
 
                                 <!-- Consistent Icon Container -->
-                                <div class="w-16 h-16 mb-5 relative mx-auto transition-transform duration-200 group-hover:scale-110">
+                                <div class="w-16 h-16 mb-4 relative mx-auto transition-transform duration-200 group-hover:scale-110">
                                     <div class="w-full h-full bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-xl flex items-center justify-center shadow-lg shadow-<?= $layout['accent'] ?>-500/20">
                                         <i class="fas fa-<?= $service['icon'] ?> text-lg text-white"></i>
                                     </div>
                                 </div>
 
-                                <!-- Uniform Content Section -->
-                                <div class="text-center flex-grow flex flex-col">
-                                    <h3 class="font-sans font-bold text-lg lg:text-xl text-white mb-3 group-hover:text-<?= $layout['accent'] ?>-400 transition-colors duration-300 leading-tight">
+                                <!-- Balanced Content Section -->
+                                <div class="text-center flex-grow flex flex-col justify-center">
+                                    <h3 class="font-sans font-bold text-lg lg:text-xl text-white mb-2.5 group-hover:text-<?= $layout['accent'] ?>-400 transition-colors duration-300 leading-tight">
                                         <?= $service['title'] ?>
                                     </h3>
-                                    <p class="font-sans text-gray-300 text-sm leading-relaxed mb-6 flex-grow">
+                                    <p class="font-sans text-gray-300 text-sm leading-relaxed">
                                         <?= $service['description'] ?>
                                     </p>
                                 </div>
 
-                                <!-- Consistent CTA Button -->
-                                <div class="mt-auto pt-4 border-t border-gray-700/30">
-                                    <a href="#contact" class="group/cta w-full bg-gradient-to-r from-<?= $layout['accent'] ?>-500 to-<?= $layout['accent'] ?>-600 hover:from-<?= $layout['accent'] ?>-400 hover:to-<?= $layout['accent'] ?>-500 text-white font-medium py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-<?= $layout['accent'] ?>-500/30 text-sm">
+                                <!-- Compact CTA Button -->
+                                <div class="mt-4 pt-3 border-t border-gray-700/30">
+                                    <a href="#contact" class="group/cta w-full bg-gradient-to-r from-<?= $layout['accent'] ?>-500 to-<?= $layout['accent'] ?>-600 hover:from-<?= $layout['accent'] ?>-400 hover:to-<?= $layout['accent'] ?>-500 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-<?= $layout['accent'] ?>-500/30 text-sm">
                                         <span>Konsultasi</span>
                                         <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1"></i>
                                     </a>
