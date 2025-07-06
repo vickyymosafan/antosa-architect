@@ -615,103 +615,147 @@ $hero_slides = [
 </section>
 
 <!-- Contact Section -->
-<section id="contact" class="py-20 bg-black scroll-mt-20">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16 opacity-0 translate-y-8 transition-all duration-700 ease-out">
-            <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4">Hubungi Kami</h2>
-            <div class="w-24 h-1 bg-primary-500 mx-auto mb-8"></div>
-            <p class="font-sans font-normal max-w-3xl mx-auto text-secondary-600 dark:text-dark-300 text-lg">Punya pertanyaan atau ingin memulai proyek dengan kami? Jangan ragu untuk menghubungi kami.</p>
+<section id="contact" class="py-12 bg-black scroll-mt-20 relative overflow-hidden">
+    <!-- Background Map with Overlay -->
+    <div class="absolute inset-0 opacity-10">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.515560073746!2d113.69243997242727!3d-8.150696587006067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695266ceb2fbb%3A0x4f7d8c2cd93f9499!2sANTOSA%20ARCHITECT%20%7C%20JASA%20ARSITEK%20PROFESIONAL%20BERLISENSI!5e0!3m2!1sen!2sid!4v1749265217676!5m2!1sen!2sid"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-black/80"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Header Section -->
+        <div class="text-center mb-10 opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            <h2 class="font-sans text-2xl sm:text-3xl font-black text-white mb-3">Hubungi Kami</h2>
+            <div class="w-16 h-0.5 bg-primary-500 mx-auto mb-4"></div>
+            <p class="font-sans font-normal max-w-2xl mx-auto text-gray-300 text-base">Punya pertanyaan atau ingin memulai proyek dengan kami? Jangan ragu untuk menghubungi kami.</p>
         </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Contact Form -->
-            <div id="contact-form" class="bg-white dark:bg-dark-900 p-8 md:p-12 rounded-xl shadow-2xl opacity-0 translate-y-8 transition-all duration-700 ease-out delay-100">
-                <h3 class="font-sans text-2xl font-bold mb-6 dark:text-dark-100">Kirim Pesan</h3>
-                <form action="<?= url('/send-inquiry') ?>" method="POST">
-                    <div class="mb-6">
-                        <label for="name" class="font-sans font-medium text-sm text-secondary-500 dark:text-gray-400 mb-2">Nama Lengkap</label>
-                        <input type="text" id="name" name="name" class="w-full p-3 bg-secondary-50 dark:bg-dark-800 border border-secondary-300 dark:border-dark-700 rounded-lg text-secondary-900 dark:text-dark-100 focus:ring-dark-500 focus:border-primary-500 dark:focus:ring-dark-500 dark:focus:border-primary-400 transition-colors placeholder-secondary-400 dark:placeholder-dark-400" placeholder="Masukkan nama lengkap Anda" required>
+
+        <!-- Premium Asymmetric Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
+            <!-- Contact Form - 60% width (3/5) -->
+            <div class="lg:col-span-3">
+                <div id="contact-form" class="bg-gradient-to-br from-gray-800/95 to-gray-900/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-2xl border border-primary-400/20 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-100">
+                    <div class="flex items-center mb-6">
+                        <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center mr-3">
+                            <i class="fas fa-envelope text-white text-sm"></i>
+                        </div>
+                        <h3 class="font-sans text-xl font-bold text-white">Kirim Pesan</h3>
                     </div>
-                    
-                    <div class="mb-6">
-                        <label for="email" class="font-sans font-medium text-sm text-secondary-500 dark:text-gray-400 mb-2">Email</label>
-                        <input type="email" id="email" name="email" class="w-full p-3 bg-secondary-50 dark:bg-dark-800 border border-secondary-300 dark:border-dark-700 rounded-lg text-secondary-900 dark:text-dark-100 focus:ring-dark-500 focus:border-primary-500 dark:focus:ring-dark-500 dark:focus:border-primary-400 transition-colors placeholder-secondary-400 dark:placeholder-dark-400" placeholder="Masukkan alamat email Anda" required>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label for="phone" class="font-sans font-medium text-sm text-secondary-500 dark:text-gray-400 mb-2">Nomor Telepon</label>
-                        <input type="tel" id="phone" name="phone" class="w-full p-3 bg-secondary-50 dark:bg-dark-800 border border-secondary-300 dark:border-dark-700 rounded-lg text-secondary-900 dark:text-dark-100 focus:ring-dark-500 focus:border-primary-500 dark:focus:ring-dark-500 dark:focus:border-primary-400 transition-colors placeholder-secondary-400 dark:placeholder-dark-400" placeholder="Masukkan nomor telepon Anda" required>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label for="message" class="font-sans font-medium text-sm text-secondary-500 dark:text-gray-400 mb-2">Pesan</label>
-                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-secondary-50 dark:bg-dark-700 border border-secondary-300 dark:border-dark-600 rounded-md text-secondary-900 dark:text-dark-100 focus:ring-dark-500 focus:border-primary-500 dark:focus:ring-dark-500 dark:focus:border-primary-400 transition-colors resize-none placeholder-secondary-400 dark:placeholder-dark-500" placeholder="Deskripsikan proyek atau pertanyaan Anda" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="font-sans w-full py-3 px-6 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-md transition-colors">
-                        Kirim Pesan
-                    </button>
-                </form>
+
+                    <form action="<?= url('/send-inquiry') ?>" method="POST" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="font-sans font-medium text-xs text-gray-300 mb-1.5 block uppercase tracking-wide">Nama Lengkap</label>
+                                <input type="text" id="name" name="name" required class="font-sans w-full px-3 py-2.5 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-400 bg-gray-700/50 text-white text-sm transition-all placeholder-gray-400">
+                            </div>
+                            <div>
+                                <label for="phone" class="font-sans font-medium text-xs text-gray-300 mb-1.5 block uppercase tracking-wide">Nomor Telepon</label>
+                                <input type="tel" id="phone" name="phone" class="font-sans w-full px-3 py-2.5 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-400 bg-gray-700/50 text-white text-sm transition-all placeholder-gray-400">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="email" class="font-sans font-medium text-xs text-gray-300 mb-1.5 block uppercase tracking-wide">Email</label>
+                            <input type="email" id="email" name="email" required class="font-sans w-full px-3 py-2.5 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-400 bg-gray-700/50 text-white text-sm transition-all placeholder-gray-400">
+                        </div>
+
+                        <div>
+                            <label for="message" class="font-sans font-medium text-xs text-gray-300 mb-1.5 block uppercase tracking-wide">Pesan</label>
+                            <textarea id="message" name="message" rows="4" required class="font-sans w-full px-3 py-2.5 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-400 bg-gray-700/50 text-white text-sm resize-none transition-all placeholder-gray-400"></textarea>
+                        </div>
+
+                        <button type="submit" class="font-sans w-full py-3 px-6 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
             </div>
-            
-            <!-- Contact Information -->
-            <div>
-                <div class="bg-dark-900 text-white p-8 rounded-lg shadow-md mb-8 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200">
-                    <h3 class="font-sans text-2xl font-bold mb-6">Informasi Kontak</h3>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full bg-primary-500/20 flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-500 dark:text-primary-400"></i>
+
+            <!-- Contact Information - 40% width (2/5) -->
+            <div class="lg:col-span-2 space-y-4">
+                <!-- Quick Contact Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+                    <!-- Phone Card -->
+                    <div class="bg-gradient-to-br from-primary-500 to-primary-600 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200 hover:scale-105 transform">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
+                                <i class="fas fa-phone-alt text-white text-sm"></i>
                             </div>
                             <div>
-                                <h4 class="font-sans font-semibold text-lg mb-1">Alamat</h4>
-                                <p class="font-sans font-normal text-gray-300"><?= COMPANY_ADDRESS ?></p>
+                                <h4 class="font-sans font-semibold text-white text-sm">Telepon</h4>
+                                <a href="tel:<?= str_replace([' ', '-'], '', COMPANY_PHONE) ?>" class="font-sans text-white/90 text-xs hover:text-white transition-colors"><?= COMPANY_PHONE ?></a>
                             </div>
                         </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full bg-primary-500/20 flex items-center justify-center mr-4">
-                                <i class="fas fa-phone-alt mr-3 text-primary-500 dark:text-primary-400"></i>
+                    </div>
+
+                    <!-- Email Card -->
+                    <div class="bg-gradient-to-br from-emerald-500 to-emerald-600 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-250 hover:scale-105 transform">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
+                                <i class="fas fa-envelope text-white text-sm"></i>
                             </div>
                             <div>
-                                <h4 class="font-sans font-semibold text-lg mb-1">Telepon</h4>
-                                <p class="font-sans font-normal text-gray-300"><?= COMPANY_PHONE ?></p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full bg-primary-500/20 flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope mr-3 text-primary-500 dark:text-primary-400"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-sans font-semibold text-lg mb-1">Email</h4>
-                                <p class="font-sans font-normal text-gray-300"><?= COMPANY_EMAIL ?></p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full bg-primary-500/20 flex items-center justify-center mr-4">
-                                <i class="fas fa-clock mr-3 text-primary-500 dark:text-primary-400"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-sans font-semibold text-lg mb-1">Jam Kerja</h4>
-                                <p class="font-sans font-normal text-gray-300"><?= OFFICE_HOURS ?></p>
+                                <h4 class="font-sans font-semibold text-white text-sm">Email</h4>
+                                <a href="mailto:<?= COMPANY_EMAIL ?>" class="font-sans text-white/90 text-xs hover:text-white transition-colors"><?= COMPANY_EMAIL ?></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Google Maps Integration -->
-                <div class="rounded-lg overflow-hidden shadow-md h-96 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-300">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.515560073746!2d113.69243997242727!3d-8.150696587006067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695266ceb2fbb%3A0x4f7d8c2cd93f9499!2sANTOSA%20ARCHITECT%20%7C%20JASA%20ARSITEK%20PROFESIONAL%20BERLISENSI!5e0!3m2!1sen!2sid!4v1749265217676!5m2!1sen!2sid" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
+
+                <!-- Address Card -->
+                <div class="bg-gradient-to-br from-slate-600 to-slate-700 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-300 hover:scale-105 transform">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
+                            <i class="fas fa-map-marker-alt text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-sans font-semibold text-white text-sm">Alamat</h4>
+                            <p class="font-sans text-white/90 text-xs leading-relaxed hover:text-white transition-colors"><?= COMPANY_ADDRESS ?></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Working Hours Card -->
+                <div class="bg-gradient-to-br from-purple-500 to-purple-600 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-350 hover:scale-105 transform">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
+                            <i class="fas fa-clock text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-sans font-semibold text-white text-sm">Jam Kerja</h4>
+                            <p class="font-sans text-white/90 text-xs hover:text-white transition-colors"><?= OFFICE_HOURS ?></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Map Card -->
+                <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden opacity-0 translate-y-8 transition-all duration-700 ease-out delay-350 hover:scale-105 transform">
+                    <div class="p-4 border-b border-gray-100">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center mr-3">
+                                <i class="fas fa-map text-white text-sm"></i>
+                            </div>
+                            <h4 class="font-sans font-semibold text-gray-900 text-sm">Lokasi Kami</h4>
+                        </div>
+                    </div>
+                    <div class="h-48">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.515560073746!2d113.69243997242727!3d-8.150696587006067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695266ceb2fbb%3A0x4f7d8c2cd93f9499!2sANTOSA%20ARCHITECT%20%7C%20JASA%20ARSITEK%20PROFESIONAL%20BERLISENSI!5e0!3m2!1sen!2sid!4v1749265217676!5m2!1sen!2sid"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy">
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
