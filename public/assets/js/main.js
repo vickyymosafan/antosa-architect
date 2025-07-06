@@ -38,6 +38,27 @@ function initializeAboutAnimations() {
             }, index * 200);
         });
 
+        // Staggered animation for stats counters
+        const statsCounters = aboutSection.querySelectorAll('.counter');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add staggered delay for each counter
+                    const counters = Array.from(statsCounters);
+                    counters.forEach((counter, index) => {
+                        setTimeout(() => {
+                            counter.classList.add('animate-pulse-glow');
+                        }, index * 300);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (statsCounters.length > 0) {
+            statsObserver.observe(statsCounters[0].closest('.grid'));
+        }
+
         // Floating animation for geometric elements (only on larger screens)
         if (window.innerWidth >= 1024) {
             const geometricElements = aboutSection.querySelectorAll('.absolute.opacity-5 > div');
@@ -57,38 +78,59 @@ function initializeAboutAnimations() {
 }
 
 /**
- * Initializes counters with an animation effect when they become visible.
+ * Initializes premium counters with smooth animation effects when they become visible.
+ * Supports custom duration, suffix, and easing for each counter.
  * @param {HTMLElement} container - The parent element containing counter elements. Defaults to document.
  */
 function initializeCounters(container = document) {
     const counters = container.querySelectorAll('.counter');
+
     counters.forEach(counter => {
         const target = +counter.getAttribute('data-target');
-        counter.innerText = '0'; // Initialize text to 0
+        const suffix = counter.getAttribute('data-suffix') || '';
+        const duration = +counter.getAttribute('data-duration') || 2000;
 
-        let current = 0;
-        const increment = target / 100; // Animate in 100 steps
-        const animationSpeed = 15; // Milliseconds per step
+        // Initialize counter display
+        counter.innerText = '0';
 
-        const updateCount = () => {
-            if (current < target) {
-                current += increment;
-                if (current > target) current = target; // Ensure not to overshoot
-                counter.innerText = Math.ceil(current);
-                setTimeout(updateCount, animationSpeed);
+        // Animation function with easing
+        const animateCounter = (startTime) => {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Easing function for smooth animation (ease-out-cubic)
+            const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(target * easeOutCubic);
+
+            // Update counter display
+            counter.innerText = current;
+
+            // Continue animation if not complete
+            if (progress < 1) {
+                requestAnimationFrame(() => animateCounter(startTime));
             } else {
-                counter.innerText = target; // Ensure final value is exact
+                // Ensure final value is exact
+                counter.innerText = target;
             }
         };
 
+        // Intersection Observer for triggering animation
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    updateCount();
+                    // Start animation with current timestamp
+                    const startTime = Date.now();
+                    requestAnimationFrame(() => animateCounter(startTime));
+
+                    // Unobserve to prevent re-triggering
                     obs.unobserve(counter);
                 }
             });
-        }, { threshold: 0.01 }); // Start animation when 1% visible
+        }, {
+            threshold: 0.2, // Start when 20% visible
+            rootMargin: '0px 0px -50px 0px' // Trigger slightly before entering viewport
+        });
+
         observer.observe(counter);
     });
 }

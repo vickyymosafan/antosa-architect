@@ -173,19 +173,43 @@ $hero_slides = [
 
                         <!-- Stats Row -->
                         <div class="grid grid-cols-3 gap-8 pt-10 mt-10 border-t border-gray-700 relative">
+                            <?php
+                            $stats = [
+                                [
+                                    'value' => 10,
+                                    'suffix' => '+',
+                                    'label' => 'Tahun Pengalaman',
+                                    'gradient' => 'from-primary-400 via-primary-500 to-primary-600',
+                                    'duration' => 2000
+                                ],
+                                [
+                                    'value' => 150,
+                                    'suffix' => '+',
+                                    'label' => 'Proyek Selesai',
+                                    'gradient' => 'from-primary-400 via-primary-500 to-primary-600',
+                                    'duration' => 2500
+                                ],
+                                [
+                                    'value' => 98,
+                                    'suffix' => '%',
+                                    'label' => 'Kepuasan Klien',
+                                    'gradient' => 'from-primary-400 via-primary-500 to-primary-600',
+                                    'duration' => 2200
+                                ]
+                            ];
+                            ?>
 
+                            <?php foreach ($stats as $index => $stat): ?>
                             <div class="text-center lg:text-left group">
-                                <div class="text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-500 mb-3 group-hover:scale-110 transition-transform duration-300">10+</div>
-                                <div class="text-xs text-gray-500 uppercase tracking-[0.15em] font-medium">Tahun Pengalaman</div>
+                                <div class="text-4xl lg:text-5xl font-black mb-3 group-hover:scale-110 transition-transform duration-300">
+                                    <span class="counter text-transparent bg-clip-text bg-gradient-to-r <?= $stat['gradient'] ?>"
+                                          data-target="<?= $stat['value'] ?>"
+                                          data-suffix="<?= $stat['suffix'] ?>"
+                                          data-duration="<?= $stat['duration'] ?>">0</span><span class="text-transparent bg-clip-text bg-gradient-to-r <?= $stat['gradient'] ?>"><?= $stat['suffix'] ?></span>
+                                </div>
+                                <div class="text-xs text-gray-500 uppercase tracking-[0.15em] font-medium"><?= $stat['label'] ?></div>
                             </div>
-                            <div class="text-center lg:text-left group">
-                                <div class="text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-500 mb-3 group-hover:scale-110 transition-transform duration-300">150+</div>
-                                <div class="text-xs text-gray-500 uppercase tracking-[0.15em] font-medium">Proyek Selesai</div>
-                            </div>
-                            <div class="text-center lg:text-left group">
-                                <div class="text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-emerald-400 mb-3 group-hover:scale-110 transition-transform duration-300">98%</div>
-                                <div class="text-xs text-gray-500 uppercase tracking-[0.15em] font-medium">Kepuasan Klien</div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -256,22 +280,10 @@ $hero_slides = [
                 </p>
             </div>
 
-            <!-- Masonry Team Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8">
+            <!-- Consistent Team Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <?php foreach ($about['team'] as $index => $member): ?>
-                    <?php
-                    // Define different card sizes and positions for masonry effect
-                    $cardClasses = [
-                        0 => 'sm:col-span-2 lg:col-span-5 lg:row-span-2', // Featured card - larger
-                        1 => 'sm:col-span-1 lg:col-span-4 lg:row-span-1', // Medium card
-                        2 => 'sm:col-span-1 lg:col-span-3 lg:row-span-1'  // Smaller card
-                    ];
-                    $cardClass = $cardClasses[$index] ?? 'sm:col-span-1 lg:col-span-4';
-
-                    $isFeature = $index === 0;
-                    ?>
-
-                    <div class="<?= $cardClass ?> opacity-0 translate-y-8 transition-all duration-700 ease-out stagger-item"
+                    <div class="opacity-0 translate-y-8 transition-all duration-700 ease-out stagger-item"
                          style="transition-delay: <?= 0.2 * ($index + 3) ?>s;">
 
                         <!-- Card Container -->
@@ -284,39 +296,32 @@ $hero_slides = [
                             </div>
 
                             <!-- Content -->
-                            <div class="relative z-10 p-4 sm:p-6 <?= $isFeature ? 'lg:p-8' : '' ?> h-full flex flex-col">
+                            <div class="relative z-10 p-6 h-full flex flex-col">
 
                                 <!-- Profile Image Placeholder -->
-                                <div class="<?= $isFeature ? 'w-32 h-32 mb-6' : 'w-20 h-20 mb-4' ?> rounded-2xl bg-gradient-to-br from-primary-500/20 to-emerald-500/20 flex items-center justify-center mx-auto group-hover:scale-105 transition-transform duration-300">
-                                    <div class="<?= $isFeature ? 'w-24 h-24' : 'w-16 h-16' ?> rounded-xl bg-gradient-to-br from-primary-400 to-emerald-400 flex items-center justify-center">
-                                        <i class="fas fa-user text-white <?= $isFeature ? 'text-2xl' : 'text-xl' ?>"></i>
+                                <div class="w-24 h-24 mb-6 rounded-2xl bg-gradient-to-br from-primary-500/20 to-emerald-500/20 flex items-center justify-center mx-auto group-hover:scale-105 transition-transform duration-300">
+                                    <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-primary-400 to-emerald-400 flex items-center justify-center">
+                                        <i class="fas fa-user text-white text-xl"></i>
                                     </div>
                                 </div>
 
                                 <!-- Name & Position -->
                                 <div class="text-center mb-4 flex-grow">
-                                    <h4 class="font-sans font-bold <?= $isFeature ? 'text-2xl lg:text-3xl' : 'text-xl' ?> text-white mb-2 group-hover:text-primary-400 transition-colors">
+                                    <h4 class="font-sans font-bold text-xl text-white mb-2 group-hover:text-primary-400 transition-colors">
                                         <?= $member['name'] ?>
                                     </h4>
-                                    <p class="font-sans font-medium text-primary-400 <?= $isFeature ? 'text-lg' : 'text-base' ?> mb-3">
+                                    <p class="font-sans font-medium text-primary-400 text-base mb-4">
                                         <?= $member['position'] ?>
                                     </p>
 
-                                    <?php if ($isFeature): ?>
-                                    <!-- Extended bio for featured member -->
-                                    <p class="font-sans text-gray-300 leading-relaxed mb-6">
-                                        <?= $member['bio'] ?>
-                                    </p>
-                                    <?php else: ?>
-                                    <!-- Shorter bio for other members -->
+                                    <!-- Bio with consistent styling -->
                                     <p class="font-sans text-sm text-gray-400 leading-relaxed">
                                         <?= $member['bio'] ?>
                                     </p>
-                                    <?php endif; ?>
                                 </div>
 
                                 <!-- Social Links -->
-                                <div class="flex justify-center items-center space-x-4 pt-4 border-t border-gray-800">
+                                <div class="flex justify-center items-center space-x-4 pt-4 border-t border-gray-800 mt-auto">
                                     <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-500 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 group/social">
                                         <i class="fab fa-linkedin text-sm group-hover/social:scale-110 transition-transform"></i>
                                     </a>
