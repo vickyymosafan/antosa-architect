@@ -353,55 +353,159 @@ $hero_slides = [
             <p class="font-sans font-normal max-w-3xl mx-auto text-secondary-600 dark:text-dark-300 text-lg"><?= $services['subtitle'] ?></p>
         </div>
 
-        <!-- Content Toggle Switch -->
-        <div class="my-12 flex justify-center opacity-0 translate-y-8 transition-all duration-700 ease-out delay-100">
-            <div class="inline-flex rounded-full bg-dark-900 p-1 shadow-md">
-                <button id="btn-layanan" class="px-6 py-2.5 text-sm font-semibold rounded-full bg-primary-500 text-white focus:outline-none transition-all duration-300 ease-in-out">
-                    Layanan Kami
-                </button>
-                <button id="btn-pencapaian" class="px-6 py-2.5 text-sm font-semibold rounded-full text-gray-300 hover:text-white focus:outline-none transition-all duration-300 ease-in-out">
-                    Pencapaian
-                </button>
+        <!-- Premium Masonry-Style Grid Layout -->
+        <div class="opacity-0 translate-y-8 transition-all duration-700 ease-out delay-100">
+            <!-- Services Grid with Reliable Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <?php
+                // Define premium service styling with reliable positioning
+                $serviceLayouts = [
+                    0 => [ // Desain Arsitektur - Featured Service
+                        'size' => 'featured',
+                        'accent' => 'primary',
+                        'delay' => '0.1s',
+                        'span' => 'md:col-span-2 lg:col-span-2'
+                    ],
+                    1 => [ // Desain Interior - Standard
+                        'size' => 'standard',
+                        'accent' => 'emerald',
+                        'delay' => '0.2s',
+                        'span' => 'md:col-span-1 lg:col-span-1'
+                    ],
+                    2 => [ // Konsultasi Proyek - Standard
+                        'size' => 'standard',
+                        'accent' => 'cyan',
+                        'delay' => '0.3s',
+                        'span' => 'md:col-span-1 lg:col-span-1'
+                    ],
+                    3 => [ // Manajemen Konstruksi - Wide
+                        'size' => 'wide',
+                        'accent' => 'amber',
+                        'delay' => '0.4s',
+                        'span' => 'md:col-span-2 lg:col-span-3'
+                    ]
+                ];
+                ?>
+
+                <?php foreach ($services['services'] as $index => $service): ?>
+                    <?php
+                    $layout = $serviceLayouts[$index];
+                    $isFeatured = $layout['size'] === 'featured';
+                    $isWide = $layout['size'] === 'wide';
+                    $isStandard = $layout['size'] === 'standard';
+                    ?>
+
+                    <div class="<?= $layout['span'] ?> opacity-0 translate-y-8 transition-all duration-700 ease-out"
+                         style="transition-delay: <?= $layout['delay'] ?>;">
+
+                        <!-- Premium Service Card -->
+                        <div class="group relative h-full min-h-[320px] <?= $isFeatured ? 'lg:min-h-[400px]' : ($isWide ? 'lg:min-h-[280px]' : 'lg:min-h-[320px]') ?> bg-gradient-to-br from-gray-900/90 to-black/95 backdrop-blur-xl border border-gray-700/50 rounded-2xl overflow-hidden hover:border-<?= $layout['accent'] ?>-400/70 transition-all duration-500 hover:transform hover:scale-[1.01] hover:shadow-xl hover:shadow-<?= $layout['accent'] ?>-500/20">
+
+                            <!-- Subtle Background Pattern -->
+                            <div class="absolute inset-0 opacity-[0.02]">
+                                <?php if ($isFeatured): ?>
+                                    <!-- Featured service - elegant pattern -->
+                                    <div class="absolute top-6 right-6 w-20 h-20 border border-<?= $layout['accent'] ?>-400/40 rotate-12 rounded-xl"></div>
+                                    <div class="absolute bottom-6 left-6 w-16 h-16 border border-<?= $layout['accent'] ?>-400/30 rotate-45 rounded-lg"></div>
+                                <?php elseif ($isWide): ?>
+                                    <!-- Wide service - horizontal pattern -->
+                                    <div class="absolute top-4 left-8 w-16 h-16 border border-<?= $layout['accent'] ?>-400/40 rotate-45 rounded-lg"></div>
+                                    <div class="absolute top-4 right-8 w-12 h-12 border border-<?= $layout['accent'] ?>-400/30 rotate-12 rounded"></div>
+                                <?php else: ?>
+                                    <!-- Standard services - minimal pattern -->
+                                    <div class="absolute top-4 right-4 w-12 h-12 border border-<?= $layout['accent'] ?>-400/40 rotate-45 rounded"></div>
+                                <?php endif; ?>
+                            </div>
+
+                            <!-- Content Container -->
+                            <div class="relative z-10 p-6 h-full flex flex-col">
+
+                                <?php if (!$isWide): ?>
+                                    <!-- Vertical Layout for Featured/Standard Cards -->
+                                    <!-- Premium Icon Container -->
+                                    <div class="<?= $isFeatured ? 'w-18 h-18 mb-6' : 'w-16 h-16 mb-5' ?> relative mx-auto group-hover:scale-105 transition-transform duration-300">
+                                        <div class="absolute inset-0 bg-gradient-to-br from-<?= $layout['accent'] ?>-500/15 to-<?= $layout['accent'] ?>-600/25 rounded-xl rotate-3 group-hover:rotate-6 transition-transform duration-300"></div>
+                                        <div class="relative w-full h-full bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-<?= $layout['accent'] ?>-500/30 transition-all duration-300">
+                                            <i class="fas fa-<?= $service['icon'] ?> <?= $isFeatured ? 'text-xl' : 'text-lg' ?> text-white"></i>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content Section -->
+                                    <div class="text-center flex-grow flex flex-col">
+                                        <h3 class="font-sans font-bold <?= $isFeatured ? 'text-xl lg:text-2xl' : 'text-lg lg:text-xl' ?> text-white mb-3 group-hover:text-<?= $layout['accent'] ?>-400 transition-colors duration-300 leading-tight">
+                                            <?= $service['title'] ?>
+                                        </h3>
+                                        <p class="font-sans text-gray-300 <?= $isFeatured ? 'text-sm lg:text-base' : 'text-sm' ?> leading-relaxed mb-6 flex-grow">
+                                            <?= $service['description'] ?>
+                                        </p>
+
+                                        <?php if ($isFeatured): ?>
+                                            <!-- Extended content for featured service -->
+                                            <div class="bg-gray-800/20 rounded-lg p-3 mb-6">
+                                                <div class="flex items-center justify-center space-x-4 text-xs text-gray-400">
+                                                    <div class="flex items-center">
+                                                        <i class="fas fa-clock mr-1 text-<?= $layout['accent'] ?>-400"></i>
+                                                        <span>3-6 Bulan</span>
+                                                    </div>
+                                                    <div class="flex items-center">
+                                                        <i class="fas fa-users mr-1 text-<?= $layout['accent'] ?>-400"></i>
+                                                        <span>Tim Ahli</span>
+                                                    </div>
+                                                    <div class="flex items-center">
+                                                        <i class="fas fa-award mr-1 text-<?= $layout['accent'] ?>-400"></i>
+                                                        <span>Bergaransi</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+
+                                    <!-- Always Visible CTA -->
+                                    <div class="mt-auto pt-4 border-t border-gray-700/30">
+                                        <a href="#contact" class="group/cta w-full bg-gradient-to-r from-<?= $layout['accent'] ?>-500 to-<?= $layout['accent'] ?>-600 hover:from-<?= $layout['accent'] ?>-400 hover:to-<?= $layout['accent'] ?>-500 text-white font-medium py-2.5 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-md hover:shadow-<?= $layout['accent'] ?>-500/25 text-sm">
+                                            <span>Konsultasi <?= $isFeatured ? '' : $service['title'] ?></span>
+                                            <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1"></i>
+                                        </a>
+                                    </div>
+
+                                <?php else: ?>
+                                    <!-- Horizontal Layout for Wide Card -->
+                                    <div class="flex items-center h-full">
+                                        <div class="flex-shrink-0 mr-6">
+                                            <div class="w-16 h-16 relative group-hover:scale-105 transition-transform duration-300">
+                                                <div class="absolute inset-0 bg-gradient-to-br from-<?= $layout['accent'] ?>-500/15 to-<?= $layout['accent'] ?>-600/25 rounded-xl rotate-3 group-hover:rotate-6 transition-transform duration-300"></div>
+                                                <div class="relative w-full h-full bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-lg flex items-center justify-center">
+                                                    <i class="fas fa-<?= $service['icon'] ?> text-lg text-white"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex-grow">
+                                            <h3 class="font-sans font-bold text-lg lg:text-xl text-white mb-2 group-hover:text-<?= $layout['accent'] ?>-400 transition-colors leading-tight">
+                                                <?= $service['title'] ?>
+                                            </h3>
+                                            <p class="font-sans text-gray-300 text-sm leading-relaxed">
+                                                <?= $service['description'] ?>
+                                            </p>
+                                        </div>
+
+                                        <div class="flex-shrink-0 ml-6">
+                                            <a href="#contact" class="group/cta bg-gradient-to-r from-<?= $layout['accent'] ?>-500 to-<?= $layout['accent'] ?>-600 hover:from-<?= $layout['accent'] ?>-400 hover:to-<?= $layout['accent'] ?>-500 text-white font-medium py-2.5 px-4 rounded-lg transition-all duration-300 flex items-center space-x-2 hover:shadow-md hover:shadow-<?= $layout['accent'] ?>-500/25 text-sm">
+                                                <span>Konsultasi</span>
+                                                <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+
+                            <!-- Subtle Hover Glow Effect -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-<?= $layout['accent'] ?>-500/3 to-<?= $layout['accent'] ?>-600/6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
-
-        <!-- Content Panels -->
-        <div id="panel-layanan" class="content-panel">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <?php foreach ($services['services'] as $index => $service): ?>
-            <div class="bg-dark-900 p-8 rounded-lg shadow-md hover:shadow-xl border-t-4 border-emerald-400 transition-all duration-300 group opacity-0 translate-y-8 transition-all duration-500 ease-out stagger-item" 
-                 data-service="<?= strtolower(str_replace(' ', '-', $service['title'])) ?>">
-                <div class="w-16 h-16 rounded-full bg-primary-100 dark:bg-dark-800 flex items-center justify-center mb-6 group-hover:bg-primary-500 dark:group-hover:bg-primary-600 transition-colors transform-gpu group-hover:rotate-y-180">
-                    <i class="fas fa-<?= $service['icon'] ?> text-2xl text-primary-600 dark:text-primary-400 group-hover:text-white dark:group-hover:text-gray-100 transition-colors"></i>
-                </div>
-                <h3 class="font-sans font-bold text-xl mb-3 text-white"><?= $service['title'] ?></h3>
-                <p class="font-sans font-normal text-gray-300 mb-4"><?= $service['description'] ?></p>
-                <div class="mt-4 pt-4 border-t border-secondary-100 dark:border-dark-700 hidden group-hover:block transition-all overflow-hidden">
-                    <a href="#contact" class="font-sans text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium transition-colors flex items-center">
-                        <span>Konsultasi <?= $service['title'] ?></span>
-                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-            </div>
-            <?php endforeach; ?>
-            </div> <!-- End of grid for Layanan Kami -->
-        </div> <!-- End of panel-layanan -->
-
-        <div id="panel-pencapaian" class="content-panel hidden">
-            <!-- Placeholder for Pencapaian content -->
-            <div class="text-center py-12">
-                <h3 class="text-2xl font-semibold text-gray-100 mb-4">Pencapaian Kami</h3>
-                <p class="text-gray-300 max-w-xl mx-auto mb-8">Informasi mengenai pencapaian dan statistik Antosa Architect akan ditampilkan di sini. Ini bisa berupa jumlah proyek selesai, kepuasan klien, penghargaan, dll.</p>
-                <div class="inline-flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8">
-                    <?php foreach ($services['stats'] ?? [] as $stat): ?>
-                    <div class="bg-dark-900 hover:bg-dark-700 rounded-lg p-6 shadow-lg w-full sm:w-48 text-center transition-all transform hover:scale-105">
-                        <div class="font-sans text-4xl font-bold text-primary-400 mb-2 counter" data-target="<?= $stat['value'] ?>">0</div>
-                        <div class="font-sans font-normal text-gray-300 text-sm"><?= $stat['label'] ?></div>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div> <!-- End of panel-pencapaian -->
         
 
     </div>

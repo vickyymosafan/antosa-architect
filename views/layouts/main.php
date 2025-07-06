@@ -63,6 +63,18 @@
                         '88': '22rem',
                         '128': '32rem',
                     },
+                    gridTemplateColumns: {
+                        '13': 'repeat(13, minmax(0, 1fr))',
+                        '14': 'repeat(14, minmax(0, 1fr))',
+                        '15': 'repeat(15, minmax(0, 1fr))',
+                        '16': 'repeat(16, minmax(0, 1fr))',
+                    },
+                    gridColumn: {
+                        'span-13': 'span 13 / span 13',
+                        'span-14': 'span 14 / span 14',
+                        'span-15': 'span 15 / span 15',
+                        'span-16': 'span 16 / span 16',
+                    },
                     textShadow: {
                         DEFAULT: '0 2px 10px rgba(0, 0, 0, 0.8)',
                         sm: '0 1px 2px rgba(0, 0, 0, 0.7)',
@@ -83,6 +95,9 @@
                         'hero-float': 'heroFloat 2s ease-in-out infinite',
                         'hero-entrance': 'heroEntrance 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
                         'hero-bounce': 'heroBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
+                        'premium-glow': 'premiumGlow 2s ease-in-out infinite',
+                        'service-float': 'serviceFloat 3s ease-in-out infinite',
+                        'icon-rotate': 'iconRotate 0.5s ease-out forwards',
                     },
                     keyframes: {
                         fadeIn: {
@@ -117,6 +132,20 @@
                             '0%': { opacity: '0', transform: 'translateY(20px) scale(0.9)' },
                             '60%': { opacity: '1', transform: 'translateY(-5px) scale(1.02)' },
                             '100%': { opacity: '1', transform: 'translateY(0px) scale(1)' }
+                        },
+                        premiumGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(56, 189, 248, 0.1)' },
+                            '50%': { boxShadow: '0 0 40px rgba(56, 189, 248, 0.2)' }
+                        },
+                        serviceFloat: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '33%': { transform: 'translateY(-2px) rotate(1deg)' },
+                            '66%': { transform: 'translateY(1px) rotate(-1deg)' }
+                        },
+                        iconRotate: {
+                            '0%': { transform: 'rotate(0deg) scale(1)' },
+                            '50%': { transform: 'rotate(180deg) scale(1.1)' },
+                            '100%': { transform: 'rotate(360deg) scale(1)' }
                         }
                     },
                     minHeight: {
@@ -287,6 +316,7 @@
     <script src="/assets/js/hero-animations.js" defer></script>
     <script src="/assets/js/home-portfolio.js" defer></script>
     <script src="/assets/js/faq.js" defer></script>
+    <script src="/assets/js/premium-services.js" defer></script>
 
     <?php require_once 'partials/footer.php'; ?>
 </body>
