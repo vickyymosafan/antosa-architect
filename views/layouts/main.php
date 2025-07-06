@@ -95,9 +95,7 @@
                         'hero-float': 'heroFloat 2s ease-in-out infinite',
                         'hero-entrance': 'heroEntrance 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
                         'hero-bounce': 'heroBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
-                        'premium-glow': 'premiumGlow 2s ease-in-out infinite',
-                        'service-float': 'serviceFloat 3s ease-in-out infinite',
-                        'icon-rotate': 'iconRotate 0.5s ease-out forwards',
+
                     },
                     keyframes: {
                         fadeIn: {
@@ -133,20 +131,7 @@
                             '60%': { opacity: '1', transform: 'translateY(-5px) scale(1.02)' },
                             '100%': { opacity: '1', transform: 'translateY(0px) scale(1)' }
                         },
-                        premiumGlow: {
-                            '0%, 100%': { boxShadow: '0 0 20px rgba(56, 189, 248, 0.1)' },
-                            '50%': { boxShadow: '0 0 40px rgba(56, 189, 248, 0.2)' }
-                        },
-                        serviceFloat: {
-                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-                            '33%': { transform: 'translateY(-2px) rotate(1deg)' },
-                            '66%': { transform: 'translateY(1px) rotate(-1deg)' }
-                        },
-                        iconRotate: {
-                            '0%': { transform: 'rotate(0deg) scale(1)' },
-                            '50%': { transform: 'rotate(180deg) scale(1.1)' },
-                            '100%': { transform: 'rotate(360deg) scale(1)' }
-                        }
+
                     },
                     minHeight: {
                         'screen-75': '75vh',

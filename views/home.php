@@ -398,23 +398,12 @@ $hero_slides = [
                     <div class="<?= $layout['span'] ?> opacity-0 translate-y-8 transition-all duration-700 ease-out"
                          style="transition-delay: <?= $layout['delay'] ?>;">
 
-                        <!-- Premium Service Card -->
-                        <div class="group relative h-full min-h-[320px] <?= $isFeatured ? 'lg:min-h-[400px]' : ($isWide ? 'lg:min-h-[280px]' : 'lg:min-h-[320px]') ?> bg-gradient-to-br from-gray-900/90 to-black/95 backdrop-blur-xl border border-gray-700/50 rounded-2xl overflow-hidden hover:border-<?= $layout['accent'] ?>-400/70 transition-all duration-500 hover:transform hover:scale-[1.01] hover:shadow-xl hover:shadow-<?= $layout['accent'] ?>-500/20">
+                        <!-- Optimized Service Card -->
+                        <div class="group relative h-full min-h-[320px] <?= $isFeatured ? 'lg:min-h-[400px]' : ($isWide ? 'lg:min-h-[280px]' : 'lg:min-h-[320px]') ?> bg-gradient-to-br from-gray-900/90 to-black/95 backdrop-blur-xl border border-gray-700/50 rounded-2xl overflow-hidden hover:border-<?= $layout['accent'] ?>-400/60 transition-all duration-300 hover:shadow-lg hover:shadow-<?= $layout['accent'] ?>-500/10">
 
-                            <!-- Subtle Background Pattern -->
-                            <div class="absolute inset-0 opacity-[0.02]">
-                                <?php if ($isFeatured): ?>
-                                    <!-- Featured service - elegant pattern -->
-                                    <div class="absolute top-6 right-6 w-20 h-20 border border-<?= $layout['accent'] ?>-400/40 rotate-12 rounded-xl"></div>
-                                    <div class="absolute bottom-6 left-6 w-16 h-16 border border-<?= $layout['accent'] ?>-400/30 rotate-45 rounded-lg"></div>
-                                <?php elseif ($isWide): ?>
-                                    <!-- Wide service - horizontal pattern -->
-                                    <div class="absolute top-4 left-8 w-16 h-16 border border-<?= $layout['accent'] ?>-400/40 rotate-45 rounded-lg"></div>
-                                    <div class="absolute top-4 right-8 w-12 h-12 border border-<?= $layout['accent'] ?>-400/30 rotate-12 rounded"></div>
-                                <?php else: ?>
-                                    <!-- Standard services - minimal pattern -->
-                                    <div class="absolute top-4 right-4 w-12 h-12 border border-<?= $layout['accent'] ?>-400/40 rotate-45 rounded"></div>
-                                <?php endif; ?>
+                            <!-- Minimal Background Accent -->
+                            <div class="absolute inset-0 opacity-[0.01]">
+                                <div class="absolute top-4 right-4 w-8 h-8 border border-<?= $layout['accent'] ?>-400/20 rotate-45 rounded"></div>
                             </div>
 
                             <!-- Content Container -->
@@ -422,10 +411,9 @@ $hero_slides = [
 
                                 <?php if (!$isWide): ?>
                                     <!-- Vertical Layout for Featured/Standard Cards -->
-                                    <!-- Premium Icon Container -->
-                                    <div class="<?= $isFeatured ? 'w-18 h-18 mb-6' : 'w-16 h-16 mb-5' ?> relative mx-auto group-hover:scale-105 transition-transform duration-300">
-                                        <div class="absolute inset-0 bg-gradient-to-br from-<?= $layout['accent'] ?>-500/15 to-<?= $layout['accent'] ?>-600/25 rounded-xl rotate-3 group-hover:rotate-6 transition-transform duration-300"></div>
-                                        <div class="relative w-full h-full bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-<?= $layout['accent'] ?>-500/30 transition-all duration-300">
+                                    <!-- Simple Icon Container -->
+                                    <div class="<?= $isFeatured ? 'w-18 h-18 mb-6' : 'w-16 h-16 mb-5' ?> relative mx-auto transition-transform duration-200">
+                                        <div class="w-full h-full bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-lg flex items-center justify-center">
                                             <i class="fas fa-<?= $service['icon'] ?> <?= $isFeatured ? 'text-xl' : 'text-lg' ?> text-white"></i>
                                         </div>
                                     </div>
@@ -472,11 +460,8 @@ $hero_slides = [
                                     <!-- Horizontal Layout for Wide Card -->
                                     <div class="flex items-center h-full">
                                         <div class="flex-shrink-0 mr-6">
-                                            <div class="w-16 h-16 relative group-hover:scale-105 transition-transform duration-300">
-                                                <div class="absolute inset-0 bg-gradient-to-br from-<?= $layout['accent'] ?>-500/15 to-<?= $layout['accent'] ?>-600/25 rounded-xl rotate-3 group-hover:rotate-6 transition-transform duration-300"></div>
-                                                <div class="relative w-full h-full bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-lg flex items-center justify-center">
-                                                    <i class="fas fa-<?= $service['icon'] ?> text-lg text-white"></i>
-                                                </div>
+                                            <div class="w-16 h-16 bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-lg flex items-center justify-center transition-transform duration-200">
+                                                <i class="fas fa-<?= $service['icon'] ?> text-lg text-white"></i>
                                             </div>
                                         </div>
 
@@ -498,9 +483,6 @@ $hero_slides = [
                                     </div>
                                 <?php endif; ?>
                             </div>
-
-                            <!-- Subtle Hover Glow Effect -->
-                            <div class="absolute inset-0 bg-gradient-to-br from-<?= $layout['accent'] ?>-500/3 to-<?= $layout['accent'] ?>-600/6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
                         </div>
                     </div>
                 <?php endforeach; ?>
