@@ -133,30 +133,208 @@ $hero_slides = [
     </div>
 </section>
 
-<!-- About Section -->
-<section id="about" class="py-20 bg-black text-white scroll-mt-20">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16 opacity-0 translate-y-8 transition-all duration-700 ease-out">
-            <h2 class="font-sans text-3xl sm:text-4xl font-black text-white mb-4"><?= $about['title'] ?></h2>
-            <div class="w-24 h-1 bg-emerald-400 mx-auto mb-8"></div>
-            <p class="font-sans font-normal max-w-3xl mx-auto text-gray-300 text-lg"><?= $about['description'] ?></p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <?php foreach ($about['team'] as $index => $member): ?>
-            <div class="bg-dark-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all hover:scale-[1.02] opacity-0 translate-y-8 transition-all duration-500 ease-out stagger-item" style="transition-delay: <?= 0.1 * ($index + 1) ?>s;">
-                <div class="w-24 h-24 rounded-full bg-primary-100 mx-auto mb-4 flex items-center justify-center transform transition-transform hover:rotate-12">
-                    <i class="fas fa-quote-left text-5xl text-primary-400 opacity-50 absolute top-6 left-6 -z-10"></i>
-                </div>
-                <h3 class="font-sans font-bold text-xl mb-2 text-center text-white"><?= $member['name'] ?></h3>
-                <p class="font-sans font-medium text-primary-400 mb-3 text-center"><?= $member['position'] ?></p>
-                <p class="font-sans font-normal text-gray-300 italic text-lg mb-6 leading-relaxed"><?= $member['bio'] ?></p>
-                <div class="mt-4 flex justify-center items-center space-x-3">
-                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors"><i class="fab fa-twitter"></i></a>
-                    <a href="mailto:<?= strtolower(str_replace(' ', '.', $member['name'])) ?>@antosa.com" class="text-gray-400 hover:text-primary-400 transition-colors"><i class="fas fa-envelope"></i></a>
+<!-- About Section - Premium Architecture Design -->
+<section id="about" class="relative py-16 sm:py-24 lg:py-32 bg-black text-white scroll-mt-20 overflow-hidden" aria-label="Tentang Kami dan Tim Profesional">
+    <!-- Geometric Background Elements -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 left-10 w-96 h-96 border border-primary-400 rotate-45 transform-gpu animate-float"></div>
+        <div class="absolute bottom-20 right-10 w-64 h-64 border border-emerald-400 rotate-12 transform-gpu animate-float-reverse"></div>
+        <div class="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-br from-primary-500/20 to-emerald-500/20 rotate-45 transform-gpu animate-pulse-glow"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Hero Content - Asymmetric Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mb-16 lg:mb-24">
+            <!-- Left Content - 7 columns -->
+            <div class="lg:col-span-7 space-y-8">
+                <div class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
+                    <!-- Overline -->
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-px bg-gradient-to-r from-primary-400 to-emerald-400"></div>
+                        <span class="text-sm font-medium tracking-wider text-primary-400 uppercase">Studio Profile</span>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <h2 class="font-sans text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.9] mb-6 lg:mb-8 tracking-tight">
+                        <span class="block relative">
+                            Tentang
+                        </span>
+                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-emerald-400 to-primary-500 relative">
+                            Kami
+                            <div class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-primary-400/30 to-emerald-400/30 rounded-full"></div>
+                        </span>
+                    </h2>
+
+                    <!-- Description -->
+                    <div class="space-y-6">
+                        <p class="font-sans text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed font-light">
+                            <?= $about['description'] ?>
+                        </p>
+
+                        <!-- Stats Row -->
+                        <div class="grid grid-cols-3 gap-8 pt-10 mt-10 border-t border-gray-700 relative">
+
+                            <div class="text-center lg:text-left group">
+                                <div class="text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-500 mb-3 group-hover:scale-110 transition-transform duration-300">10+</div>
+                                <div class="text-xs text-gray-500 uppercase tracking-[0.15em] font-medium">Tahun Pengalaman</div>
+                            </div>
+                            <div class="text-center lg:text-left group">
+                                <div class="text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-500 mb-3 group-hover:scale-110 transition-transform duration-300">150+</div>
+                                <div class="text-xs text-gray-500 uppercase tracking-[0.15em] font-medium">Proyek Selesai</div>
+                            </div>
+                            <div class="text-center lg:text-left group">
+                                <div class="text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-emerald-400 mb-3 group-hover:scale-110 transition-transform duration-300">98%</div>
+                                <div class="text-xs text-gray-500 uppercase tracking-[0.15em] font-medium">Kepuasan Klien</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <?php endforeach; ?>
+
+            <!-- Right Visual Element - 5 columns -->
+            <div class="lg:col-span-5 relative">
+                <div class="opacity-0 translate-x-8 transition-all duration-700 ease-out delay-300">
+                    <!-- Floating Card with Company Values -->
+                    <div class="relative mt-16 lg:mt-32">
+                        <!-- Main Card -->
+                        <div class="bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-3 h-3 bg-primary-400 rounded-full"></div>
+                                    <span class="text-sm font-medium text-gray-300 uppercase tracking-wider">Visi & Misi</span>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <div class="border-l-2 border-primary-400 pl-4">
+                                        <h4 class="font-semibold text-white mb-2">Inovasi</h4>
+                                        <p class="text-sm text-gray-400">Menciptakan solusi arsitektur yang inovatif dan berkelanjutan</p>
+                                    </div>
+                                    <div class="border-l-2 border-emerald-400 pl-4">
+                                        <h4 class="font-semibold text-white mb-2">Kualitas</h4>
+                                        <p class="text-sm text-gray-400">Mengutamakan kualitas dalam setiap detail desain</p>
+                                    </div>
+                                    <div class="border-l-2 border-primary-400 pl-4">
+                                        <h4 class="font-semibold text-white mb-2">Kolaborasi</h4>
+                                        <p class="text-sm text-gray-400">Bekerja sama dengan klien untuk mewujudkan visi bersama</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Elements -->
+                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary-500/20 to-emerald-500/20 rounded-full blur-xl"></div>
+                        <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-emerald-500/10 to-primary-500/10 rounded-full blur-2xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Section - Masonry Grid -->
+        <div class="space-y-12">
+            <!-- Section Header -->
+            <div class="text-center opacity-0 translate-y-8 transition-all duration-700 ease-out delay-500">
+                <div class="flex items-center justify-center space-x-6 mb-8">
+                    <div class="w-16 h-px bg-gradient-to-r from-transparent via-primary-400 to-emerald-400"></div>
+                    <div class="relative">
+                        <span class="text-sm font-semibold tracking-[0.2em] text-primary-400 uppercase relative z-10">Tim Profesional</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-primary-400/10 to-emerald-400/10 blur-sm rounded-full"></div>
+                    </div>
+                    <div class="w-16 h-px bg-gradient-to-r from-emerald-400 via-primary-400 to-transparent"></div>
+                </div>
+                <h3 class="font-sans text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-6 leading-tight tracking-tight">
+                    <span class="relative inline-block">
+                        Arsitek
+                    </span>
+                    <br class="hidden sm:block">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-emerald-400 to-primary-500 relative">
+                        Berpengalaman
+                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary-400/50 to-emerald-400/50 rounded-full"></div>
+                    </span>
+                </h3>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Bertemu dengan tim profesional kami yang berpengalaman dalam menciptakan karya arsitektur yang memukau dan fungsional.
+                </p>
+            </div>
+
+            <!-- Masonry Team Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8">
+                <?php foreach ($about['team'] as $index => $member): ?>
+                    <?php
+                    // Define different card sizes and positions for masonry effect
+                    $cardClasses = [
+                        0 => 'sm:col-span-2 lg:col-span-5 lg:row-span-2', // Featured card - larger
+                        1 => 'sm:col-span-1 lg:col-span-4 lg:row-span-1', // Medium card
+                        2 => 'sm:col-span-1 lg:col-span-3 lg:row-span-1'  // Smaller card
+                    ];
+                    $cardClass = $cardClasses[$index] ?? 'sm:col-span-1 lg:col-span-4';
+
+                    $isFeature = $index === 0;
+                    ?>
+
+                    <div class="<?= $cardClass ?> opacity-0 translate-y-8 transition-all duration-700 ease-out stagger-item"
+                         style="transition-delay: <?= 0.2 * ($index + 3) ?>s;">
+
+                        <!-- Card Container -->
+                        <div class="group relative h-full bg-gradient-to-br from-gray-900/60 to-black/60 backdrop-blur-xl border border-gray-700/30 rounded-2xl overflow-hidden hover:border-primary-400/50 transition-all duration-500 hover:transform hover:scale-[1.02]">
+
+                            <!-- Background Pattern -->
+                            <div class="absolute inset-0 opacity-5">
+                                <div class="absolute top-4 right-4 w-16 h-16 border border-primary-400 rotate-45"></div>
+                                <div class="absolute bottom-4 left-4 w-12 h-12 border border-emerald-400 rotate-12"></div>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="relative z-10 p-4 sm:p-6 <?= $isFeature ? 'lg:p-8' : '' ?> h-full flex flex-col">
+
+                                <!-- Profile Image Placeholder -->
+                                <div class="<?= $isFeature ? 'w-32 h-32 mb-6' : 'w-20 h-20 mb-4' ?> rounded-2xl bg-gradient-to-br from-primary-500/20 to-emerald-500/20 flex items-center justify-center mx-auto group-hover:scale-105 transition-transform duration-300">
+                                    <div class="<?= $isFeature ? 'w-24 h-24' : 'w-16 h-16' ?> rounded-xl bg-gradient-to-br from-primary-400 to-emerald-400 flex items-center justify-center">
+                                        <i class="fas fa-user text-white <?= $isFeature ? 'text-2xl' : 'text-xl' ?>"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Name & Position -->
+                                <div class="text-center mb-4 flex-grow">
+                                    <h4 class="font-sans font-bold <?= $isFeature ? 'text-2xl lg:text-3xl' : 'text-xl' ?> text-white mb-2 group-hover:text-primary-400 transition-colors">
+                                        <?= $member['name'] ?>
+                                    </h4>
+                                    <p class="font-sans font-medium text-primary-400 <?= $isFeature ? 'text-lg' : 'text-base' ?> mb-3">
+                                        <?= $member['position'] ?>
+                                    </p>
+
+                                    <?php if ($isFeature): ?>
+                                    <!-- Extended bio for featured member -->
+                                    <p class="font-sans text-gray-300 leading-relaxed mb-6">
+                                        <?= $member['bio'] ?>
+                                    </p>
+                                    <?php else: ?>
+                                    <!-- Shorter bio for other members -->
+                                    <p class="font-sans text-sm text-gray-400 leading-relaxed">
+                                        <?= $member['bio'] ?>
+                                    </p>
+                                    <?php endif; ?>
+                                </div>
+
+                                <!-- Social Links -->
+                                <div class="flex justify-center items-center space-x-4 pt-4 border-t border-gray-800">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-500 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 group/social">
+                                        <i class="fab fa-linkedin text-sm group-hover/social:scale-110 transition-transform"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-500 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 group/social">
+                                        <i class="fab fa-twitter text-sm group-hover/social:scale-110 transition-transform"></i>
+                                    </a>
+                                    <a href="mailto:<?= strtolower(str_replace(' ', '.', $member['name'])) ?>@antosa.com" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-emerald-500 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 group/social">
+                                        <i class="fas fa-envelope text-sm group-hover/social:scale-110 transition-transform"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Hover Glow Effect -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>

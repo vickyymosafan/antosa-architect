@@ -164,6 +164,31 @@
                             '@apply opacity-100 translate-y-0': {},
                         }
                     }, ['responsive', 'hover']);
+
+                    // Add keyframe animations for premium effects
+                    addUtilities({
+                        '@keyframes float': {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-10px) rotate(2deg)' }
+                        },
+                        '@keyframes float-reverse': {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(10px) rotate(-2deg)' }
+                        },
+                        '@keyframes pulse-glow': {
+                            '0%, 100%': { opacity: '0.5', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.05)' }
+                        },
+                        '.animate-float': {
+                            animation: 'float 6s ease-in-out infinite'
+                        },
+                        '.animate-float-reverse': {
+                            animation: 'float-reverse 8s ease-in-out infinite'
+                        },
+                        '.animate-pulse-glow': {
+                            animation: 'pulse-glow 4s ease-in-out infinite'
+                        }
+                    });
                 }
             ]
         }

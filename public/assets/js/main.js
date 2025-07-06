@@ -1,6 +1,62 @@
 // assets/js/main.js
 
 /**
+ * Initializes premium animations for the About section
+ */
+function initializeAboutAnimations() {
+    // Intersection Observer for staggered animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove('opacity-0', 'translate-y-8', 'translate-x-8');
+                entry.target.classList.add('opacity-100', 'translate-y-0', 'translate-x-0');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all animated elements in About section
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+        const animatedElements = aboutSection.querySelectorAll('.opacity-0');
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Staggered animation for team cards
+        const staggerItems = aboutSection.querySelectorAll('.stagger-item');
+        staggerItems.forEach((item, index) => {
+            setTimeout(() => {
+                if (item.getBoundingClientRect().top < window.innerHeight) {
+                    item.classList.remove('opacity-0', 'translate-y-8');
+                    item.classList.add('opacity-100', 'translate-y-0');
+                }
+            }, index * 200);
+        });
+
+        // Floating animation for geometric elements (only on larger screens)
+        if (window.innerWidth >= 1024) {
+            const geometricElements = aboutSection.querySelectorAll('.absolute.opacity-5 > div');
+            geometricElements.forEach((element, index) => {
+                element.style.animation = `float ${3 + index}s ease-in-out infinite`;
+            });
+        }
+
+        // Respect user's motion preferences
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            aboutSection.querySelectorAll('*').forEach(element => {
+                element.style.animation = 'none';
+                element.style.transition = 'none';
+            });
+        }
+    }
+}
+
+/**
  * Initializes counters with an animation effect when they become visible.
  * @param {HTMLElement} container - The parent element containing counter elements. Defaults to document.
  */
@@ -325,4 +381,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeScrollAnimations();
     initializeSmoothScroll();
     initializeCounters(); // Initialize counters globally or pass a specific container
+    initializeAboutAnimations(); // Initialize premium About section animations
 });
