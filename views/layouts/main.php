@@ -149,12 +149,7 @@
                     </a>
                 </nav>
 
-                <!-- Auth Links -->
-                <div class="hidden md:flex items-center">
-                    <a href="#" title="Masuk/Daftar" class="font-medium text-dark-300 hover:text-emerald-400 transition-colors px-3 py-2">
-                        <i class="fa-solid fa-right-to-bracket text-xl"></i>
-                    </a>
-                </div>
+
                 
                 <!-- Mobile menu button -->
                 <button id="mobile-menu-button" class="md:hidden flex items-center p-2 text-dark-300 hover:text-emerald-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500 rounded-md">
@@ -176,13 +171,7 @@
                     <a href="#faq" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">FAQ</a>
                     <a href="#contact" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">Kontak</a>
                 </div>
-                <div class="pt-4 pb-3 border-t border-dark-700">
-                    <div class="px-2 space-y-1">
-                        <a href="#" title="Masuk/Daftar" class="block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800 flex items-center">
-                            <i class="fa-solid fa-right-to-bracket mr-2"></i> Masuk / Daftar
-                        </a>
-                    </div>
-                </div>
+
             </div>
         </div>
     </header>
