@@ -2,12 +2,14 @@
 console.log('hero-slider.js loaded');
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Configuration ---
+    // --- Enhanced Configuration ---
     const AUTOPLAY_ENABLED = true;
-    const AUTOPLAY_INTERVAL_MS = 7000;
+    const AUTOPLAY_INTERVAL_MS = 8000; // Slightly longer for better UX
     const KEYBOARD_NAVIGATION_ENABLED = true;
     const PAUSE_AUTOPLAY_ON_HOVER = true;
-    const PAUSE_AUTOPLAY_ON_FOCUS = true; // Pause when nav buttons or slider container are focused
+    const PAUSE_AUTOPLAY_ON_FOCUS = true;
+    const PAUSE_AUTOPLAY_ON_VISIBILITY_CHANGE = true; // Pause when tab is not visible
+    const PREFERS_REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // --- Element Selection ---
     const sliderContainer = document.getElementById('hero-slider');
@@ -36,16 +38,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Core UI Update Functions ---
 
     /**
-     * Updates the visual state of all slides (opacity, z-index, ARIA attributes).
+     * Updates the visual state of all slides with enhanced animations and accessibility.
      */
     function updateSlidesUI() {
         slides.forEach((slide, index) => {
             const isActive = index === currentSlideIndex;
+
+            // Enhanced visual transitions
             slide.style.opacity = isActive ? '1' : '0';
-            slide.style.zIndex = isActive ? '10' : '0'; // Active slide on top
+            slide.style.zIndex = isActive ? '10' : '0';
+            slide.style.transform = isActive ? 'scale(1)' : 'scale(1.05)';
+
+            // Accessibility improvements
             slide.setAttribute('aria-hidden', String(!isActive));
-            slide.style.pointerEvents = isActive ? 'auto' : 'none'; // Ensure interactive elements on active slide are reachable
+            slide.style.pointerEvents = isActive ? 'auto' : 'none';
+
+            // Add/remove active class for CSS animations
+            if (isActive) {
+                slide.classList.add('active');
+                slide.classList.remove('inactive');
+            } else {
+                slide.classList.add('inactive');
+                slide.classList.remove('active');
+            }
         });
+
+        // Announce slide change to screen readers
+        if (paginationElement) {
+            paginationElement.setAttribute('aria-live', 'polite');
+        }
     }
 
     /**
@@ -205,8 +226,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Initialization ---
+    /**
+     * Initializes visibility change detection for better performance
+     */
+    function initializeVisibilityChangeHandler() {
+        if (!PAUSE_AUTOPLAY_ON_VISIBILITY_CHANGE) return;
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        });
+    }
+
+    /**
+     * Respects user's motion preferences
+     */
+    function respectMotionPreferences() {
+        if (PREFERS_REDUCED_MOTION) {
+            // Disable autoplay for users who prefer reduced motion
+            console.info('Autoplay disabled due to user motion preferences');
+            return false;
+        }
+        return true;
+    }
+
+    // --- Enhanced Initialization ---
     function initializeSlider() {
+        // Respect accessibility preferences
+        if (!respectMotionPreferences()) {
+            // Still initialize basic functionality without autoplay
+            updateSlidesUI();
+            updatePaginationDisplay();
+            updateNavButtonStates();
+            initializeNavigationControls();
+            initializeKeyboardNavigation();
+            return;
+        }
+
         updateSlidesUI();
         updatePaginationDisplay();
         updateNavButtonStates();
@@ -214,13 +273,16 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeNavigationControls();
         initializeAutoplayPauseBehavior();
         initializeKeyboardNavigation();
-        
+        initializeVisibilityChangeHandler();
+
         startAutoplay();
 
         // --- Console Info for Missing Optional Elements ---
         if (!prevButton) console.info('Hero slider previous button (hero-prev) not found (optional).');
         if (!nextButton) console.info('Hero slider next button (hero-next) not found (optional).');
         if (!paginationElement) console.info('Hero slider pagination (hero-pagination) not found (optional).');
+
+        console.info('Hero slider initialized successfully with enhanced accessibility features');
     }
 
     initializeSlider();

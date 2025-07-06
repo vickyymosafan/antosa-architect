@@ -12,70 +12,124 @@ ob_start();
 
 <?php
 $hero_slides = [
-    ['image' => 'assets/images/1.webp'],
-    ['image' => 'assets/images/2.webp'],
+    [
+        'image' => 'assets/images/1.webp',
+        'alt' => 'Desain arsitektur modern villa dengan pemandangan alam',
+        'title' => 'Villa Modern Minimalis'
+    ],
+    [
+        'image' => 'assets/images/2.webp',
+        'alt' => 'Interior ruang tamu kontemporer dengan pencahayaan alami',
+        'title' => 'Interior Kontemporer'
+    ],
 ];
 ?>
 <!-- Hero Section -->
-<section id="home" class="relative min-h-screen flex flex-col text-white overflow-hidden scroll-mt-20 bg-black">
-    <!-- Slider Container -->
-    <div id="hero-slider" class="absolute inset-0 w-full h-full">
+<section id="home" class="relative min-h-screen flex flex-col text-white overflow-hidden scroll-mt-20 bg-gradient-to-br from-gray-900 via-black to-gray-800" role="banner" aria-label="Hero section">
+    <!-- Background Slider Container -->
+    <div id="hero-slider" class="absolute inset-0 w-full h-full" role="img" aria-label="Background image carousel">
         <?php foreach ($hero_slides as $index => $slide): ?>
-        <div class="hero-slide absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out <?= $index === 0 ? 'opacity-100' : 'opacity-0' ?>"
+        <div class="hero-slide absolute inset-0 w-full h-full bg-cover bg-center transition-all duration-1000 ease-in-out <?= $index === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105' ?>"
              style="background-image: url('<?= htmlspecialchars($slide['image']) ?>');"
-             aria-hidden="<?= $index !== 0 ? 'true' : 'false' ?>" role="group" aria-roledescription="slide">
-            <div class="absolute inset-0 bg-black/60"></div> <!-- Overlay for text readability -->
+             aria-hidden="<?= $index !== 0 ? 'true' : 'false' ?>"
+             role="group"
+             aria-roledescription="slide"
+             aria-label="<?= htmlspecialchars($slide['alt']) ?>">
+            <!-- Enhanced overlay with gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"></div>
+            <!-- Performance optimization: Preload next image -->
+            <?php if ($index === 1): ?>
+            <link rel="preload" as="image" href="<?= htmlspecialchars($slide['image']) ?>">
+            <?php endif; ?>
         </div>
         <?php endforeach; ?>
     </div>
 
-    <!-- Content Overlay -->
-    <div class="relative z-10 flex flex-col flex-grow">
+    <!-- Content Overlay with improved structure -->
+    <div class="relative z-10 flex flex-col min-h-screen">
         <!-- Top Bar Elements -->
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-12 flex justify-between items-start">
-            <!-- Spatial Vision Box -->
-            <div class="bg-black/70 p-4 md:p-6 rounded-lg max-w-[280px] sm:max-w-xs backdrop-blur-sm shadow-lg">
-                <h2 class="text-lg md:text-xl font-semibold text-primary-400 mb-2 font-sans">Spatial Vision</h2>
-                <p class="text-xs md:text-sm text-gray-300 font-sans font-normal">Menghadirkan keseimbangan sempurna antara estetika dan fungsionalitas ruang.</p>
+        <header class="container mx-auto px-4 sm:px-6 lg:px-8 pt-6 md:pt-8 lg:pt-12">
+            <div class="flex justify-end">
+                <!-- Featured Badge - Enhanced -->
+                <div class="bg-gradient-to-r from-primary-500 to-primary-400 text-black px-4 py-2 rounded-full text-sm font-bold flex items-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <span>Arsitek Terpercaya</span>
+                </div>
             </div>
+        </header>
 
-            <!-- Featured Badge -->
-            <div class="bg-primary-500 text-black px-3 py-1 rounded-full text-xs font-semibold flex items-center shadow-md">
-                <svg class="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                Featured
-            </div>
-        </div>
-
-        <!-- Main Hero Text (Centered) -->
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center flex-grow flex flex-col justify-center py-10 md:py-0">
-            <h1 class="font-sans text-5xl md:text-7xl font-black text-white leading-tight mb-6 text-shadow">
-                Bangun Rumah <span class="text-primary-400">Impian Anda</span>
+        <!-- Main Hero Content (Centered) -->
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 flex-grow flex flex-col justify-center text-center py-12 md:py-16 lg:py-20">
+            <!-- Main Heading with improved typography -->
+            <h1 class="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.9] mb-6 lg:mb-8 text-shadow-lg">
+                <span class="block">Bangun Rumah</span>
+                <span class="block text-primary-400 drop-shadow-lg">Impian Anda</span>
             </h1>
-            <p class="text-xl md:text-2xl font-sans font-normal text-gray-300 max-w-2xl mx-auto mb-10 text-shadow"><?= htmlspecialchars($hero['subtitle'] ?? 'Desain modern, konstruksi berkualitas, dan solusi yang berkelanjutan untuk mewujudkan hunian ideal sesuai gaya hidup Anda.') ?></p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="#contact" class="bg-primary-500 hover:bg-primary-600 text-black font-sans font-bold py-3.5 px-8 rounded-md transition-all hover:scale-105 text-sm uppercase tracking-wider flex items-center justify-center">
-                    Mulai Konsultasi Gratis <i class="fas fa-arrow-right ml-2 text-xs"></i>
+
+            <!-- Subtitle with better readability -->
+            <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-sans font-light text-gray-200 max-w-4xl mx-auto mb-8 lg:mb-12 text-shadow leading-relaxed">
+                <?= htmlspecialchars($hero['subtitle'] ?? 'Desain modern, konstruksi berkualitas, dan solusi berkelanjutan untuk mewujudkan hunian ideal sesuai gaya hidup Anda.') ?>
+            </p>
+
+            <!-- Enhanced CTA Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 lg:gap-6">
+                <a href="#contact"
+                   class="group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-black font-sans font-bold py-4 px-8 lg:py-5 lg:px-10 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl text-sm lg:text-base uppercase tracking-wider flex items-center justify-center min-w-[280px] focus:outline-none focus:ring-4 focus:ring-primary-400/50"
+                   role="button"
+                   aria-label="Mulai konsultasi gratis dengan tim arsitek kami">
+                    <span>Mulai Konsultasi Gratis</span>
+                    <svg class="w-5 h-5 ml-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
                 </a>
-                <a href="#portfolio" class="bg-black/50 hover:bg-black/70 border border-gray-700 text-white font-sans font-bold py-3.5 px-8 rounded-md transition-all hover:scale-105 text-sm uppercase tracking-wider backdrop-blur-sm flex items-center justify-center">
-                    Lihat Hasil Karya <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                <a href="#portfolio"
+                   class="group bg-black/60 hover:bg-black/80 border-2 border-gray-600 hover:border-primary-400 text-white font-sans font-bold py-4 px-8 lg:py-5 lg:px-10 rounded-xl transition-all duration-300 hover:scale-105 text-sm lg:text-base uppercase tracking-wider backdrop-blur-md flex items-center justify-center min-w-[280px] focus:outline-none focus:ring-4 focus:ring-white/20"
+                   role="button"
+                   aria-label="Lihat portofolio hasil karya kami">
+                    <span>Lihat Hasil Karya</span>
+                    <svg class="w-5 h-5 ml-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
                 </a>
             </div>
-        </div>
+        </main>
 
-        <!-- Bottom Bar Elements -->
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 pb-8 md:pb-12 flex justify-end items-end">
+        <!-- Bottom Navigation -->
+        <footer class="container mx-auto px-4 sm:px-6 lg:px-8 pb-6 md:pb-8 lg:pb-12">
+            <div class="flex justify-center sm:justify-end items-end">
+                <!-- Enhanced Slider Navigation -->
+                <nav class="flex items-center gap-4 bg-black/70 backdrop-blur-md px-4 py-3 rounded-xl shadow-lg border border-white/10"
+                     role="navigation"
+                     aria-label="Hero image navigation">
+                    <button id="hero-prev"
+                            class="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary-400/50"
+                            aria-label="Previous slide"
+                            type="button">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
 
-            <!-- Slider Navigation -->
-            <div class="flex items-center space-x-3 bg-black/50 backdrop-blur-sm px-3 py-2 rounded-md">
-                <button id="hero-prev" aria-label="Previous Slide" class="text-gray-400 hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                    <svg class="w-4 h-4 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                </button>
-                <div id="hero-pagination" class="text-xs font-sans font-medium text-gray-200 w-12 text-center">01 / <?= str_pad(count($hero_slides), 2, '0', STR_PAD_LEFT) ?></div>
-                <button id="hero-next" aria-label="Next Slide" class="text-gray-400 hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                </button>
+                    <div id="hero-pagination"
+                         class="text-sm font-sans font-medium text-gray-200 min-w-[60px] text-center"
+                         aria-live="polite"
+                         aria-label="Current slide">
+                        01 / <?= str_pad(count($hero_slides), 2, '0', STR_PAD_LEFT) ?>
+                    </div>
+
+                    <button id="hero-next"
+                            class="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary-400/50"
+                            aria-label="Next slide"
+                            type="button">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </nav>
             </div>
-        </div>
+        </footer>
     </div>
 </section>
 

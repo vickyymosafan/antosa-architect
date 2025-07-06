@@ -58,15 +58,28 @@
                         sans: ['Inter', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
                     },
+                    spacing: {
+                        '18': '4.5rem',
+                        '88': '22rem',
+                        '128': '32rem',
+                    },
                     textShadow: {
                         DEFAULT: '0 2px 10px rgba(0, 0, 0, 0.8)',
                         sm: '0 1px 2px rgba(0, 0, 0, 0.7)',
                         md: '0 3px 6px rgba(0, 0, 0, 0.7)',
                         lg: '0 5px 15px rgba(0, 0, 0, 0.7)',
+                        xl: '0 8px 25px rgba(0, 0, 0, 0.8)',
+                    },
+                    backdropBlur: {
+                        xs: '2px',
                     },
                     animation: {
                         'fadeIn': 'fadeIn 0.5s ease-out forwards',
                         'fadeOut': 'fadeOut 0.5s ease-out forwards',
+                        'slideUp': 'slideUp 0.6s ease-out forwards',
+                        'slideDown': 'slideDown 0.6s ease-out forwards',
+                        'scaleIn': 'scaleIn 0.4s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         fadeIn: {
@@ -76,7 +89,27 @@
                         fadeOut: {
                             '0%': { opacity: '1' },
                             '100%': { opacity: '0' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
                         }
+                    },
+                    minHeight: {
+                        'screen-75': '75vh',
+                        'screen-90': '90vh',
+                    },
+                    maxWidth: {
+                        '8xl': '88rem',
+                        '9xl': '96rem',
                     }
                 }
             },
@@ -90,6 +123,22 @@
                         }
                     });
                     addUtilities(textShadowUtilities, ['responsive', 'hover']);
+
+                    // Add custom utilities for better UX
+                    addUtilities({
+                        '.focus-ring': {
+                            '@apply focus:outline-none focus:ring-4 focus:ring-primary-400/50': {},
+                        },
+                        '.btn-primary': {
+                            '@apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl focus-ring': {},
+                        },
+                        '.btn-secondary': {
+                            '@apply bg-black/60 hover:bg-black/80 border-2 border-gray-600 hover:border-primary-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-md focus-ring': {},
+                        },
+                        '.glass-card': {
+                            '@apply bg-black/80 backdrop-blur-md border border-white/10 hover:border-primary-400/30 transition-all duration-300': {},
+                        }
+                    }, ['responsive', 'hover']);
                 }
             ]
         }
