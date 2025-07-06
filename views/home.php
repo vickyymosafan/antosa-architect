@@ -697,7 +697,7 @@ $hero_slides = [
                     </div>
 
                     <!-- Email Card -->
-                    <div class="bg-gradient-to-br from-emerald-500 to-emerald-600 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-250 hover:scale-105 transform">
+                    <div class="bg-gradient-to-br from-primary-400 to-primary-500 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-250 hover:scale-105 transform">
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
                                 <i class="fas fa-envelope text-white text-sm"></i>
@@ -711,7 +711,7 @@ $hero_slides = [
                 </div>
 
                 <!-- Address Card -->
-                <div class="bg-gradient-to-br from-slate-600 to-slate-700 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-300 hover:scale-105 transform">
+                <div class="bg-gradient-to-br from-primary-600 to-primary-700 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-300 hover:scale-105 transform">
                     <div class="flex items-start">
                         <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
                             <i class="fas fa-map-marker-alt text-white text-sm"></i>
@@ -724,7 +724,7 @@ $hero_slides = [
                 </div>
 
                 <!-- Working Hours Card -->
-                <div class="bg-gradient-to-br from-purple-500 to-purple-600 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-350 hover:scale-105 transform">
+                <div class="bg-gradient-to-br from-primary-700 to-primary-800 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-350 hover:scale-105 transform">
                     <div class="flex items-center">
                         <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
                             <i class="fas fa-clock text-white text-sm"></i>
