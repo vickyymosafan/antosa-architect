@@ -344,19 +344,19 @@ $hero_slides = [
     </div>
 </section>
 
-<!-- Services Section -->
-<section id="services" class="py-20 scroll-mt-20 bg-black">
+<!-- Services Section - Optimized Spacing -->
+<section id="services" class="py-12 lg:py-16 scroll-mt-20 bg-black">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16 opacity-0 translate-y-8 transition-all duration-700 ease-out">
+        <div class="text-center mb-10 lg:mb-12 opacity-0 translate-y-8 transition-all duration-700 ease-out">
             <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4"><?= $services['title'] ?></h2>
-            <div class="w-24 h-1 bg-primary-500 mx-auto mb-8"></div>
+            <div class="w-24 h-1 bg-primary-500 mx-auto mb-6"></div>
             <p class="font-sans font-normal max-w-3xl mx-auto text-secondary-600 dark:text-dark-300 text-lg"><?= $services['subtitle'] ?></p>
         </div>
 
         <!-- Premium Consistent Grid Layout -->
         <div class="opacity-0 translate-y-8 transition-all duration-700 ease-out delay-100">
-            <!-- Perfect 2x2 Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+            <!-- Optimized 2x2 Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 max-w-4xl mx-auto">
                 <?php
                 // Premium uniform service styling - perfect consistency
                 $serviceLayouts = [
@@ -388,8 +388,8 @@ $hero_slides = [
                     <div class="opacity-0 translate-y-8 transition-all duration-700 ease-out animate-fade-in-up"
                          style="animation-delay: <?= $layout['delay'] ?>;">
 
-                        <!-- Premium Consistent Service Card -->
-                        <div class="group relative h-full min-h-[380px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-<?= $layout['accent'] ?>-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-<?= $layout['accent'] ?>-500/20 hover:-translate-y-2 hover:scale-[1.02]">
+                        <!-- Premium Consistent Service Card - Optimized Height -->
+                        <div class="group relative h-full min-h-[320px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-<?= $layout['accent'] ?>-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-<?= $layout['accent'] ?>-500/20 hover:-translate-y-2 hover:scale-[1.02]">
 
                             <!-- Premium Background Elements -->
                             <div class="absolute inset-0 opacity-[0.02]">
@@ -401,10 +401,10 @@ $hero_slides = [
                             <div class="absolute inset-0 bg-gradient-to-br from-<?= $layout['accent'] ?>-500/[0.01] to-transparent"></div>
 
                             <!-- Optimized Content Container -->
-                            <div class="relative z-10 p-6 h-full flex flex-col justify-between">
+                            <div class="relative z-10 p-5 lg:p-6 h-full flex flex-col justify-between">
 
-                                <!-- Consistent Icon Container -->
-                                <div class="w-16 h-16 mb-4 relative mx-auto transition-transform duration-200 group-hover:scale-110">
+                                <!-- Optimized Icon Container -->
+                                <div class="w-14 h-14 mb-3 relative mx-auto transition-transform duration-200 group-hover:scale-110">
                                     <div class="w-full h-full bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-xl flex items-center justify-center shadow-lg shadow-<?= $layout['accent'] ?>-500/20">
                                         <i class="fas fa-<?= $service['icon'] ?> text-lg text-white"></i>
                                     </div>
@@ -412,16 +412,16 @@ $hero_slides = [
 
                                 <!-- Balanced Content Section -->
                                 <div class="text-center flex-grow flex flex-col justify-center">
-                                    <h3 class="font-sans font-bold text-lg lg:text-xl text-white mb-2.5 group-hover:text-<?= $layout['accent'] ?>-400 transition-colors duration-300 leading-tight">
+                                    <h3 class="font-sans font-bold text-lg lg:text-xl text-white mb-2 group-hover:text-<?= $layout['accent'] ?>-400 transition-colors duration-300 leading-tight">
                                         <?= $service['title'] ?>
                                     </h3>
-                                    <p class="font-sans text-gray-300 text-sm leading-relaxed">
+                                    <p class="font-sans text-gray-300 text-sm leading-relaxed px-1">
                                         <?= $service['description'] ?>
                                     </p>
                                 </div>
 
                                 <!-- Compact CTA Button -->
-                                <div class="mt-4 pt-3 border-t border-gray-700/30">
+                                <div class="mt-3 pt-3 border-t border-gray-700/30">
                                     <a href="#contact" class="group/cta w-full bg-gradient-to-r from-<?= $layout['accent'] ?>-500 to-<?= $layout['accent'] ?>-600 hover:from-<?= $layout['accent'] ?>-400 hover:to-<?= $layout['accent'] ?>-500 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-<?= $layout['accent'] ?>-500/30 text-sm">
                                         <span>Konsultasi</span>
                                         <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1"></i>
