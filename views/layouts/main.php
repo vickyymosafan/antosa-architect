@@ -80,6 +80,9 @@
                         'slideDown': 'slideDown 0.6s ease-out forwards',
                         'scaleIn': 'scaleIn 0.4s ease-out forwards',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'hero-float': 'heroFloat 2s ease-in-out infinite',
+                        'hero-entrance': 'heroEntrance 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
+                        'hero-bounce': 'heroBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
                     },
                     keyframes: {
                         fadeIn: {
@@ -101,6 +104,19 @@
                         scaleIn: {
                             '0%': { opacity: '0', transform: 'scale(0.9)' },
                             '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        heroFloat: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-2px)' }
+                        },
+                        heroEntrance: {
+                            '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'translateY(0px) scale(1)' }
+                        },
+                        heroBounce: {
+                            '0%': { opacity: '0', transform: 'translateY(20px) scale(0.9)' },
+                            '60%': { opacity: '1', transform: 'translateY(-5px) scale(1.02)' },
+                            '100%': { opacity: '1', transform: 'translateY(0px) scale(1)' }
                         }
                     },
                     minHeight: {
@@ -137,6 +153,15 @@
                         },
                         '.glass-card': {
                             '@apply bg-black/80 backdrop-blur-md border border-white/10 hover:border-primary-400/30 transition-all duration-300': {},
+                        },
+                        '.hero-element': {
+                            '@apply opacity-0 translate-y-8 transition-all duration-700 ease-out': {},
+                        },
+                        '.hero-element-fast': {
+                            '@apply opacity-0 translate-y-4 transition-all duration-400 ease-out': {},
+                        },
+                        '.hero-animate': {
+                            '@apply opacity-100 translate-y-0': {},
                         }
                     }, ['responsive', 'hover']);
                 }
@@ -234,6 +259,7 @@
     <script src="/assets/js/main.js" defer></script>
     <script src="/assets/js/content-toggle.js" defer></script>
     <script src="/assets/js/hero-slider.js" defer></script>
+    <script src="/assets/js/hero-animations.js" defer></script>
     <script src="/assets/js/home-portfolio.js" defer></script>
     <script src="/assets/js/faq.js" defer></script>
 

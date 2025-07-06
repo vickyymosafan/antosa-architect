@@ -60,23 +60,23 @@ $hero_slides = [
             </div>
         </header>
 
-        <!-- Main Hero Content (Centered) - Compact -->
+        <!-- Main Hero Content (Centered) - Compact with Enhanced Animations -->
         <main class="container mx-auto px-4 sm:px-6 lg:px-8 flex-grow flex flex-col justify-center text-center py-8 md:py-10 lg:py-12">
-            <!-- Main Heading - Reduced sizes -->
-            <h1 class="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] mb-4 lg:mb-6 text-shadow-lg">
-                <span class="block">Bangun Rumah</span>
-                <span class="block text-primary-400 drop-shadow-lg">Impian Anda</span>
+            <!-- Main Heading - Reduced sizes with Staggered Animation -->
+            <h1 class="hero-title font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] mb-4 lg:mb-6 text-shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out">
+                <span class="hero-title-line-1 block opacity-0 translate-y-4 transition-all duration-600 ease-out">Bangun Rumah</span>
+                <span class="hero-title-line-2 block text-primary-400 drop-shadow-lg opacity-0 translate-y-4 transition-all duration-600 ease-out">Impian Anda</span>
             </h1>
 
-            <!-- Subtitle - Reduced sizes -->
-            <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-sans font-light text-gray-200 max-w-3xl mx-auto mb-6 lg:mb-8 text-shadow leading-relaxed">
+            <!-- Subtitle - Reduced sizes with Delayed Animation -->
+            <p class="hero-subtitle text-base sm:text-lg md:text-xl lg:text-2xl font-sans font-light text-gray-200 max-w-3xl mx-auto mb-6 lg:mb-8 text-shadow leading-relaxed opacity-0 translate-y-6 transition-all duration-700 ease-out">
                 <?= htmlspecialchars($hero['subtitle'] ?? 'Desain modern, konstruksi berkualitas, dan solusi berkelanjutan untuk mewujudkan hunian ideal sesuai gaya hidup Anda.') ?>
             </p>
 
-            <!-- CTA Buttons - Compact -->
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-3 lg:gap-4">
+            <!-- CTA Buttons - Compact with Staggered Animation -->
+            <div class="hero-cta-buttons flex flex-col sm:flex-row justify-center items-center gap-3 lg:gap-4 opacity-0 translate-y-8 transition-all duration-700 ease-out">
                 <a href="#contact"
-                   class="group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-black font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm lg:text-base flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-primary-400/50"
+                   class="hero-cta-primary group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-black font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm lg:text-base flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-primary-400/50 opacity-0 translate-y-4 scale-95"
                    role="button"
                    aria-label="Mulai konsultasi gratis dengan tim arsitek kami">
                     <span>Mulai Konsultasi Gratis</span>
@@ -85,7 +85,7 @@ $hero_slides = [
                     </svg>
                 </a>
                 <a href="#portfolio"
-                   class="group bg-black/60 hover:bg-black/80 border-2 border-gray-600 hover:border-primary-400 text-white font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 text-sm lg:text-base backdrop-blur-md flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-white/20"
+                   class="hero-cta-secondary group bg-black/60 hover:bg-black/80 border-2 border-gray-600 hover:border-primary-400 text-white font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 text-sm lg:text-base backdrop-blur-md flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-white/20 opacity-0 translate-y-4 scale-95"
                    role="button"
                    aria-label="Lihat portofolio hasil karya kami">
                     <span>Lihat Hasil Karya</span>
