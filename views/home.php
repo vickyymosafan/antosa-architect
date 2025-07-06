@@ -24,8 +24,8 @@ $hero_slides = [
     ],
 ];
 ?>
-<!-- Hero Section -->
-<section id="home" class="relative min-h-screen flex flex-col text-white overflow-hidden scroll-mt-20 bg-gradient-to-br from-gray-900 via-black to-gray-800" role="banner" aria-label="Hero section">
+<!-- Hero Section - Compact -->
+<section id="home" class="relative min-h-[85vh] flex flex-col text-white overflow-hidden scroll-mt-20 bg-gradient-to-br from-gray-900 via-black to-gray-800" role="banner" aria-label="Hero section">
     <!-- Background Slider Container -->
     <div id="hero-slider" class="absolute inset-0 w-full h-full" role="img" aria-label="Background image carousel">
         <?php foreach ($hero_slides as $index => $slide): ?>
@@ -46,7 +46,7 @@ $hero_slides = [
     </div>
 
     <!-- Content Overlay with improved structure -->
-    <div class="relative z-10 flex flex-col min-h-screen">
+    <div class="relative z-10 flex flex-col min-h-[85vh]">
         <!-- Top Bar Elements -->
         <header class="container mx-auto px-4 sm:px-6 lg:px-8 pt-6 md:pt-8 lg:pt-12">
             <div class="flex justify-end">
@@ -60,36 +60,36 @@ $hero_slides = [
             </div>
         </header>
 
-        <!-- Main Hero Content (Centered) -->
-        <main class="container mx-auto px-4 sm:px-6 lg:px-8 flex-grow flex flex-col justify-center text-center py-12 md:py-16 lg:py-20">
-            <!-- Main Heading with improved typography -->
-            <h1 class="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.9] mb-6 lg:mb-8 text-shadow-lg">
+        <!-- Main Hero Content (Centered) - Compact -->
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 flex-grow flex flex-col justify-center text-center py-8 md:py-10 lg:py-12">
+            <!-- Main Heading - Reduced sizes -->
+            <h1 class="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] mb-4 lg:mb-6 text-shadow-lg">
                 <span class="block">Bangun Rumah</span>
                 <span class="block text-primary-400 drop-shadow-lg">Impian Anda</span>
             </h1>
 
-            <!-- Subtitle with better readability -->
-            <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-sans font-light text-gray-200 max-w-4xl mx-auto mb-8 lg:mb-12 text-shadow leading-relaxed">
+            <!-- Subtitle - Reduced sizes -->
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-sans font-light text-gray-200 max-w-3xl mx-auto mb-6 lg:mb-8 text-shadow leading-relaxed">
                 <?= htmlspecialchars($hero['subtitle'] ?? 'Desain modern, konstruksi berkualitas, dan solusi berkelanjutan untuk mewujudkan hunian ideal sesuai gaya hidup Anda.') ?>
             </p>
 
-            <!-- Enhanced CTA Buttons -->
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 lg:gap-6">
+            <!-- CTA Buttons - Compact -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-3 lg:gap-4">
                 <a href="#contact"
-                   class="group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-black font-sans font-bold py-4 px-8 lg:py-5 lg:px-10 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl text-sm lg:text-base uppercase tracking-wider flex items-center justify-center min-w-[280px] focus:outline-none focus:ring-4 focus:ring-primary-400/50"
+                   class="group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-black font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm lg:text-base flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-primary-400/50"
                    role="button"
                    aria-label="Mulai konsultasi gratis dengan tim arsitek kami">
                     <span>Mulai Konsultasi Gratis</span>
-                    <svg class="w-5 h-5 ml-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg>
                 </a>
                 <a href="#portfolio"
-                   class="group bg-black/60 hover:bg-black/80 border-2 border-gray-600 hover:border-primary-400 text-white font-sans font-bold py-4 px-8 lg:py-5 lg:px-10 rounded-xl transition-all duration-300 hover:scale-105 text-sm lg:text-base uppercase tracking-wider backdrop-blur-md flex items-center justify-center min-w-[280px] focus:outline-none focus:ring-4 focus:ring-white/20"
+                   class="group bg-black/60 hover:bg-black/80 border-2 border-gray-600 hover:border-primary-400 text-white font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 text-sm lg:text-base backdrop-blur-md flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-white/20"
                    role="button"
                    aria-label="Lihat portofolio hasil karya kami">
                     <span>Lihat Hasil Karya</span>
-                    <svg class="w-5 h-5 ml-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
                 </a>
