@@ -353,36 +353,28 @@ $hero_slides = [
             <p class="font-sans font-normal max-w-3xl mx-auto text-secondary-600 dark:text-dark-300 text-lg"><?= $services['subtitle'] ?></p>
         </div>
 
-        <!-- Premium Masonry-Style Grid Layout -->
+        <!-- Premium Consistent Grid Layout -->
         <div class="opacity-0 translate-y-8 transition-all duration-700 ease-out delay-100">
-            <!-- Services Grid with Reliable Layout -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <!-- Perfect 2x2 Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
                 <?php
-                // Define premium service styling with reliable positioning
+                // Premium uniform service styling - perfect consistency
                 $serviceLayouts = [
-                    0 => [ // Desain Arsitektur - Featured Service
-                        'size' => 'featured',
-                        'accent' => 'primary',
-                        'delay' => '0.1s',
-                        'span' => 'md:col-span-2 lg:col-span-2'
+                    0 => [ // Desain Arsitektur
+                        'accent' => 'blue',
+                        'delay' => '0.1s'
                     ],
-                    1 => [ // Desain Interior - Standard
-                        'size' => 'standard',
+                    1 => [ // Desain Interior
                         'accent' => 'emerald',
-                        'delay' => '0.2s',
-                        'span' => 'md:col-span-1 lg:col-span-1'
+                        'delay' => '0.2s'
                     ],
-                    2 => [ // Konsultasi Proyek - Standard
-                        'size' => 'standard',
+                    2 => [ // Konsultasi Proyek
                         'accent' => 'cyan',
-                        'delay' => '0.3s',
-                        'span' => 'md:col-span-1 lg:col-span-1'
+                        'delay' => '0.3s'
                     ],
-                    3 => [ // Manajemen Konstruksi - Wide
-                        'size' => 'wide',
+                    3 => [ // Manajemen Konstruksi
                         'accent' => 'amber',
-                        'delay' => '0.4s',
-                        'span' => 'md:col-span-2 lg:col-span-3'
+                        'delay' => '0.4s'
                     ]
                 ];
                 ?>
@@ -390,98 +382,51 @@ $hero_slides = [
                 <?php foreach ($services['services'] as $index => $service): ?>
                     <?php
                     $layout = $serviceLayouts[$index];
-                    $isFeatured = $layout['size'] === 'featured';
-                    $isWide = $layout['size'] === 'wide';
-                    $isStandard = $layout['size'] === 'standard';
                     ?>
 
-                    <div class="<?= $layout['span'] ?> opacity-0 translate-y-8 transition-all duration-700 ease-out"
-                         style="transition-delay: <?= $layout['delay'] ?>;">
+                    <!-- Premium Service Card Container -->
+                    <div class="opacity-0 translate-y-8 transition-all duration-700 ease-out animate-fade-in-up"
+                         style="animation-delay: <?= $layout['delay'] ?>;">
 
-                        <!-- Optimized Service Card -->
-                        <div class="group relative h-full min-h-[320px] <?= $isFeatured ? 'lg:min-h-[400px]' : ($isWide ? 'lg:min-h-[280px]' : 'lg:min-h-[320px]') ?> bg-gradient-to-br from-gray-900/90 to-black/95 backdrop-blur-xl border border-gray-700/50 rounded-2xl overflow-hidden hover:border-<?= $layout['accent'] ?>-400/60 transition-all duration-300 hover:shadow-lg hover:shadow-<?= $layout['accent'] ?>-500/10">
+                        <!-- Premium Consistent Service Card -->
+                        <div class="group relative h-full min-h-[380px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-<?= $layout['accent'] ?>-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-<?= $layout['accent'] ?>-500/20 hover:-translate-y-2 hover:scale-[1.02]">
 
-                            <!-- Minimal Background Accent -->
-                            <div class="absolute inset-0 opacity-[0.01]">
-                                <div class="absolute top-4 right-4 w-8 h-8 border border-<?= $layout['accent'] ?>-400/20 rotate-45 rounded"></div>
+                            <!-- Premium Background Elements -->
+                            <div class="absolute inset-0 opacity-[0.02]">
+                                <div class="absolute top-4 right-4 w-8 h-8 border border-<?= $layout['accent'] ?>-400/30 rotate-45 rounded-lg"></div>
+                                <div class="absolute bottom-4 left-4 w-6 h-6 bg-<?= $layout['accent'] ?>-400/10 rounded-full"></div>
                             </div>
 
-                            <!-- Content Container -->
+                            <!-- Subtle Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-<?= $layout['accent'] ?>-500/[0.01] to-transparent"></div>
+
+                            <!-- Premium Content Container -->
                             <div class="relative z-10 p-6 h-full flex flex-col">
 
-                                <?php if (!$isWide): ?>
-                                    <!-- Vertical Layout for Featured/Standard Cards -->
-                                    <!-- Simple Icon Container -->
-                                    <div class="<?= $isFeatured ? 'w-18 h-18 mb-6' : 'w-16 h-16 mb-5' ?> relative mx-auto transition-transform duration-200">
-                                        <div class="w-full h-full bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-<?= $service['icon'] ?> <?= $isFeatured ? 'text-xl' : 'text-lg' ?> text-white"></i>
-                                        </div>
+                                <!-- Consistent Icon Container -->
+                                <div class="w-16 h-16 mb-5 relative mx-auto transition-transform duration-200 group-hover:scale-110">
+                                    <div class="w-full h-full bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-xl flex items-center justify-center shadow-lg shadow-<?= $layout['accent'] ?>-500/20">
+                                        <i class="fas fa-<?= $service['icon'] ?> text-lg text-white"></i>
                                     </div>
+                                </div>
 
-                                    <!-- Content Section -->
-                                    <div class="text-center flex-grow flex flex-col">
-                                        <h3 class="font-sans font-bold <?= $isFeatured ? 'text-xl lg:text-2xl' : 'text-lg lg:text-xl' ?> text-white mb-3 group-hover:text-<?= $layout['accent'] ?>-400 transition-colors duration-300 leading-tight">
-                                            <?= $service['title'] ?>
-                                        </h3>
-                                        <p class="font-sans text-gray-300 <?= $isFeatured ? 'text-sm lg:text-base' : 'text-sm' ?> leading-relaxed mb-6 flex-grow">
-                                            <?= $service['description'] ?>
-                                        </p>
+                                <!-- Uniform Content Section -->
+                                <div class="text-center flex-grow flex flex-col">
+                                    <h3 class="font-sans font-bold text-lg lg:text-xl text-white mb-3 group-hover:text-<?= $layout['accent'] ?>-400 transition-colors duration-300 leading-tight">
+                                        <?= $service['title'] ?>
+                                    </h3>
+                                    <p class="font-sans text-gray-300 text-sm leading-relaxed mb-6 flex-grow">
+                                        <?= $service['description'] ?>
+                                    </p>
+                                </div>
 
-                                        <?php if ($isFeatured): ?>
-                                            <!-- Extended content for featured service -->
-                                            <div class="bg-gray-800/20 rounded-lg p-3 mb-6">
-                                                <div class="flex items-center justify-center space-x-4 text-xs text-gray-400">
-                                                    <div class="flex items-center">
-                                                        <i class="fas fa-clock mr-1 text-<?= $layout['accent'] ?>-400"></i>
-                                                        <span>3-6 Bulan</span>
-                                                    </div>
-                                                    <div class="flex items-center">
-                                                        <i class="fas fa-users mr-1 text-<?= $layout['accent'] ?>-400"></i>
-                                                        <span>Tim Ahli</span>
-                                                    </div>
-                                                    <div class="flex items-center">
-                                                        <i class="fas fa-award mr-1 text-<?= $layout['accent'] ?>-400"></i>
-                                                        <span>Bergaransi</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-
-                                    <!-- Always Visible CTA -->
-                                    <div class="mt-auto pt-4 border-t border-gray-700/30">
-                                        <a href="#contact" class="group/cta w-full bg-gradient-to-r from-<?= $layout['accent'] ?>-500 to-<?= $layout['accent'] ?>-600 hover:from-<?= $layout['accent'] ?>-400 hover:to-<?= $layout['accent'] ?>-500 text-white font-medium py-2.5 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-md hover:shadow-<?= $layout['accent'] ?>-500/25 text-sm">
-                                            <span>Konsultasi <?= $isFeatured ? '' : $service['title'] ?></span>
-                                            <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1"></i>
-                                        </a>
-                                    </div>
-
-                                <?php else: ?>
-                                    <!-- Horizontal Layout for Wide Card -->
-                                    <div class="flex items-center h-full">
-                                        <div class="flex-shrink-0 mr-6">
-                                            <div class="w-16 h-16 bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-lg flex items-center justify-center transition-transform duration-200">
-                                                <i class="fas fa-<?= $service['icon'] ?> text-lg text-white"></i>
-                                            </div>
-                                        </div>
-
-                                        <div class="flex-grow">
-                                            <h3 class="font-sans font-bold text-lg lg:text-xl text-white mb-2 group-hover:text-<?= $layout['accent'] ?>-400 transition-colors leading-tight">
-                                                <?= $service['title'] ?>
-                                            </h3>
-                                            <p class="font-sans text-gray-300 text-sm leading-relaxed">
-                                                <?= $service['description'] ?>
-                                            </p>
-                                        </div>
-
-                                        <div class="flex-shrink-0 ml-6">
-                                            <a href="#contact" class="group/cta bg-gradient-to-r from-<?= $layout['accent'] ?>-500 to-<?= $layout['accent'] ?>-600 hover:from-<?= $layout['accent'] ?>-400 hover:to-<?= $layout['accent'] ?>-500 text-white font-medium py-2.5 px-4 rounded-lg transition-all duration-300 flex items-center space-x-2 hover:shadow-md hover:shadow-<?= $layout['accent'] ?>-500/25 text-sm">
-                                                <span>Konsultasi</span>
-                                                <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
+                                <!-- Consistent CTA Button -->
+                                <div class="mt-auto pt-4 border-t border-gray-700/30">
+                                    <a href="#contact" class="group/cta w-full bg-gradient-to-r from-<?= $layout['accent'] ?>-500 to-<?= $layout['accent'] ?>-600 hover:from-<?= $layout['accent'] ?>-400 hover:to-<?= $layout['accent'] ?>-500 text-white font-medium py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-<?= $layout['accent'] ?>-500/30 text-sm">
+                                        <span>Konsultasi</span>
+                                        <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

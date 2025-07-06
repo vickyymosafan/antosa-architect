@@ -95,6 +95,7 @@
                         'hero-float': 'heroFloat 2s ease-in-out infinite',
                         'hero-entrance': 'heroEntrance 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
                         'hero-bounce': 'heroBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
+                        'fade-in-up': 'fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
 
                     },
                     keyframes: {
@@ -130,6 +131,10 @@
                             '0%': { opacity: '0', transform: 'translateY(20px) scale(0.9)' },
                             '60%': { opacity: '1', transform: 'translateY(-5px) scale(1.02)' },
                             '100%': { opacity: '1', transform: 'translateY(0px) scale(1)' }
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0px)' }
                         },
 
                     },
