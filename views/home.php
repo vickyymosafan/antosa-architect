@@ -597,7 +597,7 @@ $hero_slides = [
                   <?php if ($firstCat) {echo 'bg-gradient-to-r from-primary-500/20 to-primary-600/20 text-primary-300 border border-primary-500/30';} else {echo 'text-gray-400 hover:text-primary-300 hover:bg-dark-800/50';} ?>"
                 data-category="<?= htmlspecialchars($cat) ?>">
                 <div class="w-5 h-5 flex items-center justify-center bg-dark-800/50 rounded group-hover:bg-primary-500/20 transition-colors duration-300">
-                  <?php if ($cat === 'Umum'): ?><i class="fa fa-question-circle text-xs"></i><?php elseif ($cat === 'Desain'): ?><i class="fa fa-pencil-ruler text-xs"></i><?php elseif ($cat === 'Biaya'): ?><i class="fa fa-wallet text-xs"></i><?php endif; ?>
+                  <?php if ($cat === 'Umum'): ?><i class="fa fa-question-circle text-xs"></i><?php elseif ($cat === 'Desain'): ?><i class="fa fa-pencil-ruler text-xs"></i><?php elseif ($cat === 'Biaya'): ?><i class="fa fa-wallet text-xs"></i><?php elseif ($cat === 'Konstruksi'): ?><i class="fa fa-hard-hat text-xs"></i><?php endif; ?>
                 </div>
                 <?= htmlspecialchars($cat) ?>
               </button>
