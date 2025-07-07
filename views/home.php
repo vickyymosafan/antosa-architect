@@ -569,47 +569,86 @@ $hero_slides = [
     </div>
 </section>
 
-<!-- FAQ Section -->
-<section id="faq" class="py-20 bg-black text-white scroll-mt-20">
-  <div class="container mx-auto px-4">
-    <h2 class="font-sans text-3xl sm:text-4xl font-black mb-4 text-center">Pertanyaan Umum</h2>
-    <p class="mb-10 text-center text-gray-400">Temukan jawaban atas pertanyaan yang sering diajukan tentang layanan kami.</p>
-    <div class="flex flex-col md:flex-row gap-8">
-      <!-- Categories -->
-      <aside class="md:w-1/4">
-        <div class="bg-dark-900 rounded-xl shadow-lg border border-dark-700 p-4">
-          <?php $firstCat = true; foreach ($faq['categories'] as $cat => $items): ?>
-            <button type="button"
-              class="faq-category w-full text-left px-4 py-3 mb-2 rounded-lg transition font-medium flex items-center gap-2
-                <?php if ($firstCat) {echo 'bg-primary-500 text-white shadow';} else {echo 'bg-dark-800 text-gray-300 hover:bg-dark-700';} ?>"
-              data-category="<?= htmlspecialchars($cat) ?>">
-              <?php if ($cat === 'Umum'): ?><i class="fa fa-question-circle"></i><?php elseif ($cat === 'Desain'): ?><i class="fa fa-pencil-ruler"></i><?php elseif ($cat === 'Biaya'): ?><i class="fa fa-wallet"></i><?php endif; ?>
-              <?= htmlspecialchars($cat) ?>
-            </button>
-          <?php $firstCat = false; endforeach; ?>
+<!-- Premium FAQ Section -->
+<section id="faq" class="py-12 bg-gradient-to-br from-dark-950 via-black to-dark-950 text-white scroll-mt-20 relative overflow-hidden">
+  <!-- Subtle background pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary-500/10 to-transparent transform skew-y-1"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Compact header -->
+    <div class="text-center mb-8">
+      <h2 class="font-sans text-xl sm:text-2xl font-semibold mb-2 text-white/90">Pertanyaan Umum</h2>
+      <p class="text-xs text-gray-400 max-w-2xl mx-auto">Temukan jawaban atas pertanyaan yang sering diajukan tentang layanan kami.</p>
+    </div>
+
+    <!-- Premium asymmetric layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- Categories - Compact sidebar -->
+      <aside class="lg:col-span-3">
+        <div class="bg-dark-900/50 backdrop-blur-sm rounded-lg border border-dark-800/50 p-3 sticky top-24">
+          <h3 class="text-xs font-medium text-white/70 uppercase tracking-widest mb-3 px-2">Kategori</h3>
+          <div class="space-y-1">
+            <?php $firstCat = true; foreach ($faq['categories'] as $cat => $items): ?>
+              <button type="button"
+                class="faq-category w-full text-left px-3 py-2 rounded-md transition-all duration-300 font-medium text-xs flex items-center gap-2 group
+                  <?php if ($firstCat) {echo 'bg-gradient-to-r from-primary-500/20 to-primary-600/20 text-primary-300 border border-primary-500/30';} else {echo 'text-gray-400 hover:text-primary-300 hover:bg-dark-800/50';} ?>"
+                data-category="<?= htmlspecialchars($cat) ?>">
+                <div class="w-5 h-5 flex items-center justify-center bg-dark-800/50 rounded group-hover:bg-primary-500/20 transition-colors duration-300">
+                  <?php if ($cat === 'Umum'): ?><i class="fa fa-question-circle text-xs"></i><?php elseif ($cat === 'Desain'): ?><i class="fa fa-pencil-ruler text-xs"></i><?php elseif ($cat === 'Biaya'): ?><i class="fa fa-wallet text-xs"></i><?php endif; ?>
+                </div>
+                <?= htmlspecialchars($cat) ?>
+              </button>
+            <?php $firstCat = false; endforeach; ?>
+          </div>
         </div>
       </aside>
-      <!-- Questions/Answers -->
-      <div class="md:w-3/4">
+
+      <!-- Questions/Answers - Main content area -->
+      <div class="lg:col-span-9">
         <?php $firstPanel = true; foreach ($faq['categories'] as $cat => $items): ?>
           <div class="faq-panel <?php if (!$firstPanel) echo 'hidden'; ?>" data-category="<?= htmlspecialchars($cat) ?>">
-            <?php foreach ($items as $q): ?>
-              <div class="faq-item bg-dark-900 border border-dark-700 rounded-xl shadow mb-4 overflow-hidden">
-                <button type="button" class="faq-question w-full flex justify-between items-center px-6 py-4 text-base md:text-lg font-semibold text-left focus:outline-none">
-                  <span><?= htmlspecialchars($q['question']) ?></span>
-                  <span class="faq-toggle-icon ml-2 transition"><i class="fa fa-chevron-down"></i></span>
-                </button>
-                <div class="faq-answer hidden px-6 pb-6 text-gray-300 text-sm md:text-base leading-relaxed border-t border-dark-800"><?= htmlspecialchars($q['answer']) ?></div>
-              </div>
-            <?php endforeach; ?>
+            <div class="space-y-3">
+              <?php foreach ($items as $index => $q): ?>
+                <div class="faq-item group">
+                  <div class="bg-dark-900/30 backdrop-blur-sm border border-dark-800/50 rounded-lg overflow-hidden hover:border-primary-500/30 transition-all duration-300">
+                    <button type="button" class="faq-question w-full flex justify-between items-center px-4 py-3 text-sm font-medium text-left focus:outline-none focus:ring-2 focus:ring-primary-500/50 group-hover:bg-dark-800/30 transition-all duration-300">
+                      <span class="text-white/90 group-hover:text-primary-300 transition-colors duration-300"><?= htmlspecialchars($q['question']) ?></span>
+                      <div class="w-6 h-6 flex items-center justify-center bg-dark-800/50 rounded-md ml-3 flex-shrink-0 group-hover:bg-primary-500/20 transition-all duration-300">
+                        <i class="faq-toggle-icon fa fa-chevron-down text-xs text-gray-400 group-hover:text-primary-400 transition-all duration-300"></i>
+                      </div>
+                    </button>
+                    <div class="faq-answer hidden">
+                      <div class="px-4 pb-4 pt-1">
+                        <div class="border-t border-dark-800/50 pt-3">
+                          <p class="text-gray-300 text-xs leading-relaxed"><?= htmlspecialchars($q['answer']) ?></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
           </div>
         <?php $firstPanel = false; endforeach; ?>
       </div>
     </div>
-    <div class="mt-10 text-center bg-dark-900 rounded-xl shadow-lg border border-dark-700 p-6">
-      <span class="font-bold text-lg">Masih punya pertanyaan?</span>
-      <p class="text-gray-400 mb-2">Tim kami siap membantu menjawab segala pertanyaan Anda tentang layanan kami.</p>
-      <a href="#contact" class="text-emerald-400 hover:underline font-medium">Hubungi Kami <i class="fa fa-arrow-right"></i></a>
+
+    <!-- Contact CTA - Compact and elegant -->
+    <div class="mt-8 text-center">
+      <div class="inline-flex items-center bg-dark-900/50 backdrop-blur-sm border border-dark-800/50 rounded-lg px-4 py-3 hover:border-primary-500/30 transition-all duration-300 group">
+        <div class="w-8 h-8 bg-gradient-to-br from-primary-500/20 to-primary-600/20 rounded-lg flex items-center justify-center mr-3">
+          <i class="fa fa-question-circle text-primary-400 text-sm"></i>
+        </div>
+        <div class="text-left">
+          <span class="font-medium text-sm text-white/90 block">Masih punya pertanyaan?</span>
+          <a href="#contact" class="text-xs text-primary-400 hover:text-primary-300 transition-colors duration-300 group-hover:underline">
+            Hubungi tim kami <i class="fa fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
