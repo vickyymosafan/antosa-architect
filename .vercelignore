@@ -1,0 +1,31 @@
+# Development files
+.env.local
+.env.development
+.env.test
+
+# Documentation
+docs/
+README.md
+*.md
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+cache/
+
+# XAMPP specific
+.htaccess

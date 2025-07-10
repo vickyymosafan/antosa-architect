@@ -23,7 +23,13 @@ $routes = require_once ROOT_DIR . '/routes/web.php';
 
 // Get current URI
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri = str_replace('/arsitek', '', $uri);
+
+// Remove base path for local development
+if (strpos($_SERVER['HTTP_HOST'] ?? '', 'localhost') !== false ||
+    strpos($_SERVER['HTTP_HOST'] ?? '', '127.0.0.1') !== false) {
+    $uri = str_replace('/arsitek', '', $uri);
+}
+
 $uri = $uri ?: '/';
 
 // Find matching route

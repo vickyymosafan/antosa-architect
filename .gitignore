@@ -94,3 +94,6 @@ jspm_packages/
 storage/
 uploads/
 assets/uploads/
+
+# Vercel
+.vercel
