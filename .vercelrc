@@ -1,4 +1,0 @@
-{
-  "installCommand": "echo 'No dependencies to install'",
-  "buildCommand": "echo 'No build required'"
-}
