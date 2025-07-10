@@ -5,8 +5,7 @@
 
 # Documentation
 docs/
-README.md
-*.md
+DEPLOYMENT.md
 
 # IDE files
 .vscode/
@@ -29,3 +28,7 @@ cache/
 
 # XAMPP specific
 .htaccess
+public/.htaccess
+
+# Git files
+.git/
