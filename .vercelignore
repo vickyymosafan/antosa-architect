@@ -32,3 +32,8 @@ public/.htaccess
 
 # Git files
 .git/
+
+# Composer (to avoid dependency issues)
+composer.json
+composer.lock
+vendor/
