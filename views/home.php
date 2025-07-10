@@ -63,20 +63,21 @@ $hero_slides = [
         <!-- Main Hero Content (Centered) - Compact with Enhanced Animations -->
         <main class="container mx-auto px-4 sm:px-6 lg:px-8 flex-grow flex flex-col justify-center text-center py-8 md:py-10 lg:py-12">
             <!-- Main Heading - Reduced sizes with Staggered Animation -->
-            <h1 class="hero-title font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] mb-4 lg:mb-6 text-shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <span class="hero-title-line-1 block opacity-0 translate-y-4 transition-all duration-600 ease-out">Bangun Rumah</span>
-                <span class="hero-title-line-2 block text-primary-400 drop-shadow-lg opacity-0 translate-y-4 transition-all duration-600 ease-out">Impian Anda</span>
+            <h1 class="hero-title font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] mb-4 lg:mb-6 text-shadow-lg" data-aos="fade-up" data-aos-duration="800">
+                <span class="hero-title-line-1 block" data-aos="fade-up" data-aos-delay="200">Bangun Rumah</span>
+                <span class="hero-title-line-2 block text-primary-400 drop-shadow-lg" data-aos="fade-up" data-aos-delay="400">Impian Anda</span>
             </h1>
 
             <!-- Subtitle - Reduced sizes with Delayed Animation -->
-            <p class="hero-subtitle text-base sm:text-lg md:text-xl lg:text-2xl font-sans font-light text-gray-200 max-w-3xl mx-auto mb-6 lg:mb-8 text-shadow leading-relaxed opacity-0 translate-y-6 transition-all duration-700 ease-out">
+            <p class="hero-subtitle text-base sm:text-lg md:text-xl lg:text-2xl font-sans font-light text-gray-200 max-w-3xl mx-auto mb-6 lg:mb-8 text-shadow leading-relaxed" data-aos="fade-up" data-aos-delay="600">
                 <?= htmlspecialchars($hero['subtitle'] ?? 'Desain modern, konstruksi berkualitas, dan solusi berkelanjutan untuk mewujudkan hunian ideal sesuai gaya hidup Anda.') ?>
             </p>
 
             <!-- CTA Buttons - Compact with Staggered Animation -->
-            <div class="hero-cta-buttons flex flex-col sm:flex-row justify-center items-center gap-3 lg:gap-4 opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            <div class="hero-cta-buttons flex flex-col sm:flex-row justify-center items-center gap-3 lg:gap-4" data-aos="fade-up" data-aos-delay="800">
                 <a href="#contact"
-                   class="hero-cta-primary group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-black font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm lg:text-base flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-primary-400/50 opacity-0 translate-y-4 scale-95"
+                   class="hero-cta-primary group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-black font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm lg:text-base flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-primary-400/50"
+                   data-aos="zoom-in" data-aos-delay="1000"
                    role="button"
                    aria-label="Mulai konsultasi gratis dengan tim arsitek kami">
                     <span>Mulai Konsultasi Gratis</span>
@@ -85,7 +86,8 @@ $hero_slides = [
                     </svg>
                 </a>
                 <a href="#portfolio"
-                   class="hero-cta-secondary group bg-black/60 hover:bg-black/80 border-2 border-gray-600 hover:border-primary-400 text-white font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 text-sm lg:text-base backdrop-blur-md flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-white/20 opacity-0 translate-y-4 scale-95"
+                   class="hero-cta-secondary group bg-black/60 hover:bg-black/80 border-2 border-gray-600 hover:border-primary-400 text-white font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 text-sm lg:text-base backdrop-blur-md flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-white/20"
+                   data-aos="zoom-in" data-aos-delay="1200"
                    role="button"
                    aria-label="Lihat portofolio hasil karya kami">
                     <span>Lihat Hasil Karya</span>
@@ -137,9 +139,9 @@ $hero_slides = [
 <section id="about" class="relative py-16 sm:py-24 lg:py-32 bg-black text-white scroll-mt-20 overflow-hidden" aria-label="Tentang Kami dan Tim Profesional">
     <!-- Geometric Background Elements -->
     <div class="absolute inset-0 opacity-5">
-        <div class="absolute top-20 left-10 w-96 h-96 border border-primary-400 rotate-45 transform-gpu animate-float"></div>
-        <div class="absolute bottom-20 right-10 w-64 h-64 border border-emerald-400 rotate-12 transform-gpu animate-float-reverse"></div>
-        <div class="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-br from-primary-500/20 to-emerald-500/20 rotate-45 transform-gpu animate-pulse-glow"></div>
+        <div class="absolute top-20 left-10 w-96 h-96 border border-primary-400 rotate-45 transform-gpu" data-aos="fade" data-aos-duration="2000"></div>
+        <div class="absolute bottom-20 right-10 w-64 h-64 border border-emerald-400 rotate-12 transform-gpu" data-aos="fade" data-aos-duration="2000" data-aos-delay="500"></div>
+        <div class="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-br from-primary-500/20 to-emerald-500/20 rotate-45 transform-gpu" data-aos="fade" data-aos-duration="2000" data-aos-delay="1000"></div>
     </div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -147,7 +149,7 @@ $hero_slides = [
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mb-16 lg:mb-24">
             <!-- Left Content - 7 columns -->
             <div class="lg:col-span-7 space-y-8">
-                <div class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
+                <div data-aos="fade-up" data-aos-duration="800">
                     <!-- Overline -->
                     <div class="flex items-center space-x-4 mb-6">
                         <div class="w-12 h-px bg-gradient-to-r from-primary-400 to-emerald-400"></div>
@@ -217,7 +219,7 @@ $hero_slides = [
 
             <!-- Right Visual Element - 5 columns -->
             <div class="lg:col-span-5 relative">
-                <div class="opacity-0 translate-x-8 transition-all duration-700 ease-out delay-300">
+                <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
                     <!-- Floating Card with Company Values -->
                     <div class="relative mt-16 lg:mt-32">
                         <!-- Main Card -->
@@ -256,7 +258,7 @@ $hero_slides = [
         <!-- Team Section - Masonry Grid -->
         <div class="space-y-12">
             <!-- Section Header -->
-            <div class="text-center opacity-0 translate-y-8 transition-all duration-700 ease-out delay-500">
+            <div class="text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
                 <div class="flex items-center justify-center space-x-6 mb-8">
                     <div class="w-16 h-px bg-gradient-to-r from-transparent via-primary-400 to-emerald-400"></div>
                     <div class="relative">
@@ -283,8 +285,7 @@ $hero_slides = [
             <!-- Consistent Team Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <?php foreach ($about['team'] as $index => $member): ?>
-                    <div class="opacity-0 translate-y-8 transition-all duration-700 ease-out stagger-item"
-                         style="transition-delay: <?= 0.2 * ($index + 3) ?>s;">
+                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 200 * ($index + 1) ?>">
 
                         <!-- Card Container -->
                         <div class="group relative h-full bg-gradient-to-br from-gray-900/60 to-black/60 backdrop-blur-xl border border-gray-700/30 rounded-2xl overflow-hidden hover:border-primary-400/50 transition-all duration-500 hover:transform hover:scale-[1.02]">
@@ -347,14 +348,14 @@ $hero_slides = [
 <!-- Services Section - Optimized Spacing -->
 <section id="services" class="py-12 lg:py-16 scroll-mt-20 bg-black">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10 lg:mb-12 opacity-0 translate-y-8 transition-all duration-700 ease-out">
+        <div class="text-center mb-10 lg:mb-12" data-aos="fade-up" data-aos-duration="800">
             <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4"><?= $services['title'] ?></h2>
             <div class="w-24 h-1 bg-primary-500 mx-auto mb-6"></div>
             <p class="font-sans font-normal max-w-3xl mx-auto text-secondary-600 dark:text-dark-300 text-lg"><?= $services['subtitle'] ?></p>
         </div>
 
         <!-- Premium Consistent Grid Layout -->
-        <div class="opacity-0 translate-y-8 transition-all duration-700 ease-out delay-100">
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
             <!-- Optimized 2x2 Services Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 max-w-4xl mx-auto">
                 <?php
@@ -385,8 +386,7 @@ $hero_slides = [
                     ?>
 
                     <!-- Premium Service Card Container -->
-                    <div class="opacity-0 translate-y-8 transition-all duration-700 ease-out animate-fade-in-up"
-                         style="animation-delay: <?= $layout['delay'] ?>;">
+                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>">
 
                         <!-- Premium Consistent Service Card - Optimized Height -->
                         <div class="group relative h-full min-h-[320px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-<?= $layout['accent'] ?>-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-<?= $layout['accent'] ?>-500/20 hover:-translate-y-2 hover:scale-[1.02]">
@@ -441,14 +441,14 @@ $hero_slides = [
 <!-- Portfolio Section -->
 <section id="portfolio" class="py-20 bg-black scroll-mt-20">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16 opacity-0 translate-y-8 transition-all duration-700 ease-out">
+        <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
             <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4"><?= $portfolio['title'] ?></h2>
             <div class="w-24 h-1 bg-primary-500 mx-auto mb-8"></div>
             <p class="font-sans font-normal max-w-3xl mx-auto text-secondary-600 dark:text-dark-300 text-lg"><?= $portfolio['subtitle'] ?></p>
         </div>
         
         <!-- Portfolio Filter -->
-        <div class="flex flex-wrap justify-center gap-4 mb-12 opacity-0 translate-y-8 transition-all duration-700 ease-out" style="transition-delay: 0.2s;">
+        <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
             <button class="filter-btn active font-sans py-3 px-8 rounded-full bg-primary-500 text-white font-medium transition-all shadow-md hover:shadow-lg" data-filter="all">
                 <i class="fas fa-border-all mr-2"></i> Semua Proyek
             </button>
@@ -466,9 +466,9 @@ $hero_slides = [
         <!-- Portfolio Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
             <?php foreach ($portfolio['projects'] as $index => $project): ?>
-            <div class="portfolio-item group overflow-hidden rounded-lg shadow-md bg-dark-900 opacity-0 translate-y-10 transition-all duration-500 ease-out" 
-                 data-category="<?= $project['category'] ?>" 
-                 style="transition-delay: <?= 0.05 * ($index + 1) ?>s;">
+            <div class="portfolio-item group overflow-hidden rounded-lg shadow-md bg-dark-900"
+                 data-category="<?= $project['category'] ?>"
+                 data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?= 100 * ($index + 1) ?>">
                 <div class="relative overflow-hidden">
                     <!-- Project images from Unsplash that match the project type -->
                     <div class="h-64 bg-secondary-200 dark:bg-dark-800 overflow-hidden">
@@ -532,7 +532,7 @@ $hero_slides = [
 <!-- Testimonials Section -->
 <section id="testimonials" class="py-20 bg-black scroll-mt-20">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16 opacity-0 translate-y-8 transition-all duration-700 ease-out">
+        <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
             <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4"><?= $testimonials['title'] ?></h2>
             <div class="w-24 h-1 bg-primary-500 mx-auto mb-8"></div>
             <p class="font-sans font-normal max-w-3xl mx-auto text-secondary-600 dark:text-dark-300 text-lg"><?= $testimonials['subtitle'] ?></p>
@@ -540,8 +540,8 @@ $hero_slides = [
         
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <?php foreach ($testimonials['testimonials'] as $testimonial): ?>
-                <div class="bg-secondary-50 dark:bg-dark-900 p-8 rounded-lg shadow-lg relative testimonial-card pb-10 opacity-0 translate-y-8 transition-all duration-500 ease-out stagger-item">
+                <?php foreach ($testimonials['testimonials'] as $index => $testimonial): ?>
+                <div class="bg-secondary-50 dark:bg-dark-900 p-8 rounded-lg shadow-lg relative testimonial-card pb-10" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 200 * $index ?>">
                     <div class="absolute -top-5 left-8">
                         <span class="text-6xl text-primary-300 dark:text-primary-600">"</span>
                     </div>
@@ -670,7 +670,7 @@ $hero_slides = [
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Header Section -->
-        <div class="text-center mb-10 opacity-0 translate-y-8 transition-all duration-700 ease-out">
+        <div class="text-center mb-10" data-aos="fade-up" data-aos-duration="800">
             <h2 class="font-sans text-2xl sm:text-3xl font-black text-white mb-3">Hubungi Kami</h2>
             <div class="w-16 h-0.5 bg-primary-500 mx-auto mb-4"></div>
             <p class="font-sans font-normal max-w-2xl mx-auto text-gray-300 text-base">Punya pertanyaan atau ingin memulai proyek dengan kami? Jangan ragu untuk menghubungi kami.</p>
@@ -680,7 +680,7 @@ $hero_slides = [
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
             <!-- Contact Form - 60% width (3/5) -->
             <div class="lg:col-span-3">
-                <div id="contact-form" class="bg-gradient-to-br from-gray-800/95 to-gray-900/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-2xl border border-primary-400/20 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-100">
+                <div id="contact-form" class="bg-gradient-to-br from-gray-800/95 to-gray-900/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-2xl border border-primary-400/20" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
                     <div class="flex items-center mb-6">
                         <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center mr-3">
                             <i class="fas fa-envelope text-white text-sm"></i>
@@ -723,7 +723,7 @@ $hero_slides = [
                 <!-- Quick Contact Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
                     <!-- Phone Card -->
-                    <div class="bg-gradient-to-br from-primary-500 to-primary-600 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200 hover:scale-105 transform">
+                    <div class="bg-gradient-to-br from-primary-500 to-primary-600 p-4 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
                                 <i class="fas fa-phone-alt text-white text-sm"></i>
@@ -736,7 +736,7 @@ $hero_slides = [
                     </div>
 
                     <!-- Email Card -->
-                    <div class="bg-gradient-to-br from-primary-400 to-primary-500 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-250 hover:scale-105 transform">
+                    <div class="bg-gradient-to-br from-primary-400 to-primary-500 p-4 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300" data-aos="fade-left" data-aos-duration="800" data-aos-delay="400">
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
                                 <i class="fas fa-envelope text-white text-sm"></i>
@@ -750,7 +750,7 @@ $hero_slides = [
                 </div>
 
                 <!-- Address Card -->
-                <div class="bg-gradient-to-br from-primary-600 to-primary-700 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-300 hover:scale-105 transform">
+                <div class="bg-gradient-to-br from-primary-600 to-primary-700 p-4 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300" data-aos="fade-left" data-aos-duration="800" data-aos-delay="500">
                     <div class="flex items-start">
                         <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
                             <i class="fas fa-map-marker-alt text-white text-sm"></i>
@@ -763,7 +763,7 @@ $hero_slides = [
                 </div>
 
                 <!-- Working Hours Card -->
-                <div class="bg-gradient-to-br from-primary-700 to-primary-800 p-4 rounded-xl shadow-lg opacity-0 translate-y-8 transition-all duration-700 ease-out delay-350 hover:scale-105 transform">
+                <div class="bg-gradient-to-br from-primary-700 to-primary-800 p-4 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300" data-aos="fade-left" data-aos-duration="800" data-aos-delay="600">
                     <div class="flex items-center">
                         <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
                             <i class="fas fa-clock text-white text-sm"></i>
@@ -776,7 +776,7 @@ $hero_slides = [
                 </div>
 
                 <!-- Interactive Map Card -->
-                <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden opacity-0 translate-y-8 transition-all duration-700 ease-out delay-350 hover:scale-105 transform">
+                <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden hover:scale-105 transform transition-transform duration-300" data-aos="fade-left" data-aos-duration="800" data-aos-delay="700">
                     <div class="p-4 border-b border-gray-100">
                         <div class="flex items-center">
                             <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center mr-3">

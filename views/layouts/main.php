@@ -85,59 +85,8 @@
                     backdropBlur: {
                         xs: '2px',
                     },
-                    animation: {
-                        'fadeIn': 'fadeIn 0.5s ease-out forwards',
-                        'fadeOut': 'fadeOut 0.5s ease-out forwards',
-                        'slideUp': 'slideUp 0.6s ease-out forwards',
-                        'slideDown': 'slideDown 0.6s ease-out forwards',
-                        'scaleIn': 'scaleIn 0.4s ease-out forwards',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'hero-float': 'heroFloat 2s ease-in-out infinite',
-                        'hero-entrance': 'heroEntrance 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
-                        'hero-bounce': 'heroBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
-                        'fade-in-up': 'fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
 
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        fadeOut: {
-                            '0%': { opacity: '1' },
-                            '100%': { opacity: '0' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        slideDown: {
-                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        scaleIn: {
-                            '0%': { opacity: '0', transform: 'scale(0.9)' },
-                            '100%': { opacity: '1', transform: 'scale(1)' },
-                        },
-                        heroFloat: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-2px)' }
-                        },
-                        heroEntrance: {
-                            '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' },
-                            '100%': { opacity: '1', transform: 'translateY(0px) scale(1)' }
-                        },
-                        heroBounce: {
-                            '0%': { opacity: '0', transform: 'translateY(20px) scale(0.9)' },
-                            '60%': { opacity: '1', transform: 'translateY(-5px) scale(1.02)' },
-                            '100%': { opacity: '1', transform: 'translateY(0px) scale(1)' }
-                        },
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0px)' }
-                        },
 
-                    },
                     minHeight: {
                         'screen-75': '75vh',
                         'screen-90': '90vh',
@@ -173,41 +122,10 @@
                         '.glass-card': {
                             '@apply bg-black/80 backdrop-blur-md border border-white/10 hover:border-primary-400/30 transition-all duration-300': {},
                         },
-                        '.hero-element': {
-                            '@apply opacity-0 translate-y-8 transition-all duration-700 ease-out': {},
-                        },
-                        '.hero-element-fast': {
-                            '@apply opacity-0 translate-y-4 transition-all duration-400 ease-out': {},
-                        },
-                        '.hero-animate': {
-                            '@apply opacity-100 translate-y-0': {},
-                        }
+
                     }, ['responsive', 'hover']);
 
-                    // Add keyframe animations for premium effects
-                    addUtilities({
-                        '@keyframes float': {
-                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-10px) rotate(2deg)' }
-                        },
-                        '@keyframes float-reverse': {
-                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-                            '50%': { transform: 'translateY(10px) rotate(-2deg)' }
-                        },
-                        '@keyframes pulse-glow': {
-                            '0%, 100%': { opacity: '0.5', transform: 'scale(1)' },
-                            '50%': { opacity: '0.8', transform: 'scale(1.05)' }
-                        },
-                        '.animate-float': {
-                            animation: 'float 6s ease-in-out infinite'
-                        },
-                        '.animate-float-reverse': {
-                            animation: 'float-reverse 8s ease-in-out infinite'
-                        },
-                        '.animate-pulse-glow': {
-                            animation: 'pulse-glow 4s ease-in-out infinite'
-                        }
-                    });
+
                 }
             ]
         }
@@ -220,6 +138,9 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     
@@ -299,13 +220,28 @@
         <?= $content ?? '' ?>
     </main>
 
+    <!-- AOS JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <!-- JavaScript -->
     <script src="/assets/js/main.js" defer></script>
     <script src="/assets/js/content-toggle.js" defer></script>
     <script src="/assets/js/hero-slider.js" defer></script>
-    <script src="/assets/js/hero-animations.js" defer></script>
     <script src="/assets/js/home-portfolio.js" defer></script>
     <script src="/assets/js/faq.js" defer></script>
+
+    <!-- Initialize AOS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out-cubic',
+                once: true,
+                offset: 50,
+                delay: 100
+            });
+        });
+    </script>
     <script src="/assets/js/premium-services.js" defer></script>
 
     <?php require_once 'partials/footer.php'; ?>

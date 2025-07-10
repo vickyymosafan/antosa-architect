@@ -1,81 +1,6 @@
 // assets/js/main.js
 
-/**
- * Initializes premium animations for the About section
- */
-function initializeAboutAnimations() {
-    // Intersection Observer for staggered animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.remove('opacity-0', 'translate-y-8', 'translate-x-8');
-                entry.target.classList.add('opacity-100', 'translate-y-0', 'translate-x-0');
-            }
-        });
-    }, observerOptions);
-
-    // Observe all animated elements in About section
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-        const animatedElements = aboutSection.querySelectorAll('.opacity-0');
-        animatedElements.forEach(element => {
-            observer.observe(element);
-        });
-
-        // Staggered animation for team cards
-        const staggerItems = aboutSection.querySelectorAll('.stagger-item');
-        staggerItems.forEach((item, index) => {
-            setTimeout(() => {
-                if (item.getBoundingClientRect().top < window.innerHeight) {
-                    item.classList.remove('opacity-0', 'translate-y-8');
-                    item.classList.add('opacity-100', 'translate-y-0');
-                }
-            }, index * 200);
-        });
-
-        // Staggered animation for stats counters
-        const statsCounters = aboutSection.querySelectorAll('.counter');
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Add staggered delay for each counter
-                    const counters = Array.from(statsCounters);
-                    counters.forEach((counter, index) => {
-                        setTimeout(() => {
-                            counter.classList.add('animate-pulse-glow');
-                        }, index * 300);
-                    });
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        if (statsCounters.length > 0) {
-            statsObserver.observe(statsCounters[0].closest('.grid'));
-        }
-
-        // Floating animation for geometric elements (only on larger screens)
-        if (window.innerWidth >= 1024) {
-            const geometricElements = aboutSection.querySelectorAll('.absolute.opacity-5 > div');
-            geometricElements.forEach((element, index) => {
-                element.style.animation = `float ${3 + index}s ease-in-out infinite`;
-            });
-        }
-
-        // Respect user's motion preferences
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            aboutSection.querySelectorAll('*').forEach(element => {
-                element.style.animation = 'none';
-                element.style.transition = 'none';
-            });
-        }
-    }
-}
+// About animations are now handled by AOS
 
 /**
  * Initializes premium counters with smooth animation effects when they become visible.
@@ -233,54 +158,7 @@ function updateActiveNavLinks() {
  * Initializes sticky header behavior.
  * @param {HTMLElement} header - The header element.
  */
-/**
- * Initializes generic scroll-triggered animations for elements.
- */
-function initializeScrollAnimations() {
-    const animatedElements = document.querySelectorAll(
-        '[class*="opacity-0"][class*="transition-all"]'
-    );
-
-    if (!animatedElements.length) return;
-
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                el.classList.remove('opacity-0');
-                el.classList.add('opacity-100');
-
-                // More robustly find and replace transform/scale classes
-                const classesToRemove = [];
-                const classesToAdd = [];
-
-                el.classList.forEach(cls => {
-                    if (cls.startsWith('translate-y-') && cls !== 'translate-y-0') {
-                        classesToRemove.push(cls);
-                        if (!classesToAdd.includes('translate-y-0')) classesToAdd.push('translate-y-0');
-                    }
-                    if (cls.startsWith('translate-x-') && cls !== 'translate-x-0') {
-                        classesToRemove.push(cls);
-                        if (!classesToAdd.includes('translate-x-0')) classesToAdd.push('translate-x-0');
-                    }
-                    if (cls.startsWith('scale-') && cls !== 'scale-100') {
-                        classesToRemove.push(cls);
-                        if (!classesToAdd.includes('scale-100')) classesToAdd.push('scale-100');
-                    }
-                });
-
-                classesToRemove.forEach(cls => el.classList.remove(cls));
-                classesToAdd.forEach(cls => el.classList.add(cls));
-                
-                obs.unobserve(el);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
-}
+// Scroll animations are now handled by AOS
 
 
 /**
@@ -420,8 +298,6 @@ document.addEventListener('DOMContentLoaded', () => {
     adjustMainContentPadding(mainContent, header);
     initializeMobileMenu(mobileMenuButton, mobileMenu);
     initializeActiveLinkHighlighting();
-    initializeScrollAnimations();
     initializeSmoothScroll();
     initializeCounters(); // Initialize counters globally or pass a specific container
-    initializeAboutAnimations(); // Initialize premium About section animations
 });
