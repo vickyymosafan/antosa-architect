@@ -396,28 +396,28 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
                             <!-- Gradient Overlay -->
                             <div class="absolute inset-0 bg-gradient-to-br from-primary-500/[0.02] via-transparent to-<?= $service['color'] ?>-500/[0.01]"></div>
 
-                            <!-- Content Container -->
-                            <div class="relative z-10 p-6 <?= $isFeatured ? 'lg:p-10 justify-center' : 'lg:p-8 justify-between' ?> h-full flex flex-col">
+                            <!-- Optimized Content Container with Consistent Layout -->
+                            <div class="relative z-10 p-6 lg:p-8 h-full flex flex-col justify-between">
 
-                                <!-- Icon Container -->
-                                <div class="<?= $isFeatured ? 'w-20 h-20 lg:w-24 lg:h-24 mb-6' : 'w-16 h-16 mb-4' ?> relative mx-auto transition-transform duration-300 group-hover:scale-110">
+                                <!-- Icon Container with Optimized Spacing -->
+                                <div class="<?= $isFeatured ? 'w-20 h-20 lg:w-24 lg:h-24 mb-4' : 'w-16 h-16 mb-4' ?> relative mx-auto transition-transform duration-300 group-hover:scale-110">
                                     <div class="w-full h-full bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/20">
                                         <i class="fas fa-<?= $service['icon'] ?> <?= $isFeatured ? 'text-2xl lg:text-3xl' : 'text-xl' ?> text-white"></i>
                                     </div>
                                 </div>
 
-                                <!-- Content Section -->
+                                <!-- Content Section with Balanced Spacing -->
                                 <div class="text-center flex-grow flex flex-col justify-center">
-                                    <h3 class="font-sans font-bold <?= $isFeatured ? 'text-2xl lg:text-3xl mb-4' : 'text-xl lg:text-2xl mb-3' ?> text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight">
+                                    <h3 class="font-sans font-bold <?= $isFeatured ? 'text-2xl lg:text-3xl mb-3' : 'text-xl lg:text-2xl mb-3' ?> text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight">
                                         <?= $service['title'] ?>
                                     </h3>
-                                    <p class="font-sans text-gray-300 <?= $isFeatured ? 'text-lg lg:text-xl leading-relaxed max-w-md mx-auto' : 'text-base leading-relaxed' ?>">
+                                    <p class="font-sans text-gray-300 <?= $isFeatured ? 'text-lg lg:text-xl leading-relaxed max-w-md mx-auto mb-4' : 'text-base leading-relaxed' ?>">
                                         <?= $service['description'] ?>
                                     </p>
 
-                                    <!-- Features for Featured Cards Only -->
+                                    <!-- Optimized Features for Featured Cards -->
                                     <?php if ($isFeatured && !empty($service['features'])): ?>
-                                        <div class="mt-6 grid grid-cols-2 gap-3 text-sm text-gray-400">
+                                        <div class="mt-4 grid grid-cols-2 gap-2 text-sm text-gray-400">
                                             <?php foreach ($service['features'] as $feature): ?>
                                                 <div class="flex items-center space-x-2">
                                                     <i class="fas fa-check text-primary-400 text-xs"></i>
@@ -428,8 +428,8 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
                                     <?php endif; ?>
                                 </div>
 
-                                <!-- CTA Button -->
-                                <div class="<?= $isFeatured ? 'mt-8 pt-6' : 'mt-6 pt-4' ?> border-t border-gray-700/30">
+                                <!-- Consistent CTA Button Spacing -->
+                                <div class="mt-6 pt-4 border-t border-gray-700/30">
                                     <a href="#contact" class="group/cta w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold <?= $isFeatured ? 'py-4 px-8 text-lg' : 'py-3 px-6 text-base' ?> rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-primary-500/30">
                                         <span>Konsultasi</span>
                                         <i class="fas fa-arrow-right text-sm transition-transform group-hover/cta:translate-x-1"></i>
