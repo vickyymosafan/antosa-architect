@@ -71,27 +71,23 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
                 <?= htmlspecialchars($hero_subtitle) ?>
             </p>
 
-            <!-- CTA Buttons - Compact with Staggered Animation -->
-            <div class="hero-cta-buttons flex flex-col sm:flex-row justify-center items-center gap-3 lg:gap-4" data-aos="fade-up" data-aos-delay="800">
+            <!-- Consistent CTA Buttons -->
+            <div class="hero-cta-buttons flex flex-col sm:flex-row justify-center items-center gap-4 lg:gap-6" data-aos="fade-up" data-aos-delay="800">
                 <a href="#contact"
-                   class="hero-cta-primary group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-black font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm lg:text-base flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-primary-400/50"
+                   class="hero-cta-primary group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-sans font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary-500/30 text-base flex items-center justify-center min-w-[260px] focus:outline-none focus:ring-4 focus:ring-primary-400/50"
                    data-aos="zoom-in" data-aos-delay="1000"
                    role="button"
                    aria-label="Mulai konsultasi gratis dengan tim arsitek kami">
                     <span>Mulai Konsultasi Gratis</span>
-                    <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
+                    <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
                 </a>
                 <a href="#portfolio"
-                   class="hero-cta-secondary group bg-black/60 hover:bg-black/80 border-2 border-gray-600 hover:border-primary-400 text-white font-sans font-bold py-3 px-6 lg:py-4 lg:px-8 rounded-lg transition-all duration-300 hover:scale-105 text-sm lg:text-base backdrop-blur-md flex items-center justify-center min-w-[240px] focus:outline-none focus:ring-4 focus:ring-white/20"
+                   class="hero-cta-secondary group bg-gray-800/60 hover:bg-gray-700/80 border-2 border-gray-600 hover:border-primary-400 text-white font-sans font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 text-base backdrop-blur-md flex items-center justify-center min-w-[260px] focus:outline-none focus:ring-4 focus:ring-white/20"
                    data-aos="zoom-in" data-aos-delay="1200"
                    role="button"
                    aria-label="Lihat portofolio hasil karya kami">
                     <span>Lihat Hasil Karya</span>
-                    <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
+                    <i class="fas fa-external-link-alt ml-2 transition-transform group-hover:translate-x-1"></i>
                 </a>
             </div>
         </main>
@@ -343,86 +339,66 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
     </div>
 </section>
 
-<!-- Services Section - Optimized Spacing -->
-<section id="services" class="py-12 lg:py-16 scroll-mt-20 bg-black">
+<!-- Services Section - Consistent Design System -->
+<section id="services" class="py-16 lg:py-24 scroll-mt-20 bg-black">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10 lg:mb-12" data-aos="fade-up" data-aos-duration="800">
-            <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4"><?= $services['title'] ?></h2>
-            <div class="w-24 h-1 bg-primary-500 mx-auto mb-6"></div>
-            <p class="font-sans font-normal max-w-3xl mx-auto text-secondary-600 dark:text-dark-300 text-lg"><?= $services['subtitle'] ?></p>
+        <!-- Consistent Header Styling -->
+        <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+            <div class="inline-flex items-center space-x-4 mb-6">
+                <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+                <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Layanan</span>
+                <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+            </div>
+            <h2 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent mb-6">
+                <?= $services['title'] ?>
+            </h2>
+            <p class="font-sans font-normal max-w-3xl mx-auto text-gray-300 text-lg lg:text-xl leading-relaxed">
+                <?= $services['subtitle'] ?>
+            </p>
         </div>
 
-        <!-- Premium Consistent Grid Layout -->
+        <!-- Consistent Services Grid -->
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-            <!-- Optimized 2x2 Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 max-w-4xl mx-auto">
-                <?php
-                // Premium uniform service styling - perfect consistency
-                $serviceLayouts = [
-                    0 => [ // Desain Arsitektur
-                        'accent' => 'blue',
-                        'delay' => '0.1s'
-                    ],
-                    1 => [ // Desain Interior
-                        'accent' => 'emerald',
-                        'delay' => '0.2s'
-                    ],
-                    2 => [ // Konsultasi Proyek
-                        'accent' => 'cyan',
-                        'delay' => '0.3s'
-                    ],
-                    3 => [ // Manajemen Konstruksi
-                        'accent' => 'amber',
-                        'delay' => '0.4s'
-                    ]
-                ];
-                ?>
-
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
                 <?php foreach ($services['services'] as $index => $service): ?>
-                    <?php
-                    $layout = $serviceLayouts[$index];
-                    ?>
-
-                    <!-- Premium Service Card Container -->
                     <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>">
+                        <!-- Consistent Service Card Design -->
+                        <div class="group relative h-full min-h-[320px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-2 hover:scale-[1.02]">
 
-                        <!-- Premium Consistent Service Card - Optimized Height -->
-                        <div class="group relative h-full min-h-[320px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-<?= $layout['accent'] ?>-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-<?= $layout['accent'] ?>-500/20 hover:-translate-y-2 hover:scale-[1.02]">
-
-                            <!-- Premium Background Elements -->
+                            <!-- Consistent Background Elements -->
                             <div class="absolute inset-0 opacity-[0.02]">
-                                <div class="absolute top-4 right-4 w-8 h-8 border border-<?= $layout['accent'] ?>-400/30 rotate-45 rounded-lg"></div>
-                                <div class="absolute bottom-4 left-4 w-6 h-6 bg-<?= $layout['accent'] ?>-400/10 rounded-full"></div>
+                                <div class="absolute top-4 right-4 w-8 h-8 border border-primary-400/30 rotate-45 rounded-lg"></div>
+                                <div class="absolute bottom-4 left-4 w-6 h-6 bg-primary-400/10 rounded-full"></div>
                             </div>
 
-                            <!-- Subtle Gradient Overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-br from-<?= $layout['accent'] ?>-500/[0.01] to-transparent"></div>
+                            <!-- Consistent Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/[0.01] to-transparent"></div>
 
-                            <!-- Optimized Content Container -->
-                            <div class="relative z-10 p-5 lg:p-6 h-full flex flex-col justify-between">
+                            <!-- Consistent Content Container -->
+                            <div class="relative z-10 p-6 lg:p-8 h-full flex flex-col justify-between">
 
-                                <!-- Optimized Icon Container -->
-                                <div class="w-14 h-14 mb-3 relative mx-auto transition-transform duration-200 group-hover:scale-110">
-                                    <div class="w-full h-full bg-gradient-to-br from-<?= $layout['accent'] ?>-400 to-<?= $layout['accent'] ?>-600 rounded-xl flex items-center justify-center shadow-lg shadow-<?= $layout['accent'] ?>-500/20">
-                                        <i class="fas fa-<?= $service['icon'] ?> text-lg text-white"></i>
+                                <!-- Consistent Icon Container -->
+                                <div class="w-16 h-16 mb-4 relative mx-auto transition-transform duration-300 group-hover:scale-110">
+                                    <div class="w-full h-full bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/20">
+                                        <i class="fas fa-<?= $service['icon'] ?> text-xl text-white"></i>
                                     </div>
                                 </div>
 
-                                <!-- Balanced Content Section -->
+                                <!-- Consistent Content Section -->
                                 <div class="text-center flex-grow flex flex-col justify-center">
-                                    <h3 class="font-sans font-bold text-lg lg:text-xl text-white mb-2 group-hover:text-<?= $layout['accent'] ?>-400 transition-colors duration-300 leading-tight">
+                                    <h3 class="font-sans font-bold text-xl lg:text-2xl text-white mb-3 group-hover:text-primary-400 transition-colors duration-300 leading-tight">
                                         <?= $service['title'] ?>
                                     </h3>
-                                    <p class="font-sans text-gray-300 text-sm leading-relaxed px-1">
+                                    <p class="font-sans text-gray-300 text-base leading-relaxed">
                                         <?= $service['description'] ?>
                                     </p>
                                 </div>
 
-                                <!-- Compact CTA Button -->
-                                <div class="mt-3 pt-3 border-t border-gray-700/30">
-                                    <a href="#contact" class="group/cta w-full bg-gradient-to-r from-<?= $layout['accent'] ?>-500 to-<?= $layout['accent'] ?>-600 hover:from-<?= $layout['accent'] ?>-400 hover:to-<?= $layout['accent'] ?>-500 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-<?= $layout['accent'] ?>-500/30 text-sm">
+                                <!-- Consistent CTA Button -->
+                                <div class="mt-6 pt-4 border-t border-gray-700/30">
+                                    <a href="#contact" class="group/cta w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-primary-500/30 text-base">
                                         <span>Konsultasi</span>
-                                        <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1"></i>
+                                        <i class="fas fa-arrow-right text-sm transition-transform group-hover/cta:translate-x-1"></i>
                                     </a>
                                 </div>
                             </div>
@@ -431,8 +407,6 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
                 <?php endforeach; ?>
             </div>
         </div>
-        
-
     </div>
 </section>
 
@@ -707,38 +681,71 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
     </div>
 </section>
 
-<!-- Testimonials Section -->
-<section id="testimonials" class="py-20 bg-black scroll-mt-20">
+<!-- Testimonials Section - Consistent Design System -->
+<section id="testimonials" class="py-16 lg:py-24 bg-black scroll-mt-20">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Consistent Header Styling -->
         <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
-            <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4"><?= $testimonials['title'] ?></h2>
-            <div class="w-24 h-1 bg-primary-500 mx-auto mb-8"></div>
-            <p class="font-sans font-normal max-w-3xl mx-auto text-secondary-600 dark:text-dark-300 text-lg"><?= $testimonials['subtitle'] ?></p>
+            <div class="inline-flex items-center space-x-4 mb-6">
+                <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+                <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Testimoni</span>
+                <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+            </div>
+            <h2 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent mb-6">
+                <?= $testimonials['title'] ?>
+            </h2>
+            <p class="font-sans font-normal max-w-3xl mx-auto text-gray-300 text-lg lg:text-xl leading-relaxed">
+                <?= $testimonials['subtitle'] ?>
+            </p>
         </div>
-        
+
+        <!-- Consistent Testimonials Grid -->
         <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                 <?php foreach ($testimonials['testimonials'] as $index => $testimonial): ?>
-                <div class="bg-secondary-50 dark:bg-dark-900 p-8 rounded-lg shadow-lg relative testimonial-card pb-10" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 200 * $index ?>">
-                    <div class="absolute -top-5 left-8">
-                        <span class="text-6xl text-primary-300 dark:text-primary-600">"</span>
+                <div class="group relative h-full bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-2 hover:scale-[1.02] p-6 lg:p-8" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>">
+
+                    <!-- Consistent Background Elements -->
+                    <div class="absolute inset-0 opacity-[0.02]">
+                        <div class="absolute top-4 right-4 w-8 h-8 border border-primary-400/30 rotate-45 rounded-lg"></div>
+                        <div class="absolute bottom-4 left-4 w-6 h-6 bg-primary-400/10 rounded-full"></div>
                     </div>
-                    <div class="pt-6">
-                        <p class="font-sans font-normal text-secondary-600 dark:text-dark-200 mb-6 italic"><?= $testimonial['text'] ?></p>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 rounded-full mr-4 overflow-hidden">
-                                <img src="<?= htmlspecialchars($testimonial['image']) ?>" alt="<?= htmlspecialchars($testimonial['name']) ?>" class="w-full h-full object-cover" loading="lazy">
-                            </div>
-                            <div>
-                                <h4 class="font-sans font-bold"><?= $testimonial['name'] ?></h4>
-                                <p class="font-sans font-normal text-gray-500 text-sm"><?= $testimonial['position'] ?></p>
-                            </div>
+
+                    <!-- Quote Icon -->
+                    <div class="absolute -top-2 left-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/20">
+                            <i class="fas fa-quote-left text-white text-lg"></i>
                         </div>
                     </div>
-                    <div class="mt-4 flex">
-                        <?php for ($i = 1; $i <= 5; $i++): ?>
-                            <i class="fas fa-star <?= $i <= $testimonial['rating'] ? 'text-yellow-400 dark:text-yellow-400' : 'text-secondary-300 dark:text-dark-600' ?>"></i>
-                        <?php endfor; ?>
+
+                    <!-- Content -->
+                    <div class="relative z-10 pt-8">
+                        <!-- Testimonial Text -->
+                        <p class="font-sans text-gray-300 text-base leading-relaxed mb-6 italic">
+                            "<?= $testimonial['text'] ?>"
+                        </p>
+
+                        <!-- Rating Stars -->
+                        <div class="flex mb-6">
+                            <?php for ($i = 1; $i <= 5; $i++): ?>
+                                <i class="fas fa-star <?= $i <= $testimonial['rating'] ? 'text-primary-400' : 'text-gray-600' ?> text-sm"></i>
+                            <?php endfor; ?>
+                        </div>
+
+                        <!-- Client Info -->
+                        <div class="flex items-center pt-4 border-t border-gray-700/30">
+                            <div class="w-12 h-12 rounded-xl mr-4 overflow-hidden bg-gradient-to-br from-primary-400/20 to-primary-600/20 flex items-center justify-center">
+                                <img src="<?= htmlspecialchars($testimonial['image']) ?>" alt="<?= htmlspecialchars($testimonial['name']) ?>" class="w-full h-full object-cover rounded-xl" loading="lazy">
+                            </div>
+                            <div>
+                                <h4 class="font-sans font-bold text-white text-base group-hover:text-primary-400 transition-colors duration-300">
+                                    <?= $testimonial['name'] ?>
+                                </h4>
+                                <p class="font-sans text-gray-400 text-sm">
+                                    <?= $testimonial['position'] ?>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -847,11 +854,19 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
     <div class="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-black/80"></div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <!-- Header Section -->
-        <div class="text-center mb-10" data-aos="fade-up" data-aos-duration="800">
-            <h2 class="font-sans text-2xl sm:text-3xl font-black text-white mb-3">Hubungi Kami</h2>
-            <div class="w-16 h-0.5 bg-primary-500 mx-auto mb-4"></div>
-            <p class="font-sans font-normal max-w-2xl mx-auto text-gray-300 text-base">Punya pertanyaan atau ingin memulai proyek dengan kami? Jangan ragu untuk menghubungi kami.</p>
+        <!-- Consistent Header Section -->
+        <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+            <div class="inline-flex items-center space-x-4 mb-6">
+                <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+                <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Kontak</span>
+                <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+            </div>
+            <h2 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent mb-6">
+                Hubungi Kami
+            </h2>
+            <p class="font-sans font-normal max-w-3xl mx-auto text-gray-300 text-lg lg:text-xl leading-relaxed">
+                Punya pertanyaan atau ingin memulai proyek dengan kami? Jangan ragu untuk menghubungi kami.
+            </p>
         </div>
 
         <!-- Premium Asymmetric Layout -->
@@ -888,9 +903,9 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
                             <textarea id="message" name="message" rows="4" required class="font-sans w-full px-3 py-2.5 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-400 bg-gray-700/50 text-white text-sm resize-none transition-all placeholder-gray-400"></textarea>
                         </div>
 
-                        <button type="submit" class="font-sans w-full py-3 px-6 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl">
-                            <i class="fas fa-paper-plane mr-2"></i>
-                            Kirim Pesan
+                        <button type="submit" class="font-sans w-full py-4 px-6 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl hover:shadow-primary-500/30 flex items-center justify-center space-x-2">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Kirim Pesan</span>
                         </button>
                     </form>
                 </div>
@@ -898,57 +913,61 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
 
             <!-- Contact Information - 40% width (2/5) -->
             <div class="lg:col-span-2 space-y-4">
-                <!-- Quick Contact Cards -->
+                <!-- Consistent Contact Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
                     <!-- Phone Card -->
-                    <div class="bg-gradient-to-br from-primary-500 to-primary-600 p-4 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
-                                <i class="fas fa-phone-alt text-white text-sm"></i>
+                    <div class="group relative min-h-[120px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.02] p-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
+                        <div class="flex items-center h-full">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center mr-4 shadow-lg shadow-primary-500/20 flex-shrink-0">
+                                <i class="fas fa-phone-alt text-white text-base"></i>
                             </div>
-                            <div>
-                                <h4 class="font-sans font-semibold text-white text-sm">Telepon</h4>
-                                <a href="tel:<?= str_replace([' ', '-'], '', COMPANY_PHONE) ?>" class="font-sans text-white/90 text-xs hover:text-white transition-colors"><?= COMPANY_PHONE ?></a>
+                            <div class="flex-1">
+                                <h4 class="font-sans font-bold text-white text-base mb-1 group-hover:text-primary-400 transition-colors duration-300">Telepon</h4>
+                                <a href="tel:<?= str_replace([' ', '-'], '', COMPANY_PHONE) ?>" class="font-sans text-gray-300 text-sm hover:text-primary-400 transition-colors break-words"><?= COMPANY_PHONE ?></a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Email Card -->
-                    <div class="bg-gradient-to-br from-primary-400 to-primary-500 p-4 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300" data-aos="fade-left" data-aos-duration="800" data-aos-delay="400">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
-                                <i class="fas fa-envelope text-white text-sm"></i>
+                    <div class="group relative min-h-[120px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.02] p-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="400">
+                        <div class="flex items-center h-full">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center mr-4 shadow-lg shadow-primary-500/20 flex-shrink-0">
+                                <i class="fas fa-envelope text-white text-base"></i>
                             </div>
-                            <div>
-                                <h4 class="font-sans font-semibold text-white text-sm">Email</h4>
-                                <a href="mailto:<?= COMPANY_EMAIL ?>" class="font-sans text-white/90 text-xs hover:text-white transition-colors"><?= COMPANY_EMAIL ?></a>
+                            <div class="flex-1">
+                                <h4 class="font-sans font-bold text-white text-base mb-1 group-hover:text-primary-400 transition-colors duration-300">Email</h4>
+                                <a href="mailto:<?= COMPANY_EMAIL ?>" class="font-sans text-gray-300 text-sm hover:text-primary-400 transition-colors break-words"><?= COMPANY_EMAIL ?></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Address Card -->
-                <div class="bg-gradient-to-br from-primary-600 to-primary-700 p-4 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300" data-aos="fade-left" data-aos-duration="800" data-aos-delay="500">
-                    <div class="flex items-start">
-                        <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
-                            <i class="fas fa-map-marker-alt text-white text-sm"></i>
+                <div class="group relative min-h-[120px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.02] p-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="500">
+                    <div class="flex items-start h-full">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center mr-4 shadow-lg shadow-primary-500/20 flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-white text-base"></i>
                         </div>
-                        <div>
-                            <h4 class="font-sans font-semibold text-white text-sm">Alamat</h4>
-                            <p class="font-sans text-white/90 text-xs leading-relaxed hover:text-white transition-colors"><?= COMPANY_ADDRESS ?></p>
+                        <div class="flex-1">
+                            <h4 class="font-sans font-bold text-white text-base mb-2 group-hover:text-primary-400 transition-colors duration-300">Alamat</h4>
+                            <div class="font-sans text-gray-300 text-sm leading-relaxed hover:text-primary-400 transition-colors break-words">
+                                <div>Bernady Land, Cluster Camelia Blok E6</div>
+                                <div>Puring, Slawu, Kec. Patrang</div>
+                                <div>Kabupaten Jember, Jawa Timur 68116</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Working Hours Card -->
-                <div class="bg-gradient-to-br from-primary-700 to-primary-800 p-4 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300" data-aos="fade-left" data-aos-duration="800" data-aos-delay="600">
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mr-3">
-                            <i class="fas fa-clock text-white text-sm"></i>
+                <div class="group relative min-h-[120px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.02] p-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="600">
+                    <div class="flex items-center h-full">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center mr-4 shadow-lg shadow-primary-500/20 flex-shrink-0">
+                            <i class="fas fa-clock text-white text-base"></i>
                         </div>
-                        <div>
-                            <h4 class="font-sans font-semibold text-white text-sm">Jam Kerja</h4>
-                            <p class="font-sans text-white/90 text-xs hover:text-white transition-colors"><?= OFFICE_HOURS ?></p>
+                        <div class="flex-1">
+                            <h4 class="font-sans font-bold text-white text-base mb-1 group-hover:text-primary-400 transition-colors duration-300">Jam Kerja</h4>
+                            <p class="font-sans text-gray-300 text-sm hover:text-primary-400 transition-colors break-words"><?= OFFICE_HOURS ?></p>
                         </div>
                     </div>
                 </div>
