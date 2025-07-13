@@ -533,19 +533,39 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
             </div>
         </div>
         
-        <!-- Dynamic Portfolio Grid -->
+        <!-- Dynamic Portfolio Bento Grid -->
         <div id="portfolio-container" class="relative">
-            <!-- Grid View -->
-            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-auto">
+            <!-- Bento Grid View -->
+            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 lg:gap-6 auto-rows-fr">
+                <?php
+                // Enhanced Bento Grid layout configuration for portfolio
+                $portfolioBentoConfig = [
+                    // First row - Featured large project
+                    0 => ['cols' => 'md:col-span-2 lg:col-span-3', 'rows' => 'md:row-span-2', 'featured' => true, 'size' => 'hero'],
+                    1 => ['cols' => 'md:col-span-1 lg:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'small'],
+                    2 => ['cols' => 'md:col-span-1 lg:col-span-2', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'medium'],
+
+                    // Second row
+                    3 => ['cols' => 'md:col-span-1 lg:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'small'],
+                    4 => ['cols' => 'md:col-span-2 lg:col-span-2', 'rows' => 'md:row-span-1', 'featured' => true, 'size' => 'wide'],
+                    5 => ['cols' => 'md:col-span-1 lg:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'small'],
+
+                    // Third row and beyond - dynamic pattern
+                    6 => ['cols' => 'md:col-span-1 lg:col-span-2', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'medium'],
+                    7 => ['cols' => 'md:col-span-1 lg:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'small'],
+                    8 => ['cols' => 'md:col-span-2 lg:col-span-3', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'wide'],
+                ];
+
+                // Base portfolio card classes
+                $basePortfolioCardClasses = 'portfolio-item group relative overflow-hidden rounded-2xl shadow-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-800 hover:border-primary-500/30 transition-all duration-500';
+                ?>
+
                 <?php foreach ($portfolio['projects'] as $index => $project): ?>
                 <?php
-                    // Determine grid size based on featured status and size
-                    $gridClass = '';
-                    if ($project['featured'] && $project['size'] === 'large') {
-                        $gridClass = 'sm:col-span-2 sm:row-span-2';
-                    } elseif ($project['featured'] && $project['size'] === 'medium') {
-                        $gridClass = 'lg:col-span-2';
-                    }
+                    // Get Bento configuration or use default for additional projects
+                    $bentoConfig = $portfolioBentoConfig[$index] ?? ['cols' => 'md:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'small'];
+                    $isBentoFeatured = $bentoConfig['featured'];
+                    $bentoSize = $bentoConfig['size'];
 
                     // Get first image from the project's images array
                     $imageUrl = $project['images'][0] ?? 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80';
@@ -556,75 +576,99 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
                     // Calculate AOS delay based on index
                     $aosDelay = 100 + ($index * 50);
                 ?>
-                <div class="portfolio-item group <?= $gridClass ?> relative overflow-hidden rounded-2xl shadow-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-800 hover:border-primary-500/30 transition-all duration-500"
-                     data-category="<?= $project['category'] ?>"
-                     data-id="<?= $project['id'] ?>"
-                     data-year="<?= $project['year'] ?>"
-                     data-location="<?= $project['location'] ?>"
-                     data-tags="<?= $tagsString ?>"
-                     data-featured="<?= $project['featured'] ? 'true' : 'false' ?>"
-                     data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= $aosDelay ?>">
+                <div class="<?= $bentoConfig['cols'] ?> <?= $bentoConfig['rows'] ?>" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= $aosDelay ?>">
+                    <div class="<?= $basePortfolioCardClasses ?> h-full <?=
+                        $bentoSize === 'hero' ? 'min-h-[400px] lg:min-h-[500px]' :
+                        ($bentoSize === 'wide' ? 'min-h-[280px] lg:min-h-[320px]' :
+                        ($bentoSize === 'medium' ? 'min-h-[300px] lg:min-h-[350px]' : 'min-h-[250px] lg:min-h-[280px]'))
+                    ?>"
+                         data-category="<?= $project['category'] ?>"
+                         data-id="<?= $project['id'] ?>"
+                         data-year="<?= $project['year'] ?>"
+                         data-location="<?= $project['location'] ?>"
+                         data-tags="<?= $tagsString ?>"
+                         data-featured="<?= $project['featured'] ? 'true' : 'false' ?>">
 
-                    <!-- Project Image with Gradient Overlay -->
-                    <div class="relative overflow-hidden <?= $project['featured'] && $project['size'] === 'large' ? 'h-96' : 'h-64' ?>">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10"></div>
-                        <img src="<?= $imageUrl ?>"
-                             alt="<?= $project['title'] ?>"
-                             class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:rotate-1">
+                        <!-- Adaptive Project Image with Gradient Overlay -->
+                        <div class="relative overflow-hidden <?=
+                            $bentoSize === 'hero' ? 'h-3/5' :
+                            ($bentoSize === 'wide' ? 'h-2/3' :
+                            ($bentoSize === 'medium' ? 'h-3/5' : 'h-2/3'))
+                        ?>">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10"></div>
+                            <img src="<?= $imageUrl ?>"
+                                 alt="<?= $project['title'] ?>"
+                                 class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:rotate-1">
 
-                        <!-- Hover Overlay with Actions -->
-                        <div class="absolute inset-0 bg-gradient-to-b from-primary-600/80 to-gray-900/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 z-20">
-                            <div class="flex flex-col items-center space-y-4 p-6 text-center">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 backdrop-blur-sm text-white">
-                                    <?= $project['category'] ?>
-                                </span>
-                                <h3 class="font-sans font-bold text-xl md:text-2xl text-white"><?= $project['title'] ?></h3>
-                                <p class="font-sans text-sm text-gray-200 line-clamp-3"><?= $project['description'] ?></p>
-                                <button onclick="openProjectModal('<?= $project['id'] ?>')"
-                                        class="mt-4 px-6 py-2 bg-white text-gray-900 rounded-full font-medium transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
-                                    <span>Lihat Detail</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </button>
+                            <!-- Enhanced Hover Overlay for Different Sizes -->
+                            <div class="absolute inset-0 bg-gradient-to-b from-primary-600/80 to-gray-900/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 z-20">
+                                <div class="flex flex-col items-center space-y-<?= $bentoSize === 'hero' ? '4' : '2' ?> p-<?= $bentoSize === 'hero' ? '6' : '4' ?> text-center">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 backdrop-blur-sm text-white">
+                                        <?= $project['category'] ?>
+                                    </span>
+                                    <h3 class="font-sans font-bold <?= $bentoSize === 'hero' ? 'text-xl md:text-2xl' : ($bentoSize === 'small' ? 'text-lg' : 'text-xl') ?> text-white"><?= $project['title'] ?></h3>
+                                    <?php if ($bentoSize !== 'small'): ?>
+                                        <p class="font-sans text-sm text-gray-200 line-clamp-<?= $bentoSize === 'hero' ? '3' : '2' ?>"><?= $project['description'] ?></p>
+                                    <?php endif; ?>
+                                    <button onclick="openProjectModal('<?= $project['id'] ?>')"
+                                            class="mt-<?= $bentoSize === 'hero' ? '4' : '2' ?> px-<?= $bentoSize === 'hero' ? '6' : '4' ?> py-2 bg-white text-gray-900 rounded-full font-medium transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 <?= $bentoSize === 'small' ? 'text-sm' : '' ?>">
+                                        <span>Detail</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Project Info -->
-                    <div class="p-6 relative z-10">
-                        <!-- Tags -->
-                        <div class="flex flex-wrap gap-2 mb-3">
-                            <?php foreach (array_slice($project['tags'] ?? [], 0, 3) as $tag): ?>
-                            <span class="text-xs font-medium px-2 py-1 rounded-md bg-gray-700/50 text-gray-300">#<?= $tag ?></span>
-                            <?php endforeach; ?>
-                        </div>
-
-                        <h3 class="font-sans font-bold text-xl text-white group-hover:text-primary-400 transition-colors"><?= $project['title'] ?></h3>
-
-                        <div class="flex items-center space-x-4 mt-2 text-sm text-gray-400">
-                            <span class="flex items-center">
-                                <i class="fas fa-map-marker-alt mr-1 text-primary-500"></i> <?= $project['location'] ?>
-                            </span>
-                            <span class="flex items-center">
-                                <i class="fas fa-calendar mr-1 text-primary-500"></i> <?= $project['year'] ?>
-                            </span>
-                        </div>
-
-                        <p class="font-sans text-gray-300 mt-3 mb-4 line-clamp-2"><?= $project['description'] ?></p>
-
-                        <div class="flex justify-between items-center">
-                            <button onclick="openProjectModal('<?= $project['id'] ?>')"
-                                    class="text-primary-400 hover:text-primary-300 font-medium inline-flex items-center group">
-                                <span>Detail</span>
-                                <svg class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </button>
-
-                            <?php if ($project['featured']): ?>
-                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-primary-500/20 text-primary-400">
-                                <i class="fas fa-star mr-1"></i> Featured
-                            </span>
+                        <!-- Adaptive Project Info -->
+                        <div class="p-<?= $bentoSize === 'hero' ? '6' : ($bentoSize === 'small' ? '4' : '5') ?> relative z-10 flex-1 flex flex-col justify-between">
+                            <!-- Tags - Adaptive display -->
+                            <?php if ($bentoSize !== 'small'): ?>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <?php
+                                    $tagLimit = $bentoSize === 'hero' ? 4 : 2;
+                                    foreach (array_slice($project['tags'] ?? [], 0, $tagLimit) as $tag):
+                                    ?>
+                                    <span class="text-xs font-medium px-2 py-1 rounded-md bg-gray-700/50 text-gray-300">#<?= $tag ?></span>
+                                    <?php endforeach; ?>
+                                </div>
                             <?php endif; ?>
+
+                            <h3 class="font-sans font-bold <?=
+                                $bentoSize === 'hero' ? 'text-xl lg:text-2xl' :
+                                ($bentoSize === 'small' ? 'text-lg' : 'text-xl')
+                            ?> text-white group-hover:text-primary-400 transition-colors <?= $bentoSize === 'small' ? 'mb-2' : 'mb-3' ?>"><?= $project['title'] ?></h3>
+
+                            <!-- Location and Year - Adaptive -->
+                            <div class="flex items-center <?= $bentoSize === 'small' ? 'space-x-2' : 'space-x-4' ?> mt-2 text-<?= $bentoSize === 'small' ? 'xs' : 'sm' ?> text-gray-400">
+                                <span class="flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-1 text-primary-500"></i> <?= $project['location'] ?>
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="fas fa-calendar mr-1 text-primary-500"></i> <?= $project['year'] ?>
+                                </span>
+                            </div>
+
+                            <!-- Description - Only for larger cards -->
+                            <?php if ($bentoSize !== 'small'): ?>
+                                <p class="font-sans text-gray-300 mt-3 mb-4 line-clamp-<?= $bentoSize === 'hero' ? '3' : '2' ?>"><?= $project['description'] ?></p>
+                            <?php endif; ?>
+
+                            <!-- Action and Featured Badge -->
+                            <div class="flex justify-between items-center mt-auto">
+                                <button onclick="openProjectModal('<?= $project['id'] ?>')"
+                                        class="text-primary-400 hover:text-primary-300 font-medium inline-flex items-center group <?= $bentoSize === 'small' ? 'text-sm' : '' ?>">
+                                    <span>Detail</span>
+                                    <svg class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+
+                                <?php if ($project['featured'] && $bentoSize !== 'small'): ?>
+                                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-primary-500/20 text-primary-400">
+                                    <i class="fas fa-star mr-1"></i> Featured
+                                </span>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>

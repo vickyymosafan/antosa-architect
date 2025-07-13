@@ -1,48 +1,59 @@
-// assets/js/home-portfolio.js
+/**
+ * Optimized Portfolio Bento Grid System
+ * Enhanced performance with reduced redundancy for Bento Grid layout
+ */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Cache DOM elements
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    const portfolioGrid = document.getElementById('portfolio-grid');
-    const portfolioList = document.getElementById('portfolio-list');
-    const portfolioEmpty = document.getElementById('portfolio-empty');
-    const portfolioSearch = document.getElementById('portfolio-search');
-    const sortOptions = document.getElementById('sort-options');
-    const gridViewBtn = document.getElementById('grid-view');
-    const listViewBtn = document.getElementById('list-view');
-    const resetFiltersBtn = document.getElementById('reset-filters');
+    // Optimized DOM element caching with null checks
+    const elements = {
+        // Filter elements
+        filterBtns: document.querySelectorAll('.filter-btn'),
+        portfolioItems: document.querySelectorAll('.portfolio-item'),
+        portfolioGrid: document.getElementById('portfolio-grid'),
+        portfolioList: document.getElementById('portfolio-list'),
+        portfolioEmpty: document.getElementById('portfolio-empty'),
+        portfolioSearch: document.getElementById('portfolio-search'),
+        sortOptions: document.getElementById('sort-options'),
+        gridViewBtn: document.getElementById('grid-view'),
+        listViewBtn: document.getElementById('list-view'),
+        resetFiltersBtn: document.getElementById('reset-filters'),
 
-    // Modal elements
-    const modal = document.getElementById('project-modal');
-    const modalOverlay = document.getElementById('modal-overlay');
-    const modalContainer = document.getElementById('modal-container');
-    const modalClose = document.getElementById('modal-close');
-    const modalImage = document.getElementById('modal-image');
-    const modalTitle = document.getElementById('modal-title');
-    const modalCategory = document.getElementById('modal-category');
-    const modalDescription = document.getElementById('modal-description');
-    const modalContactBtn = document.getElementById('modal-contact-btn');
-    const modalClient = document.getElementById('modal-client');
-    const modalYear = document.getElementById('modal-year');
-    const modalLocation = document.getElementById('modal-location');
-    const modalArea = document.getElementById('modal-area');
-    const modalStatus = document.getElementById('modal-status');
-    const modalDuration = document.getElementById('modal-duration');
-    const modalBudget = document.getElementById('modal-budget');
-    const modalFeatures = document.getElementById('modal-features');
-    const modalTags = document.getElementById('modal-tags');
-    const modalThumbnails = document.getElementById('modal-thumbnails');
-    const modalImageCounter = document.getElementById('modal-image-counter');
-    const modalPrevImage = document.getElementById('modal-prev-image');
-    const modalNextImage = document.getElementById('modal-next-image');
-    const modalShareBtn = document.getElementById('modal-share-btn');
+        // Modal elements - grouped for efficiency
+        modal: document.getElementById('project-modal'),
+        modalOverlay: document.getElementById('modal-overlay'),
+        modalContainer: document.getElementById('modal-container'),
+        modalClose: document.getElementById('modal-close'),
+        modalElements: {
+            image: document.getElementById('modal-image'),
+            title: document.getElementById('modal-title'),
+            category: document.getElementById('modal-category'),
+            description: document.getElementById('modal-description'),
+            contactBtn: document.getElementById('modal-contact-btn'),
+            client: document.getElementById('modal-client'),
+            year: document.getElementById('modal-year'),
+            location: document.getElementById('modal-location'),
+            area: document.getElementById('modal-area'),
+            status: document.getElementById('modal-status'),
+            duration: document.getElementById('modal-duration'),
+            budget: document.getElementById('modal-budget'),
+            features: document.getElementById('modal-features'),
+            tags: document.getElementById('modal-tags'),
+            thumbnails: document.getElementById('modal-thumbnails'),
+            imageCounter: document.getElementById('modal-image-counter'),
+            prevImage: document.getElementById('modal-prev-image'),
+            nextImage: document.getElementById('modal-next-image'),
+            shareBtn: document.getElementById('modal-share-btn')
+        }
+    };
 
-    // Animation constants
-    const ANIMATION_DURATION_MS = 300;
-    const ITEM_ANIMATION_DELAY_MS = 30;
+    // Optimized constants
+    const CONFIG = {
+        ANIMATION_DURATION_MS: 300,
+        ITEM_ANIMATION_DELAY_MS: 30,
+        BENTO_GRID_ENABLED: true
+    };
 
-    // Filter state
+    // Consolidated filter state
     const filterState = {
         category: 'all',
         search: '',
@@ -110,99 +121,100 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     /**
-     * Advanced filtering function that handles multiple criteria.
-     * @param {Array} items - Array of portfolio items to filter.
-     * @returns {Array} - Filtered items.
+     * Optimized filtering with cached data extraction
      */
-    function applyAdvancedFilter(items) {
+    function applyOptimizedFilter(items) {
+        const searchTerm = filterState.search.toLowerCase();
+
         return items.filter(item => {
-            const category = item.getAttribute('data-category');
-            const tags = item.getAttribute('data-tags')?.toLowerCase() || '';
-            const title = item.querySelector('h3')?.textContent?.toLowerCase() || '';
-            const description = item.querySelector('p')?.textContent?.toLowerCase() || '';
-            const location = item.getAttribute('data-location')?.toLowerCase() || '';
-            const year = item.getAttribute('data-year') || '';
+            // Cache data attributes for performance
+            const itemData = item._cachedData || (item._cachedData = {
+                category: item.getAttribute('data-category'),
+                tags: item.getAttribute('data-tags')?.toLowerCase() || '',
+                title: item.querySelector('h3')?.textContent?.toLowerCase() || '',
+                description: item.querySelector('p')?.textContent?.toLowerCase() || '',
+                location: item.getAttribute('data-location')?.toLowerCase() || '',
+                year: item.getAttribute('data-year') || ''
+            });
 
-            // Category filter
-            const categoryMatch = filterState.category === 'all' || category === filterState.category;
+            // Optimized category filter
+            const categoryMatch = filterState.category === 'all' || itemData.category === filterState.category;
 
-            // Search filter
-            const searchTerm = filterState.search.toLowerCase();
-            const searchMatch = !searchTerm ||
-                title.includes(searchTerm) ||
-                description.includes(searchTerm) ||
-                tags.includes(searchTerm) ||
-                location.includes(searchTerm);
+            // Optimized search filter
+            const searchMatch = !searchTerm || (
+                itemData.title.includes(searchTerm) ||
+                itemData.description.includes(searchTerm) ||
+                itemData.tags.includes(searchTerm) ||
+                itemData.location.includes(searchTerm)
+            );
 
             return categoryMatch && searchMatch;
         });
     }
 
     /**
-     * Sorts portfolio items based on the selected criteria.
-     * @param {Array} items - Array of portfolio items to sort.
-     * @returns {Array} - Sorted items.
+     * Optimized sorting with cached comparisons
      */
-    function sortPortfolioItems(items) {
-        return items.sort((a, b) => {
-            switch (filterState.sort) {
-                case 'newest':
-                    return parseInt(b.getAttribute('data-year')) - parseInt(a.getAttribute('data-year'));
-                case 'oldest':
-                    return parseInt(a.getAttribute('data-year')) - parseInt(b.getAttribute('data-year'));
-                case 'name':
-                    const titleA = a.querySelector('h3')?.textContent || '';
-                    const titleB = b.querySelector('h3')?.textContent || '';
-                    return titleA.localeCompare(titleB);
-                case 'category':
-                    const catA = a.getAttribute('data-category') || '';
-                    const catB = b.getAttribute('data-category') || '';
-                    return catA.localeCompare(catB);
-                default:
-                    return 0;
+    function sortOptimizedItems(items) {
+        const sortFunctions = {
+            newest: (a, b) => parseInt(b.getAttribute('data-year')) - parseInt(a.getAttribute('data-year')),
+            oldest: (a, b) => parseInt(a.getAttribute('data-year')) - parseInt(b.getAttribute('data-year')),
+            name: (a, b) => {
+                const titleA = a.querySelector('h3')?.textContent || '';
+                const titleB = b.querySelector('h3')?.textContent || '';
+                return titleA.localeCompare(titleB);
+            },
+            category: (a, b) => {
+                const catA = a.getAttribute('data-category') || '';
+                const catB = b.getAttribute('data-category') || '';
+                return catA.localeCompare(catB);
             }
-        });
+        };
+
+        return items.sort(sortFunctions[filterState.sort] || (() => 0));
     }
 
     /**
-     * Updates the portfolio display based on current filters and view mode.
+     * Optimized portfolio display update with Bento Grid support
      */
     function updatePortfolioDisplay() {
-        const allItems = Array.from(portfolioItems);
-        const filteredItems = applyAdvancedFilter(allItems);
-        const sortedItems = sortPortfolioItems(filteredItems);
+        const allItems = Array.from(elements.portfolioItems);
+        const filteredItems = applyOptimizedFilter(allItems);
+        const sortedItems = sortOptimizedItems(filteredItems);
 
-        // Hide all items first
-        allItems.forEach(item => {
-            item.classList.add('hidden', 'opacity-0');
+        // Batch DOM updates for performance
+        requestAnimationFrame(() => {
+            // Hide all items efficiently
+            allItems.forEach(item => {
+                item.classList.add('hidden', 'opacity-0');
+            });
+
+            // Update container visibility
+            const hasResults = sortedItems.length > 0;
+            elements.portfolioEmpty.classList.toggle('hidden', hasResults);
+
+            if (hasResults) {
+                const isGridView = filterState.view === 'grid';
+                elements.portfolioGrid.classList.toggle('hidden', !isGridView);
+                elements.portfolioList.classList.toggle('hidden', isGridView);
+
+                // Optimized staggered animation for Bento Grid
+                sortedItems.forEach((item, index) => {
+                    const delay = index * CONFIG.ITEM_ANIMATION_DELAY_MS;
+                    setTimeout(() => {
+                        item.classList.remove('hidden');
+                        requestAnimationFrame(() => {
+                            item.classList.remove('opacity-0');
+                            item.classList.add('opacity-100');
+                        });
+                    }, delay);
+                });
+            }
         });
 
-        // Show/hide containers based on view mode and results
-        if (sortedItems.length === 0) {
-            portfolioGrid.classList.add('hidden');
-            portfolioList.classList.add('hidden');
-            portfolioEmpty.classList.remove('hidden');
-        } else {
-            portfolioEmpty.classList.add('hidden');
-
-            if (filterState.view === 'grid') {
-                portfolioGrid.classList.remove('hidden');
-                portfolioList.classList.add('hidden');
-            } else {
-                portfolioGrid.classList.add('hidden');
-                portfolioList.classList.remove('hidden');
-            }
-
-            // Animate filtered items
-            sortedItems.forEach((item, index) => {
-                setTimeout(() => {
-                    item.classList.remove('hidden');
-                    setTimeout(() => {
-                        item.classList.remove('opacity-0');
-                        item.classList.add('opacity-100');
-                    }, 10);
-                }, index * ITEM_ANIMATION_DELAY_MS);
-            });
+        // Refresh AOS for new layout if available
+        if (typeof AOS !== 'undefined' && CONFIG.BENTO_GRID_ENABLED) {
+            setTimeout(() => AOS.refresh(), 100);
         }
     }
 
@@ -210,10 +222,10 @@ document.addEventListener('DOMContentLoaded', function() {
      * Initializes search functionality.
      */
     function initializeSearch() {
-        if (!portfolioSearch) return;
+        if (!elements.portfolioSearch) return;
 
         let searchTimeout;
-        portfolioSearch.addEventListener('input', function() {
+        elements.portfolioSearch.addEventListener('input', function() {
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
                 filterState.search = this.value.trim();
@@ -226,9 +238,9 @@ document.addEventListener('DOMContentLoaded', function() {
      * Initializes sorting functionality.
      */
     function initializeSorting() {
-        if (!sortOptions) return;
+        if (!elements.sortOptions) return;
 
-        sortOptions.addEventListener('change', function() {
+        elements.sortOptions.addEventListener('change', function() {
             filterState.sort = this.value;
             updatePortfolioDisplay();
         });
@@ -238,19 +250,19 @@ document.addEventListener('DOMContentLoaded', function() {
      * Initializes view toggle functionality.
      */
     function initializeViewToggle() {
-        if (!gridViewBtn || !listViewBtn) return;
+        if (!elements.gridViewBtn || !elements.listViewBtn) return;
 
-        gridViewBtn.addEventListener('click', function() {
+        elements.gridViewBtn.addEventListener('click', function() {
             filterState.view = 'grid';
-            styleViewToggle(gridViewBtn, true);
-            styleViewToggle(listViewBtn, false);
+            styleViewToggle(elements.gridViewBtn, true);
+            styleViewToggle(elements.listViewBtn, false);
             updatePortfolioDisplay();
         });
 
-        listViewBtn.addEventListener('click', function() {
+        elements.listViewBtn.addEventListener('click', function() {
             filterState.view = 'list';
-            styleViewToggle(listViewBtn, true);
-            styleViewToggle(gridViewBtn, false);
+            styleViewToggle(elements.listViewBtn, true);
+            styleViewToggle(elements.gridViewBtn, false);
             updatePortfolioDisplay();
         });
     }
@@ -259,11 +271,11 @@ document.addEventListener('DOMContentLoaded', function() {
      * Initializes filter button event listeners.
      */
     function initializeFilterButtons() {
-        if (filterBtns.length === 0) return;
+        if (elements.filterBtns.length === 0) return;
 
-        filterBtns.forEach(btn => {
+        elements.filterBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                filterBtns.forEach(b => styleFilterButton(b, false));
+                elements.filterBtns.forEach(b => styleFilterButton(b, false));
                 styleFilterButton(this, true);
 
                 filterState.category = this.getAttribute('data-filter');
@@ -276,20 +288,20 @@ document.addEventListener('DOMContentLoaded', function() {
      * Initializes reset filters functionality.
      */
     function initializeResetFilters() {
-        if (!resetFiltersBtn) return;
+        if (!elements.resetFiltersBtn) return;
 
-        resetFiltersBtn.addEventListener('click', function() {
+        elements.resetFiltersBtn.addEventListener('click', function() {
             // Reset filter state
             filterState.category = 'all';
             filterState.search = '';
             filterState.sort = 'newest';
 
             // Reset UI elements
-            if (portfolioSearch) portfolioSearch.value = '';
-            if (sortOptions) sortOptions.value = 'newest';
+            if (elements.portfolioSearch) elements.portfolioSearch.value = '';
+            if (elements.sortOptions) elements.sortOptions.value = 'newest';
 
             // Reset filter buttons
-            filterBtns.forEach(btn => {
+            elements.filterBtns.forEach(btn => {
                 const isAll = btn.getAttribute('data-filter') === 'all';
                 styleFilterButton(btn, isAll);
             });
@@ -302,13 +314,13 @@ document.addEventListener('DOMContentLoaded', function() {
      * Opens the project details modal with animation.
      */
     function openModal() {
-        if (!modal || !modalOverlay || !modalContainer) return;
-        modal.classList.remove('hidden');
+        if (!elements.modal || !elements.modalOverlay || !elements.modalContainer) return;
+        elements.modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
         setTimeout(() => {
-            modalOverlay.classList.add('opacity-100');
-            modalContainer.classList.remove('scale-90', 'opacity-0');
-            modalContainer.classList.add('scale-100', 'opacity-100');
+            elements.modalOverlay.classList.add('opacity-100');
+            elements.modalContainer.classList.remove('scale-90', 'opacity-0');
+            elements.modalContainer.classList.add('scale-100', 'opacity-100');
         }, 10);
     }
 
@@ -316,15 +328,15 @@ document.addEventListener('DOMContentLoaded', function() {
      * Closes the project details modal with animation.
      */
     function closeModal() {
-        if (!modal || !modalOverlay || !modalContainer || modal.classList.contains('hidden')) return;
-        modalOverlay.classList.remove('opacity-100');
-        modalContainer.classList.remove('scale-100', 'opacity-100');
-        modalContainer.classList.add('scale-90', 'opacity-0');
+        if (!elements.modal || !elements.modalOverlay || !elements.modalContainer || elements.modal.classList.contains('hidden')) return;
+        elements.modalOverlay.classList.remove('opacity-100');
+        elements.modalContainer.classList.remove('scale-100', 'opacity-100');
+        elements.modalContainer.classList.add('scale-90', 'opacity-0');
 
         setTimeout(() => {
-            modal.classList.add('hidden');
+            elements.modal.classList.add('hidden');
             document.body.style.overflow = '';
-        }, ANIMATION_DURATION_MS);
+        }, CONFIG.ANIMATION_DURATION_MS);
     }
 
     /**
@@ -496,16 +508,16 @@ document.addEventListener('DOMContentLoaded', function() {
         currentImageIndex = 0;
 
         // Populate modal with enhanced data
-        if (modalTitle) modalTitle.textContent = project.title;
-        if (modalCategory) modalCategory.textContent = project.category;
-        if (modalDescription) modalDescription.textContent = project.description;
-        if (modalYear) modalYear.textContent = project.year;
-        if (modalLocation) modalLocation.textContent = project.location;
-        if (modalArea) modalArea.textContent = project.area;
-        if (modalClient) modalClient.textContent = project.client;
-        if (modalStatus) modalStatus.textContent = project.status;
-        if (modalDuration) modalDuration.textContent = project.duration;
-        if (modalBudget) modalBudget.textContent = project.budget;
+        if (elements.modalElements.title) elements.modalElements.title.textContent = project.title;
+        if (elements.modalElements.category) elements.modalElements.category.textContent = project.category;
+        if (elements.modalElements.description) elements.modalElements.description.textContent = project.description;
+        if (elements.modalElements.year) elements.modalElements.year.textContent = project.year;
+        if (elements.modalElements.location) elements.modalElements.location.textContent = project.location;
+        if (elements.modalElements.area) elements.modalElements.area.textContent = project.area;
+        if (elements.modalElements.client) elements.modalElements.client.textContent = project.client;
+        if (elements.modalElements.status) elements.modalElements.status.textContent = project.status;
+        if (elements.modalElements.duration) elements.modalElements.duration.textContent = project.duration;
+        if (elements.modalElements.budget) elements.modalElements.budget.textContent = project.budget;
 
         // Set up image gallery
         if (currentProjectImages.length > 0) {
@@ -524,16 +536,16 @@ document.addEventListener('DOMContentLoaded', function() {
      * Initializes modal event listeners.
      */
     function initializeModalEventListeners() {
-        if (modalClose) modalClose.addEventListener('click', closeModal);
-        if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+        if (elements.modalClose) elements.modalClose.addEventListener('click', closeModal);
+        if (elements.modalOverlay) elements.modalOverlay.addEventListener('click', closeModal);
 
         // Image navigation
-        if (modalPrevImage) modalPrevImage.addEventListener('click', showPrevImage);
-        if (modalNextImage) modalNextImage.addEventListener('click', showNextImage);
+        if (elements.modalElements.prevImage) elements.modalElements.prevImage.addEventListener('click', showPrevImage);
+        if (elements.modalElements.nextImage) elements.modalElements.nextImage.addEventListener('click', showNextImage);
 
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
-            if (modal && !modal.classList.contains('hidden')) {
+            if (elements.modal && !elements.modal.classList.contains('hidden')) {
                 switch(e.key) {
                     case 'Escape':
                         closeModal();
@@ -548,12 +560,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        if (modalContactBtn) {
-            modalContactBtn.addEventListener('click', closeModal);
+        if (elements.modalElements.contactBtn) {
+            elements.modalElements.contactBtn.addEventListener('click', closeModal);
         }
 
-        if (modalShareBtn) {
-            modalShareBtn.addEventListener('click', function() {
+        if (elements.modalElements.shareBtn) {
+            elements.modalElements.shareBtn.addEventListener('click', function() {
                 if (navigator.share && currentProjectData.title) {
                     navigator.share({
                         title: currentProjectData.title,
@@ -579,9 +591,9 @@ document.addEventListener('DOMContentLoaded', function() {
      * @param {Array} images - Array of image URLs.
      */
     function createImageThumbnails(images) {
-        if (!modalThumbnails) return;
+        if (!elements.modalElements.thumbnails) return;
 
-        modalThumbnails.innerHTML = '';
+        elements.modalElements.thumbnails.innerHTML = '';
         images.forEach((image, index) => {
             const thumbnail = document.createElement('button');
             thumbnail.className = `w-12 h-12 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
@@ -589,7 +601,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }`;
             thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}" class="w-full h-full object-cover">`;
             thumbnail.addEventListener('click', () => showImage(index));
-            modalThumbnails.appendChild(thumbnail);
+            elements.modalElements.thumbnails.appendChild(thumbnail);
         });
     }
 
@@ -602,17 +614,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         currentImageIndex = index;
 
-        if (modalImage) {
-            modalImage.src = currentProjectImages[index];
-            modalImage.alt = `${currentProjectData.title} - Image ${index + 1}`;
+        if (elements.modalElements.image) {
+            elements.modalElements.image.src = currentProjectImages[index];
+            elements.modalElements.image.alt = `${currentProjectData.title} - Image ${index + 1}`;
         }
 
-        if (modalImageCounter) {
-            modalImageCounter.textContent = `${index + 1} / ${currentProjectImages.length}`;
+        if (elements.modalElements.imageCounter) {
+            elements.modalElements.imageCounter.textContent = `${index + 1} / ${currentProjectImages.length}`;
         }
 
         // Update thumbnail active state
-        const thumbnails = modalThumbnails?.querySelectorAll('button');
+        const thumbnails = elements.modalElements.thumbnails?.querySelectorAll('button');
         thumbnails?.forEach((thumb, i) => {
             if (i === index) {
                 thumb.classList.add('border-primary-500');
@@ -645,9 +657,9 @@ document.addEventListener('DOMContentLoaded', function() {
      * @param {Array} features - Array of feature strings.
      */
     function createFeatureList(features) {
-        if (!modalFeatures || !features) return;
+        if (!elements.modalElements.features || !features) return;
 
-        modalFeatures.innerHTML = '';
+        elements.modalElements.features.innerHTML = '';
         features.forEach(feature => {
             const featureElement = document.createElement('div');
             featureElement.className = 'flex items-center space-x-3 text-gray-300';
@@ -655,7 +667,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
                 <span class="text-sm">${feature}</span>
             `;
-            modalFeatures.appendChild(featureElement);
+            elements.modalElements.features.appendChild(featureElement);
         });
     }
 
@@ -664,47 +676,62 @@ document.addEventListener('DOMContentLoaded', function() {
      * @param {Array} tags - Array of tag strings.
      */
     function createTagList(tags) {
-        if (!modalTags || !tags) return;
+        if (!elements.modalElements.tags || !tags) return;
 
-        modalTags.innerHTML = '';
+        elements.modalElements.tags.innerHTML = '';
         tags.forEach(tag => {
             const tagElement = document.createElement('span');
             tagElement.className = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-700/50 text-gray-300 border border-gray-600/50';
             tagElement.textContent = `#${tag}`;
-            modalTags.appendChild(tagElement);
+            elements.modalElements.tags.appendChild(tagElement);
         });
     }
 
     /**
-     * Initializes all portfolio functionality.
+     * Optimized portfolio initialization with error handling
      */
-    function initializePortfolio() {
-        // Cache project data for performance
-        projectsData = Array.from(portfolioItems);
+    function initializeOptimizedPortfolio() {
+        try {
+            // Cache project data efficiently
+            projectsData = Array.from(elements.portfolioItems);
 
-        // Initialize all components
-        initializeFilterButtons();
-        initializeSearch();
-        initializeSorting();
-        initializeViewToggle();
-        initializeResetFilters();
-        initializeModalEventListeners();
+            // Batch initialize all components
+            const initFunctions = [
+                initializeFilterButtons,
+                initializeSearch,
+                initializeSorting,
+                initializeViewToggle,
+                initializeResetFilters,
+                initializeModalEventListeners
+            ];
 
-        // Set initial view state
-        if (gridViewBtn && listViewBtn) {
-            styleViewToggle(gridViewBtn, true);
-            styleViewToggle(listViewBtn, false);
-        }
+            initFunctions.forEach(fn => {
+                try {
+                    fn();
+                } catch (error) {
+                    console.warn('Portfolio initialization warning:', error);
+                }
+            });
 
-        // Initial display
-        updatePortfolioDisplay();
+            // Set initial view state with null checks
+            if (elements.gridViewBtn && elements.listViewBtn) {
+                styleViewToggle(elements.gridViewBtn, true);
+                styleViewToggle(elements.listViewBtn, false);
+            }
 
-        // Add AOS refresh for dynamic content
-        if (typeof AOS !== 'undefined') {
-            AOS.refresh();
+            // Initial display update
+            updatePortfolioDisplay();
+
+            // Enhanced AOS integration for Bento Grid
+            if (typeof AOS !== 'undefined' && CONFIG.BENTO_GRID_ENABLED) {
+                setTimeout(() => AOS.refresh(), 200);
+            }
+
+        } catch (error) {
+            console.error('Portfolio initialization failed:', error);
         }
     }
 
-    // Initialize when DOM is ready
-    initializePortfolio();
+    // Initialize with performance optimization
+    initializeOptimizedPortfolio();
 });
