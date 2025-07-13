@@ -1,11 +1,14 @@
 <?php
 
 /**
- * Application Entry Point
+ * Vercel Serverless Function Entry Point
  */
 
+// Define the base path for Vercel
+define('BASE_PATH', dirname(__DIR__));
+
 // Load configuration
-require_once __DIR__ . '/../config/app.php';
+require_once BASE_PATH . '/config/app.php';
 
 // Load helpers
 require_once APP_DIR . '/helpers/view-helper.php';
@@ -25,7 +28,7 @@ $routes = require_once ROOT_DIR . '/routes/web.php';
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 // Remove base path for local development
-if (strpos($_SERVER['HTTP_HOST'] ?? '', 'localhost') !== false ||
+if (strpos($_SERVER['HTTP_HOST'] ?? '', 'localhost') !== false || 
     strpos($_SERVER['HTTP_HOST'] ?? '', '127.0.0.1') !== false) {
     $uri = str_replace('/arsitek', '', $uri);
 }

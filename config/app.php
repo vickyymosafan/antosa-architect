@@ -7,7 +7,24 @@
 // Site information
 define('SITE_NAME', 'Antosa Architect');
 define('SITE_DESCRIPTION', 'Mewujudkan Desain Impian Anda');
-define('SITE_URL', 'http://localhost/arsitek');
+
+// Dynamic site URL based on environment
+$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+
+// Check if running on Railway
+if (isset($_ENV['RAILWAY_ENVIRONMENT']) || isset($_SERVER['RAILWAY_ENVIRONMENT'])) {
+    // Railway automatically provides HTTPS
+    $siteUrl = 'https://' . $host;
+} elseif (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false) {
+    // Local development
+    $siteUrl = 'http://localhost/arsitek';
+} else {
+    // Default
+    $siteUrl = $protocol . '://' . $host;
+}
+
+define('SITE_URL', $siteUrl);
 
 // Directory paths
 define('ROOT_DIR', dirname(__DIR__));
