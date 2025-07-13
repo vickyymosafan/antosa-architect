@@ -363,7 +363,7 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 max-w-7xl mx-auto auto-rows-fr" role="list" aria-label="Layanan arsitektur yang tersedia">
 
                 <?php
-                // Improved Bento Grid layout configuration for better consistency
+                // Optimized Bento Grid layout configuration with consistent spacing
                 $bentoConfig = [
                     ['cols' => 'md:col-span-2 lg:col-span-2', 'rows' => 'md:row-span-2', 'featured' => true],
                     ['cols' => 'md:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false],
@@ -371,14 +371,27 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
                     ['cols' => 'md:col-span-2 lg:col-span-2', 'rows' => 'md:row-span-1', 'featured' => false]
                 ];
 
-                // Base card classes to avoid repetition
+                // Consolidated card classes for consistency and reduced redundancy
                 $baseCardClasses = 'group relative h-full bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.01]';
+
+                // Spacing constants for consistency
+                $iconSizes = [
+                    'featured' => 'w-18 h-18 lg:w-20 lg:h-20 mb-2',
+                    'normal' => 'w-16 h-16 mb-3'
+                ];
+
+                $textSizes = [
+                    'featured' => ['title' => 'text-xl lg:text-2xl mb-2', 'desc' => 'text-base lg:text-lg leading-relaxed max-w-md mx-auto mb-4'],
+                    'normal' => ['title' => 'text-lg lg:text-xl mb-2', 'desc' => 'text-sm lg:text-base leading-relaxed mb-3']
+                ];
                 ?>
 
                 <?php foreach ($services['services'] as $index => $service): ?>
                     <?php
                     $config = $bentoConfig[$index];
                     $isFeatured = $config['featured'];
+                    $currentIconSize = $iconSizes[$isFeatured ? 'featured' : 'normal'];
+                    $currentTextSizes = $textSizes[$isFeatured ? 'featured' : 'normal'];
                     ?>
 
                     <div class="<?= $config['cols'] ?> <?= $config['rows'] ?>" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>" role="listitem">
@@ -396,49 +409,62 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
                             <!-- Gradient Overlay -->
                             <div class="absolute inset-0 bg-gradient-to-br from-primary-500/[0.02] via-transparent to-<?= $service['color'] ?>-500/[0.01]"></div>
 
-                            <!-- Optimized Content Container with Consistent Layout -->
-                            <div class="relative z-10 p-6 lg:p-8 h-full flex flex-col justify-between">
+                            <!-- Optimized Content Container with Improved Spacing -->
+                            <div class="relative z-10 p-6 lg:p-8 h-full flex flex-col">
+                                <?php
+                                // Spacing improvements:
+                                // - Removed justify-between for better control
+                                // - Reduced icon margins (mb-4 → mb-2/mb-3)
+                                // - Centered features grid with max-width
+                                // - Used mt-auto for button positioning
+                                ?>
 
                                 <!-- Icon Container with Consistent Spacing -->
-                                <div class="<?= $isFeatured ? 'w-18 h-18 lg:w-20 lg:h-20 mb-4' : 'w-16 h-16 mb-4' ?> relative mx-auto transition-transform duration-300 group-hover:scale-110">
+                                <div class="<?= $currentIconSize ?> relative mx-auto transition-transform duration-300 group-hover:scale-110">
                                     <div class="w-full h-full bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/20">
                                         <i class="fas fa-<?= $service['icon'] ?> <?= $isFeatured ? 'text-xl lg:text-2xl' : 'text-lg lg:text-xl' ?> text-white"></i>
                                     </div>
                                 </div>
 
-                                <!-- Content Section with Consistent Spacing -->
-                                <div class="text-center flex-grow flex flex-col justify-center">
-                                    <h3 id="service-title-<?= $index ?>" class="font-sans font-bold <?= $isFeatured ? 'text-xl lg:text-2xl mb-3' : 'text-lg lg:text-xl mb-3' ?> text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight">
+                                <!-- Content Section with Improved Spacing -->
+                                <div class="text-center flex-1 flex flex-col"><?php // Changed from flex-grow justify-center to flex-1 for better control ?>
+                                    <h3 id="service-title-<?= $index ?>" class="font-sans font-bold <?= $currentTextSizes['title'] ?> text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight">
                                         <?= $service['title'] ?>
                                     </h3>
-                                    <p class="font-sans text-gray-300 <?= $isFeatured ? 'text-base lg:text-lg leading-relaxed max-w-md mx-auto mb-3' : 'text-sm lg:text-base leading-relaxed mb-3' ?>">
+                                    <p class="font-sans text-gray-300 <?= $currentTextSizes['desc'] ?>">
                                         <?= $service['description'] ?>
                                     </p>
 
-                                    <!-- Features for All Cards - Improved Consistency -->
+                                    <!-- Features for All Cards - Centered and Properly Spaced -->
                                     <?php if (!empty($service['features'])): ?>
-                                        <div class="mt-2 <?= $isFeatured ? 'grid grid-cols-2 gap-2' : 'space-y-1' ?> text-xs <?= $isFeatured ? 'text-gray-400' : 'text-gray-500' ?>">
-                                            <?php foreach ($service['features'] as $index => $feature): ?>
-                                                <?php if ($isFeatured): ?>
-                                                    <div class="flex items-center space-x-2">
-                                                        <i class="fas fa-check text-primary-400 text-xs"></i>
-                                                        <span><?= $feature ?></span>
-                                                    </div>
-                                                <?php else: ?>
-                                                    <?php if ($index < 2): // Show only first 2 features for non-featured cards ?>
+                                        <div class="<?= $isFeatured ? 'mt-1 mb-4' : 'mt-2 mb-3' ?>">
+                                            <?php if ($isFeatured): ?>
+                                                <!-- Featured card: 2x2 grid centered -->
+                                                <div class="grid grid-cols-2 gap-x-4 gap-y-2 max-w-sm mx-auto text-xs text-gray-400">
+                                                    <?php foreach ($service['features'] as $feature): ?>
+                                                        <div class="flex items-center justify-start space-x-2">
+                                                            <i class="fas fa-check text-primary-400 text-xs flex-shrink-0"></i>
+                                                            <span class="text-left"><?= $feature ?></span>
+                                                        </div>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            <?php else: ?>
+                                                <!-- Non-featured cards: vertical centered -->
+                                                <div class="space-y-1 text-xs text-gray-500">
+                                                    <?php foreach (array_slice($service['features'], 0, 2) as $feature): ?>
                                                         <div class="flex items-center justify-center space-x-1">
                                                             <i class="fas fa-check text-primary-400 text-xs"></i>
                                                             <span><?= $feature ?></span>
                                                         </div>
-                                                    <?php endif; ?>
-                                                <?php endif; ?>
-                                            <?php endforeach; ?>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
                                     <?php endif; ?>
                                 </div>
 
-                                <!-- Consistent CTA Button Spacing -->
-                                <div class="mt-4 pt-3 border-t border-gray-700/30">
+                                <!-- CTA Button with Reduced Spacing -->
+                                <div class="mt-auto pt-4 border-t border-gray-700/30"><?php // Changed to mt-auto for better positioning and reduced pt ?>
                                     <a href="#contact" class="group/cta w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold <?= $isFeatured ? 'py-3 px-6 text-base' : 'py-2.5 px-5 text-sm' ?> rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-primary-500/30 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-gray-900" aria-label="Konsultasi untuk <?= $service['title'] ?>">
                                         <span>Konsultasi</span>
                                         <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1" aria-hidden="true"></i>
