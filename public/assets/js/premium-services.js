@@ -14,19 +14,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const serviceCards = servicesSection.querySelectorAll('.group');
 
         serviceCards.forEach((card, index) => {
-            const isFeatured = card.querySelector('[class*="min-h-[400px]"]') !== null;
-            const iconContainer = card.querySelector('[class*="w-16"], [class*="w-20"], [class*="w-24"]');
+            // Get card elements for consistent animations
+            const iconContainer = card.querySelector('[class*="w-16"], [class*="w-18"], [class*="w-20"]');
             const gradientOverlay = card.querySelector('[class*="bg-gradient-to-br"]');
 
-            // Optimized hover effects with cached elements
+            // Consistent hover effects for all cards
             card.addEventListener('mouseenter', () => {
                 if (iconContainer) {
-                    iconContainer.style.transform = isFeatured ? 'scale(1.05)' : 'scale(1.03)';
+                    iconContainer.style.transform = 'scale(1.1)';
                     iconContainer.style.transition = 'transform 0.3s ease';
                 }
 
-                if (gradientOverlay && isFeatured) {
-                    gradientOverlay.style.opacity = '0.05';
+                // Apply subtle gradient effect to all cards
+                if (gradientOverlay) {
+                    gradientOverlay.style.opacity = '0.04';
                     gradientOverlay.style.transition = 'opacity 0.3s ease';
                 }
             });
@@ -36,10 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (gradientOverlay) gradientOverlay.style.opacity = '';
             });
 
-            // Enhanced staggered entrance timing
+            // Optimized staggered entrance timing
             const aosTrigger = card.closest('[data-aos]');
             if (aosTrigger) {
-                aosTrigger.setAttribute('data-aos-delay', 100 + (index * 150));
+                aosTrigger.setAttribute('data-aos-delay', 100 + (index * 120));
             }
         });
     }
