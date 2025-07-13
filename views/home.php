@@ -11,18 +11,11 @@ ob_start();
 ?>
 
 <?php
-$hero_slides = [
-    [
-        'image' => 'assets/images/1.webp',
-        'alt' => 'Desain arsitektur modern villa dengan pemandangan alam',
-        'title' => 'Villa Modern Minimalis'
-    ],
-    [
-        'image' => 'assets/images/2.webp',
-        'alt' => 'Interior ruang tamu kontemporer dengan pencahayaan alami',
-        'title' => 'Interior Kontemporer'
-    ],
-];
+// Use hero data from controller
+$hero_slides = $hero['slides'] ?? [];
+$hero_title = $hero['title'] ?? 'Bangun Rumah Impian Anda';
+$hero_subtitle = $hero['subtitle'] ?? 'Desain modern, konstruksi berkualitas, dan solusi berkelanjutan untuk mewujudkan hunian ideal sesuai gaya hidup Anda.';
+$hero_cta_buttons = $hero['cta_buttons'] ?? [];
 ?>
 <!-- Hero Section - Compact -->
 <section id="home" class="relative min-h-[85vh] flex flex-col text-white overflow-hidden scroll-mt-20 bg-gradient-to-br from-gray-900 via-black to-gray-800" role="banner" aria-label="Hero section">
@@ -64,13 +57,18 @@ $hero_slides = [
         <main class="container mx-auto px-4 sm:px-6 lg:px-8 flex-grow flex flex-col justify-center text-center py-8 md:py-10 lg:py-12">
             <!-- Main Heading - Reduced sizes with Staggered Animation -->
             <h1 class="hero-title font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] mb-4 lg:mb-6 text-shadow-lg" data-aos="fade-up" data-aos-duration="800">
-                <span class="hero-title-line-1 block" data-aos="fade-up" data-aos-delay="200">Bangun Rumah</span>
-                <span class="hero-title-line-2 block text-primary-400 drop-shadow-lg" data-aos="fade-up" data-aos-delay="400">Impian Anda</span>
+                <?php
+                $title_parts = explode(' ', $hero_title);
+                $first_part = implode(' ', array_slice($title_parts, 0, 2));
+                $second_part = implode(' ', array_slice($title_parts, 2));
+                ?>
+                <span class="hero-title-line-1 block" data-aos="fade-up" data-aos-delay="200"><?= htmlspecialchars($first_part) ?></span>
+                <span class="hero-title-line-2 block text-primary-400 drop-shadow-lg" data-aos="fade-up" data-aos-delay="400"><?= htmlspecialchars($second_part) ?></span>
             </h1>
 
             <!-- Subtitle - Reduced sizes with Delayed Animation -->
             <p class="hero-subtitle text-base sm:text-lg md:text-xl lg:text-2xl font-sans font-light text-gray-200 max-w-3xl mx-auto mb-6 lg:mb-8 text-shadow leading-relaxed" data-aos="fade-up" data-aos-delay="600">
-                <?= htmlspecialchars($hero['subtitle'] ?? 'Desain modern, konstruksi berkualitas, dan solusi berkelanjutan untuk mewujudkan hunian ideal sesuai gaya hidup Anda.') ?>
+                <?= htmlspecialchars($hero_subtitle) ?>
             </p>
 
             <!-- CTA Buttons - Compact with Staggered Animation -->
@@ -868,7 +866,7 @@ $hero_slides = [
                         <h3 class="font-sans text-xl font-bold text-white">Kirim Pesan</h3>
                     </div>
 
-                    <form action="<?= url('/send-inquiry') ?>" method="POST" class="space-y-4">
+                    <form action="<?= url('/api/send-inquiry') ?>" method="POST" class="space-y-4" id="contact-form-element">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label for="name" class="font-sans font-medium text-xs text-gray-300 mb-1.5 block uppercase tracking-wide">Nama Lengkap</label>

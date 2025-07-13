@@ -229,6 +229,7 @@
     <script src="/assets/js/hero-slider.js" defer></script>
     <script src="/assets/js/home-portfolio.js" defer></script>
     <script src="/assets/js/faq.js" defer></script>
+    <script src="/assets/js/contact-form.js" defer></script>
 
     <!-- Initialize AOS -->
     <script>
