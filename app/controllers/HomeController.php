@@ -83,49 +83,190 @@ class HomeController
         
         $portfolioData = [
             'title' => 'Portofolio Proyek',
-            'subtitle' => 'Portofolio proyek yang telah kami kerjakan',
+            'subtitle' => 'Koleksi karya terbaik kami yang menginspirasi dan memukau',
+            'categories' => [
+                'all' => 'Semua Proyek',
+                'Residensial' => 'Residensial',
+                'Komersial' => 'Komersial',
+                'Hospitality' => 'Hospitality',
+                'Institutional' => 'Institusional'
+            ],
             'projects' => [
                 [
+                    'id' => 'villa-pesisir',
                     'title' => 'Villa Pesisir',
                     'category' => 'Residensial',
                     'location' => 'Bali',
                     'year' => '2023',
-                    'description' => 'Villa mewah dengan pemandangan laut yang menakjubkan. Desain modern yang menyatu dengan alam.',
+                    'status' => 'completed',
+                    'featured' => true,
+                    'size' => 'large',
+                    'area' => '450 m²',
+                    'client' => 'PT Pesisir Indah',
+                    'budget_range' => '2-5M',
+                    'duration' => '8 bulan',
+                    'description' => 'Villa mewah dengan pemandangan laut yang menakjubkan. Desain modern yang menyatu dengan alam, menghadirkan keseimbangan sempurna antara kemewahan dan keberlanjutan.',
+                    'detailed_description' => 'Proyek villa pesisir ini menggabungkan arsitektur modern dengan elemen tradisional Bali. Struktur bangunan dirancang untuk memaksimalkan pemandangan laut sambil tetap memberikan privasi. Material lokal seperti batu alam dan kayu jati dipadukan dengan elemen kontemporer seperti kaca floor-to-ceiling dan steel frame.',
+                    'tags' => ['modern', 'sustainable', 'luxury', 'oceanview', 'tropical'],
+                    'images' => [
+                        'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop'
+                    ],
+                    'features' => [
+                        'Infinity Pool dengan Ocean View',
+                        'Smart Home System',
+                        'Solar Panel Integration',
+                        'Natural Ventilation System',
+                        'Private Beach Access'
+                    ],
+                    'awards' => ['Best Residential Design 2023', 'Sustainable Architecture Award']
                 ],
                 [
+                    'id' => 'kantor-greenspace',
                     'title' => 'Kantor Modern Greenspace',
                     'category' => 'Komersial',
                     'location' => 'Jakarta',
                     'year' => '2022',
+                    'status' => 'completed',
+                    'featured' => true,
+                    'size' => 'medium',
+                    'area' => '1,200 m²',
+                    'client' => 'PT Teknologi Hijau',
+                    'budget_range' => '5-10M',
+                    'duration' => '12 bulan',
                     'description' => 'Ruang kantor dengan konsep hijau yang mengutamakan produktivitas dan kesejahteraan karyawan.',
+                    'detailed_description' => 'Kantor modern dengan konsep biophilic design yang mengintegrasikan elemen alam ke dalam ruang kerja. Desain ini terbukti meningkatkan produktivitas karyawan hingga 30% dan mengurangi tingkat stress. Sistem HVAC yang efisien dan pencahayaan alami yang optimal menciptakan lingkungan kerja yang sehat.',
+                    'tags' => ['biophilic', 'productive', 'sustainable', 'modern', 'wellness'],
+                    'images' => [
+                        'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
+                    ],
+                    'features' => [
+                        'Vertical Garden System',
+                        'Natural Light Optimization',
+                        'Flexible Workspace Layout',
+                        'Air Purification System',
+                        'Rooftop Garden'
+                    ],
+                    'awards' => ['Green Building Certification', 'Workplace Innovation Award']
                 ],
                 [
+                    'id' => 'apartment-skyview',
                     'title' => 'Apartment Sky View',
                     'category' => 'Residensial',
                     'location' => 'Surabaya',
                     'year' => '2021',
+                    'status' => 'completed',
+                    'featured' => false,
+                    'size' => 'small',
+                    'area' => '85 m²',
+                    'client' => 'Private Client',
+                    'budget_range' => '500K-1M',
+                    'duration' => '4 bulan',
                     'description' => 'Apartemen premium dengan pemandangan kota yang memukau. Desain interior yang elegan dan fungsional.',
+                    'detailed_description' => 'Transformasi apartemen kompak menjadi ruang hidup yang maksimal dengan desain interior yang cerdas. Setiap sudut dioptimalkan untuk fungsi ganda, menciptakan ilusi ruang yang lebih luas. Pemilihan warna dan material yang tepat menghadirkan suasana mewah dalam ruang terbatas.',
+                    'tags' => ['compact', 'elegant', 'functional', 'cityview', 'luxury'],
+                    'images' => [
+                        'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1560449752-2dd9b55c3d0e?w=800&h=600&fit=crop'
+                    ],
+                    'features' => [
+                        'Space-Saving Furniture',
+                        'Floor-to-Ceiling Windows',
+                        'Built-in Storage Solutions',
+                        'Smart Lighting System',
+                        'Panoramic City View'
+                    ]
                 ],
                 [
+                    'id' => 'restoran-archipelago',
                     'title' => 'Restoran Archipelago',
                     'category' => 'Komersial',
                     'location' => 'Yogyakarta',
                     'year' => '2022',
+                    'status' => 'completed',
+                    'featured' => true,
+                    'size' => 'medium',
+                    'area' => '300 m²',
+                    'client' => 'Archipelago Group',
+                    'budget_range' => '1-2M',
+                    'duration' => '6 bulan',
                     'description' => 'Restoran dengan desain yang terinspirasi keindahan kepulauan Indonesia. Atmosfer yang nyaman dan instagramable.',
+                    'detailed_description' => 'Konsep desain yang menggabungkan elemen tradisional Nusantara dengan sentuhan kontemporer. Setiap area dining memiliki karakteristik pulau yang berbeda, menciptakan journey kuliner yang unik. Material bambu, rotan, dan batu alam dipadukan dengan teknologi modern untuk pengalaman dining yang tak terlupakan.',
+                    'tags' => ['traditional', 'instagramable', 'cultural', 'dining', 'atmospheric'],
+                    'images' => [
+                        'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&h=600&fit=crop'
+                    ],
+                    'features' => [
+                        'Themed Dining Areas',
+                        'Traditional Material Integration',
+                        'Instagram-worthy Spots',
+                        'Acoustic Design',
+                        'Cultural Art Installation'
+                    ],
+                    'awards' => ['Best Restaurant Design 2022']
                 ],
                 [
+                    'id' => 'rumah-minimalis',
                     'title' => 'Rumah Minimalis Sejuk',
                     'category' => 'Residensial',
                     'location' => 'Bandung',
                     'year' => '2023',
+                    'status' => 'completed',
+                    'featured' => false,
+                    'size' => 'medium',
+                    'area' => '180 m²',
+                    'client' => 'Keluarga Santoso',
+                    'budget_range' => '1-2M',
+                    'duration' => '5 bulan',
                     'description' => 'Rumah dengan desain minimalis modern yang memberikan kesejukan dan kenyamanan. Maksimal dalam fungsi, minimal dalam dekorasi.',
+                    'detailed_description' => 'Filosofi "less is more" diterapkan secara konsisten dalam setiap elemen desain. Cross ventilation yang optimal dan penggunaan material dengan thermal mass yang baik menciptakan suhu ruang yang sejuk secara alami. Desain landscape yang terintegrasi menambah kesejukan dan keindahan visual.',
+                    'tags' => ['minimalist', 'functional', 'cool', 'efficient', 'family'],
+                    'images' => [
+                        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop'
+                    ],
+                    'features' => [
+                        'Cross Ventilation System',
+                        'Minimalist Interior Design',
+                        'Energy Efficient Lighting',
+                        'Integrated Landscape',
+                        'Multi-functional Spaces'
+                    ]
                 ],
                 [
+                    'id' => 'butik-hotel-cerita',
                     'title' => 'Butik Hotel Cerita',
                     'category' => 'Hospitality',
                     'location' => 'Lombok',
                     'year' => '2022',
+                    'status' => 'completed',
+                    'featured' => true,
+                    'size' => 'large',
+                    'area' => '800 m²',
+                    'client' => 'Cerita Hospitality',
+                    'budget_range' => '3-5M',
+                    'duration' => '10 bulan',
                     'description' => 'Butik hotel yang menawarkan pengalaman menginap unik dengan cerita lokal. Setiap kamar memiliki tema berbeda.',
+                    'detailed_description' => 'Setiap ruang dalam hotel ini menceritakan kisah budaya lokal Lombok. Dari lobby yang terinspirasi tradisi tenun Sasak hingga kamar-kamar yang mengangkat legenda lokal. Desain yang autentik namun tetap memenuhi standar kenyamanan modern, menciptakan pengalaman menginap yang berkesan.',
+                    'tags' => ['boutique', 'cultural', 'storytelling', 'unique', 'hospitality'],
+                    'images' => [
+                        'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
+                        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop'
+                    ],
+                    'features' => [
+                        'Themed Guest Rooms',
+                        'Cultural Art Integration',
+                        'Local Material Usage',
+                        'Storytelling Architecture',
+                        'Authentic Experience Design'
+                    ],
+                    'awards' => ['Best Boutique Hotel Design 2022', 'Cultural Heritage Award']
                 ]
             ]
         ];

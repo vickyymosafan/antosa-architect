@@ -439,92 +439,272 @@ $hero_slides = [
 </section>
 
 <!-- Portfolio Section -->
-<section id="portfolio" class="py-20 bg-black scroll-mt-20">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<section id="portfolio" class="relative py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900 scroll-mt-20 overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-primary-500/30 to-emerald-500/30 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Enhanced Header -->
         <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
-            <h2 class="font-sans text-3xl sm:text-4xl font-black text-secondary-800 dark:text-dark-100 mb-4"><?= $portfolio['title'] ?></h2>
-            <div class="w-24 h-1 bg-primary-500 mx-auto mb-8"></div>
-            <p class="font-sans font-normal max-w-3xl mx-auto text-secondary-600 dark:text-dark-300 text-lg"><?= $portfolio['subtitle'] ?></p>
+            <div class="inline-flex items-center space-x-4 mb-6">
+                <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+                <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Portfolio</span>
+                <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+            </div>
+            <h2 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent mb-6">
+                <?= $portfolio['title'] ?>
+            </h2>
+            <p class="font-sans font-normal max-w-3xl mx-auto text-gray-300 text-lg lg:text-xl leading-relaxed">
+                <?= $portfolio['subtitle'] ?>
+            </p>
         </div>
-        
-        <!-- Portfolio Filter -->
-        <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-            <button class="filter-btn active font-sans py-3 px-8 rounded-full bg-primary-500 text-white font-medium transition-all shadow-md hover:shadow-lg" data-filter="all">
-                <i class="fas fa-border-all mr-2"></i> Semua Proyek
-            </button>
-            <button class="filter-btn font-sans py-3 px-8 rounded-full bg-white dark:bg-dark-900 dark:border dark:border-dark-700 text-secondary-700 dark:text-dark-300 font-medium transition-all shadow-md hover:shadow-lg hover:bg-primary-50 dark:hover:bg-dark-700 dark:hover:border-dark-600" data-filter="Residensial">
-                <i class="fas fa-home mr-2"></i> Residensial
-            </button>
-            <button class="filter-btn font-sans py-3 px-8 rounded-full bg-white dark:bg-dark-900 dark:border dark:border-dark-700 text-secondary-700 dark:text-dark-300 font-medium transition-all shadow-md hover:shadow-lg hover:bg-primary-50 dark:hover:bg-dark-700 dark:hover:border-dark-600" data-filter="Komersial">
-                <i class="fas fa-building mr-2"></i> Komersial
-            </button>
-            <button class="filter-btn font-sans py-3 px-8 rounded-full bg-white dark:bg-dark-900 dark:border dark:border-dark-700 text-secondary-700 dark:text-dark-300 font-medium transition-all shadow-md hover:shadow-lg hover:bg-primary-50 dark:hover:bg-dark-700 dark:hover:border-dark-600" data-filter="Hospitality">
-                <i class="fas fa-hotel mr-2"></i> Hospitality
-            </button>
-        </div>
-        
-        <!-- Portfolio Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
-            <?php foreach ($portfolio['projects'] as $index => $project): ?>
-            <div class="portfolio-item group overflow-hidden rounded-lg shadow-md bg-dark-900"
-                 data-category="<?= $project['category'] ?>"
-                 data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?= 100 * ($index + 1) ?>">
-                <div class="relative overflow-hidden">
-                    <!-- Project images from Unsplash that match the project type -->
-                    <div class="h-64 bg-secondary-200 dark:bg-dark-800 overflow-hidden">
+
+        <!-- Advanced Filter & Search System -->
+        <div class="mb-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+            <!-- Search Bar -->
+            <div class="max-w-md mx-auto mb-8">
+                <div class="relative">
+                    <input type="text"
+                           id="portfolio-search"
+                           placeholder="Cari proyek..."
+                           class="w-full bg-gray-800/50 border border-gray-700 rounded-2xl py-4 px-6 pl-12 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent backdrop-blur-sm transition-all duration-300">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <?php foreach ($portfolio['categories'] as $key => $label): ?>
+                <button class="filter-btn <?= $key === 'all' ? 'active' : '' ?> group relative overflow-hidden font-sans py-3 px-6 rounded-2xl font-medium transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500/50"
+                        data-filter="<?= $key ?>">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 bg-gray-800/80 backdrop-blur-sm"></div>
+                    <span class="relative z-10 flex items-center space-x-2 text-gray-300 group-hover:text-white transition-colors duration-300">
                         <?php
-                        // Define specific image URLs based on project category
-                        $imageUrls = [
-                            'Residensial' => [
-                                'Villa Pesisir' => 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
-                                'Apartment Sky View' => 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-                                'Rumah Minimalis Sejuk' => 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
-                            ],
-                            'Komersial' => [
-                                'Kantor Modern Greenspace' => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-                                'Restoran Archipelago' => 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
-                            ],
-                            'Hospitality' => [
-                                'Butik Hotel Cerita' => 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
-                            ]
+                        $icons = [
+                            'all' => 'fas fa-th-large',
+                            'Residensial' => 'fas fa-home',
+                            'Komersial' => 'fas fa-building',
+                            'Hospitality' => 'fas fa-hotel',
+                            'Institutional' => 'fas fa-university'
                         ];
-                        
-                        // Get image URL for current project
-                        $imageUrl = $imageUrls[$project['category']][$project['title']] ?? 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80';
                         ?>
-                        <img src="<?= $imageUrl ?>" 
-                             data-src="<?= $imageUrl ?>" 
-                             alt="<?= $project['title'] ?>" 
-                             class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110">
-                        
-                        <!-- Overlay with quick view -->
-                        <div class="absolute inset-0 bg-secondary-900 bg-opacity-0 group-hover:bg-opacity-75 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
-                            <button class="bg-white dark:bg-dark-800 text-secondary-800 dark:text-dark-100 hover:bg-primary-500 dark:hover:bg-primary-600 hover:text-white dark:hover:text-gray-50 p-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300" 
-                                    onclick="openProjectModal('<?= htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8') ?>', '<?= $imageUrl ?>', '<?= htmlspecialchars($project['description'] ?? '', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['category'], ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['client'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['year'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['location'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['area'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>')">
-                                <i class="fas fa-search-plus"></i>
+                        <i class="<?= $icons[$key] ?? 'fas fa-folder' ?>"></i>
+                        <span><?= $label ?></span>
+                    </span>
+                </button>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- View Options & Sort -->
+            <div class="flex flex-wrap justify-between items-center gap-4">
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-400 text-sm font-medium">Tampilan:</span>
+                    <div class="flex bg-gray-800/50 rounded-xl p-1">
+                        <button id="grid-view" class="view-toggle active px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300">
+                            <i class="fas fa-th mr-2"></i>Grid
+                        </button>
+                        <button id="list-view" class="view-toggle px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300">
+                            <i class="fas fa-list mr-2"></i>List
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-400 text-sm font-medium">Urutkan:</span>
+                    <select id="sort-options" class="bg-gray-800/50 border border-gray-700 rounded-xl py-2 px-4 text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <option value="newest">Terbaru</option>
+                        <option value="oldest">Terlama</option>
+                        <option value="name">Nama A-Z</option>
+                        <option value="category">Kategori</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dynamic Portfolio Grid -->
+        <div id="portfolio-container" class="relative">
+            <!-- Grid View -->
+            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-auto">
+                <?php foreach ($portfolio['projects'] as $index => $project): ?>
+                <?php
+                    // Determine grid size based on featured status and size
+                    $gridClass = '';
+                    if ($project['featured'] && $project['size'] === 'large') {
+                        $gridClass = 'sm:col-span-2 sm:row-span-2';
+                    } elseif ($project['featured'] && $project['size'] === 'medium') {
+                        $gridClass = 'lg:col-span-2';
+                    }
+
+                    // Get first image from the project's images array
+                    $imageUrl = $project['images'][0] ?? 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80';
+
+                    // Generate tags string for data attribute
+                    $tagsString = implode(',', $project['tags'] ?? []);
+
+                    // Calculate AOS delay based on index
+                    $aosDelay = 100 + ($index * 50);
+                ?>
+                <div class="portfolio-item group <?= $gridClass ?> relative overflow-hidden rounded-2xl shadow-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-800 hover:border-primary-500/30 transition-all duration-500"
+                     data-category="<?= $project['category'] ?>"
+                     data-id="<?= $project['id'] ?>"
+                     data-year="<?= $project['year'] ?>"
+                     data-location="<?= $project['location'] ?>"
+                     data-tags="<?= $tagsString ?>"
+                     data-featured="<?= $project['featured'] ? 'true' : 'false' ?>"
+                     data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= $aosDelay ?>">
+
+                    <!-- Project Image with Gradient Overlay -->
+                    <div class="relative overflow-hidden <?= $project['featured'] && $project['size'] === 'large' ? 'h-96' : 'h-64' ?>">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10"></div>
+                        <img src="<?= $imageUrl ?>"
+                             alt="<?= $project['title'] ?>"
+                             class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:rotate-1">
+
+                        <!-- Hover Overlay with Actions -->
+                        <div class="absolute inset-0 bg-gradient-to-b from-primary-600/80 to-gray-900/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 z-20">
+                            <div class="flex flex-col items-center space-y-4 p-6 text-center">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 backdrop-blur-sm text-white">
+                                    <?= $project['category'] ?>
+                                </span>
+                                <h3 class="font-sans font-bold text-xl md:text-2xl text-white"><?= $project['title'] ?></h3>
+                                <p class="font-sans text-sm text-gray-200 line-clamp-3"><?= $project['description'] ?></p>
+                                <button onclick="openProjectModal('<?= $project['id'] ?>')"
+                                        class="mt-4 px-6 py-2 bg-white text-gray-900 rounded-full font-medium transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
+                                    <span>Lihat Detail</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Info -->
+                    <div class="p-6 relative z-10">
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <?php foreach (array_slice($project['tags'] ?? [], 0, 3) as $tag): ?>
+                            <span class="text-xs font-medium px-2 py-1 rounded-md bg-gray-700/50 text-gray-300">#<?= $tag ?></span>
+                            <?php endforeach; ?>
+                        </div>
+
+                        <h3 class="font-sans font-bold text-xl text-white group-hover:text-primary-400 transition-colors"><?= $project['title'] ?></h3>
+
+                        <div class="flex items-center space-x-4 mt-2 text-sm text-gray-400">
+                            <span class="flex items-center">
+                                <i class="fas fa-map-marker-alt mr-1 text-primary-500"></i> <?= $project['location'] ?>
+                            </span>
+                            <span class="flex items-center">
+                                <i class="fas fa-calendar mr-1 text-primary-500"></i> <?= $project['year'] ?>
+                            </span>
+                        </div>
+
+                        <p class="font-sans text-gray-300 mt-3 mb-4 line-clamp-2"><?= $project['description'] ?></p>
+
+                        <div class="flex justify-between items-center">
+                            <button onclick="openProjectModal('<?= $project['id'] ?>')"
+                                    class="text-primary-400 hover:text-primary-300 font-medium inline-flex items-center group">
+                                <span>Detail</span>
+                                <svg class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+
+                            <?php if ($project['featured']): ?>
+                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-primary-500/20 text-primary-400">
+                                <i class="fas fa-star mr-1"></i> Featured
+                            </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- List View (Hidden by Default) -->
+            <div id="portfolio-list" class="hidden space-y-4">
+                <?php foreach ($portfolio['projects'] as $index => $project): ?>
+                <div class="portfolio-item group relative overflow-hidden rounded-xl shadow-md bg-gray-800/80 border border-gray-700 hover:border-primary-500/30 transition-all duration-300"
+                     data-category="<?= $project['category'] ?>"
+                     data-id="<?= $project['id'] ?>"
+                     data-year="<?= $project['year'] ?>"
+                     data-location="<?= $project['location'] ?>"
+                     data-tags="<?= implode(',', $project['tags'] ?? []) ?>"
+                     data-featured="<?= $project['featured'] ? 'true' : 'false' ?>"
+                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?= 50 * ($index + 1) ?>">
+
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Image -->
+                        <div class="md:w-1/3 relative h-48 md:h-auto">
+                            <img src="<?= $project['images'][0] ?? '' ?>"
+                                 alt="<?= $project['title'] ?>"
+                                 class="w-full h-full object-cover">
+
+                            <!-- Category Badge -->
+                            <div class="absolute top-4 left-4 bg-primary-500/80 backdrop-blur-sm text-white text-xs font-medium py-1 px-3 rounded-full">
+                                <?= $project['category'] ?>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="md:w-2/3 p-6">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-sans font-bold text-xl text-white group-hover:text-primary-400 transition-colors"><?= $project['title'] ?></h3>
+
+                                <?php if ($project['featured']): ?>
+                                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-primary-500/20 text-primary-400">
+                                    <i class="fas fa-star mr-1"></i> Featured
+                                </span>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="flex items-center space-x-4 mt-2 text-sm text-gray-400">
+                                <span class="flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-1 text-primary-500"></i> <?= $project['location'] ?>
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="fas fa-calendar mr-1 text-primary-500"></i> <?= $project['year'] ?>
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="fas fa-ruler-combined mr-1 text-primary-500"></i> <?= $project['area'] ?>
+                                </span>
+                            </div>
+
+                            <p class="font-sans text-gray-300 mt-3 mb-4"><?= $project['description'] ?></p>
+
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <?php foreach (array_slice($project['tags'] ?? [], 0, 5) as $tag): ?>
+                                <span class="text-xs font-medium px-2 py-1 rounded-md bg-gray-700/50 text-gray-300">#<?= $tag ?></span>
+                                <?php endforeach; ?>
+                            </div>
+
+                            <button onclick="openProjectModal('<?= $project['id'] ?>')"
+                                    class="px-5 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
+                                <span>Lihat Detail</span>
+                                <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                     </div>
-                    
-                    <!-- Category Badge -->
-                    <div class="absolute top-4 right-4 bg-primary-500 text-white text-sm font-sans font-medium py-1 px-3 rounded-full shadow-md transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
-                        <?= $project['category'] ?>
-                    </div>
                 </div>
-                
-                <div class="p-6">
-                    <h3 class="font-sans font-bold text-xl mb-2 text-white group-hover:text-emerald-400 transition-colors"><?= $project['title'] ?></h3>
-                    <p class="font-sans font-normal text-gray-300 mb-4"><?= substr($project['description'] ?? '', 0, 100) ?>...</p>
-                    <a href="#" class="font-sans text-emerald-400 hover:text-emerald-300 font-medium inline-flex items-center group" 
-                       onclick="openProjectModal('<?= htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8') ?>', '<?= $imageUrl ?>', '<?= htmlspecialchars($project['description'] ?? '', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['category'], ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['client'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['year'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['location'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>', '<?= htmlspecialchars($project['area'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>'); return false;">
-                        Lihat Detail 
-                        <svg class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
+                <?php endforeach; ?>
             </div>
-            <?php endforeach; ?>
+
+            <!-- Empty State (Hidden by Default) -->
+            <div id="portfolio-empty" class="hidden py-20 text-center">
+                <div class="inline-block p-6 rounded-full bg-gray-800/50 mb-6">
+                    <i class="fas fa-search text-4xl text-gray-500"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">Tidak Ada Proyek Ditemukan</h3>
+                <p class="text-gray-400 max-w-md mx-auto">Coba ubah filter atau kata kunci pencarian Anda untuk menemukan proyek yang Anda cari.</p>
+                <button id="reset-filters" class="mt-6 px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium">
+                    Reset Filter
+                </button>
+            </div>
         </div>
     </div>
 </section>
@@ -803,55 +983,129 @@ $hero_slides = [
 
 <?php require_once 'layouts/partials/footer.php'; ?>
 
-<!-- Project Modal -->
-<div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-    <div class="absolute inset-0 bg-dark-950 bg-opacity-75 backdrop-blur-sm transition-opacity duration-300 opacity-0" id="modal-overlay"></div>
-    
-    <div class="relative bg-white dark:bg-dark-900 rounded-lg shadow-xl w-full max-w-2xl mx-auto transform transition-all duration-300 ease-out scale-90 opacity-0" id="modal-container">
+<!-- Enhanced Project Modal -->
+<div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-black/90 to-gray-900/95 backdrop-blur-md transition-opacity duration-500 opacity-0" id="modal-overlay"></div>
+
+    <div class="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-2xl w-full max-w-6xl mx-auto transform transition-all duration-500 ease-out scale-90 opacity-0 border border-gray-700/50" id="modal-container">
         <!-- Close button -->
-        <button id="modal-close" class="absolute top-4 right-4 text-secondary-500 dark:text-dark-400 hover:text-secondary-700 dark:hover:text-dark-100 text-2xl focus:outline-none z-10">
-            <i class="fas fa-times text-xl"></i>
+        <button id="modal-close" class="absolute top-6 right-6 w-12 h-12 bg-gray-800/80 hover:bg-red-500/80 text-gray-400 hover:text-white rounded-full flex items-center justify-center text-xl focus:outline-none focus:ring-2 focus:ring-primary-500 z-20 transition-all duration-300 backdrop-blur-sm">
+            <i class="fas fa-times"></i>
         </button>
-        
+
         <!-- Modal content -->
-        <div class="flex flex-col md:flex-row">
-            <!-- Project image -->
-            <div class="md:w-1/2">
-                <img id="modal-image" src="" alt="Project" class="w-full h-full object-cover">
+        <div class="flex flex-col lg:flex-row h-full max-h-[90vh] overflow-hidden">
+            <!-- Image Gallery Section -->
+            <div class="lg:w-3/5 relative">
+                <!-- Main Image -->
+                <div class="relative h-64 lg:h-full min-h-[400px] overflow-hidden rounded-l-3xl">
+                    <img id="modal-image" src="" alt="Project" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+
+                    <!-- Image Overlay with Navigation -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+                    <!-- Image Counter -->
+                    <div class="absolute top-6 left-6 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <span id="modal-image-counter">1 / 3</span>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <button id="modal-prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm opacity-0 hover:opacity-100">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="modal-next-image" class="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm opacity-0 hover:opacity-100">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Image Thumbnails -->
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2" id="modal-thumbnails">
+                    <!-- Thumbnails will be dynamically generated -->
+                </div>
             </div>
-            
-            <!-- Project details -->
-            <div class="md:w-1/2 p-8">
-                <span id="modal-category" class="text-sm text-primary-500 dark:text-primary-400 font-medium tracking-wider uppercase">x-3 py-1 rounded-full text-sm font-medium mb-4"></span>
-                <h3 id="modal-title" class="text-2xl font-bold text-secondary-800 dark:text-dark-100 mb-2"></h3>
-                <div id="modal-description" class="text-secondary-600 dark:text-dark-300 my-4 text-lg leading-relaxed">
-                
-                <div class="border-t border-secondary-200 pt-4 mt-4">
-                    <h4 class="font-bold text-lg mb-2">Detail Proyek</h4>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <p class="text-gray-500 text-sm">Klien</p>
-                            <p id="modal-client" class="font-medium">PT Sejahtera Abadi</p>
+
+            <!-- Project Details Section -->
+            <div class="lg:w-2/5 p-8 lg:p-10 overflow-y-auto">
+                <!-- Category Badge -->
+                <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary-500 to-emerald-500 text-white text-sm font-bold tracking-wider uppercase rounded-full mb-6">
+                    <i class="fas fa-tag mr-2"></i>
+                    <span id="modal-category">Category</span>
+                </div>
+
+                <!-- Project Title -->
+                <h3 id="modal-title" class="text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">Project Title</h3>
+
+                <!-- Project Meta Info -->
+                <div class="flex flex-wrap gap-4 mb-6">
+                    <div class="flex items-center text-gray-300">
+                        <i class="fas fa-map-marker-alt text-primary-400 mr-2"></i>
+                        <span id="modal-location" class="text-sm">Location</span>
+                    </div>
+                    <div class="flex items-center text-gray-300">
+                        <i class="fas fa-calendar text-primary-400 mr-2"></i>
+                        <span id="modal-year" class="text-sm">Year</span>
+                    </div>
+                    <div class="flex items-center text-gray-300">
+                        <i class="fas fa-ruler-combined text-primary-400 mr-2"></i>
+                        <span id="modal-area" class="text-sm">Area</span>
+                    </div>
+                </div>
+
+                <!-- Project Description -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold text-white mb-4">Deskripsi Proyek</h4>
+                    <p id="modal-description" class="text-gray-300 leading-relaxed text-base">Project description will be displayed here...</p>
+                </div>
+
+                <!-- Project Details Grid -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold text-white mb-4">Detail Proyek</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700/50">
+                            <p class="text-gray-400 text-sm mb-1">Klien</p>
+                            <p id="modal-client" class="font-semibold text-white">Client Name</p>
                         </div>
-                        <div>
-                            <p class="text-gray-500 text-sm">Tahun</p>
-                            <p id="modal-year" class="font-medium">2024</p>
+                        <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700/50">
+                            <p class="text-gray-400 text-sm mb-1">Status</p>
+                            <p id="modal-status" class="font-semibold text-emerald-400">Completed</p>
                         </div>
-                        <div>
-                            <p class="text-gray-500 text-sm">Lokasi</p>
-                            <p id="modal-location" class="font-medium">Jakarta Selatan</p>
+                        <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700/50">
+                            <p class="text-gray-400 text-sm mb-1">Durasi</p>
+                            <p id="modal-duration" class="font-semibold text-white">Duration</p>
                         </div>
-                        <div>
-                            <p class="text-gray-500 text-sm">Luas</p>
-                            <p id="modal-area" class="font-medium">450 m²</p>
+                        <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700/50">
+                            <p class="text-gray-400 text-sm mb-1">Budget Range</p>
+                            <p id="modal-budget" class="font-semibold text-white">Budget</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="mt-6">
-                    <a href="#contact" class="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2 px-6 rounded-md transition-colors inline-flex items-center" id="modal-contact-btn">
-                        <i class="fas fa-envelope mr-2"></i> Konsultasikan Proyek Serupa
+
+                <!-- Project Features -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold text-white mb-4">Fitur Utama</h4>
+                    <div id="modal-features" class="space-y-2">
+                        <!-- Features will be dynamically generated -->
+                    </div>
+                </div>
+
+                <!-- Project Tags -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold text-white mb-4">Tags</h4>
+                    <div id="modal-tags" class="flex flex-wrap gap-2">
+                        <!-- Tags will be dynamically generated -->
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="flex-1 bg-gradient-to-r from-primary-500 to-emerald-500 hover:from-primary-600 hover:to-emerald-600 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 shadow-lg" id="modal-contact-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span>Konsultasi Proyek</span>
                     </a>
+                    <button class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2" id="modal-share-btn">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Share</span>
+                    </button>
                 </div>
             </div>
         </div>
