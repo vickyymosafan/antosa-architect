@@ -152,7 +152,7 @@ class ContentModel
             'services' => [
                 [
                     'title' => 'Desain Arsitektur',
-                    'description' => 'Menciptakan desain bangunan yang indah, fungsional dan berkelanjutan sesuai visi Anda',
+                    'description' => 'Menciptakan desain bangunan yang indah, fungsional dan berkelanjutan sesuai visi Anda dengan pendekatan holistik dan inovatif',
                     'icon' => 'building',
                     'color' => 'blue',
                     'features' => [
@@ -188,7 +188,7 @@ class ContentModel
                 ],
                 [
                     'title' => 'Manajemen Konstruksi',
-                    'description' => 'Mengawasi proyek dari awal hingga selesai untuk memastikan kualitas dan efisiensi',
+                    'description' => 'Mengawasi proyek dari awal hingga selesai untuk memastikan kualitas dan efisiensi optimal',
                     'icon' => 'tasks',
                     'color' => 'amber',
                     'features' => [

@@ -357,46 +357,80 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
             </p>
         </div>
 
-        <!-- Consistent Services Grid -->
+        <!-- Bento Grid Services Layout -->
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
-                <?php foreach ($services['services'] as $index => $service): ?>
-                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>">
-                        <!-- Consistent Service Card Design -->
-                        <div class="group relative h-full min-h-[320px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-2 hover:scale-[1.02]">
+            <!-- Bento Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 max-w-7xl mx-auto auto-rows-fr">
 
-                            <!-- Consistent Background Elements -->
-                            <div class="absolute inset-0 opacity-[0.02]">
-                                <div class="absolute top-4 right-4 w-8 h-8 border border-primary-400/30 rotate-45 rounded-lg"></div>
-                                <div class="absolute bottom-4 left-4 w-6 h-6 bg-primary-400/10 rounded-full"></div>
+                <?php
+                // Optimized Bento Grid layout configuration
+                $bentoConfig = [
+                    ['cols' => 'md:col-span-2 lg:col-span-2', 'rows' => 'md:row-span-2', 'featured' => true],
+                    ['cols' => 'md:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false],
+                    ['cols' => 'md:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false],
+                    ['cols' => 'md:col-span-2 lg:col-span-2', 'rows' => 'md:row-span-1', 'featured' => false]
+                ];
+
+                // Base card classes to avoid repetition
+                $baseCardClasses = 'group relative h-full bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.01]';
+                ?>
+
+                <?php foreach ($services['services'] as $index => $service): ?>
+                    <?php
+                    $config = $bentoConfig[$index];
+                    $isFeatured = $config['featured'];
+                    ?>
+
+                    <div class="<?= $config['cols'] ?> <?= $config['rows'] ?>" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>">
+                        <div class="<?= $baseCardClasses ?> <?= $isFeatured ? 'min-h-[400px] lg:min-h-[500px]' : 'min-h-[280px] lg:min-h-[320px]' ?>">
+
+                            <!-- Optimized Background Elements -->
+                            <div class="absolute inset-0 opacity-[0.03]">
+                                <div class="absolute <?= $isFeatured ? 'top-6 right-6 w-12 h-12' : 'top-4 right-4 w-6 h-6' ?> border border-primary-400/<?= $isFeatured ? '30' : '20' ?> rotate-45 rounded-<?= $isFeatured ? 'lg' : 'md' ?>"></div>
+                                <div class="absolute <?= $isFeatured ? 'bottom-6 left-6 w-8 h-8' : 'bottom-4 left-4 w-4 h-4' ?> bg-primary-400/<?= $isFeatured ? '10' : '8' ?> rounded-full"></div>
+                                <?php if ($isFeatured): ?>
+                                    <div class="absolute top-1/2 left-1/4 w-4 h-4 bg-primary-400/5 rounded-full"></div>
+                                <?php endif; ?>
                             </div>
 
-                            <!-- Consistent Gradient Overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/[0.01] to-transparent"></div>
+                            <!-- Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/[0.02] via-transparent to-<?= $service['color'] ?>-500/[0.01]"></div>
 
-                            <!-- Consistent Content Container -->
-                            <div class="relative z-10 p-6 lg:p-8 h-full flex flex-col justify-between">
+                            <!-- Content Container -->
+                            <div class="relative z-10 p-6 <?= $isFeatured ? 'lg:p-10 justify-center' : 'lg:p-8 justify-between' ?> h-full flex flex-col">
 
-                                <!-- Consistent Icon Container -->
-                                <div class="w-16 h-16 mb-4 relative mx-auto transition-transform duration-300 group-hover:scale-110">
+                                <!-- Icon Container -->
+                                <div class="<?= $isFeatured ? 'w-20 h-20 lg:w-24 lg:h-24 mb-6' : 'w-16 h-16 mb-4' ?> relative mx-auto transition-transform duration-300 group-hover:scale-110">
                                     <div class="w-full h-full bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/20">
-                                        <i class="fas fa-<?= $service['icon'] ?> text-xl text-white"></i>
+                                        <i class="fas fa-<?= $service['icon'] ?> <?= $isFeatured ? 'text-2xl lg:text-3xl' : 'text-xl' ?> text-white"></i>
                                     </div>
                                 </div>
 
-                                <!-- Consistent Content Section -->
+                                <!-- Content Section -->
                                 <div class="text-center flex-grow flex flex-col justify-center">
-                                    <h3 class="font-sans font-bold text-xl lg:text-2xl text-white mb-3 group-hover:text-primary-400 transition-colors duration-300 leading-tight">
+                                    <h3 class="font-sans font-bold <?= $isFeatured ? 'text-2xl lg:text-3xl mb-4' : 'text-xl lg:text-2xl mb-3' ?> text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight">
                                         <?= $service['title'] ?>
                                     </h3>
-                                    <p class="font-sans text-gray-300 text-base leading-relaxed">
+                                    <p class="font-sans text-gray-300 <?= $isFeatured ? 'text-lg lg:text-xl leading-relaxed max-w-md mx-auto' : 'text-base leading-relaxed' ?>">
                                         <?= $service['description'] ?>
                                     </p>
+
+                                    <!-- Features for Featured Cards Only -->
+                                    <?php if ($isFeatured && !empty($service['features'])): ?>
+                                        <div class="mt-6 grid grid-cols-2 gap-3 text-sm text-gray-400">
+                                            <?php foreach ($service['features'] as $feature): ?>
+                                                <div class="flex items-center space-x-2">
+                                                    <i class="fas fa-check text-primary-400 text-xs"></i>
+                                                    <span><?= $feature ?></span>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
 
-                                <!-- Consistent CTA Button -->
-                                <div class="mt-6 pt-4 border-t border-gray-700/30">
-                                    <a href="#contact" class="group/cta w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-primary-500/30 text-base">
+                                <!-- CTA Button -->
+                                <div class="<?= $isFeatured ? 'mt-8 pt-6' : 'mt-6 pt-4' ?> border-t border-gray-700/30">
+                                    <a href="#contact" class="group/cta w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold <?= $isFeatured ? 'py-4 px-8 text-lg' : 'py-3 px-6 text-base' ?> rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-primary-500/30">
                                         <span>Konsultasi</span>
                                         <i class="fas fa-arrow-right text-sm transition-transform group-hover/cta:translate-x-1"></i>
                                     </a>

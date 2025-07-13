@@ -25,11 +25,10 @@ $quickLinks = [
 ];
 
 $serviceLinks = [
-    ['text' => 'Desain Arsitektur', 'url' => '/layanan#desain-arsitektur'],
-    ['text' => 'Desain Interior', 'url' => '/layanan#desain-interior'],
-    ['text' => 'Konsultasi Proyek', 'url' => '/layanan#konsultasi-proyek'],
-    ['text' => 'Manajemen Konstruksi', 'url' => '/layanan#manajemen-konstruksi'],
-    ['text' => 'Desain Lanskap', 'url' => '/layanan#desain-lanskap'],
+    ['text' => 'Desain Arsitektur', 'url' => '#services'],
+    ['text' => 'Desain Interior', 'url' => '#services'],
+    ['text' => 'Konsultasi Proyek', 'url' => '#services'],
+    ['text' => 'Manajemen Konstruksi', 'url' => '#services']
 ];
 
 $contactInfo = [

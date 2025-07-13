@@ -1,69 +1,48 @@
 /**
- * Optimized Services Animation System
- * Subtle and performance-focused animations for the services section
+ * Optimized Bento Grid Services Animation System
+ * Performance-focused animations with reduced redundancy
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    const servicesSection = document.getElementById('services');
+    if (!servicesSection) return;
 
-    // Initialize optimized services animations
-    initOptimizedServicesAnimations();
+    // Initialize all services animations
+    initServicesAnimations();
 
-    function initOptimizedServicesAnimations() {
-        const servicesSection = document.getElementById('services');
-        if (!servicesSection) return;
+    function initServicesAnimations() {
+        const serviceCards = servicesSection.querySelectorAll('.group');
 
-        // Simple entrance animations
-        const serviceCards = servicesSection.querySelectorAll('[style*="transition-delay"]');
+        serviceCards.forEach((card, index) => {
+            const isFeatured = card.querySelector('[class*="min-h-[400px]"]') !== null;
+            const iconContainer = card.querySelector('[class*="w-16"], [class*="w-20"], [class*="w-24"]');
+            const gradientOverlay = card.querySelector('[class*="bg-gradient-to-br"]');
 
-        // Intersection Observer for entrance animations only
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -30px 0px'
-        };
-
-        const entranceObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.remove('opacity-0', 'translate-y-8');
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entranceObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all service cards
-        serviceCards.forEach(card => {
-            entranceObserver.observe(card);
-        });
-
-        // Simple hover interactions only
-        initSubtleHoverEffects();
-    }
-    
-    function initSubtleHoverEffects() {
-        const serviceCards = document.querySelectorAll('#services .group');
-
-        serviceCards.forEach(card => {
-            // Only essential hover effects - no redundant animations
+            // Optimized hover effects with cached elements
             card.addEventListener('mouseenter', () => {
-                // Simple icon scale - no rotation
-                const iconContainer = card.querySelector('[class*="w-16 h-16"], [class*="w-18 h-18"]');
                 if (iconContainer) {
-                    iconContainer.style.transform = 'scale(1.03)';
-                    iconContainer.style.transition = 'transform 0.2s ease';
+                    iconContainer.style.transform = isFeatured ? 'scale(1.05)' : 'scale(1.03)';
+                    iconContainer.style.transition = 'transform 0.3s ease';
+                }
+
+                if (gradientOverlay && isFeatured) {
+                    gradientOverlay.style.opacity = '0.05';
+                    gradientOverlay.style.transition = 'opacity 0.3s ease';
                 }
             });
 
             card.addEventListener('mouseleave', () => {
-                // Reset icon
-                const iconContainer = card.querySelector('[class*="w-16 h-16"], [class*="w-18 h-18"]');
-                if (iconContainer) {
-                    iconContainer.style.transform = 'scale(1)';
-                }
+                if (iconContainer) iconContainer.style.transform = 'scale(1)';
+                if (gradientOverlay) gradientOverlay.style.opacity = '';
             });
+
+            // Enhanced staggered entrance timing
+            const aosTrigger = card.closest('[data-aos]');
+            if (aosTrigger) {
+                aosTrigger.setAttribute('data-aos-delay', 100 + (index * 150));
+            }
         });
     }
-    
 });
 
 // Minimal CSS for essential animations only
