@@ -95,5 +95,5 @@ storage/
 uploads/
 assets/uploads/
 
-# Vercel
-.vercel
+# Railway
+.railway/
