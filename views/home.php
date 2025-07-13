@@ -444,12 +444,13 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
     </div>
 </section>
 
-<!-- Portfolio Section -->
-<section id="portfolio" class="relative py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900 scroll-mt-20 overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-primary-500/30 to-emerald-500/30 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+<!-- Portfolio Section - Consistent Background -->
+<section id="portfolio" class="relative py-20 bg-black scroll-mt-20 overflow-hidden">
+    <!-- Enhanced Background Elements for Visual Interest -->
+    <div class="absolute inset-0 opacity-8">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-primary-500/25 to-emerald-500/25 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-blue-500/15 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-primary-500/10 to-transparent rounded-full blur-2xl animate-pulse" style="animation-delay: 4s;"></div>
     </div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
