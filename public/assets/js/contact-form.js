@@ -194,42 +194,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-/**
- * Dynamic Content Loading
- */
-class ContentLoader {
-    static async loadSectionData(section) {
-        try {
-            const response = await fetch(`/api/${section}-data`);
-            const data = await response.json();
-            
-            if (data.success) {
-                return data.data;
-            } else {
-                throw new Error(data.message || 'Failed to load data');
-            }
-        } catch (error) {
-            console.error(`Error loading ${section} data:`, error);
-            return null;
-        }
-    }
-    
-    static async loadStats() {
-        try {
-            const response = await fetch('/api/stats');
-            const data = await response.json();
-            
-            if (data.success) {
-                return data.data;
-            } else {
-                throw new Error(data.message || 'Failed to load stats');
-            }
-        } catch (error) {
-            console.error('Error loading stats:', error);
-            return null;
-        }
-    }
-}
 
-// Export for use in other scripts
-window.ContentLoader = ContentLoader;

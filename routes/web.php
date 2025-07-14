@@ -44,11 +44,6 @@ $routes = [
         'action' => 'getAboutData',
         'method' => 'GET'
     ],
-    '/api/stats' => [
-        'controller' => 'ApiController',
-        'action' => 'getStats',
-        'method' => 'GET'
-    ],
 
     // Form submission endpoints (legacy support)
     '/send-inquiry' => [

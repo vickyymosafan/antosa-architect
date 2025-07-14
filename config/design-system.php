@@ -45,9 +45,7 @@ return [
     // Typography Scale
     'typography' => [
         'font_family' => [
-            'sans' => ['Inter', 'system-ui', 'sans-serif'],
-            'serif' => ['Georgia', 'serif'],
-            'mono' => ['Monaco', 'monospace']
+            'sans' => ['Inter', 'system-ui', 'sans-serif']
         ],
         'font_sizes' => [
             'xs' => '0.75rem',    // 12px
@@ -60,8 +58,7 @@ return [
             '4xl' => '2.25rem',   // 36px
             '5xl' => '3rem',      // 48px
             '6xl' => '3.75rem',   // 60px
-            '7xl' => '4.5rem',    // 72px
-            '8xl' => '6rem'       // 96px
+            '7xl' => '4.5rem'     // 72px
         ],
         'font_weights' => [
             'light' => '300',
@@ -72,11 +69,8 @@ return [
             'black' => '900'
         ],
         'line_heights' => [
-            'tight' => '1.25',
-            'snug' => '1.375',
             'normal' => '1.5',
-            'relaxed' => '1.625',
-            'loose' => '2'
+            'relaxed' => '1.625'
         ]
     ],
 
@@ -93,9 +87,7 @@ return [
         '10' => '2.5rem',   // 40px
         '12' => '3rem',     // 48px
         '16' => '4rem',     // 64px
-        '20' => '5rem',     // 80px
-        '24' => '6rem',     // 96px
-        '32' => '8rem'      // 128px
+        '20' => '5rem'      // 80px
     ],
 
     // Animation Timings
@@ -135,19 +127,6 @@ return [
                 'transform' => 'hover:scale-105',
                 'shadow' => 'hover:shadow-2xl',
                 'focus' => 'focus:outline-none focus:ring-4 focus:ring-primary-400/50'
-            ],
-            'secondary' => [
-                'bg' => 'bg-black/60',
-                'hover' => 'hover:bg-black/80',
-                'border' => 'border-2 border-gray-600 hover:border-primary-400',
-                'text' => 'text-white',
-                'padding' => 'py-4 px-8',
-                'border_radius' => 'rounded-xl',
-                'font' => 'font-bold',
-                'transition' => 'transition-all duration-300',
-                'transform' => 'hover:scale-105',
-                'backdrop' => 'backdrop-blur-md',
-                'focus' => 'focus:outline-none focus:ring-4 focus:ring-white/20'
             ]
         ],
         'card' => [

@@ -327,7 +327,6 @@
 
     <!-- JavaScript -->
     <script src="/assets/js/main.js" defer></script>
-    <script src="/assets/js/content-toggle.js" defer></script>
     <script src="/assets/js/hero-slider.js" defer></script>
     <script src="/assets/js/home-portfolio.js" defer></script>
     <script src="/assets/js/faq.js" defer></script>

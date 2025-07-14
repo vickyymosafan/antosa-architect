@@ -248,28 +248,4 @@ class ApiController
         $logEntry = date('Y-m-d H:i:s') . ' - ' . json_encode($data) . PHP_EOL;
         file_put_contents($logFile, $logEntry, FILE_APPEND | LOCK_EX);
     }
-    
-    /**
-     * Get site statistics
-     * 
-     * @return void
-     */
-    public function getStats()
-    {
-        header('Content-Type: application/json');
-        
-        // In a real application, these would come from a database
-        $stats = [
-            'projects_completed' => 150,
-            'happy_clients' => 98,
-            'years_experience' => 10,
-            'team_members' => 15,
-            'awards_won' => 8
-        ];
-        
-        echo json_encode([
-            'success' => true,
-            'data' => $stats
-        ]);
-    }
 }

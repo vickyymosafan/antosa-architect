@@ -31,8 +31,6 @@ define('ROOT_DIR', dirname(__DIR__));
 define('APP_DIR', ROOT_DIR . '/app');
 define('VIEWS_DIR', ROOT_DIR . '/views');
 define('PUBLIC_DIR', ROOT_DIR . '/public');
-define('ASSETS_DIR', ROOT_DIR . '/assets');
-define('STORAGE_DIR', ROOT_DIR . '/storage');
 
 // Contact information
 define('COMPANY_EMAIL', 'info@antosa-architect.com');
