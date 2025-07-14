@@ -280,7 +280,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
                                 <div class="relative mb-4">
                                     <div class="flex items-center space-x-3 mb-3">
                                         <div class="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <i class="fas fa-target text-white text-sm"></i>
+                                            <i class="fas fa-check text-white text-sm"></i>
                                         </div>
                                         <h4 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors duration-300">Misi</h4>
                                     </div>
