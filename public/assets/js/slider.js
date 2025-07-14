@@ -1,5 +1,5 @@
-// assets/js/hero-slider.js
-console.log('hero-slider.js loaded');
+// assets/js/slider.js - Hero Slider/Carousel Component
+console.log('slider.js loaded');
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- Enhanced Configuration ---

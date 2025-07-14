@@ -315,11 +315,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- JavaScript -->
-    <script src="/assets/js/main.js" defer></script>
-    <script src="/assets/js/hero-slider.js" defer></script>
-    <script src="/assets/js/home-portfolio.js" defer></script>
+    <script src="/assets/js/app.js" defer></script>
+    <script src="/assets/js/slider.js" defer></script>
+    <script src="/assets/js/portfolio.js" defer></script>
     <script src="/assets/js/faq.js" defer></script>
-    <script src="/assets/js/contact-form.js" defer></script>
+    <script src="/assets/js/contact.js" defer></script>
 
     <!-- Initialize AOS -->
     <script>
@@ -333,7 +333,7 @@
             });
         });
     </script>
-    <script src="/assets/js/premium-services.js" defer></script>
+    <script src="/assets/js/services.js" defer></script>
 
     <?php require_once 'partials/footer.php'; ?>
 </body>

@@ -1,4 +1,4 @@
-// assets/js/main.js
+// assets/js/app.js - Core Application Functionality
 
 // About animations are now handled by AOS
 
