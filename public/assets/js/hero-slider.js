@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sliderContainer = document.getElementById('hero-slider');
     const prevButton = document.getElementById('hero-prev');
     const nextButton = document.getElementById('hero-next');
+    const paginationElement = document.getElementById('hero-pagination');
 
     // --- Initial Checks ---
     if (!sliderContainer) {
@@ -69,11 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Updates the pagination display (pagination removed - no longer needed).
+     * Updates the pagination display to show current slide number.
      */
     function updatePaginationDisplay() {
-        // Pagination functionality removed as element doesn't exist
-        return;
+        if (paginationElement) {
+            const currentSlideNumber = String(currentSlideIndex + 1).padStart(2, '0');
+            const totalSlidesNumber = String(totalSlides).padStart(2, '0');
+            paginationElement.textContent = `${currentSlideNumber} / ${totalSlidesNumber}`;
+        }
     }
 
     /**
@@ -278,6 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Console Info for Missing Optional Elements ---
         if (!prevButton) console.info('Hero slider previous button (hero-prev) not found (optional).');
         if (!nextButton) console.info('Hero slider next button (hero-next) not found (optional).');
+        if (!paginationElement) console.info('Hero slider pagination element (hero-pagination) not found (optional).');
 
         console.info('Hero slider initialized successfully with enhanced accessibility features');
     }
