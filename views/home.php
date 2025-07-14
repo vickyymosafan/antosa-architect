@@ -10,6 +10,22 @@ $description = SITE_DESCRIPTION;
 ob_start();
 ?>
 
+<!-- Global CSS for Interactive Grid Animation -->
+<style>
+    @keyframes grid-move {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(40px, 40px); }
+    }
+    .faq-card:hover .grid-dot,
+    .service-card:hover .grid-dot,
+    .portfolio-card:hover .grid-dot,
+    .testimonial-card:hover .grid-dot,
+    .contact-card:hover .grid-dot {
+        transform: scale(1.5);
+        background: rgba(56, 189, 248, 0.6);
+    }
+</style>
+
 <?php
 // Use hero data from controller (data guaranteed to exist from ContentModel)
 $hero_slides = $hero['slides'];
@@ -129,13 +145,24 @@ $hero_cta_buttons = $hero['cta_buttons'];
     </div>
 </section>
 
-<!-- About Section - Premium Architecture Design -->
-<section id="about" class="relative py-16 sm:py-24 lg:py-32 bg-black text-white scroll-mt-20 overflow-hidden" aria-label="Tentang Kami dan Tim Profesional">
-    <!-- Geometric Background Elements -->
+<!-- About Section - Enhanced Design System -->
+<section id="about" class="relative py-16 lg:py-24 bg-black text-white scroll-mt-20 overflow-hidden" aria-label="Tentang Kami dan Tim Profesional">
+    <!-- Magic UI Interactive Grid Pattern Background -->
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0" style="
+            background-image:
+                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-move 20s linear infinite;
+        "></div>
+    </div>
+
+    <!-- Enhanced Background Elements -->
     <div class="absolute inset-0 opacity-5">
-        <div class="absolute top-20 left-10 w-96 h-96 border border-primary-400 rotate-45 transform-gpu" data-aos="fade" data-aos-duration="2000"></div>
-        <div class="absolute bottom-20 right-10 w-64 h-64 border border-emerald-400 rotate-12 transform-gpu" data-aos="fade" data-aos-duration="2000" data-aos-delay="500"></div>
-        <div class="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-br from-primary-500/20 to-emerald-500/20 rotate-45 transform-gpu" data-aos="fade" data-aos-duration="2000" data-aos-delay="1000"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-primary-500/20 to-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-blue-500/15 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-emerald-500/10 to-primary-500/10 rounded-full blur-2xl animate-pulse" style="animation-delay: 4s;"></div>
     </div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -144,22 +171,22 @@ $hero_cta_buttons = $hero['cta_buttons'];
             <!-- Left Content - 7 columns -->
             <div class="lg:col-span-7 space-y-8">
                 <div data-aos="fade-up" data-aos-duration="800">
-                    <!-- Overline -->
-                    <div class="flex items-center space-x-4 mb-6">
-                        <div class="w-12 h-px bg-gradient-to-r from-primary-400 to-emerald-400"></div>
-                        <span class="text-sm font-medium tracking-wider text-primary-400 uppercase">Studio Profile</span>
+                    <!-- Consistent Header Styling -->
+                    <div class="text-left mb-12">
+                        <div class="inline-flex items-center space-x-4 mb-6">
+                            <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+                            <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Tentang Kami</span>
+                            <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+                        </div>
+                        <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight mb-6 tracking-tight">
+                            <span class="block relative">
+                                Studio Arsitektur
+                            </span>
+                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-emerald-400 to-primary-500 relative">
+                                Profesional
+                            </span>
+                        </h2>
                     </div>
-
-                    <!-- Main Heading -->
-                    <h2 class="font-sans text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.9] mb-6 lg:mb-8 tracking-tight">
-                        <span class="block relative">
-                            Tentang
-                        </span>
-                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-emerald-400 to-primary-500 relative">
-                            Kami
-                            <div class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-primary-400/30 to-emerald-400/30 rounded-full"></div>
-                        </span>
-                    </h2>
 
                     <!-- Description -->
                     <div class="space-y-6">
@@ -167,18 +194,39 @@ $hero_cta_buttons = $hero['cta_buttons'];
                             <?= $about['description'] ?>
                         </p>
 
-                        <!-- Stats Row -->
-                        <div class="grid grid-cols-3 gap-8 pt-10 mt-10 border-t border-gray-700 relative">
+                        <!-- Enhanced Stats Row -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 mt-10 border-t border-gray-700/50 relative">
                             <?php foreach ($about['stats'] as $index => $stat): ?>
-                            <div class="text-center lg:text-left group">
-                                <div class="text-4xl lg:text-5xl font-black mb-3 group-hover:scale-110 transition-transform duration-300">
-                                    <span class="counter text-transparent bg-clip-text bg-gradient-to-r <?= $stat['gradient'] ?>"
-                                          data-target="<?= $stat['value'] ?>"
-                                          data-suffix="<?= $stat['suffix'] ?>"
-                                          data-duration="<?= $stat['duration'] ?>">0</span><span class="text-transparent bg-clip-text bg-gradient-to-r <?= $stat['gradient'] ?>"><?= $stat['suffix'] ?></span>
+                                <div class="text-center lg:text-left group" data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?= 100 + ($index * 100) ?>">
+                                    <article class="relative bg-gray-800/30 backdrop-blur-sm border border-gray-700/20 rounded-xl p-6 hover:border-primary-400/30 transition-all duration-500 hover:shadow-lg hover:shadow-primary-500/10 hover:-translate-y-1">
+                                        <!-- Background Pattern -->
+                                        <div class="absolute inset-0 opacity-5">
+                                            <div class="absolute top-2 right-2 w-4 h-4 border border-primary-400/30 rotate-45 rounded"></div>
+                                            <div class="absolute bottom-2 left-2 w-3 h-3 bg-primary-400/10 rounded-full"></div>
+                                        </div>
+
+                                        <!-- Icon -->
+                                        <div class="w-12 h-12 bg-gradient-to-br from-primary-400/20 to-emerald-400/20 rounded-xl flex items-center justify-center mb-4 mx-auto lg:mx-0 group-hover:scale-110 transition-transform duration-300">
+                                            <i class="fas <?= $stat['icon'] ?? 'fa-chart-line' ?> text-primary-400 text-lg"></i>
+                                        </div>
+
+                                        <!-- Counter -->
+                                        <div class="text-3xl lg:text-4xl font-black mb-2 group-hover:scale-105 transition-transform duration-300">
+                                            <span class="counter text-transparent bg-clip-text bg-gradient-to-r <?= $stat['gradient'] ?>"
+                                                  data-target="<?= $stat['value'] ?>"
+                                                  data-suffix="<?= $stat['suffix'] ?>"
+                                                  data-duration="<?= $stat['duration'] ?>">0</span><span class="text-transparent bg-clip-text bg-gradient-to-r <?= $stat['gradient'] ?>"><?= $stat['suffix'] ?></span>
+                                        </div>
+
+                                        <!-- Label -->
+                                        <div class="text-xs text-gray-400 uppercase tracking-wider font-medium group-hover:text-gray-300 transition-colors duration-300">
+                                            <?= htmlspecialchars($stat['label']) ?>
+                                        </div>
+
+                                        <!-- Hover Effect -->
+                                        <div class="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                                    </article>
                                 </div>
-                                <div class="text-xs text-gray-500 uppercase tracking-[0.15em] font-medium"><?= $stat['label'] ?></div>
-                            </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -190,37 +238,72 @@ $hero_cta_buttons = $hero['cta_buttons'];
                 <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
                     <!-- Floating Card with Vision & Mission -->
                     <div class="relative mt-8 lg:mt-16">
-                        <!-- Main Card -->
-                        <div class="bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
-                            <div class="space-y-8">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-3 h-3 bg-primary-400 rounded-full"></div>
-                                    <span class="text-sm font-medium text-gray-300 uppercase tracking-wider">Visi & Misi</span>
+                        <!-- Enhanced Vision & Mission Cards -->
+                        <div class="space-y-6">
+                            <!-- Vision Card -->
+                            <article class="relative bg-gray-800/50 backdrop-blur-xl border border-gray-700/30 rounded-2xl p-6 hover:border-primary-400/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary-500/10 group">
+                                <!-- Background Pattern -->
+                                <div class="absolute inset-0 opacity-5">
+                                    <div class="absolute top-3 right-3 w-6 h-6 border border-primary-400/30 rotate-45 rounded"></div>
+                                    <div class="absolute bottom-3 left-3 w-4 h-4 bg-primary-400/10 rounded-full"></div>
                                 </div>
 
-                                <!-- Vision Section -->
-                                <div class="space-y-4">
-                                    <div class="border-l-4 border-primary-400 pl-6">
-                                        <h4 class="font-bold text-white mb-3 text-lg">Visi</h4>
-                                        <p class="text-gray-300 leading-relaxed"><?= $about['vision'] ?></p>
-                                    </div>
-                                </div>
-
-                                <!-- Mission Section -->
-                                <div class="space-y-4">
-                                    <div class="border-l-4 border-emerald-400 pl-6">
-                                        <h4 class="font-bold text-white mb-4 text-lg">Misi</h4>
-                                        <div class="space-y-3">
-                                            <?php foreach ($about['mission'] as $index => $missionItem): ?>
-                                                <div class="flex items-start space-x-3">
-                                                    <div class="flex-shrink-0 w-3 h-3 bg-gradient-to-r from-emerald-400 to-primary-400 rounded-full mt-2"></div>
-                                                    <p class="text-gray-300 text-sm leading-relaxed"><?= $missionItem ?></p>
-                                                </div>
-                                            <?php endforeach; ?>
+                                <!-- Header -->
+                                <div class="relative mb-4">
+                                    <div class="flex items-center space-x-3 mb-3">
+                                        <div class="w-8 h-8 bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                            <i class="fas fa-eye text-white text-sm"></i>
                                         </div>
+                                        <h4 class="text-lg font-bold text-white group-hover:text-primary-300 transition-colors duration-300">Visi</h4>
                                     </div>
+                                    <div class="w-full h-px bg-gradient-to-r from-primary-400/30 to-transparent"></div>
                                 </div>
-                            </div>
+
+                                <!-- Content -->
+                                <p class="text-gray-300 leading-relaxed text-sm relative z-10">
+                                    <?= htmlspecialchars($about['vision']) ?>
+                                </p>
+
+                                <!-- Hover Effect -->
+                                <div class="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                            </article>
+
+                            <!-- Mission Card -->
+                            <article class="relative bg-gray-800/50 backdrop-blur-xl border border-gray-700/30 rounded-2xl p-6 hover:border-emerald-400/50 transition-all duration-500 hover:shadow-xl hover:shadow-emerald-500/10 group">
+                                <!-- Background Pattern -->
+                                <div class="absolute inset-0 opacity-5">
+                                    <div class="absolute top-3 right-3 w-6 h-6 border border-emerald-400/30 rotate-45 rounded"></div>
+                                    <div class="absolute bottom-3 left-3 w-4 h-4 bg-emerald-400/10 rounded-full"></div>
+                                </div>
+
+                                <!-- Header -->
+                                <div class="relative mb-4">
+                                    <div class="flex items-center space-x-3 mb-3">
+                                        <div class="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                            <i class="fas fa-target text-white text-sm"></i>
+                                        </div>
+                                        <h4 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors duration-300">Misi</h4>
+                                    </div>
+                                    <div class="w-full h-px bg-gradient-to-r from-emerald-400/30 to-transparent"></div>
+                                </div>
+
+                                <!-- Mission Items -->
+                                <div class="space-y-3 relative z-10">
+                                    <?php foreach ($about['mission'] as $index => $missionItem): ?>
+                                        <div class="flex items-start space-x-3 group/item">
+                                            <div class="flex-shrink-0 w-4 h-4 bg-gradient-to-r from-emerald-400 to-primary-400 rounded-full mt-1 flex items-center justify-center group-hover/item:scale-125 transition-transform duration-300">
+                                                <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                            </div>
+                                            <p class="text-gray-300 leading-relaxed text-sm group-hover/item:text-gray-200 transition-colors duration-300">
+                                                <?= htmlspecialchars($missionItem) ?>
+                                            </p>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+
+                                <!-- Hover Effect -->
+                                <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                            </article>
                         </div>
 
                         <!-- Floating Elements -->
@@ -252,7 +335,6 @@ $hero_cta_buttons = $hero['cta_buttons'];
                     <br class="hidden sm:block">
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-emerald-400 to-primary-500 relative">
                         Berpengalaman
-                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary-400/50 to-emerald-400/50 rounded-full"></div>
                     </span>
                 </h3>
                 <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
@@ -323,9 +405,26 @@ $hero_cta_buttons = $hero['cta_buttons'];
     </div>
 </section>
 
-<!-- Services Section - Consistent Design System -->
-<section id="services" class="relative py-21 bg-black scroll-mt-20 overflow-hidden">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Services Section - Enhanced Design System -->
+<section id="services" class="relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
+    <!-- Magic UI Interactive Grid Pattern Background -->
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0" style="
+            background-image:
+                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-move 20s linear infinite;
+        "></div>
+    </div>
+
+    <!-- Enhanced Background Elements -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-primary-500/20 to-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-blue-500/15 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Consistent Header Styling -->
         <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
             <div class="inline-flex items-center space-x-4 mb-6">
@@ -333,11 +432,16 @@ $hero_cta_buttons = $hero['cta_buttons'];
                 <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Layanan</span>
                 <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
             </div>
-            <h2 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent mb-6">
-                <?= $services['title'] ?>
+            <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight mb-6 tracking-tight">
+                <span class="block relative">
+                    Layanan
+                </span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-emerald-400 to-primary-500 relative">
+                    Profesional
+                </span>
             </h2>
-            <p class="font-sans font-normal max-w-3xl mx-auto text-gray-300 text-lg lg:text-xl leading-relaxed">
-                <?= $services['subtitle'] ?>
+            <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <?= htmlspecialchars($services['subtitle']) ?>
             </p>
         </div>
 
@@ -423,13 +527,23 @@ $hero_cta_buttons = $hero['cta_buttons'];
     </div>
 </section>
 
-<!-- Portfolio Section - Consistent Background -->
-<section id="portfolio" class="relative py-20 bg-black scroll-mt-20 overflow-hidden">
-    <!-- Enhanced Background Elements for Visual Interest -->
-    <div class="absolute inset-0 opacity-8">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-primary-500/25 to-emerald-500/25 rounded-full blur-3xl animate-pulse"></div>
+<!-- Portfolio Section - Enhanced Design System -->
+<section id="portfolio" class="relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
+    <!-- Magic UI Interactive Grid Pattern Background -->
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0" style="
+            background-image:
+                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-move 20s linear infinite;
+        "></div>
+    </div>
+
+    <!-- Enhanced Background Elements -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-primary-500/20 to-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-blue-500/15 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-primary-500/10 to-transparent rounded-full blur-2xl animate-pulse" style="animation-delay: 4s;"></div>
     </div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -440,11 +554,16 @@ $hero_cta_buttons = $hero['cta_buttons'];
                 <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Portfolio</span>
                 <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
             </div>
-            <h2 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent mb-6">
-                <?= $portfolio['title'] ?>
+            <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight mb-6 tracking-tight">
+                <span class="block relative">
+                    Hasil
+                </span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-emerald-400 to-primary-500 relative">
+                    Karya
+                </span>
             </h2>
-            <p class="font-sans font-normal max-w-3xl mx-auto text-gray-300 text-lg lg:text-xl leading-relaxed">
-                <?= $portfolio['subtitle'] ?>
+            <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <?= htmlspecialchars($portfolio['subtitle']) ?>
             </p>
         </div>
 
@@ -687,9 +806,26 @@ $hero_cta_buttons = $hero['cta_buttons'];
     </div>
 </section>
 
-<!-- Testimonials Section - Consistent Design System -->
-<section id="testimonials" class="py-16 lg:py-24 bg-black scroll-mt-20">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Testimonials Section - Enhanced Design System -->
+<section id="testimonials" class="relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
+    <!-- Magic UI Interactive Grid Pattern Background -->
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0" style="
+            background-image:
+                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-move 20s linear infinite;
+        "></div>
+    </div>
+
+    <!-- Enhanced Background Elements -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-primary-500/20 to-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-blue-500/15 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Consistent Header Styling -->
         <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
             <div class="inline-flex items-center space-x-4 mb-6">
@@ -697,11 +833,16 @@ $hero_cta_buttons = $hero['cta_buttons'];
                 <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Testimoni</span>
                 <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
             </div>
-            <h2 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent mb-6">
-                <?= $testimonials['title'] ?>
+            <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight mb-6 tracking-tight">
+                <span class="block relative">
+                    Testimoni
+                </span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-emerald-400 to-primary-500 relative">
+                    Klien
+                </span>
             </h2>
-            <p class="font-sans font-normal max-w-3xl mx-auto text-gray-300 text-lg lg:text-xl leading-relaxed">
-                <?= $testimonials['subtitle'] ?>
+            <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <?= htmlspecialchars($testimonials['subtitle']) ?>
             </p>
         </div>
 
@@ -760,94 +901,228 @@ $hero_cta_buttons = $hero['cta_buttons'];
     </div>
 </section>
 
-<!-- Premium FAQ Section -->
-<section id="faq" class="py-12 bg-gradient-to-br from-dark-950 via-black to-dark-950 text-white scroll-mt-20 relative overflow-hidden">
-  <!-- Subtle background pattern -->
-  <div class="absolute inset-0 opacity-5">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary-500/10 to-transparent transform skew-y-1"></div>
-  </div>
-
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-    <!-- Compact header -->
-    <div class="text-center mb-8">
-      <h2 class="font-sans text-xl sm:text-2xl font-semibold mb-2 text-white/90">Pertanyaan Umum</h2>
-      <p class="text-xs text-gray-400 max-w-2xl mx-auto">Temukan jawaban atas pertanyaan yang sering diajukan tentang layanan kami.</p>
+<!-- Enhanced FAQ Section - Consistent Design System -->
+<section id="faq" class="relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
+    <!-- Magic UI Interactive Grid Pattern Background -->
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0" style="
+            background-image:
+                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-move 20s linear infinite;
+        "></div>
     </div>
 
-    <!-- Premium asymmetric layout -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <!-- Enhanced Background Elements -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-primary-500/20 to-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-blue-500/15 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
 
-      <!-- Categories - Compact sidebar -->
-      <aside class="lg:col-span-3">
-        <div class="bg-dark-900/50 backdrop-blur-sm rounded-lg border border-dark-800/50 p-3 sticky top-24">
-          <h3 class="text-xs font-medium text-white/70 uppercase tracking-widest mb-3 px-2">Kategori</h3>
-          <div class="space-y-1">
-            <?php $firstCat = true; foreach ($faq['categories'] as $cat => $items): ?>
-              <button type="button"
-                class="faq-category w-full text-left px-3 py-2 rounded-md transition-all duration-300 font-medium text-xs flex items-center gap-2 group
-                  <?php if ($firstCat) {echo 'bg-gradient-to-r from-primary-500/20 to-primary-600/20 text-primary-300 border border-primary-500/30';} else {echo 'text-gray-400 hover:text-primary-300 hover:bg-dark-800/50';} ?>"
-                data-category="<?= htmlspecialchars($cat) ?>">
-                <div class="w-5 h-5 flex items-center justify-center bg-dark-800/50 rounded group-hover:bg-primary-500/20 transition-colors duration-300">
-                  <?php if ($cat === 'Umum'): ?><i class="fa fa-question-circle text-xs"></i><?php elseif ($cat === 'Desain'): ?><i class="fa fa-pencil-ruler text-xs"></i><?php elseif ($cat === 'Biaya'): ?><i class="fa fa-wallet text-xs"></i><?php elseif ($cat === 'Konstruksi'): ?><i class="fa fa-hard-hat text-xs"></i><?php endif; ?>
-                </div>
-                <?= htmlspecialchars($cat) ?>
-              </button>
-            <?php $firstCat = false; endforeach; ?>
-          </div>
-        </div>
-      </aside>
+    <!-- Grid animation styles moved to global CSS at top of file -->
 
-      <!-- Questions/Answers - Main content area -->
-      <div class="lg:col-span-9">
-        <?php $firstPanel = true; foreach ($faq['categories'] as $cat => $items): ?>
-          <div class="faq-panel <?php if (!$firstPanel) echo 'hidden'; ?>" data-category="<?= htmlspecialchars($cat) ?>">
-            <div class="space-y-3">
-              <?php foreach ($items as $index => $q): ?>
-                <div class="faq-item group">
-                  <div class="bg-dark-900/30 backdrop-blur-sm border border-dark-800/50 rounded-lg overflow-hidden hover:border-primary-500/30 transition-all duration-300">
-                    <button type="button" class="faq-question w-full flex justify-between items-center px-4 py-3 text-sm font-medium text-left focus:outline-none focus:ring-2 focus:ring-primary-500/50 group-hover:bg-dark-800/30 transition-all duration-300">
-                      <span class="text-white/90 group-hover:text-primary-300 transition-colors duration-300"><?= htmlspecialchars($q['question']) ?></span>
-                      <div class="w-6 h-6 flex items-center justify-center bg-dark-800/50 rounded-md ml-3 flex-shrink-0 group-hover:bg-primary-500/20 transition-all duration-300">
-                        <i class="faq-toggle-icon fa fa-chevron-down text-xs text-gray-400 group-hover:text-primary-400 transition-all duration-300"></i>
-                      </div>
-                    </button>
-                    <div class="faq-answer hidden">
-                      <div class="px-4 pb-4 pt-1">
-                        <div class="border-t border-dark-800/50 pt-3">
-                          <p class="text-gray-300 text-xs leading-relaxed"><?= htmlspecialchars($q['answer']) ?></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <?php endforeach; ?>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Consistent Header Styling -->
+        <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+            <div class="inline-flex items-center space-x-4 mb-6">
+                <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+                <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">FAQ</span>
+                <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
             </div>
-          </div>
-        <?php $firstPanel = false; endforeach; ?>
-      </div>
-    </div>
+            <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight mb-6 tracking-tight">
+                <span class="block relative">
+                    Pertanyaan
+                </span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-emerald-400 to-primary-500 relative">
+                    Umum
+                </span>
+            </h2>
+            <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <?= htmlspecialchars($faq['subtitle']) ?>
+            </p>
+        </div>
 
-    <!-- Contact CTA - Compact and elegant -->
-    <div class="mt-8 text-center">
-      <div class="inline-flex items-center bg-dark-900/50 backdrop-blur-sm border border-dark-800/50 rounded-lg px-4 py-3 hover:border-primary-500/30 transition-all duration-300 group">
-        <div class="w-8 h-8 bg-gradient-to-br from-primary-500/20 to-primary-600/20 rounded-lg flex items-center justify-center mr-3">
-          <i class="fa fa-question-circle text-primary-400 text-sm"></i>
+        <!-- Enhanced FAQ Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+
+            <!-- Enhanced Categories Sidebar -->
+            <aside class="lg:col-span-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                <div class="faq-card group relative bg-gray-800/50 backdrop-blur-xl border border-gray-700/30 rounded-2xl p-6 sticky top-24 hover:border-primary-400/50 transition-all duration-500">
+
+                    <!-- Background Pattern -->
+                    <div class="absolute inset-0 opacity-5">
+                        <div class="absolute top-4 right-4 w-8 h-8 border border-primary-400 rotate-45 rounded-lg"></div>
+                        <div class="absolute bottom-4 left-4 w-6 h-6 bg-primary-400/10 rounded-full"></div>
+                    </div>
+
+                    <!-- Header -->
+                    <div class="relative mb-6">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-8 h-8 bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-list text-white text-sm"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Kategori</h3>
+                        </div>
+                        <div class="w-full h-px bg-gradient-to-r from-primary-400/30 to-transparent"></div>
+                    </div>
+
+                    <!-- Category Buttons -->
+                    <div class="space-y-3">
+                        <?php $firstCat = true; foreach ($faq['categories'] as $cat => $items): ?>
+                            <button type="button"
+                                class="faq-category w-full text-left px-4 py-3 rounded-xl transition-all duration-300 font-medium text-sm flex items-center gap-3 group/cat relative overflow-hidden
+                                    <?php if ($firstCat) {echo 'bg-gradient-to-r from-primary-500/20 to-primary-600/20 text-primary-300 border border-primary-500/30 shadow-lg shadow-primary-500/10';} else {echo 'text-gray-300 hover:text-primary-300 hover:bg-gray-700/50 border border-transparent hover:border-primary-500/30';} ?>"
+                                data-category="<?= htmlspecialchars($cat) ?>">
+
+                                <!-- Icon -->
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-700/50 rounded-lg group-hover/cat:bg-primary-500/20 transition-all duration-300">
+                                    <?php if ($cat === 'Umum'): ?><i class="fas fa-question-circle text-sm"></i>
+                                    <?php elseif ($cat === 'Desain'): ?><i class="fas fa-pencil-ruler text-sm"></i>
+                                    <?php elseif ($cat === 'Biaya'): ?><i class="fas fa-wallet text-sm"></i>
+                                    <?php elseif ($cat === 'Konstruksi'): ?><i class="fas fa-hard-hat text-sm"></i>
+                                    <?php else: ?><i class="fas fa-folder text-sm"></i><?php endif; ?>
+                                </div>
+
+                                <!-- Text -->
+                                <span class="flex-1"><?= htmlspecialchars($cat) ?></span>
+
+                                <!-- Count Badge -->
+                                <span class="px-2 py-1 bg-gray-700/50 text-xs rounded-full opacity-60 group-hover/cat:opacity-100 transition-opacity duration-300">
+                                    <?= count($items) ?>
+                                </span>
+
+                                <!-- Hover Effect -->
+                                <div class="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-transparent opacity-0 group-hover/cat:opacity-100 transition-opacity duration-300"></div>
+                            </button>
+                        <?php $firstCat = false; endforeach; ?>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Enhanced Questions/Answers - Main content area -->
+            <div class="lg:col-span-9" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                <?php $firstPanel = true; foreach ($faq['categories'] as $cat => $items): ?>
+                    <div class="faq-panel <?php if (!$firstPanel) echo 'hidden'; ?>" data-category="<?= htmlspecialchars($cat) ?>">
+                        <div class="space-y-6">
+                            <?php foreach ($items as $index => $q): ?>
+                                <div class="faq-item group" data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?= 100 + ($index * 50) ?>">
+                                    <article class="faq-card relative bg-gray-800/50 backdrop-blur-xl border border-gray-700/30 rounded-2xl overflow-hidden hover:border-primary-400/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary-500/10">
+
+                                        <!-- Background Pattern -->
+                                        <div class="absolute inset-0 opacity-5">
+                                            <div class="absolute top-4 right-4 w-6 h-6 border border-primary-400/30 rotate-45 rounded"></div>
+                                            <div class="absolute bottom-4 left-4 w-4 h-4 bg-primary-400/10 rounded-full"></div>
+                                        </div>
+
+                                        <!-- Question Button -->
+                                        <button type="button" class="faq-question w-full flex justify-between items-center px-6 py-5 text-left focus:outline-none focus:ring-2 focus:ring-primary-500/50 group-hover:bg-gray-700/30 transition-all duration-300 relative">
+                                            <div class="flex items-start space-x-4 flex-1">
+                                                <!-- Question Icon -->
+                                                <div class="w-10 h-10 flex items-center justify-center bg-primary-500/20 rounded-xl flex-shrink-0 group-hover:bg-primary-500/30 transition-colors duration-300">
+                                                    <i class="fas fa-question text-primary-400 text-sm"></i>
+                                                </div>
+
+                                                <!-- Question Text -->
+                                                <div class="flex-1">
+                                                    <h4 class="text-lg font-semibold text-white group-hover:text-primary-300 transition-colors duration-300 leading-relaxed">
+                                                        <?= htmlspecialchars($q['question']) ?>
+                                                    </h4>
+                                                </div>
+                                            </div>
+
+                                            <!-- Toggle Icon -->
+                                            <div class="w-10 h-10 flex items-center justify-center bg-gray-700/50 rounded-xl ml-4 flex-shrink-0 group-hover:bg-primary-500/20 transition-all duration-300">
+                                                <i class="faq-toggle-icon fas fa-chevron-down text-gray-400 group-hover:text-primary-400 transition-all duration-300"></i>
+                                            </div>
+                                        </button>
+
+                                        <!-- Answer Content -->
+                                        <div class="faq-answer hidden">
+                                            <div class="px-6 pb-6">
+                                                <div class="border-t border-gray-700/50 pt-5">
+                                                    <div class="flex items-start space-x-4">
+                                                        <!-- Answer Icon -->
+                                                        <div class="w-10 h-10 flex items-center justify-center bg-emerald-500/20 rounded-xl flex-shrink-0">
+                                                            <i class="fas fa-lightbulb text-emerald-400 text-sm"></i>
+                                                        </div>
+
+                                                        <!-- Answer Text -->
+                                                        <div class="flex-1">
+                                                            <p class="text-gray-300 text-base leading-relaxed">
+                                                                <?= htmlspecialchars($q['answer']) ?>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php $firstPanel = false; endforeach; ?>
+            </div>
         </div>
-        <div class="text-left">
-          <span class="font-medium text-sm text-white/90 block">Masih punya pertanyaan?</span>
-          <a href="#contact" class="text-xs text-primary-400 hover:text-primary-300 transition-colors duration-300 group-hover:underline">
-            Hubungi tim kami <i class="fa fa-arrow-right ml-1"></i>
-          </a>
+
+        <!-- Enhanced Contact CTA -->
+        <div class="mt-16 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+            <div class="relative inline-flex items-center bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-gray-700/30 rounded-2xl px-8 py-6 hover:border-primary-500/50 transition-all duration-500 group hover:shadow-xl hover:shadow-primary-500/10">
+
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 opacity-5">
+                    <div class="absolute top-2 right-2 w-4 h-4 border border-primary-400/30 rotate-45 rounded"></div>
+                    <div class="absolute bottom-2 left-2 w-3 h-3 bg-primary-400/10 rounded-full"></div>
+                </div>
+
+                <!-- Icon -->
+                <div class="w-12 h-12 bg-gradient-to-br from-primary-500/20 to-primary-600/20 rounded-xl flex items-center justify-center mr-6 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-headset text-primary-400 text-lg"></i>
+                </div>
+
+                <!-- Content -->
+                <div class="text-left">
+                    <h4 class="font-bold text-lg text-white mb-2 group-hover:text-primary-300 transition-colors duration-300">
+                        Masih punya pertanyaan?
+                    </h4>
+                    <p class="text-gray-400 text-sm mb-3">
+                        Tim ahli kami siap membantu menjawab pertanyaan Anda
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors duration-300 font-medium text-sm group-hover:underline">
+                        Hubungi tim kami
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+
+                <!-- Hover Effect -->
+                <div class="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact" class="py-12 bg-black scroll-mt-20 relative overflow-hidden">
-    <!-- Background Map with Overlay -->
-    <div class="absolute inset-0 opacity-10">
+<!-- Contact Section - Enhanced Design System -->
+<section id="contact" class="relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
+    <!-- Magic UI Interactive Grid Pattern Background -->
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0" style="
+            background-image:
+                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-move 20s linear infinite;
+        "></div>
+    </div>
+
+    <!-- Enhanced Background Elements -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-primary-500/20 to-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-blue-500/15 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Background Map with Enhanced Overlay -->
+    <div class="absolute inset-0 opacity-5">
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.515560073746!2d113.69243997242727!3d-8.150696587006067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695266ceb2fbb%3A0x4f7d8c2cd93f9499!2sANTOSA%20ARCHITECT%20%7C%20JASA%20ARSITEK%20PROFESIONAL%20BERLISENSI!5e0!3m2!1sen!2sid!4v1749265217676!5m2!1sen!2sid"
             width="100%"
@@ -857,7 +1132,6 @@ $hero_cta_buttons = $hero['cta_buttons'];
             loading="lazy">
         </iframe>
     </div>
-    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-black/80"></div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Consistent Header Section -->
@@ -867,10 +1141,15 @@ $hero_cta_buttons = $hero['cta_buttons'];
                 <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Kontak</span>
                 <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
             </div>
-            <h2 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent mb-6">
-                Hubungi Kami
+            <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight mb-6 tracking-tight">
+                <span class="block relative">
+                    Hubungi
+                </span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-emerald-400 to-primary-500 relative">
+                    Kami
+                </span>
             </h2>
-            <p class="font-sans font-normal max-w-3xl mx-auto text-gray-300 text-lg lg:text-xl leading-relaxed">
+            <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
                 Punya pertanyaan atau ingin memulai proyek dengan kami? Jangan ragu untuk menghubungi kami.
             </p>
         </div>
