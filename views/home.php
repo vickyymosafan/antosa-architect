@@ -347,63 +347,73 @@ $hero_cta_buttons = $hero['cta_buttons'];
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto" role="list" aria-label="Layanan arsitektur yang tersedia">
 
                 <?php
-                // Simplified card classes for consistency
-                $baseCardClasses = 'group relative h-full bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.01] min-h-[320px]';
+                // Enhanced card classes with image support
+                $baseCardClasses = 'group relative h-full border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.01] min-h-[380px]';
                 ?>
 
                 <?php foreach ($services['services'] as $index => $service): ?>
                     <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>" role="listitem">
                         <article class="<?= $baseCardClasses ?>" aria-labelledby="service-title-<?= $index ?>" tabindex="0">
 
+                            <!-- Service Image Background -->
+                            <div class="absolute inset-0 overflow-hidden">
+                                <div class="h-2/5 bg-cover bg-center bg-no-repeat"
+                                     style="background-image: url('<?= $service['image'] ?>');">
+                                    <!-- Image Overlay -->
+                                    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/90"></div>
+                                </div>
+                                <!-- Bottom section background -->
+                                <div class="h-3/5 bg-gradient-to-br from-gray-900/95 to-black/98"></div>
+                            </div>
+
                             <!-- Background Elements -->
-                            <div class="absolute inset-0 opacity-[0.03]">
+                            <div class="absolute inset-0 opacity-[0.03] z-5">
                                 <div class="absolute top-4 right-4 w-6 h-6 border border-primary-400/20 rotate-45 rounded-md"></div>
                                 <div class="absolute bottom-4 left-4 w-4 h-4 bg-primary-400/8 rounded-full"></div>
                             </div>
 
-                            <!-- Gradient Overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/[0.02] via-transparent to-<?= $service['color'] ?>-500/[0.01]"></div>
-
                             <!-- Content Container -->
-                            <div class="relative z-10 p-6 lg:p-8 h-full flex flex-col">
-                                <!-- Icon Container -->
-                                <div class="w-16 h-16 mb-4 relative mx-auto transition-transform duration-300 group-hover:scale-110">
-                                    <div class="w-full h-full bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/20">
-                                        <i class="fas fa-<?= $service['icon'] ?> text-lg lg:text-xl text-white"></i>
+                            <div class="relative z-10 h-full flex flex-col">
+                                <!-- Image Area (Top 40%) -->
+                                <div class="h-2/5 flex items-center justify-center relative">
+                                    <!-- Small Icon Overlay -->
+                                    <div class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/20 transition-transform duration-300 group-hover:scale-110">
+                                        <i class="fas fa-<?= $service['icon'] ?> text-lg text-white"></i>
                                     </div>
                                 </div>
 
-                                <!-- Content Section -->
-                                <div class="text-center flex-1 flex flex-col">
-                                    <h3 id="service-title-<?= $index ?>" class="font-sans font-bold text-lg lg:text-xl mb-2 text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight">
-                                        <?= $service['title'] ?>
-                                    </h3>
-                                    <p class="font-sans text-gray-300 text-sm lg:text-base leading-relaxed mb-3">
-                                        <?= $service['description'] ?>
-                                    </p>
+                                <!-- Content Section (Bottom 60%) -->
+                                <div class="h-3/5 p-6 lg:p-8 text-center flex flex-col justify-between">
+                                    <div class="flex-1">
+                                        <h3 id="service-title-<?= $index ?>" class="font-sans font-bold text-lg lg:text-xl mb-3 text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight">
+                                            <?= $service['title'] ?>
+                                        </h3>
+                                        <p class="font-sans text-gray-300 text-sm leading-relaxed mb-4">
+                                            <?= $service['description'] ?>
+                                        </p>
 
-                                    <!-- Features -->
-                                    <?php if (!empty($service['features'])): ?>
-                                        <div class="mt-2 mb-3">
-                                            <div class="space-y-1 text-xs text-gray-500">
-                                                <?php foreach (array_slice($service['features'], 0, 3) as $feature): ?>
-                                                    <div class="flex items-center justify-center space-x-1">
-                                                        <i class="fas fa-check text-primary-400 text-xs"></i>
-                                                        <span><?= $feature ?></span>
-                                                    </div>
-                                                <?php endforeach; ?>
+                                        <!-- Features -->
+                                        <?php if (!empty($service['features'])): ?>
+                                            <div class="mb-4">
+                                                <div class="space-y-2 text-xs text-gray-400">
+                                                    <?php foreach (array_slice($service['features'], 0, 3) as $feature): ?>
+                                                        <div class="flex items-center justify-center space-x-2">
+                                                            <i class="fas fa-check text-primary-400 text-xs"></i>
+                                                            <span><?= $feature ?></span>
+                                                        </div>
+                                                    <?php endforeach; ?>
+                                                </div>
                                             </div>
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
+                                        <?php endif; ?>
+                                    </div>
 
-                                <!-- CTA Button -->
-                                <div class="mt-auto pt-4 border-t border-gray-700/30">
-                                    <a href="#contact" class="group/cta w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold py-2.5 px-5 text-sm rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-primary-500/30 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-gray-900" aria-label="Konsultasi untuk <?= $service['title'] ?>">
-                                        <span>Konsultasi</span>
-                                        <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1" aria-hidden="true"></i>
-                                    </a>
-                                </div>
+                                    <!-- CTA Button -->
+                                    <div class="pt-4 border-t border-gray-700/30">
+                                        <a href="#contact" class="group/cta w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold py-2.5 px-5 text-sm rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-primary-500/30 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-gray-900" aria-label="Konsultasi untuk <?= $service['title'] ?>">
+                                            <span>Konsultasi</span>
+                                            <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
                             </div>
                         </article>
                     </div>

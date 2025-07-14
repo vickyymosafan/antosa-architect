@@ -147,6 +147,7 @@ class ContentModel
                     'description' => 'Menciptakan desain bangunan yang indah, fungsional dan berkelanjutan sesuai visi Anda dengan pendekatan holistik dan inovatif',
                     'icon' => 'building',
                     'color' => 'blue',
+                    'image' => 'assets/images/jasa1.webp',
                     'features' => [
                         'Konsep desain 3D',
                         'Gambar teknik lengkap',
@@ -159,6 +160,7 @@ class ContentModel
                     'description' => 'Mengubah ruang interior menjadi lingkungan yang nyaman, fungsional dan estetis',
                     'icon' => 'couch',
                     'color' => 'emerald',
+                    'image' => 'assets/images/jasa2.webp',
                     'features' => [
                         'Layout ruang optimal',
                         'Pemilihan material',
@@ -171,6 +173,7 @@ class ContentModel
                     'description' => 'Memberikan saran profesional dan solusi untuk proyek renovasi atau konstruksi baru',
                     'icon' => 'comments',
                     'color' => 'cyan',
+                    'image' => 'assets/images/jasa3.webp',
                     'features' => [
                         'Analisis kebutuhan',
                         'Estimasi biaya',
