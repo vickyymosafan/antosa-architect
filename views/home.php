@@ -487,7 +487,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
                                 </div>
 
                                 <!-- Content Section (Bottom 60%) -->
-                                <div class="h-3/5 p-6 lg:p-8 text-center flex flex-col justify-between">
+                                <div class="h-3/5 p-6 lg:p-8 text-center flex flex-col">
                                     <div class="flex-1">
                                         <h3 id="service-title-<?= $index ?>" class="font-sans font-bold text-lg lg:text-xl mb-4 text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight drop-shadow-sm">
                                             <?= $service['title'] ?>
@@ -509,14 +509,6 @@ $hero_cta_buttons = $hero['cta_buttons'];
                                                 </div>
                                             </div>
                                         <?php endif; ?>
-                                    </div>
-
-                                    <!-- Enhanced CTA Button with Consistent Border -->
-                                    <div class="pt-5 border-t-2 border-gray-600/60 shadow-sm">
-                                        <a href="#contact" class="group/cta w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold py-3 px-6 text-sm rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-primary-500/30 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-gray-900 drop-shadow-sm" aria-label="Konsultasi untuk <?= $service['title'] ?>">
-                                            <span>Konsultasi</span>
-                                            <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1" aria-hidden="true"></i>
-                                        </a>
                                     </div>
                             </div>
                         </article>
