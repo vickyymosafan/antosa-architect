@@ -341,115 +341,65 @@ $hero_cta_buttons = $hero['cta_buttons'];
             </p>
         </div>
 
-        <!-- Bento Grid Services Layout -->
+        <!-- Simplified Services Grid -->
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-            <!-- Bento Grid Container with Improved Accessibility -->
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 max-w-7xl mx-auto auto-rows-fr" role="list" aria-label="Layanan arsitektur yang tersedia">
+            <!-- Clean Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto" role="list" aria-label="Layanan arsitektur yang tersedia">
 
                 <?php
-                // Optimized Bento Grid layout configuration with consistent spacing
-                $bentoConfig = [
-                    ['cols' => 'md:col-span-2 lg:col-span-2', 'rows' => 'md:row-span-2', 'featured' => true],
-                    ['cols' => 'md:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false],
-                    ['cols' => 'md:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false],
-                    ['cols' => 'md:col-span-2 lg:col-span-2', 'rows' => 'md:row-span-1', 'featured' => false]
-                ];
-
-                // Consolidated card classes for consistency and reduced redundancy
-                $baseCardClasses = 'group relative h-full bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.01]';
-
-                // Spacing constants for consistency
-                $iconSizes = [
-                    'featured' => 'w-18 h-18 lg:w-20 lg:h-20 mb-2',
-                    'normal' => 'w-16 h-16 mb-3'
-                ];
-
-                $textSizes = [
-                    'featured' => ['title' => 'text-xl lg:text-2xl mb-2', 'desc' => 'text-base lg:text-lg leading-relaxed max-w-md mx-auto mb-4'],
-                    'normal' => ['title' => 'text-lg lg:text-xl mb-2', 'desc' => 'text-sm lg:text-base leading-relaxed mb-3']
-                ];
+                // Simplified card classes for consistency
+                $baseCardClasses = 'group relative h-full bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.01] min-h-[320px]';
                 ?>
 
                 <?php foreach ($services['services'] as $index => $service): ?>
-                    <?php
-                    $config = $bentoConfig[$index];
-                    $isFeatured = $config['featured'];
-                    $currentIconSize = $iconSizes[$isFeatured ? 'featured' : 'normal'];
-                    $currentTextSizes = $textSizes[$isFeatured ? 'featured' : 'normal'];
-                    ?>
+                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>" role="listitem">
+                        <article class="<?= $baseCardClasses ?>" aria-labelledby="service-title-<?= $index ?>" tabindex="0">
 
-                    <div class="<?= $config['cols'] ?> <?= $config['rows'] ?>" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>" role="listitem">
-                        <article class="<?= $baseCardClasses ?> <?= $isFeatured ? 'min-h-[380px] lg:min-h-[420px]' : 'min-h-[320px] lg:min-h-[360px]' ?>" aria-labelledby="service-title-<?= $index ?>" tabindex="0">
-
-                            <!-- Optimized Background Elements -->
+                            <!-- Background Elements -->
                             <div class="absolute inset-0 opacity-[0.03]">
-                                <div class="absolute <?= $isFeatured ? 'top-6 right-6 w-12 h-12' : 'top-4 right-4 w-6 h-6' ?> border border-primary-400/<?= $isFeatured ? '30' : '20' ?> rotate-45 rounded-<?= $isFeatured ? 'lg' : 'md' ?>"></div>
-                                <div class="absolute <?= $isFeatured ? 'bottom-6 left-6 w-8 h-8' : 'bottom-4 left-4 w-4 h-4' ?> bg-primary-400/<?= $isFeatured ? '10' : '8' ?> rounded-full"></div>
-                                <?php if ($isFeatured): ?>
-                                    <div class="absolute top-1/2 left-1/4 w-4 h-4 bg-primary-400/5 rounded-full"></div>
-                                <?php endif; ?>
+                                <div class="absolute top-4 right-4 w-6 h-6 border border-primary-400/20 rotate-45 rounded-md"></div>
+                                <div class="absolute bottom-4 left-4 w-4 h-4 bg-primary-400/8 rounded-full"></div>
                             </div>
 
                             <!-- Gradient Overlay -->
                             <div class="absolute inset-0 bg-gradient-to-br from-primary-500/[0.02] via-transparent to-<?= $service['color'] ?>-500/[0.01]"></div>
 
-                            <!-- Optimized Content Container with Improved Spacing -->
+                            <!-- Content Container -->
                             <div class="relative z-10 p-6 lg:p-8 h-full flex flex-col">
-                                <?php
-                                // Spacing improvements:
-                                // - Removed justify-between for better control
-                                // - Reduced icon margins (mb-4 → mb-2/mb-3)
-                                // - Centered features grid with max-width
-                                // - Used mt-auto for button positioning
-                                ?>
-
-                                <!-- Icon Container with Consistent Spacing -->
-                                <div class="<?= $currentIconSize ?> relative mx-auto transition-transform duration-300 group-hover:scale-110">
+                                <!-- Icon Container -->
+                                <div class="w-16 h-16 mb-4 relative mx-auto transition-transform duration-300 group-hover:scale-110">
                                     <div class="w-full h-full bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/20">
-                                        <i class="fas fa-<?= $service['icon'] ?> <?= $isFeatured ? 'text-xl lg:text-2xl' : 'text-lg lg:text-xl' ?> text-white"></i>
+                                        <i class="fas fa-<?= $service['icon'] ?> text-lg lg:text-xl text-white"></i>
                                     </div>
                                 </div>
 
-                                <!-- Content Section with Improved Spacing -->
-                                <div class="text-center flex-1 flex flex-col"><?php // Changed from flex-grow justify-center to flex-1 for better control ?>
-                                    <h3 id="service-title-<?= $index ?>" class="font-sans font-bold <?= $currentTextSizes['title'] ?> text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight">
+                                <!-- Content Section -->
+                                <div class="text-center flex-1 flex flex-col">
+                                    <h3 id="service-title-<?= $index ?>" class="font-sans font-bold text-lg lg:text-xl mb-2 text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight">
                                         <?= $service['title'] ?>
                                     </h3>
-                                    <p class="font-sans text-gray-300 <?= $currentTextSizes['desc'] ?>">
+                                    <p class="font-sans text-gray-300 text-sm lg:text-base leading-relaxed mb-3">
                                         <?= $service['description'] ?>
                                     </p>
 
-                                    <!-- Features for All Cards - Centered and Properly Spaced -->
+                                    <!-- Features -->
                                     <?php if (!empty($service['features'])): ?>
-                                        <div class="<?= $isFeatured ? 'mt-1 mb-4' : 'mt-2 mb-3' ?>">
-                                            <?php if ($isFeatured): ?>
-                                                <!-- Featured card: 2x2 grid centered -->
-                                                <div class="grid grid-cols-2 gap-x-4 gap-y-2 max-w-sm mx-auto text-xs text-gray-400">
-                                                    <?php foreach ($service['features'] as $feature): ?>
-                                                        <div class="flex items-center justify-start space-x-2">
-                                                            <i class="fas fa-check text-primary-400 text-xs flex-shrink-0"></i>
-                                                            <span class="text-left"><?= $feature ?></span>
-                                                        </div>
-                                                    <?php endforeach; ?>
-                                                </div>
-                                            <?php else: ?>
-                                                <!-- Non-featured cards: vertical centered -->
-                                                <div class="space-y-1 text-xs text-gray-500">
-                                                    <?php foreach (array_slice($service['features'], 0, 2) as $feature): ?>
-                                                        <div class="flex items-center justify-center space-x-1">
-                                                            <i class="fas fa-check text-primary-400 text-xs"></i>
-                                                            <span><?= $feature ?></span>
-                                                        </div>
-                                                    <?php endforeach; ?>
-                                                </div>
-                                            <?php endif; ?>
+                                        <div class="mt-2 mb-3">
+                                            <div class="space-y-1 text-xs text-gray-500">
+                                                <?php foreach (array_slice($service['features'], 0, 3) as $feature): ?>
+                                                    <div class="flex items-center justify-center space-x-1">
+                                                        <i class="fas fa-check text-primary-400 text-xs"></i>
+                                                        <span><?= $feature ?></span>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
                                         </div>
                                     <?php endif; ?>
                                 </div>
 
-                                <!-- CTA Button with Reduced Spacing -->
-                                <div class="mt-auto pt-4 border-t border-gray-700/30"><?php // Changed to mt-auto for better positioning and reduced pt ?>
-                                    <a href="#contact" class="group/cta w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold <?= $isFeatured ? 'py-3 px-6 text-base' : 'py-2.5 px-5 text-sm' ?> rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-primary-500/30 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-gray-900" aria-label="Konsultasi untuk <?= $service['title'] ?>">
+                                <!-- CTA Button -->
+                                <div class="mt-auto pt-4 border-t border-gray-700/30">
+                                    <a href="#contact" class="group/cta w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold py-2.5 px-5 text-sm rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-primary-500/30 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-gray-900" aria-label="Konsultasi untuk <?= $service['title'] ?>">
                                         <span>Konsultasi</span>
                                         <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1" aria-hidden="true"></i>
                                     </a>
@@ -544,40 +494,17 @@ $hero_cta_buttons = $hero['cta_buttons'];
             </div>
         </div>
         
-        <!-- Dynamic Portfolio Bento Grid -->
+        <!-- Simplified Portfolio Grid -->
         <div id="portfolio-container" class="relative">
-            <!-- Bento Grid View -->
-            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 lg:gap-6 auto-rows-fr">
+            <!-- Grid View -->
+            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <?php
-                // Enhanced Bento Grid layout configuration for portfolio
-                $portfolioBentoConfig = [
-                    // First row - Featured large project
-                    0 => ['cols' => 'md:col-span-2 lg:col-span-3', 'rows' => 'md:row-span-2', 'featured' => true, 'size' => 'hero'],
-                    1 => ['cols' => 'md:col-span-1 lg:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'small'],
-                    2 => ['cols' => 'md:col-span-1 lg:col-span-2', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'medium'],
-
-                    // Second row
-                    3 => ['cols' => 'md:col-span-1 lg:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'small'],
-                    4 => ['cols' => 'md:col-span-2 lg:col-span-2', 'rows' => 'md:row-span-1', 'featured' => true, 'size' => 'wide'],
-                    5 => ['cols' => 'md:col-span-1 lg:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'small'],
-
-                    // Third row and beyond - dynamic pattern
-                    6 => ['cols' => 'md:col-span-1 lg:col-span-2', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'medium'],
-                    7 => ['cols' => 'md:col-span-1 lg:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'small'],
-                    8 => ['cols' => 'md:col-span-2 lg:col-span-3', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'wide'],
-                ];
-
-                // Base portfolio card classes
-                $basePortfolioCardClasses = 'portfolio-item group relative overflow-hidden rounded-2xl shadow-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-800 hover:border-primary-500/30 transition-all duration-500';
+                // Simplified portfolio card classes
+                $basePortfolioCardClasses = 'portfolio-item group relative overflow-hidden rounded-2xl shadow-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-800 hover:border-primary-500/30 transition-all duration-500 min-h-[280px]';
                 ?>
 
                 <?php foreach ($portfolio['projects'] as $index => $project): ?>
                 <?php
-                    // Get Bento configuration or use default for additional projects
-                    $bentoConfig = $portfolioBentoConfig[$index] ?? ['cols' => 'md:col-span-1', 'rows' => 'md:row-span-1', 'featured' => false, 'size' => 'small'];
-                    $isBentoFeatured = $bentoConfig['featured'];
-                    $bentoSize = $bentoConfig['size'];
-
                     // Get first image from the project's images array
                     $imageUrl = $project['images'][0] ?? 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80';
 
@@ -587,12 +514,8 @@ $hero_cta_buttons = $hero['cta_buttons'];
                     // Calculate AOS delay based on index
                     $aosDelay = 100 + ($index * 50);
                 ?>
-                <div class="<?= $bentoConfig['cols'] ?> <?= $bentoConfig['rows'] ?>" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= $aosDelay ?>">
-                    <div class="<?= $basePortfolioCardClasses ?> h-full <?=
-                        $bentoSize === 'hero' ? 'min-h-[400px] lg:min-h-[500px]' :
-                        ($bentoSize === 'wide' ? 'min-h-[280px] lg:min-h-[320px]' :
-                        ($bentoSize === 'medium' ? 'min-h-[300px] lg:min-h-[350px]' : 'min-h-[250px] lg:min-h-[280px]'))
-                    ?>"
+                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= $aosDelay ?>">
+                    <div class="<?= $basePortfolioCardClasses ?> h-full"
                          data-category="<?= $project['category'] ?>"
                          data-id="<?= $project['id'] ?>"
                          data-year="<?= $project['year'] ?>"
@@ -600,29 +523,23 @@ $hero_cta_buttons = $hero['cta_buttons'];
                          data-tags="<?= $tagsString ?>"
                          data-featured="<?= $project['featured'] ? 'true' : 'false' ?>">
 
-                        <!-- Adaptive Project Image with Gradient Overlay -->
-                        <div class="relative overflow-hidden <?=
-                            $bentoSize === 'hero' ? 'h-3/5' :
-                            ($bentoSize === 'wide' ? 'h-2/3' :
-                            ($bentoSize === 'medium' ? 'h-3/5' : 'h-2/3'))
-                        ?>">
+                        <!-- Project Image with Gradient Overlay -->
+                        <div class="relative overflow-hidden h-2/3">
                             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10"></div>
                             <img src="<?= $imageUrl ?>"
                                  alt="<?= $project['title'] ?>"
                                  class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:rotate-1">
 
-                            <!-- Enhanced Hover Overlay for Different Sizes -->
+                            <!-- Hover Overlay -->
                             <div class="absolute inset-0 bg-gradient-to-b from-primary-600/80 to-gray-900/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 z-20">
-                                <div class="flex flex-col items-center space-y-<?= $bentoSize === 'hero' ? '4' : '2' ?> p-<?= $bentoSize === 'hero' ? '6' : '4' ?> text-center">
+                                <div class="flex flex-col items-center space-y-2 p-4 text-center">
                                     <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 backdrop-blur-sm text-white">
                                         <?= $project['category'] ?>
                                     </span>
-                                    <h3 class="font-sans font-bold <?= $bentoSize === 'hero' ? 'text-xl md:text-2xl' : ($bentoSize === 'small' ? 'text-lg' : 'text-xl') ?> text-white"><?= $project['title'] ?></h3>
-                                    <?php if ($bentoSize !== 'small'): ?>
-                                        <p class="font-sans text-sm text-gray-200 line-clamp-<?= $bentoSize === 'hero' ? '3' : '2' ?>"><?= $project['description'] ?></p>
-                                    <?php endif; ?>
+                                    <h3 class="font-sans font-bold text-xl text-white"><?= $project['title'] ?></h3>
+                                    <p class="font-sans text-sm text-gray-200 line-clamp-2"><?= $project['description'] ?></p>
                                     <button onclick="openProjectModal('<?= $project['id'] ?>')"
-                                            class="mt-<?= $bentoSize === 'hero' ? '4' : '2' ?> px-<?= $bentoSize === 'hero' ? '6' : '4' ?> py-2 bg-white text-gray-900 rounded-full font-medium transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 <?= $bentoSize === 'small' ? 'text-sm' : '' ?>">
+                                            class="mt-2 px-4 py-2 bg-white text-gray-900 rounded-full font-medium transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
                                         <span>Detail</span>
                                         <i class="fas fa-arrow-right"></i>
                                     </button>
@@ -630,27 +547,19 @@ $hero_cta_buttons = $hero['cta_buttons'];
                             </div>
                         </div>
 
-                        <!-- Adaptive Project Info -->
-                        <div class="p-<?= $bentoSize === 'hero' ? '6' : ($bentoSize === 'small' ? '4' : '5') ?> relative z-10 flex-1 flex flex-col justify-between">
-                            <!-- Tags - Adaptive display -->
-                            <?php if ($bentoSize !== 'small'): ?>
-                                <div class="flex flex-wrap gap-2 mb-3">
-                                    <?php
-                                    $tagLimit = $bentoSize === 'hero' ? 4 : 2;
-                                    foreach (array_slice($project['tags'] ?? [], 0, $tagLimit) as $tag):
-                                    ?>
-                                    <span class="text-xs font-medium px-2 py-1 rounded-md bg-gray-700/50 text-gray-300">#<?= $tag ?></span>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php endif; ?>
+                        <!-- Project Info -->
+                        <div class="p-5 relative z-10 flex-1 flex flex-col justify-between">
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <?php foreach (array_slice($project['tags'] ?? [], 0, 3) as $tag): ?>
+                                <span class="text-xs font-medium px-2 py-1 rounded-md bg-gray-700/50 text-gray-300">#<?= $tag ?></span>
+                                <?php endforeach; ?>
+                            </div>
 
-                            <h3 class="font-sans font-bold <?=
-                                $bentoSize === 'hero' ? 'text-xl lg:text-2xl' :
-                                ($bentoSize === 'small' ? 'text-lg' : 'text-xl')
-                            ?> text-white group-hover:text-primary-400 transition-colors <?= $bentoSize === 'small' ? 'mb-2' : 'mb-3' ?>"><?= $project['title'] ?></h3>
+                            <h3 class="font-sans font-bold text-xl text-white group-hover:text-primary-400 transition-colors mb-3"><?= $project['title'] ?></h3>
 
-                            <!-- Location and Year - Adaptive -->
-                            <div class="flex items-center <?= $bentoSize === 'small' ? 'space-x-2' : 'space-x-4' ?> mt-2 text-<?= $bentoSize === 'small' ? 'xs' : 'sm' ?> text-gray-400">
+                            <!-- Location and Year -->
+                            <div class="flex items-center space-x-4 mt-2 text-sm text-gray-400">
                                 <span class="flex items-center">
                                     <i class="fas fa-map-marker-alt mr-1 text-primary-500"></i> <?= $project['location'] ?>
                                 </span>
@@ -659,22 +568,20 @@ $hero_cta_buttons = $hero['cta_buttons'];
                                 </span>
                             </div>
 
-                            <!-- Description - Only for larger cards -->
-                            <?php if ($bentoSize !== 'small'): ?>
-                                <p class="font-sans text-gray-300 mt-3 mb-4 line-clamp-<?= $bentoSize === 'hero' ? '3' : '2' ?>"><?= $project['description'] ?></p>
-                            <?php endif; ?>
+                            <!-- Description -->
+                            <p class="font-sans text-gray-300 mt-3 mb-4 line-clamp-2"><?= $project['description'] ?></p>
 
                             <!-- Action and Featured Badge -->
                             <div class="flex justify-between items-center mt-auto">
                                 <button onclick="openProjectModal('<?= $project['id'] ?>')"
-                                        class="text-primary-400 hover:text-primary-300 font-medium inline-flex items-center group <?= $bentoSize === 'small' ? 'text-sm' : '' ?>">
+                                        class="text-primary-400 hover:text-primary-300 font-medium inline-flex items-center group">
                                     <span>Detail</span>
                                     <svg class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </button>
 
-                                <?php if ($project['featured'] && $bentoSize !== 'small'): ?>
+                                <?php if ($project['featured']): ?>
                                 <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-primary-500/20 text-primary-400">
                                     <i class="fas fa-star mr-1"></i> Featured
                                 </span>

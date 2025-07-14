@@ -168,24 +168,24 @@ return [
         '2xl' => '1536px'
     ],
 
-    // Grid System
+    // Simplified Grid System
     'grid' => [
         'container' => [
             'max_width' => 'max-w-7xl',
             'margin' => 'mx-auto',
             'padding' => 'px-4 sm:px-6 lg:px-8'
         ],
-        'columns' => [
-            '1' => 'grid-cols-1',
-            '2' => 'md:grid-cols-2',
-            '3' => 'lg:grid-cols-3',
-            '4' => 'lg:grid-cols-4',
-            '12' => 'lg:grid-cols-12'
+        'services' => [
+            'base' => 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8',
+            'card_height' => 'min-h-[320px]'
         ],
-        'gap' => [
-            'small' => 'gap-4',
-            'medium' => 'gap-6',
-            'large' => 'gap-8'
+        'portfolio' => [
+            'base' => 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6',
+            'card_height' => 'min-h-[280px]'
+        ],
+        'testimonials' => [
+            'base' => 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8',
+            'card_height' => 'min-h-[200px]'
         ]
     ],
 

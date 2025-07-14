@@ -1,6 +1,6 @@
 /**
- * Optimized Portfolio Bento Grid System
- * Enhanced performance with reduced redundancy for Bento Grid layout
+ * Optimized Portfolio Grid System
+ * Enhanced performance with clean responsive grid layout
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -49,8 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Optimized constants
     const CONFIG = {
         ANIMATION_DURATION_MS: 300,
-        ITEM_ANIMATION_DELAY_MS: 30,
-        BENTO_GRID_ENABLED: true
+        ITEM_ANIMATION_DELAY_MS: 30
     };
 
     // Consolidated filter state
@@ -175,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     /**
-     * Optimized portfolio display update with Bento Grid support
+     * Optimized portfolio display update with responsive grid support
      */
     function updatePortfolioDisplay() {
         const allItems = Array.from(elements.portfolioItems);
@@ -198,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 elements.portfolioGrid.classList.toggle('hidden', !isGridView);
                 elements.portfolioList.classList.toggle('hidden', isGridView);
 
-                // Optimized staggered animation for Bento Grid
+                // Optimized staggered animation for responsive grid
                 sortedItems.forEach((item, index) => {
                     const delay = index * CONFIG.ITEM_ANIMATION_DELAY_MS;
                     setTimeout(() => {
@@ -213,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Refresh AOS for new layout if available
-        if (typeof AOS !== 'undefined' && CONFIG.BENTO_GRID_ENABLED) {
+        if (typeof AOS !== 'undefined') {
             setTimeout(() => AOS.refresh(), 100);
         }
     }
@@ -722,8 +721,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Initial display update
             updatePortfolioDisplay();
 
-            // Enhanced AOS integration for Bento Grid
-            if (typeof AOS !== 'undefined' && CONFIG.BENTO_GRID_ENABLED) {
+            // Enhanced AOS integration
+            if (typeof AOS !== 'undefined') {
                 setTimeout(() => AOS.refresh(), 200);
             }
 
