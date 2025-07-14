@@ -947,37 +947,15 @@ $hero_cta_buttons = $hero['cta_buttons'];
         </div>
 
         <!-- Enhanced Contact CTA -->
+        <!-- Simple Contact CTA -->
         <div class="mt-16 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-            <div class="relative inline-flex items-center bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-gray-700/30 rounded-2xl px-8 py-6 hover:border-primary-500/50 transition-all duration-500 group hover:shadow-xl hover:shadow-primary-500/10">
-
-                <!-- Background Pattern -->
-                <div class="absolute inset-0 opacity-5">
-                    <div class="absolute top-2 right-2 w-4 h-4 border border-primary-400/30 rotate-45 rounded"></div>
-                    <div class="absolute bottom-2 left-2 w-3 h-3 bg-primary-400/10 rounded-full"></div>
-                </div>
-
-                <!-- Icon -->
-                <div class="w-12 h-12 bg-gradient-to-br from-primary-500/20 to-primary-600/20 rounded-xl flex items-center justify-center mr-6 group-hover:scale-110 transition-transform duration-300">
-                    <i class="fas fa-headset text-primary-400 text-lg"></i>
-                </div>
-
-                <!-- Content -->
-                <div class="text-left">
-                    <h4 class="font-bold text-lg text-white mb-2 group-hover:text-primary-300 transition-colors duration-300">
-                        Masih punya pertanyaan?
-                    </h4>
-                    <p class="text-gray-400 text-sm mb-3">
-                        Tim ahli kami siap membantu menjawab pertanyaan Anda
-                    </p>
-                    <a href="#contact" class="inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors duration-300 font-medium text-sm group-hover:underline">
-                        Hubungi tim kami
-                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
-                    </a>
-                </div>
-
-                <!-- Hover Effect -->
-                <div class="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-            </div>
+            <p class="text-gray-400 text-lg mb-6">
+                Masih punya pertanyaan? Tim ahli kami siap membantu menjawab pertanyaan Anda
+            </p>
+            <a href="#contact" class="inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors duration-300 font-semibold text-lg group">
+                Hubungi tim kami
+                <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
+            </a>
         </div>
     </div>
 </section>
