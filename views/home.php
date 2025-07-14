@@ -16,6 +16,22 @@ ob_start();
         0% { transform: translate(0, 0); }
         100% { transform: translate(40px, 40px); }
     }
+
+    /* Magic UI Interactive Grid Pattern Background - Reusable Class */
+    .magic-grid-bg::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        opacity: 0.2;
+        background-image:
+            linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+        background-size: 40px 40px;
+        animation: grid-move 20s linear infinite;
+        pointer-events: none;
+        z-index: 1;
+    }
+
     .faq-card:hover .grid-dot,
     .service-card:hover .grid-dot,
     .portfolio-card:hover .grid-dot,
@@ -156,17 +172,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
 </section>
 
 <!-- About Section - Enhanced Design System -->
-<section id="about" class="relative py-16 lg:py-24 bg-black text-white scroll-mt-20 overflow-hidden" aria-label="Tentang Kami dan Tim Profesional">
-    <!-- Magic UI Interactive Grid Pattern Background -->
-    <div class="absolute inset-0 opacity-20">
-        <div class="absolute inset-0" style="
-            background-image:
-                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: grid-move 20s linear infinite;
-        "></div>
-    </div>
+<section id="about" class="magic-grid-bg relative py-16 lg:py-24 bg-black text-white scroll-mt-20 overflow-hidden" aria-label="Tentang Kami dan Tim Profesional">
 
     <!-- Enhanced Background Elements -->
     <div class="absolute inset-0 opacity-5">
@@ -416,17 +422,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
 </section>
 
 <!-- Services Section - Enhanced Design System -->
-<section id="services" class="relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
-    <!-- Magic UI Interactive Grid Pattern Background -->
-    <div class="absolute inset-0 opacity-20">
-        <div class="absolute inset-0" style="
-            background-image:
-                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: grid-move 20s linear infinite;
-        "></div>
-    </div>
+<section id="services" class="magic-grid-bg relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
 
     <!-- Enhanced Background Elements -->
     <div class="absolute inset-0 opacity-5">
@@ -533,17 +529,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
 </section>
 
 <!-- Portfolio Section - Enhanced Design System -->
-<section id="portfolio" class="relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
-    <!-- Magic UI Interactive Grid Pattern Background -->
-    <div class="absolute inset-0 opacity-20">
-        <div class="absolute inset-0" style="
-            background-image:
-                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: grid-move 20s linear infinite;
-        "></div>
-    </div>
+<section id="portfolio" class="magic-grid-bg relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
 
     <!-- Enhanced Background Elements -->
     <div class="absolute inset-0 opacity-5">
@@ -760,17 +746,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
 </section>
 
 <!-- Testimonials Section - Enhanced Design System -->
-<section id="testimonials" class="relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
-    <!-- Magic UI Interactive Grid Pattern Background -->
-    <div class="absolute inset-0 opacity-20">
-        <div class="absolute inset-0" style="
-            background-image:
-                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: grid-move 20s linear infinite;
-        "></div>
-    </div>
+<section id="testimonials" class="magic-grid-bg relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
 
     <!-- Enhanced Background Elements -->
     <div class="absolute inset-0 opacity-5">
@@ -855,17 +831,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
 </section>
 
 <!-- Enhanced FAQ Section - Consistent Design System -->
-<section id="faq" class="relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
-    <!-- Magic UI Interactive Grid Pattern Background -->
-    <div class="absolute inset-0 opacity-20">
-        <div class="absolute inset-0" style="
-            background-image:
-                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: grid-move 20s linear infinite;
-        "></div>
-    </div>
+<section id="faq" class="magic-grid-bg relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
 
     <!-- Enhanced Background Elements -->
     <div class="absolute inset-0 opacity-5">
@@ -1056,17 +1022,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
 </section>
 
 <!-- Contact Section - Enhanced Design System -->
-<section id="contact" class="relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
-    <!-- Magic UI Interactive Grid Pattern Background -->
-    <div class="absolute inset-0 opacity-20">
-        <div class="absolute inset-0" style="
-            background-image:
-                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: grid-move 20s linear infinite;
-        "></div>
-    </div>
+<section id="contact" class="magic-grid-bg relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
 
     <!-- Enhanced Background Elements -->
     <div class="absolute inset-0 opacity-5">
