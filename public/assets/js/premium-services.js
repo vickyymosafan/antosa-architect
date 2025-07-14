@@ -14,15 +14,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const serviceCards = servicesSection.querySelectorAll('.group');
 
         serviceCards.forEach((card, index) => {
-            // Get card elements for consistent animations
-            const iconContainer = card.querySelector('[class*="w-16"], [class*="w-18"], [class*="w-20"]');
+            // Get card elements for consistent animations - updated for new icon size
+            const iconContainer = card.querySelector('[class*="w-16"]');
             const gradientOverlay = card.querySelector('[class*="bg-gradient-to-br"]');
+            const imageOverlay = card.querySelector('[class*="bg-gradient-to-b"]');
 
-            // Consistent hover effects for all cards
+            // Enhanced consistent hover effects for all cards
             card.addEventListener('mouseenter', () => {
                 if (iconContainer) {
                     iconContainer.style.transform = 'scale(1.1)';
-                    iconContainer.style.transition = 'transform 0.3s ease';
+                    iconContainer.style.transition = 'all 0.3s ease';
                 }
 
                 // Apply subtle gradient effect to all cards
@@ -30,11 +31,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     gradientOverlay.style.opacity = '0.04';
                     gradientOverlay.style.transition = 'opacity 0.3s ease';
                 }
+
+                // Enhance image overlay on hover
+                if (imageOverlay) {
+                    imageOverlay.style.background = 'linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6), rgba(0,0,0,0.9))';
+                    imageOverlay.style.transition = 'background 0.3s ease';
+                }
             });
 
             card.addEventListener('mouseleave', () => {
                 if (iconContainer) iconContainer.style.transform = 'scale(1)';
                 if (gradientOverlay) gradientOverlay.style.opacity = '';
+                if (imageOverlay) imageOverlay.style.background = '';
             });
 
             // Optimized staggered entrance timing
