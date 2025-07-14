@@ -61,32 +61,58 @@ function initializeCounters(container = document) {
 }
 
 /**
- * Styles a navigation link based on its active state.
- * @param {HTMLAnchorElement} link - The navigation link element.
+ * Styles a dock navigation link based on its active state.
+ * @param {HTMLElement} link - The dock navigation link element.
  * @param {boolean} isActive - Whether the link should be styled as active.
- * @param {boolean} isMobile - Whether the link is a mobile navigation item.
  */
-function styleNavLink(link, isActive, isMobile) {
-    const underline = !isMobile ? link.querySelector('span') : null;
+function styleDockNavLink(link, isActive) {
+    if (!link) return;
+
+    const dockIcon = link.querySelector('.dock-icon');
+    const svg = link.querySelector('svg');
 
     if (isActive) {
-        link.classList.add('text-primary-400');
-        link.classList.remove('text-gray-300');
-        if (isMobile && link.classList.contains('hover:bg-gray-800')) {
-            link.classList.add('bg-gray-800');
-        }
-        if (underline) {
-            underline.classList.add('scale-x-100');
-            underline.classList.remove('scale-x-0');
-        }
+        // Active state styling
+        dockIcon.classList.remove('bg-dark-300/10', 'border-dark-300/20');
+        dockIcon.classList.add('bg-primary-400/20', 'border-primary-400/40', 'scale-110');
+        svg.classList.remove('text-dark-300');
+        svg.classList.add('text-primary-400');
+        link.setAttribute('aria-current', 'page');
     } else {
-        link.classList.remove('text-primary-400');
-        if (isMobile) link.classList.remove('bg-gray-800');
-        link.classList.add('text-gray-300');
-        if (underline) {
-            underline.classList.add('scale-x-0');
-            underline.classList.remove('scale-x-100');
+        // Inactive state styling
+        if (link.getAttribute('href') !== '#home') {
+            dockIcon.classList.remove('bg-primary-400/20', 'border-primary-400/40', 'scale-110');
+            dockIcon.classList.add('bg-dark-300/10', 'border-dark-300/20');
+            svg.classList.remove('text-primary-400');
+            svg.classList.add('text-dark-300');
         }
+        link.removeAttribute('aria-current');
+    }
+}
+
+/**
+ * Styles a mobile navigation link based on its active state.
+ * @param {HTMLElement} link - The mobile navigation link element.
+ * @param {boolean} isActive - Whether the link should be styled as active.
+ */
+function styleMobileNavLink(link, isActive) {
+    if (!link) return;
+
+    const svg = link.querySelector('svg');
+    const span = link.querySelector('span');
+
+    if (isActive) {
+        link.classList.remove('text-white');
+        link.classList.add('text-primary-400');
+        link.setAttribute('aria-current', 'page');
+    } else {
+        if (link.getAttribute('href') === '#home') {
+            link.classList.add('text-primary-400');
+        } else {
+            link.classList.remove('text-primary-400');
+            link.classList.add('text-white');
+        }
+        link.removeAttribute('aria-current');
     }
 }
 
@@ -126,18 +152,15 @@ function getCurrentSectionId(sections, headerHeight, offset = 70) {
  * Updates the active state of navigation links based on the current scroll position.
  */
 function updateActiveNavLinks() {
-    const header = document.querySelector('header');
-    if (!header) return;
-
-    const navLinks = document.querySelectorAll('header nav a.nav-item');
+    const dockNavLinks = document.querySelectorAll('#dock-nav a.nav-item');
     const mobileNavLinks = document.querySelectorAll('#mobile-menu a.mobile-nav-item');
     const sections = document.querySelectorAll('main section[id]');
-    const headerHeight = header.offsetHeight;
+    const headerHeight = 80; // Fixed height since we don't have a traditional header
 
     // Handle homepage root with no sections (e.g. a true single page without scrollable sections)
     if (sections.length === 0 && window.location.pathname === '/' && !window.location.hash) {
-        navLinks.forEach(link => styleNavLink(link, (link.getAttribute('href') === '#home' || link.getAttribute('href') === '/'), false));
-        mobileNavLinks.forEach(link => styleNavLink(link, (link.getAttribute('href') === '#home' || link.getAttribute('href') === '/'), true));
+        dockNavLinks.forEach(link => styleDockNavLink(link, (link.getAttribute('href') === '#home' || link.getAttribute('href') === '/')));
+        mobileNavLinks.forEach(link => styleMobileNavLink(link, (link.getAttribute('href') === '#home' || link.getAttribute('href') === '/')));
         return;
     }
 
@@ -145,12 +168,12 @@ function updateActiveNavLinks() {
 
     const currentSectionId = getCurrentSectionId(sections, headerHeight);
 
-    navLinks.forEach(link => {
-        styleNavLink(link, link.getAttribute('href') === `#${currentSectionId}`, false);
+    dockNavLinks.forEach(link => {
+        styleDockNavLink(link, link.getAttribute('href') === `#${currentSectionId}`);
     });
 
     mobileNavLinks.forEach(link => {
-        styleNavLink(link, link.getAttribute('href') === `#${currentSectionId}`, true);
+        styleMobileNavLink(link, link.getAttribute('href') === `#${currentSectionId}`);
     });
 }
 
@@ -162,58 +185,42 @@ function updateActiveNavLinks() {
 
 
 /**
- * Initializes sticky header behavior.
- * @param {HTMLElement} header - The header element.
+ * Initializes dock magnification effect based on mouse proximity.
  */
-function initializeStickyHeader(header) {
-    if (!header) return;
+function initializeDockMagnification() {
+    const dockNav = document.getElementById('dock-nav');
+    if (!dockNav) return;
 
-    const stickyPadding = 'py-3';
-    const defaultPadding = 'py-6'; // Assumes header has py-6 by default
+    const dockItems = dockNav.querySelectorAll('.dock-item');
 
-    // Store initial classes to handle dark mode correctly for bg-transparent
-    const isInitiallyDarkTransparent = header.classList.contains('dark:bg-transparent');
+    dockItems.forEach(item => {
+        const dockIcon = item.querySelector('.dock-icon');
 
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > 50) {
-            header.classList.add('bg-white/80', 'dark:bg-gray-900/80', 'backdrop-blur-md', 'shadow-lg');
-            header.classList.remove('bg-transparent', 'dark:bg-transparent');
-            
-            if (header.classList.contains(defaultPadding)) {
-                header.classList.remove(defaultPadding);
-            }
-            if (!header.classList.contains(stickyPadding)) {
-                header.classList.add(stickyPadding);
-            }
-        } else {
-            header.classList.remove('bg-white/80', 'dark:bg-gray-900/80', 'backdrop-blur-md', 'shadow-lg');
-            header.classList.add('bg-transparent');
-            if (isInitiallyDarkTransparent) {
-                 header.classList.add('dark:bg-transparent'); // Restore if it was initially dark transparent
-            }
-            // header.classList.add('shadow-none'); // This is often default, but explicit removal of shadow-lg is better
+        item.addEventListener('mouseenter', () => {
+            dockIcon.classList.add('scale-125');
+            dockIcon.classList.remove('scale-110');
+        });
 
-            if (header.classList.contains(stickyPadding)) {
-                header.classList.remove(stickyPadding);
+        item.addEventListener('mouseleave', () => {
+            dockIcon.classList.remove('scale-125');
+            // Only add scale-110 if it's the active item
+            if (item.hasAttribute('aria-current')) {
+                dockIcon.classList.add('scale-110');
             }
-            if (!header.classList.contains(defaultPadding)) {
-                header.classList.add(defaultPadding);
-            }
-        }
+        });
+    });
+
+    // Add dock container hover effect
+    dockNav.addEventListener('mouseenter', () => {
+        dockNav.querySelector('.dock-container').classList.add('scale-105');
+    });
+
+    dockNav.addEventListener('mouseleave', () => {
+        dockNav.querySelector('.dock-container').classList.remove('scale-105');
     });
 }
 
-/**
- * Adjusts main content padding to account for fixed header height.
- * @param {HTMLElement} mainContent - The main content element.
- * @param {HTMLElement} header - The header element.
- */
-function adjustMainContentPadding(mainContent, header) {
-    if (mainContent && header) {
-        mainContent.style.paddingTop = `${header.offsetHeight}px`;
-    }
-}
+
 
 /**
  * Initializes mobile menu toggle functionality.
@@ -289,13 +296,10 @@ function initializeSmoothScroll(selector = 'a[href^="#"]') {
 
 // Main DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('header');
-    const mainContent = document.querySelector('main');
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    initializeStickyHeader(header);
-    adjustMainContentPadding(mainContent, header);
+    initializeDockMagnification();
     initializeMobileMenu(mobileMenuButton, mobileMenu);
     initializeActiveLinkHighlighting();
     initializeSmoothScroll();

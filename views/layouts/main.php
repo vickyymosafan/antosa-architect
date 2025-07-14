@@ -122,6 +122,15 @@
                         '.glass-card': {
                             '@apply bg-black/80 backdrop-blur-md border border-white/10 hover:border-primary-400/30 transition-all duration-300': {},
                         },
+                        '.dock-container': {
+                            '@apply transition-all duration-300 ease-out': {},
+                        },
+                        '.dock-icon': {
+                            '@apply transition-all duration-300 ease-out': {},
+                        },
+                        '.dock-tooltip': {
+                            '@apply transition-all duration-200 ease-out': {},
+                        },
 
                     }, ['responsive', 'hover']);
 
@@ -146,74 +155,167 @@
     
 </head>
     <body class="font-sans text-white bg-black">
-    <!-- Header/Navbar -->
-    <header class="fixed w-full bg-black shadow-lg z-50 transition-all duration-300 ease-in-out">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-3">
-                <!-- Logo -->
+    <!-- Logo Header (Top) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-center md:justify-start">
                 <a href="<?= url('/') ?>" class="block group">
                     <img src="assets/images/4.webp" alt="Antosa Architect Logo" class="h-10 transition-transform duration-300 group-hover:scale-105">
                     <div class="h-[3px] bg-primary-400 mt-[2px] w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
                 </a>
-                
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-5 lg:space-x-7 mx-auto">
-                    <a href="#home" class="nav-item text-sm font-medium text-primary-400 relative py-2 group active:text-primary-400 aria-current:text-primary-400">
-                        Beranda
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-100 transition-transform duration-300 ease-out group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
-                    </a>
-                    <a href="#about" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
-                        Tentang Kami
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
-                    </a>
-                    <a href="#services" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
-                        Layanan
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
-                    </a>
-                    <a href="#portfolio" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
-                        Portfolio
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
-                    </a>
-                    <a href="#testimonials" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
-                        Testimonial
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
-                    </a>
-                    <a href="#faq" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
-                        FAQ
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
-                    </a>
-                    <a href="#contact" class="nav-item text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors relative py-2 group active:text-primary-400 aria-current:text-primary-400">
-                        Kontak
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center group-active:bg-primary-400 group-[aria-current]:bg-primary-400"></span>
-                    </a>
-                </nav>
-
-
-                
-                <!-- Mobile menu button -->
-                <button id="mobile-menu-button" class="md:hidden flex items-center p-2 text-dark-300 hover:text-emerald-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500 rounded-md">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6H4"></path> <!-- Adjusted icon for clarity -->
-                    </svg>
-                </button>
-            </div>
-            
-            <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="md:hidden hidden bg-black">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="#home" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-emerald-400 hover:bg-emerald-900">Beranda</a>
-                    <a href="#about" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-white hover:text-emerald-400 hover:bg-emerald-900">Tentang Kami</a>
-                    <a href="#services" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-white hover:text-emerald-400 hover:bg-emerald-900">Layanan</a>
-                    <a href="#portfolio" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">Portfolio</a>
-                    <a href="#testimonials" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">Testimonial</a>
-                    <a href="#faq" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">FAQ</a>
-                    <a href="#contact" class="mobile-nav-item block px-3 py-2 rounded-md text-base font-medium text-dark-300 hover:text-emerald-400 hover:bg-dark-800">Kontak</a>
-                </div>
-
             </div>
         </div>
     </header>
+
+    <!-- Dock Navigation (Bottom) -->
+    <nav id="dock-nav" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 hidden md:block">
+        <div class="dock-container bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl p-2 shadow-2xl">
+            <div class="flex items-center gap-2">
+                <!-- Home -->
+                <a href="#home" class="dock-item nav-item group relative" data-tooltip="Beranda">
+                    <div class="dock-icon w-12 h-12 flex items-center justify-center rounded-xl bg-primary-400/10 border border-primary-400/20 transition-all duration-300 group-hover:bg-primary-400/20 group-hover:scale-110">
+                        <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </div>
+                    <div class="dock-tooltip absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                        Beranda
+                    </div>
+                </a>
+
+                <!-- About -->
+                <a href="#about" class="dock-item nav-item group relative" data-tooltip="Tentang Kami">
+                    <div class="dock-icon w-12 h-12 flex items-center justify-center rounded-xl bg-dark-300/10 border border-dark-300/20 transition-all duration-300 group-hover:bg-primary-400/20 group-hover:scale-110">
+                        <svg class="w-6 h-6 text-dark-300 group-hover:text-primary-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="dock-tooltip absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                        Tentang Kami
+                    </div>
+                </a>
+
+                <!-- Services -->
+                <a href="#services" class="dock-item nav-item group relative" data-tooltip="Layanan">
+                    <div class="dock-icon w-12 h-12 flex items-center justify-center rounded-xl bg-dark-300/10 border border-dark-300/20 transition-all duration-300 group-hover:bg-primary-400/20 group-hover:scale-110">
+                        <svg class="w-6 h-6 text-dark-300 group-hover:text-primary-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <div class="dock-tooltip absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                        Layanan
+                    </div>
+                </a>
+
+                <!-- Portfolio -->
+                <a href="#portfolio" class="dock-item nav-item group relative" data-tooltip="Portfolio">
+                    <div class="dock-icon w-12 h-12 flex items-center justify-center rounded-xl bg-dark-300/10 border border-dark-300/20 transition-all duration-300 group-hover:bg-primary-400/20 group-hover:scale-110">
+                        <svg class="w-6 h-6 text-dark-300 group-hover:text-primary-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                    </div>
+                    <div class="dock-tooltip absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                        Portfolio
+                    </div>
+                </a>
+
+                <!-- Testimonials -->
+                <a href="#testimonials" class="dock-item nav-item group relative" data-tooltip="Testimonial">
+                    <div class="dock-icon w-12 h-12 flex items-center justify-center rounded-xl bg-dark-300/10 border border-dark-300/20 transition-all duration-300 group-hover:bg-primary-400/20 group-hover:scale-110">
+                        <svg class="w-6 h-6 text-dark-300 group-hover:text-primary-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                    </div>
+                    <div class="dock-tooltip absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                        Testimonial
+                    </div>
+                </a>
+
+                <!-- FAQ -->
+                <a href="#faq" class="dock-item nav-item group relative" data-tooltip="FAQ">
+                    <div class="dock-icon w-12 h-12 flex items-center justify-center rounded-xl bg-dark-300/10 border border-dark-300/20 transition-all duration-300 group-hover:bg-primary-400/20 group-hover:scale-110">
+                        <svg class="w-6 h-6 text-dark-300 group-hover:text-primary-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="dock-tooltip absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                        FAQ
+                    </div>
+                </a>
+
+                <!-- Contact -->
+                <a href="#contact" class="dock-item nav-item group relative" data-tooltip="Kontak">
+                    <div class="dock-icon w-12 h-12 flex items-center justify-center rounded-xl bg-dark-300/10 border border-dark-300/20 transition-all duration-300 group-hover:bg-primary-400/20 group-hover:scale-110">
+                        <svg class="w-6 h-6 text-dark-300 group-hover:text-primary-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="dock-tooltip absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                        Kontak
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation (Fallback) -->
+    <div id="mobile-menu" class="md:hidden fixed bottom-6 left-4 right-4 z-40 hidden">
+        <div class="bg-black/90 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-2xl">
+            <div class="grid grid-cols-4 gap-4">
+                <a href="#home" class="mobile-nav-item flex flex-col items-center p-2 rounded-lg text-primary-400 hover:bg-primary-400/10">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span class="text-xs">Home</span>
+                </a>
+                <a href="#about" class="mobile-nav-item flex flex-col items-center p-2 rounded-lg text-white hover:text-primary-400 hover:bg-primary-400/10">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-xs">About</span>
+                </a>
+                <a href="#services" class="mobile-nav-item flex flex-col items-center p-2 rounded-lg text-white hover:text-primary-400 hover:bg-primary-400/10">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                    <span class="text-xs">Services</span>
+                </a>
+                <a href="#portfolio" class="mobile-nav-item flex flex-col items-center p-2 rounded-lg text-white hover:text-primary-400 hover:bg-primary-400/10">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                    <span class="text-xs">Portfolio</span>
+                </a>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mt-4">
+                <a href="#testimonials" class="mobile-nav-item flex flex-col items-center p-2 rounded-lg text-white hover:text-primary-400 hover:bg-primary-400/10">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                    <span class="text-xs">Testimonial</span>
+                </a>
+                <a href="#faq" class="mobile-nav-item flex flex-col items-center p-2 rounded-lg text-white hover:text-primary-400 hover:bg-primary-400/10">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-xs">FAQ</span>
+                </a>
+                <a href="#contact" class="mobile-nav-item flex flex-col items-center p-2 rounded-lg text-white hover:text-primary-400 hover:bg-primary-400/10">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <span class="text-xs">Contact</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button id="mobile-menu-button" class="md:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-primary-400 rounded-full flex items-center justify-center shadow-lg hover:bg-primary-500 transition-colors">
+        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
 
     <!-- Main Content -->
     <main>
