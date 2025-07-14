@@ -60,7 +60,7 @@ class ContentModel
     {
         return [
             'title' => 'Tentang Kami',
-            'description' => 'Antosa Architect adalah studio arsitektur profesional yang berdedikasi untuk menciptakan ruang fungsional dengan sentuhan estetika yang memukau. Dengan pengalaman lebih dari 10 tahun, kami telah menyelesaikan berbagai proyek dari residensial hingga komersial.',
+            'description' => 'Antosa Architect adalah perusahaan terkemuka yang bergerak di bidang arsitektur, perencanaan pembangunan, jasa konstruksi, hingga renovasi bangunan. Dengan pengalaman lebih dari 10 tahun, kami telah membantu ribuan keluarga Indonesia mewujudkan rumah impian mereka. Didukung oleh tim profesional bersertifikasi dan berpengalaman, kami berkomitmen untuk menghadirkan desain yang tidah hanya estetis, tetapi juga fungsional, nyaman dan aman.',
             'stats' => [
                 [
                     'value' => 10,
