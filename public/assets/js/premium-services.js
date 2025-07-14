@@ -54,9 +54,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Minimal CSS for essential animations only
+// Enhanced CSS for consistent service card styling
 const style = document.createElement('style');
 style.textContent = `
+    /* Ensure consistent border visibility across all service cards */
+    .group .border-t-2 {
+        border-top: 2px solid rgba(75, 85, 99, 0.6) !important;
+        box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    /* Enhanced hover effects for service cards */
+    .group:hover .border-t-2 {
+        border-color: rgba(96, 165, 250, 0.4) !important;
+        transition: border-color 0.3s ease;
+    }
+
     /* Respect user motion preferences */
     @media (prefers-reduced-motion: reduce) {
         * {

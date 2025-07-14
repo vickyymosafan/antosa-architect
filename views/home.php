@@ -407,8 +407,8 @@ $hero_cta_buttons = $hero['cta_buttons'];
                                         <?php endif; ?>
                                     </div>
 
-                                    <!-- Enhanced CTA Button -->
-                                    <div class="pt-5 border-t border-gray-700/40">
+                                    <!-- Enhanced CTA Button with Consistent Border -->
+                                    <div class="pt-5 border-t-2 border-gray-600/60 shadow-sm">
                                         <a href="#contact" class="group/cta w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-semibold py-3 px-6 text-sm rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-primary-500/30 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-gray-900 drop-shadow-sm" aria-label="Konsultasi untuk <?= $service['title'] ?>">
                                             <span>Konsultasi</span>
                                             <i class="fas fa-arrow-right text-xs transition-transform group-hover/cta:translate-x-1" aria-hidden="true"></i>

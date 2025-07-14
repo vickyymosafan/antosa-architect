@@ -24,33 +24,6 @@ $routes = [
         'action' => 'subscribeNewsletter',
         'method' => 'POST'
     ],
-    '/api/hero-data' => [
-        'controller' => 'ApiController',
-        'action' => 'getHeroData',
-        'method' => 'GET'
-    ],
-    '/api/services-data' => [
-        'controller' => 'ApiController',
-        'action' => 'getServicesData',
-        'method' => 'GET'
-    ],
-    '/api/portfolio-data' => [
-        'controller' => 'ApiController',
-        'action' => 'getPortfolioData',
-        'method' => 'GET'
-    ],
-    '/api/about-data' => [
-        'controller' => 'ApiController',
-        'action' => 'getAboutData',
-        'method' => 'GET'
-    ],
-
-    // Form submission endpoints (legacy support)
-    '/send-inquiry' => [
-        'controller' => 'ApiController',
-        'action' => 'sendInquiry',
-        'method' => 'POST'
-    ],
 ];
 
 return $routes;
