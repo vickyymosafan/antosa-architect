@@ -413,107 +413,55 @@ class ContentModel
     public static function getFaqData()
     {
         return [
-            'title' => 'Pertanyaan Umum',
+            'title' => 'Pertanyaan Yang Sering Diajukan',
             'subtitle' => 'Temukan jawaban atas pertanyaan yang sering diajukan tentang layanan kami',
             'categories' => [
-                'Umum' => [
+                'Layanan' => [
                     [
-                        'question' => 'Apa saja layanan utama yang ditawarkan oleh Antosa Architect?',
-                        'answer' => 'Kami menawarkan layanan lengkap meliputi desain arsitektur, desain interior, konsultasi proyek, manajemen konstruksi, dan desain lanskap. Setiap layanan didukung oleh tim profesional berpengalaman.'
+                        'question' => 'Apa saja layanan yang ditawarkan?',
+                        'answer' => 'Kami menyediakan layanan lengkap mulai dari: Desain arsitektur rumah, Renovasi rumah lama, Pembangunan rumah baru, Gambar kerja & RAB, dan Konsultasi desain.'
                     ],
                     [
-                        'question' => 'Bagaimana proses kerja sama dengan Antosa Architect?',
-                        'answer' => 'Proses dimulai dari konsultasi gratis, survei lokasi, analisis kebutuhan, pembuatan konsep desain, pengembangan detail, hingga pengawasan pelaksanaan. Setiap tahap melibatkan komunikasi intensif dengan klien.'
+                        'question' => 'Apakah bisa hanya menggunakan jasa desain tanpa pembangunan?',
+                        'answer' => 'Tentu bisa. Kami melayani jasa desain arsitektur saja, lengkap dengan gambar kerja dan RAB.'
                     ],
                     [
-                        'question' => 'Berapa lama waktu yang dibutuhkan untuk menyelesaikan proyek?',
-                        'answer' => 'Waktu pengerjaan bervariasi: desain rumah tinggal 2-4 bulan, bangunan komersial 4-8 bulan, dan proyek besar 6-12 bulan. Timeline detail akan disepakati di awal kontrak.'
-                    ],
-                    [
-                        'question' => 'Apakah Antosa Architect melayani proyek di luar Jember?',
-                        'answer' => 'Ya, kami melayani proyek di seluruh Jawa Timur dan wilayah Indonesia lainnya. Untuk proyek luar kota, akan ada penyesuaian biaya transportasi dan akomodasi tim.'
-                    ],
-                    [
-                        'question' => 'Bagaimana cara menghubungi Antosa Architect untuk konsultasi?',
-                        'answer' => 'Anda dapat menghubungi kami melalui telepon +62 851 8952 3863, email info@antosaarchitect.com, atau mengunjungi kantor kami di Jember. Konsultasi awal gratis dan tanpa komitmen.'
-                    ],
-                    [
-                        'question' => 'Apakah ada garansi untuk hasil pekerjaan?',
-                        'answer' => 'Kami memberikan garansi desain selama 1 tahun dan garansi pengawasan konstruksi sesuai standar industri. Garansi mencakup revisi minor dan konsultasi teknis.'
+                        'question' => 'Apakah ada survei lokasi sebelum memulai proyek?',
+                        'answer' => 'Ya. Survei lokasi adalah bagian penting dari proses awal untuk memahami kondisi lahan, orientasi matahari, kebutuhan klien, dan potensi desain.'
                     ]
                 ],
-                'Desain' => [
+                'Biaya & Pembayaran' => [
                     [
-                        'question' => 'Bagaimana proses desain arsitektur berjalan?',
-                        'answer' => 'Proses meliputi: (1) Briefing dan analisis site, (2) Konsep desain dan sketsa awal, (3) Pengembangan desain skematik, (4) Detail desain dan gambar kerja, (5) Spesifikasi teknis dan RAB.'
+                        'question' => 'Berapa biaya jasa desain arsitek?',
+                        'answer' => 'Biaya desain tergantung pada luas bangunan, tingkat kerumitan desain, dan kebutuhan khusus klien. Hubungi kami untuk mendapatkan penawaran harga sesuai kebutuhan Anda.'
                     ],
                     [
-                        'question' => 'Berapa kali revisi desain yang diperbolehkan?',
-                        'answer' => 'Kami menyediakan 3 kali revisi mayor gratis pada tahap konsep desain, dan revisi minor tanpa batas selama fase pengembangan. Revisi tambahan dikenakan biaya sesuai kompleksitas.'
-                    ],
-                    [
-                        'question' => 'Apakah bisa melihat visualisasi 3D dari desain?',
-                        'answer' => 'Ya, kami menyediakan visualisasi 3D berkualitas tinggi untuk semua proyek. Termasuk rendering eksterior, interior, dan virtual tour untuk memberikan gambaran realistis hasil akhir.'
-                    ],
-                    [
-                        'question' => 'Bagaimana jika ingin mengubah desain di tengah proses?',
-                        'answer' => 'Perubahan masih dimungkinkan dengan penyesuaian timeline dan biaya. Kami akan mengevaluasi dampak perubahan terhadap struktur, MEP, dan aspek teknis lainnya.'
-                    ],
-                    [
-                        'question' => 'Apakah desain mengikuti standar dan regulasi yang berlaku?',
-                        'answer' => 'Semua desain kami mengacu pada SNI, Peraturan Bangunan Gedung, IMB, dan regulasi setempat. Kami juga membantu proses perizinan dan konsultasi dengan instansi terkait.'
-                    ],
-                    [
-                        'question' => 'Bisakah mengintegrasikan teknologi smart home dalam desain?',
-                        'answer' => 'Tentu, kami berpengalaman merancang rumah pintar dengan sistem otomasi pencahayaan, keamanan, klimatisasi, dan entertainment. Desain akan mengakomodasi infrastruktur teknologi modern.'
+                        'question' => 'Bagaimana sistem pembayaran jasa?',
+                        'answer' => 'Pembayaran dibagi dalam beberapa tahap, seperti: DP saat kesepakatan awal, Termin di tengah proses, dan Pelunasan saat proyek selesai (untuk pembangunan).'
                     ]
                 ],
-                'Biaya' => [
+                'Proses & Revisi' => [
                     [
-                        'question' => 'Bagaimana sistem pembayaran jasa arsitektur?',
-                        'answer' => 'Pembayaran dilakukan bertahap: 30% saat kontrak, 40% saat konsep disetujui, 20% saat gambar kerja selesai, dan 10% saat serah terima. Sistem termin dapat disesuaikan dengan kesepakatan.'
+                        'question' => 'Apakah bisa mengurus IMB/PBG juga?',
+                        'answer' => 'Ya, kami dapat membantu proses perizinan seperti PBG (Persetujuan Bangunan Gedung) sesuai peraturan terbaru.'
                     ],
                     [
-                        'question' => 'Apakah konsultasi awal dikenakan biaya?',
-                        'answer' => 'Konsultasi awal dan survei lokasi gratis tanpa biaya. Kami akan memberikan gambaran umum solusi desain dan estimasi biaya sebagai bahan pertimbangan Anda.'
+                        'question' => 'Apakah hasil desain bisa direvisi?',
+                        'answer' => 'Ya, kami memberikan beberapa kali revisi (jumlah revisi disesuaikan dengan paket layanan) untuk memastikan desain sesuai keinginan Anda.'
                     ],
                     [
-                        'question' => 'Berapa kisaran biaya jasa desain arsitektur?',
-                        'answer' => 'Biaya jasa desain berkisar 3-8% dari nilai konstruksi, tergantung kompleksitas proyek. Untuk rumah tinggal sederhana mulai dari Rp 15 juta, rumah mewah Rp 50-150 juta.'
-                    ],
-                    [
-                        'question' => 'Apakah ada paket bundling untuk desain dan konstruksi?',
-                        'answer' => 'Ya, kami menawarkan paket terintegrasi desain + build dengan harga lebih kompetitif. Paket ini mencakup desain lengkap, pengawasan, dan koordinasi dengan kontraktor pilihan.'
-                    ],
-                    [
-                        'question' => 'Bagaimana cara pembayaran yang diterima?',
-                        'answer' => 'Kami menerima pembayaran melalui transfer bank, cek, atau cash. Untuk kemudahan, tersedia juga pembayaran dengan kartu kredit untuk nominal tertentu.'
-                    ],
-                    [
-                        'question' => 'Apakah ada diskon untuk proyek berulang atau referral?',
-                        'answer' => 'Klien repeat mendapat diskon 10-15%, dan program referral memberikan cashback 5% dari nilai kontrak. Tersedia juga paket khusus untuk developer atau proyek multiple unit.'
+                        'question' => 'Apakah bisa menggunakan material sesuai permintaan klien?',
+                        'answer' => 'Tentu. Kami terbuka dengan permintaan material tertentu, selama masih sesuai dengan standar teknis dan anggaran.'
                     ]
                 ],
-                'Konstruksi' => [
+                'Garansi & Area' => [
                     [
-                        'question' => 'Apakah Antosa Architect juga menangani pelaksanaan konstruksi?',
-                        'answer' => 'Kami fokus pada desain dan pengawasan konstruksi. Untuk pelaksanaan, kami bekerja sama dengan kontraktor terpercaya yang sudah teruji kualitas dan integritasnya.'
+                        'question' => 'Apakah ada garansi hasil kerja?',
+                        'answer' => 'Ya, untuk pembangunan kami memberikan garansi struktur dan pekerjaan sesuai perjanjian kontrak.'
                     ],
                     [
-                        'question' => 'Bagaimana proses pengawasan konstruksi dilakukan?',
-                        'answer' => 'Tim kami melakukan pengawasan berkala sesuai tahapan konstruksi: pondasi, struktur, MEP, finishing. Termasuk quality control material dan progress report mingguan.'
-                    ],
-                    [
-                        'question' => 'Apakah bisa membantu memilih kontraktor yang tepat?',
-                        'answer' => 'Ya, kami memiliki database kontraktor terpercaya dengan track record baik. Kami akan merekomendasikan 2-3 kontraktor sesuai budget dan kompleksitas proyek Anda.'
-                    ],
-                    [
-                        'question' => 'Bagaimana jika ada masalah selama konstruksi?',
-                        'answer' => 'Tim pengawas kami akan segera mengidentifikasi dan menyelesaikan masalah. Kami berkoordinasi dengan kontraktor untuk memastikan solusi terbaik tanpa mengorbankan kualitas dan timeline.'
-                    ],
-                    [
-                        'question' => 'Apakah ada jaminan kualitas untuk hasil konstruksi?',
-                        'answer' => 'Melalui pengawasan ketat, kami memastikan konstruksi sesuai spesifikasi desain. Kontraktor partner memberikan garansi konstruksi 1-2 tahun sesuai standar industri.'
+                        'question' => 'Di area mana saja layanan ini tersedia?',
+                        'answer' => 'Kami melayani klien di Jember, Malang, Surabaya dan sekitarnya, serta layanan desain online untuk seluruh Indonesia.'
                     ]
                 ]
             ]
