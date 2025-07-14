@@ -92,23 +92,7 @@ class ContentModel
                     'duration' => 2200
                 ]
             ],
-            'values' => [
-                [
-                    'title' => 'Inovasi',
-                    'description' => 'Menciptakan solusi arsitektur yang inovatif dan berkelanjutan',
-                    'color' => 'primary-400'
-                ],
-                [
-                    'title' => 'Kualitas',
-                    'description' => 'Mengutamakan kualitas dalam setiap detail desain',
-                    'color' => 'emerald-400'
-                ],
-                [
-                    'title' => 'Kolaborasi',
-                    'description' => 'Bekerja sama dengan klien untuk mewujudkan visi bersama',
-                    'color' => 'primary-400'
-                ]
-            ],
+
             'team' => [
                 [
                     'name' => 'Ahmad Farhan',
