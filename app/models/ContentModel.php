@@ -392,38 +392,16 @@ class ContentModel
     }
 
     /**
-     * Get testimonials section data
+     * Get clients section data
      *
      * @return array
      */
-    public static function getTestimonialsData()
+    public static function getClientsData()
     {
         return [
-            'title' => 'Testimoni Klien',
-            'subtitle' => 'Kepuasan klien adalah prioritas utama kami',
-            'testimonials' => [
-                [
-                    'name' => 'Aditya Pratama',
-                    'position' => 'CEO, PT Maju Bersama',
-                    'text' => 'Antosa Architect memahami kebutuhan kami dengan sangat baik. Mereka menerjemahkan visi kami menjadi desain kantor yang tidak hanya estetis tapi juga sangat fungsional untuk karyawan kami.',
-                    'rating' => 5,
-                    'image' => 'https://source.unsplash.com/100x100/?portrait,man,ceo&sig=4'
-                ],
-                [
-                    'name' => 'Maya Anggraini',
-                    'position' => 'Pemilik Rumah',
-                    'text' => 'Saya sangat puas dengan desain rumah yang dikerjakan oleh tim Antosa. Mereka memperhatikan detail dan memberikan solusi kreatif untuk lahan terbatas yang kami miliki.',
-                    'rating' => 5,
-                    'image' => 'https://source.unsplash.com/100x100/?portrait,woman,homeowner&sig=5'
-                ],
-                [
-                    'name' => 'Hendra Wijaya',
-                    'position' => 'Pengembang Properti',
-                    'text' => 'Sudah bekerja sama dengan Antosa Architect untuk 3 proyek perumahan kami. Selalu tepat waktu dan hasilnya selalu disukai oleh pembeli.',
-                    'rating' => 5,
-                    'image' => 'https://source.unsplash.com/100x100/?portrait,man,developer&sig=6'
-                ]
-            ]
+            'title' => 'Klien Kami',
+            'subtitle' => 'Mereka yang telah mempercayai jasa arsitek jember - Antosa Architect',
+            'main_image' => 'assets/images/client_kami.webp'
         ];
     }
 
@@ -574,7 +552,7 @@ class ContentModel
                     ['text' => 'Tentang Kami', 'url' => '#about', 'icon' => 'fas fa-users'],
                     ['text' => 'Layanan', 'url' => '#services', 'icon' => 'fas fa-cogs'],
                     ['text' => 'Portofolio', 'url' => '#portfolio', 'icon' => 'fas fa-folder-open'],
-                    ['text' => 'Testimoni', 'url' => '#testimonials', 'icon' => 'fas fa-star'],
+                    ['text' => 'Klien Kami', 'url' => '#clients', 'icon' => 'fas fa-users'],
                     ['text' => 'FAQ', 'url' => '#faq', 'icon' => 'fas fa-question-circle'],
                     ['text' => 'Kontak', 'url' => '#contact', 'icon' => 'fas fa-envelope']
                 ]

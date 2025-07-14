@@ -35,7 +35,6 @@ ob_start();
     .faq-card:hover .grid-dot,
     .service-card:hover .grid-dot,
     .portfolio-card:hover .grid-dot,
-    .testimonial-card:hover .grid-dot,
     .contact-card:hover .grid-dot {
         transform: scale(1.5);
         background: rgba(56, 189, 248, 0.6);
@@ -745,8 +744,8 @@ $hero_cta_buttons = $hero['cta_buttons'];
     </div>
 </section>
 
-<!-- Testimonials Section - Enhanced Design System -->
-<section id="testimonials" class="magic-grid-bg relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
+<!-- Clients Section - Enhanced Design System -->
+<section id="clients" class="magic-grid-bg relative py-16 lg:py-24 bg-black scroll-mt-20 overflow-hidden">
 
     <!-- Enhanced Background Elements -->
     <div class="absolute inset-0 opacity-5">
@@ -759,72 +758,34 @@ $hero_cta_buttons = $hero['cta_buttons'];
         <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
             <div class="inline-flex items-center space-x-4 mb-6">
                 <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
-                <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Testimoni</span>
+                <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Klien</span>
                 <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
             </div>
             <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight mb-6 tracking-tight">
                 <span class="block relative">
-                    Testimoni
+                    Klien
                 </span>
                 <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-emerald-400 to-primary-500 relative">
-                    Klien
+                    Kami
                 </span>
             </h2>
             <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                <?= htmlspecialchars($testimonials['subtitle']) ?>
+                <?= htmlspecialchars($clients['subtitle']) ?>
             </p>
         </div>
 
-        <!-- Consistent Testimonials Grid -->
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                <?php foreach ($testimonials['testimonials'] as $index => $testimonial): ?>
-                <div class="group relative h-full bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-2 hover:scale-[1.02] p-6 lg:p-8" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>">
+        <!-- Client Showcase - Full Image Display -->
+        <div class="max-w-7xl mx-auto" data-aos="fade-up" data-aos-duration="800">
+            <div class="relative overflow-hidden rounded-3xl shadow-2xl shadow-primary-500/10">
+                <!-- Client Image -->
+                <img src="<?= htmlspecialchars($clients['main_image']) ?>"
+                     alt="Klien Antosa Architect - Mereka yang telah mempercayai jasa arsitek jember"
+                     class="w-full h-auto object-contain transition-transform duration-700 hover:scale-[1.02] max-h-[70vh]"
+                     loading="lazy">
 
-                    <!-- Consistent Background Elements -->
-                    <div class="absolute inset-0 opacity-[0.02]">
-                        <div class="absolute top-4 right-4 w-8 h-8 border border-primary-400/30 rotate-45 rounded-lg"></div>
-                        <div class="absolute bottom-4 left-4 w-6 h-6 bg-primary-400/10 rounded-full"></div>
-                    </div>
-
-                    <!-- Quote Icon -->
-                    <div class="absolute -top-2 left-6">
-                        <div class="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/20">
-                            <i class="fas fa-quote-left text-white text-lg"></i>
-                        </div>
-                    </div>
-
-                    <!-- Content -->
-                    <div class="relative z-10 pt-8">
-                        <!-- Testimonial Text -->
-                        <p class="font-sans text-gray-300 text-base leading-relaxed mb-6 italic">
-                            "<?= $testimonial['text'] ?>"
-                        </p>
-
-                        <!-- Rating Stars -->
-                        <div class="flex mb-6">
-                            <?php for ($i = 1; $i <= 5; $i++): ?>
-                                <i class="fas fa-star <?= $i <= $testimonial['rating'] ? 'text-primary-400' : 'text-gray-600' ?> text-sm"></i>
-                            <?php endfor; ?>
-                        </div>
-
-                        <!-- Client Info -->
-                        <div class="flex items-center pt-4 border-t border-gray-700/30">
-                            <div class="w-12 h-12 rounded-xl mr-4 overflow-hidden bg-gradient-to-br from-primary-400/20 to-primary-600/20 flex items-center justify-center">
-                                <img src="<?= htmlspecialchars($testimonial['image']) ?>" alt="<?= htmlspecialchars($testimonial['name']) ?>" class="w-full h-full object-cover rounded-xl" loading="lazy">
-                            </div>
-                            <div>
-                                <h4 class="font-sans font-bold text-white text-base group-hover:text-primary-400 transition-colors duration-300">
-                                    <?= $testimonial['name'] ?>
-                                </h4>
-                                <p class="font-sans text-gray-400 text-sm">
-                                    <?= $testimonial['position'] ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
+                <!-- Optional Decorative Elements -->
+                <div class="absolute top-8 left-8 w-16 h-16 border-2 border-primary-400/30 rounded-full opacity-20"></div>
+                <div class="absolute bottom-8 right-8 w-12 h-12 border-2 border-primary-400/20 rotate-45 rounded-lg opacity-30"></div>
             </div>
         </div>
     </div>

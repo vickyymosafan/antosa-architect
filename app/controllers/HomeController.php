@@ -22,7 +22,7 @@ class HomeController
         $aboutData = ContentModel::getAboutData();
         $servicesData = ContentModel::getServicesData();
         $portfolioData = ContentModel::getPortfolioData();
-        $testimonialData = ContentModel::getTestimonialsData();
+        $clientData = ContentModel::getClientsData();
         $faqData = ContentModel::getFaqData();
         $footerData = ContentModel::getFooterData();
 
@@ -32,7 +32,7 @@ class HomeController
             'about' => $aboutData,
             'services' => $servicesData,
             'portfolio' => $portfolioData,
-            'testimonials' => $testimonialData,
+            'clients' => $clientData,
             'faq' => $faqData,
             'footer' => $footerData
         ];
