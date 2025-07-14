@@ -95,18 +95,18 @@ class ContentModel
 
             'team' => [
                 [
-                    'name' => 'Ahmad Farhan',
-                    'position' => 'Principal Architect',
+                    'name' => 'Ir. Ar. Dwiantosa Ahmad Fathony, IAI., IPP',
+                    'position' => 'Arsitek Profesional',
                     'bio' => 'Berpengalaman lebih dari 15 tahun dalam bidang arsitektur.',
                     'image' => 'https://source.unsplash.com/100x100/?portrait,man,architect&sig=1',
                     'social' => [
                         'linkedin' => '#',
                         'twitter' => '#',
-                        'email' => 'ahmad.farhan@antosa.com'
+                        'email' => 'dwiantosa.ahmad@antosa.com'
                     ]
                 ],
                 [
-                    'name' => 'Sarah Wijaya',
+                    'name' => 'Rezha Reynaldi',
                     'position' => 'Senior Interior Designer',
                     'bio' => 'Spesialis desain interior dengan fokus pada sustainable design.',
                     'image' => 'https://source.unsplash.com/100x100/?portrait,woman,designer&sig=2',
@@ -144,7 +144,7 @@ class ContentModel
             'services' => [
                 [
                     'title' => 'Desain Arsitektur',
-                    'description' => 'Menciptakan desain bangunan yang indah, fungsional dan berkelanjutan sesuai visi Anda dengan pendekatan holistik dan inovatif',
+                    'description' => 'Menciptakan desain bangunan yang indah, fungsional dan berkelanjutan sesuai visi Anda',
                     'icon' => 'building',
                     'color' => 'blue',
                     'image' => 'assets/images/jasa1.webp',

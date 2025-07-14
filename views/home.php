@@ -25,10 +25,17 @@ ob_start();
         background: rgba(56, 189, 248, 0.6);
     }
 
-    /* Line clamp utility for text truncation */
+    /* Line clamp utilities for text truncation */
     .line-clamp-2 {
         display: -webkit-box;
         -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
@@ -459,8 +466,8 @@ $hero_cta_buttons = $hero['cta_buttons'];
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto" role="list" aria-label="Layanan arsitektur yang tersedia">
 
                 <?php
-                // Enhanced card classes with image support
-                $baseCardClasses = 'group relative h-full border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.01] min-h-[380px]';
+                // Enhanced card classes with image support and flexible height
+                $baseCardClasses = 'group relative h-full border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.01] min-h-[420px]';
                 ?>
 
                 <?php foreach ($services['services'] as $index => $service): ?>
@@ -469,13 +476,13 @@ $hero_cta_buttons = $hero['cta_buttons'];
 
                             <!-- Service Image Background -->
                             <div class="absolute inset-0 overflow-hidden">
-                                <div class="h-2/5 bg-cover bg-center bg-no-repeat"
+                                <div class="h-[35%] bg-cover bg-center bg-no-repeat"
                                      style="background-image: url('<?= $service['image'] ?>');">
                                     <!-- Enhanced Image Overlay for Better Text Readability -->
                                     <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/95"></div>
                                 </div>
                                 <!-- Bottom section background -->
-                                <div class="h-3/5 bg-gradient-to-br from-gray-900/98 to-black"></div>
+                                <div class="h-[65%] bg-gradient-to-br from-gray-900/98 to-black"></div>
                             </div>
 
                             <!-- Background Elements -->
@@ -486,27 +493,29 @@ $hero_cta_buttons = $hero['cta_buttons'];
 
                             <!-- Content Container -->
                             <div class="relative z-10 h-full flex flex-col">
-                                <!-- Image Area (Top 40%) -->
-                                <div class="h-2/5 flex items-center justify-center relative">
+                                <!-- Image Area (Top 35%) -->
+                                <div class="h-[35%] flex items-center justify-center relative">
                                     <!-- Enhanced Icon Overlay -->
                                     <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/30 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:bg-white/25 group-hover:shadow-xl">
                                         <i class="fas fa-<?= $service['icon'] ?> text-2xl text-white drop-shadow-lg"></i>
                                     </div>
                                 </div>
 
-                                <!-- Content Section (Bottom 60%) -->
-                                <div class="h-3/5 p-6 lg:p-8 text-center flex flex-col">
-                                    <div class="flex-1">
-                                        <h3 id="service-title-<?= $index ?>" class="font-sans font-bold text-lg lg:text-xl mb-4 text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight drop-shadow-sm">
-                                            <?= $service['title'] ?>
-                                        </h3>
-                                        <p class="font-sans text-gray-200 text-sm leading-relaxed mb-5 drop-shadow-sm">
-                                            <?= $service['description'] ?>
-                                        </p>
+                                <!-- Content Section (Bottom 65%) -->
+                                <div class="h-[65%] p-6 lg:p-8 text-center flex flex-col">
+                                    <div class="flex-1 flex flex-col justify-between">
+                                        <div>
+                                            <h3 id="service-title-<?= $index ?>" class="font-sans font-bold text-lg lg:text-xl mb-4 text-white group-hover:text-primary-400 transition-colors duration-300 leading-tight drop-shadow-sm">
+                                                <?= $service['title'] ?>
+                                            </h3>
+                                            <p class="font-sans text-gray-200 text-sm leading-relaxed mb-5 drop-shadow-sm line-clamp-3">
+                                                <?= $service['description'] ?>
+                                            </p>
+                                        </div>
 
                                         <!-- Enhanced Features List -->
                                         <?php if (!empty($service['features'])): ?>
-                                            <div class="mb-5">
+                                            <div class="mt-auto">
                                                 <div class="space-y-2.5 text-xs text-gray-300">
                                                     <?php foreach (array_slice($service['features'], 0, 3) as $feature): ?>
                                                         <div class="flex items-center justify-center space-x-2.5">
@@ -518,6 +527,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
                                             </div>
                                         <?php endif; ?>
                                     </div>
+                                </div>
                             </div>
                         </article>
                     </div>
