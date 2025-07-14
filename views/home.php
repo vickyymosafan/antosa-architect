@@ -24,6 +24,14 @@ ob_start();
         transform: scale(1.5);
         background: rgba(56, 189, 248, 0.6);
     }
+
+    /* Line clamp utility for text truncation */
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 </style>
 
 <?php
@@ -620,8 +628,8 @@ $hero_cta_buttons = $hero['cta_buttons'];
             <!-- Grid View -->
             <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <?php
-                // Simplified portfolio card classes
-                $basePortfolioCardClasses = 'portfolio-item group relative overflow-hidden rounded-2xl shadow-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-800 hover:border-primary-500/30 transition-all duration-500 min-h-[280px]';
+                // Image-only portfolio card classes - clean visual focus
+                $basePortfolioCardClasses = 'portfolio-item group relative overflow-hidden rounded-2xl shadow-lg border border-gray-800 hover:border-primary-500/30 transition-all duration-500 cursor-pointer';
                 ?>
 
                 <?php foreach ($portfolio['projects'] as $index => $project): ?>
@@ -645,7 +653,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
                          data-featured="<?= $project['featured'] ? 'true' : 'false' ?>">
 
                         <!-- Project Image with Gradient Overlay -->
-                        <div class="relative overflow-hidden h-2/3">
+                        <div class="relative overflow-hidden h-full aspect-square">
                             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10"></div>
                             <img src="<?= $imageUrl ?>"
                                  alt="<?= $project['title'] ?>"
@@ -658,7 +666,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
                                         <?= $project['category'] ?>
                                     </span>
                                     <h3 class="font-sans font-bold text-xl text-white"><?= $project['title'] ?></h3>
-                                    <p class="font-sans text-sm text-gray-200 line-clamp-2"><?= $project['description'] ?></p>
+                                    <p class="font-sans text-sm text-gray-200"><?= $project['description'] ?></p>
                                     <button onclick="openProjectModal('<?= $project['id'] ?>')"
                                             class="mt-2 px-4 py-2 bg-white text-gray-900 rounded-full font-medium transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
                                         <span>Detail</span>
@@ -667,116 +675,64 @@ $hero_cta_buttons = $hero['cta_buttons'];
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Project Info -->
-                        <div class="p-5 relative z-10 flex-1 flex flex-col justify-between">
-                            <!-- Tags -->
-                            <div class="flex flex-wrap gap-2 mb-3">
-                                <?php foreach (array_slice($project['tags'] ?? [], 0, 3) as $tag): ?>
-                                <span class="text-xs font-medium px-2 py-1 rounded-md bg-gray-700/50 text-gray-300">#<?= $tag ?></span>
-                                <?php endforeach; ?>
-                            </div>
-
-                            <h3 class="font-sans font-bold text-xl text-white group-hover:text-primary-400 transition-colors mb-3"><?= $project['title'] ?></h3>
-
-                            <!-- Location and Year -->
-                            <div class="flex items-center space-x-4 mt-2 text-sm text-gray-400">
-                                <span class="flex items-center">
-                                    <i class="fas fa-map-marker-alt mr-1 text-primary-500"></i> <?= $project['location'] ?>
-                                </span>
-                                <span class="flex items-center">
-                                    <i class="fas fa-calendar mr-1 text-primary-500"></i> <?= $project['year'] ?>
-                                </span>
-                            </div>
-
-                            <!-- Description -->
-                            <p class="font-sans text-gray-300 mt-3 mb-4 line-clamp-2"><?= $project['description'] ?></p>
-
-                            <!-- Action and Featured Badge -->
-                            <div class="flex justify-between items-center mt-auto">
-                                <button onclick="openProjectModal('<?= $project['id'] ?>')"
-                                        class="text-primary-400 hover:text-primary-300 font-medium inline-flex items-center group">
-                                    <span>Detail</span>
-                                    <svg class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </button>
-
-                                <?php if ($project['featured']): ?>
-                                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-primary-500/20 text-primary-400">
-                                    <i class="fas fa-star mr-1"></i> Featured
-                                </span>
-                                <?php endif; ?>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <?php endforeach; ?>
             </div>
 
-            <!-- List View (Hidden by Default) -->
-            <div id="portfolio-list" class="hidden space-y-4">
+            <!-- List View (Hidden by Default) - Text Outside Images -->
+            <div id="portfolio-list" class="hidden space-y-6">
                 <?php foreach ($portfolio['projects'] as $index => $project): ?>
-                <div class="portfolio-item group relative overflow-hidden rounded-xl shadow-md bg-gray-800/80 border border-gray-700 hover:border-primary-500/30 transition-all duration-300"
+                <?php
+                    // Get first image from the project's images array
+                    $imageUrl = $project['images'][0] ?? 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80';
+                ?>
+                <div class="portfolio-item group bg-gray-800/50 rounded-2xl shadow-lg border border-gray-800 hover:border-primary-500/30 transition-all duration-500 cursor-pointer overflow-hidden"
                      data-category="<?= $project['category'] ?>"
                      data-id="<?= $project['id'] ?>"
                      data-year="<?= $project['year'] ?>"
                      data-location="<?= $project['location'] ?>"
                      data-tags="<?= implode(',', $project['tags'] ?? []) ?>"
                      data-featured="<?= $project['featured'] ? 'true' : 'false' ?>"
-                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?= 50 * ($index + 1) ?>">
+                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?= 50 * ($index + 1) ?>"
+                     onclick="openProjectModal('<?= $project['id'] ?>')">
 
                     <div class="flex flex-col md:flex-row">
-                        <!-- Image -->
-                        <div class="md:w-1/3 relative h-48 md:h-auto">
-                            <img src="<?= $project['images'][0] ?? '' ?>"
-                                 alt="<?= $project['title'] ?>"
-                                 class="w-full h-full object-cover">
-
-                            <!-- Category Badge -->
-                            <div class="absolute top-4 left-4 bg-primary-500/80 backdrop-blur-sm text-white text-xs font-medium py-1 px-3 rounded-full">
-                                <?= $project['category'] ?>
+                        <!-- Project Image - Clean without overlay -->
+                        <div class="md:w-2/5 relative overflow-hidden">
+                            <div class="aspect-[4/3] md:aspect-[16/10]">
+                                <img src="<?= $imageUrl ?>"
+                                     alt="<?= $project['title'] ?>"
+                                     class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105">
                             </div>
                         </div>
 
-                        <!-- Content -->
-                        <div class="md:w-2/3 p-6">
-                            <div class="flex justify-between items-start">
-                                <h3 class="font-sans font-bold text-xl text-white group-hover:text-primary-400 transition-colors"><?= $project['title'] ?></h3>
-
-                                <?php if ($project['featured']): ?>
-                                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-primary-500/20 text-primary-400">
-                                    <i class="fas fa-star mr-1"></i> Featured
-                                </span>
-                                <?php endif; ?>
-                            </div>
-
-                            <div class="flex items-center space-x-4 mt-2 text-sm text-gray-400">
-                                <span class="flex items-center">
-                                    <i class="fas fa-map-marker-alt mr-1 text-primary-500"></i> <?= $project['location'] ?>
-                                </span>
-                                <span class="flex items-center">
-                                    <i class="fas fa-calendar mr-1 text-primary-500"></i> <?= $project['year'] ?>
-                                </span>
-                                <span class="flex items-center">
-                                    <i class="fas fa-ruler-combined mr-1 text-primary-500"></i> <?= $project['area'] ?>
+                        <!-- Project Information - Text outside image -->
+                        <div class="md:w-3/5 p-6 flex flex-col justify-center">
+                            <!-- Category Badge -->
+                            <div class="mb-3">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary-500/20 text-primary-400 border border-primary-500/30">
+                                    <?= $project['category'] ?>
                                 </span>
                             </div>
 
-                            <p class="font-sans text-gray-300 mt-3 mb-4"><?= $project['description'] ?></p>
+                            <!-- Project Title -->
+                            <h3 class="font-sans font-bold text-2xl text-white group-hover:text-primary-400 transition-colors mb-3">
+                                <?= $project['title'] ?>
+                            </h3>
 
-                            <!-- Tags -->
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <?php foreach (array_slice($project['tags'] ?? [], 0, 5) as $tag): ?>
-                                <span class="text-xs font-medium px-2 py-1 rounded-md bg-gray-700/50 text-gray-300">#<?= $tag ?></span>
-                                <?php endforeach; ?>
+                            <!-- Project Description -->
+                            <p class="font-sans text-gray-300 mb-4 line-clamp-2">
+                                <?= $project['description'] ?>
+                            </p>
+
+                            <!-- Click Indicator -->
+                            <div class="flex items-center text-primary-400 group-hover:text-primary-300 transition-colors">
+                                <span class="text-sm font-medium">Lihat Detail</span>
+                                <svg class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
                             </div>
-
-                            <button onclick="openProjectModal('<?= $project['id'] ?>')"
-                                    class="px-5 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
-                                <span>Lihat Detail</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
                         </div>
                     </div>
                 </div>

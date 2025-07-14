@@ -681,7 +681,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tags.forEach(tag => {
             const tagElement = document.createElement('span');
             tagElement.className = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-700/50 text-gray-300 border border-gray-600/50';
-            tagElement.textContent = `#${tag}`;
+            tagElement.textContent = tag;
             elements.modalElements.tags.appendChild(tagElement);
         });
     }
