@@ -11,11 +11,11 @@ ob_start();
 ?>
 
 <?php
-// Use hero data from controller
-$hero_slides = $hero['slides'] ?? [];
-$hero_title = $hero['title'] ?? 'Bangun Rumah Impian Anda';
-$hero_subtitle = $hero['subtitle'] ?? 'Desain modern, konstruksi berkualitas, dan solusi berkelanjutan untuk mewujudkan hunian ideal sesuai gaya hidup Anda.';
-$hero_cta_buttons = $hero['cta_buttons'] ?? [];
+// Use hero data from controller (data guaranteed to exist from ContentModel)
+$hero_slides = $hero['slides'];
+$hero_title = $hero['title'];
+$hero_subtitle = $hero['subtitle'];
+$hero_cta_buttons = $hero['cta_buttons'];
 ?>
 <!-- Hero Section - Compact -->
 <section id="home" class="relative min-h-[85vh] flex flex-col text-white overflow-hidden scroll-mt-20 bg-gradient-to-br from-gray-900 via-black to-gray-800" role="banner" aria-label="Hero section">
@@ -169,33 +169,7 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
 
                         <!-- Stats Row -->
                         <div class="grid grid-cols-3 gap-8 pt-10 mt-10 border-t border-gray-700 relative">
-                            <?php
-                            $stats = [
-                                [
-                                    'value' => 10,
-                                    'suffix' => '+',
-                                    'label' => 'Tahun Pengalaman',
-                                    'gradient' => 'from-primary-400 via-primary-500 to-primary-600',
-                                    'duration' => 2000
-                                ],
-                                [
-                                    'value' => 150,
-                                    'suffix' => '+',
-                                    'label' => 'Proyek Selesai',
-                                    'gradient' => 'from-primary-400 via-primary-500 to-primary-600',
-                                    'duration' => 2500
-                                ],
-                                [
-                                    'value' => 98,
-                                    'suffix' => '%',
-                                    'label' => 'Kepuasan Klien',
-                                    'gradient' => 'from-primary-400 via-primary-500 to-primary-600',
-                                    'duration' => 2200
-                                ]
-                            ];
-                            ?>
-
-                            <?php foreach ($stats as $index => $stat): ?>
+                            <?php foreach ($about['stats'] as $index => $stat): ?>
                             <div class="text-center lg:text-left group">
                                 <div class="text-4xl lg:text-5xl font-black mb-3 group-hover:scale-110 transition-transform duration-300">
                                     <span class="counter text-transparent bg-clip-text bg-gradient-to-r <?= $stat['gradient'] ?>"
@@ -569,16 +543,7 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
                     <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="absolute inset-0 bg-gray-800/80 backdrop-blur-sm"></div>
                     <span class="relative z-10 flex items-center space-x-2 text-gray-300 group-hover:text-white transition-colors duration-300">
-                        <?php
-                        $icons = [
-                            'all' => 'fas fa-th-large',
-                            'Residensial' => 'fas fa-home',
-                            'Komersial' => 'fas fa-building',
-                            'Hospitality' => 'fas fa-hotel',
-                            'Institutional' => 'fas fa-university'
-                        ];
-                        ?>
-                        <i class="<?= $icons[$key] ?? 'fas fa-folder' ?>"></i>
+                        <i class="<?= $portfolio['category_icons'][$key] ?? 'fas fa-folder' ?>"></i>
                         <span><?= $label ?></span>
                     </span>
                 </button>

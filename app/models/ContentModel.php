@@ -78,16 +78,16 @@ class ContentModel
                     'duration' => 2000
                 ],
                 [
-                    'value' => 150,
+                    'value' => 239,
                     'suffix' => '+',
                     'label' => 'Proyek Selesai',
                     'gradient' => 'from-primary-400 via-primary-500 to-primary-600',
                     'duration' => 2500
                 ],
                 [
-                    'value' => 98,
-                    'suffix' => '%',
-                    'label' => 'Kepuasan Klien',
+                    'value' => 58,
+                    'suffix' => '+',
+                    'label' => 'Konstruksi',
                     'gradient' => 'from-primary-400 via-primary-500 to-primary-600',
                     'duration' => 2200
                 ]
@@ -226,6 +226,13 @@ class ContentModel
                 'Komersial' => 'Komersial',
                 'Hospitality' => 'Hospitality',
                 'Institutional' => 'Institusional'
+            ],
+            'category_icons' => [
+                'all' => 'fas fa-th-large',
+                'Residensial' => 'fas fa-home',
+                'Komersial' => 'fas fa-building',
+                'Hospitality' => 'fas fa-hotel',
+                'Institutional' => 'fas fa-university'
             ],
             'projects' => [
                 [
