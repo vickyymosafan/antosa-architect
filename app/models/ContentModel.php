@@ -29,7 +29,7 @@ class ContentModel
                     'title' => 'Interior Kontemporer'
                 ],
                 [
-                    'image' => 'assets/images/3.webp',
+                    'image' => 'assets/images/5.webp',
                     'alt' => 'Desain komersial modern dengan fasad kaca',
                     'title' => 'Arsitektur Komersial'
                 ]
