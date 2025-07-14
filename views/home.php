@@ -214,28 +214,36 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
             <!-- Right Visual Element - 5 columns -->
             <div class="lg:col-span-5 relative">
                 <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
-                    <!-- Floating Card with Company Values -->
+                    <!-- Floating Card with Vision & Mission -->
                     <div class="relative mt-16 lg:mt-32">
                         <!-- Main Card -->
                         <div class="bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
-                            <div class="space-y-6">
+                            <div class="space-y-8">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-3 h-3 bg-primary-400 rounded-full"></div>
                                     <span class="text-sm font-medium text-gray-300 uppercase tracking-wider">Visi & Misi</span>
                                 </div>
 
+                                <!-- Vision Section -->
                                 <div class="space-y-4">
-                                    <div class="border-l-2 border-primary-400 pl-4">
-                                        <h4 class="font-semibold text-white mb-2">Inovasi</h4>
-                                        <p class="text-sm text-gray-400">Menciptakan solusi arsitektur yang inovatif dan berkelanjutan</p>
+                                    <div class="border-l-4 border-primary-400 pl-6">
+                                        <h4 class="font-bold text-white mb-3 text-lg">Visi</h4>
+                                        <p class="text-gray-300 leading-relaxed"><?= $about['vision'] ?></p>
                                     </div>
-                                    <div class="border-l-2 border-emerald-400 pl-4">
-                                        <h4 class="font-semibold text-white mb-2">Kualitas</h4>
-                                        <p class="text-sm text-gray-400">Mengutamakan kualitas dalam setiap detail desain</p>
-                                    </div>
-                                    <div class="border-l-2 border-primary-400 pl-4">
-                                        <h4 class="font-semibold text-white mb-2">Kolaborasi</h4>
-                                        <p class="text-sm text-gray-400">Bekerja sama dengan klien untuk mewujudkan visi bersama</p>
+                                </div>
+
+                                <!-- Mission Section -->
+                                <div class="space-y-4">
+                                    <div class="border-l-4 border-emerald-400 pl-6">
+                                        <h4 class="font-bold text-white mb-4 text-lg">Misi</h4>
+                                        <div class="space-y-3">
+                                            <?php foreach ($about['mission'] as $index => $missionItem): ?>
+                                                <div class="flex items-start space-x-3">
+                                                    <div class="flex-shrink-0 w-3 h-3 bg-gradient-to-r from-emerald-400 to-primary-400 rounded-full mt-2"></div>
+                                                    <p class="text-gray-300 text-sm leading-relaxed"><?= $missionItem ?></p>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -246,6 +254,40 @@ $hero_cta_buttons = $hero['cta_buttons'] ?? [];
                         <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-emerald-500/10 to-primary-500/10 rounded-full blur-2xl"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Company Values Section -->
+        <div class="mt-16 lg:mt-24" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+            <div class="text-center mb-12">
+                <div class="flex items-center justify-center space-x-6 mb-6">
+                    <div class="w-12 h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
+                    <span class="text-sm font-semibold tracking-[0.2em] text-emerald-400 uppercase">Nilai Perusahaan</span>
+                    <div class="w-12 h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
+                </div>
+                <h3 class="font-sans text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">
+                    Prinsip <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-primary-400">Kerja Kami</span>
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                <?php foreach ($about['values'] as $index => $value): ?>
+                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 200 * ($index + 1) ?>">
+                        <div class="group h-full bg-gradient-to-br from-gray-900/60 to-black/60 backdrop-blur-xl border border-gray-700/30 rounded-2xl p-6 hover:border-<?= $value['color'] ?>/50 transition-all duration-500 hover:transform hover:scale-[1.02]">
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-gradient-to-br from-<?= $value['color'] ?>/20 to-<?= $value['color'] ?>/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                    <div class="w-8 h-8 bg-<?= $value['color'] ?> rounded-lg"></div>
+                                </div>
+                                <h4 class="font-bold text-xl text-white mb-3 group-hover:text-<?= $value['color'] ?> transition-colors">
+                                    <?= $value['title'] ?>
+                                </h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">
+                                    <?= $value['description'] ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
 

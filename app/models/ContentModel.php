@@ -60,7 +60,15 @@ class ContentModel
     {
         return [
             'title' => 'Tentang Kami',
-            'description' => 'Antosa Architect adalah perusahaan terkemuka yang bergerak di bidang arsitektur, perencanaan pembangunan, jasa konstruksi, hingga renovasi bangunan. Dengan pengalaman lebih dari 10 tahun, kami telah membantu ribuan keluarga Indonesia mewujudkan rumah impian mereka. Didukung oleh tim profesional bersertifikasi dan berpengalaman, kami berkomitmen untuk menghadirkan desain yang tidah hanya estetis, tetapi juga fungsional, nyaman dan aman.',
+            'description' => 'Antosa Architect adalah perusahaan terkemuka yang bergerak di bidang arsitektur, perencanaan pembangunan, jasa konstruksi, hingga renovasi bangunan. Dengan pengalaman lebih dari 10 tahun, kami telah membantu ribuan keluarga Indonesia mewujudkan rumah impian mereka. Didukung oleh tim profesional bersertifikasi dan berpengalaman, kami berkomitmen untuk menghadirkan desain yang tidak hanya estetis, tetapi juga fungsional, nyaman dan aman.',
+            'vision' => 'Mewujudkan kualitas hidup masyarakat dengan menciptakan bangunan yang nyaman dan aman.',
+            'mission' => [
+                'Menciptakan desain yang sesuai dengan karakter pemilik.',
+                'Menciptakan keunikan dalam setiap karya desain.',
+                'Menciptakan bangunan yang selaras dengan alam dan ramah lingkungan.',
+                'Menjadi perusahaan arsitek yang bisa menjadi inspirasi dan manfaat untuk banyak orang dan alam semesta.',
+                'Menjadi perusahaan arsitek global yang terus memperluas bisnis perusahaan.'
+            ],
             'stats' => [
                 [
                     'value' => 10,
