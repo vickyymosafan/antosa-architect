@@ -27,8 +27,7 @@ $quickLinks = [
 $serviceLinks = [
     ['text' => 'Desain Arsitektur', 'url' => '#services'],
     ['text' => 'Desain Interior', 'url' => '#services'],
-    ['text' => 'Konsultasi Proyek', 'url' => '#services'],
-    ['text' => 'Manajemen Konstruksi', 'url' => '#services']
+    ['text' => 'Konsultasi Proyek', 'url' => '#services']
 ];
 
 $contactInfo = [

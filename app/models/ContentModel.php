@@ -177,18 +177,6 @@ class ContentModel
                         'Timeline proyek',
                         'Rekomendasi kontraktor'
                     ]
-                ],
-                [
-                    'title' => 'Manajemen Konstruksi',
-                    'description' => 'Mengawasi proyek dari awal hingga selesai untuk memastikan kualitas dan efisiensi optimal',
-                    'icon' => 'tasks',
-                    'color' => 'amber',
-                    'features' => [
-                        'Pengawasan harian',
-                        'Quality control',
-                        'Progress reporting',
-                        'Koordinasi tim'
-                    ]
                 ]
             ]
         ];

@@ -324,7 +324,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
 </section>
 
 <!-- Services Section - Consistent Design System -->
-<section id="services" class="py-16 lg:py-24 scroll-mt-20 bg-black">
+<section id="services" class="relative py-21 bg-black scroll-mt-20 overflow-hidden">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Consistent Header Styling -->
         <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
