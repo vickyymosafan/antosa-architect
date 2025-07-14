@@ -37,9 +37,10 @@ class ContentModel
             'cta_buttons' => [
                 [
                     'text' => 'Mulai Konsultasi Gratis',
-                    'href' => '#contact',
+                    'href' => 'https://wa.me/' . COMPANY_WHATSAPP_NUMBER . '?text=' . urlencode('Halo! Saya tertarik untuk konsultasi mengenai jasa arsitektur. Mohon informasi lebih lanjut.'),
                     'type' => 'primary',
-                    'icon' => 'arrow-right'
+                    'icon' => 'whatsapp',
+                    'target' => '_blank'
                 ],
                 [
                     'text' => 'Lihat Hasil Karya',

@@ -104,22 +104,17 @@ $hero_cta_buttons = $hero['cta_buttons'];
 
             <!-- Consistent CTA Buttons -->
             <div class="hero-cta-buttons flex flex-col sm:flex-row justify-center items-center gap-4 lg:gap-6" data-aos="fade-up" data-aos-delay="800">
-                <a href="#contact"
-                   class="hero-cta-primary group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-sans font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary-500/30 text-base flex items-center justify-center min-w-[260px] focus:outline-none focus:ring-4 focus:ring-primary-400/50"
-                   data-aos="zoom-in" data-aos-delay="1000"
-                   role="button"
-                   aria-label="Mulai konsultasi gratis dengan tim arsitek kami">
-                    <span>Mulai Konsultasi Gratis</span>
-                    <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                </a>
-                <a href="#portfolio"
-                   class="hero-cta-secondary group bg-gray-800/60 hover:bg-gray-700/80 border-2 border-gray-600 hover:border-primary-400 text-white font-sans font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 text-base backdrop-blur-md flex items-center justify-center min-w-[260px] focus:outline-none focus:ring-4 focus:ring-white/20"
-                   data-aos="zoom-in" data-aos-delay="1200"
-                   role="button"
-                   aria-label="Lihat portofolio hasil karya kami">
-                    <span>Lihat Hasil Karya</span>
-                    <i class="fas fa-external-link-alt ml-2 transition-transform group-hover:translate-x-1"></i>
-                </a>
+                <?php foreach ($hero_cta_buttons as $button): ?>
+                    <a href="<?= $button['href'] ?>"
+                       <?= isset($button['target']) ? 'target="' . $button['target'] . '"' : '' ?>
+                       class="hero-cta-<?= $button['type'] ?> group <?= $button['type'] === 'primary' ? 'bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500' : 'bg-gray-800/60 hover:bg-gray-700/80 border-2 border-gray-600 hover:border-primary-400' ?> text-white font-sans font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary-500/30 text-base flex items-center justify-center min-w-[260px] focus:outline-none focus:ring-4 focus:ring-<?= $button['type'] === 'primary' ? 'primary' : 'white' ?>-400/50 <?= $button['type'] === 'secondary' ? 'backdrop-blur-md' : '' ?>"
+                       data-aos="zoom-in" data-aos-delay="<?= $button['type'] === 'primary' ? '1000' : '1200' ?>"
+                       role="button"
+                       aria-label="<?= $button['text'] ?>">
+                        <span><?= $button['text'] ?></span>
+                        <i class="<?= $button['icon'] === 'whatsapp' ? 'fab fa-whatsapp' : 'fas fa-' . $button['icon'] ?> ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                <?php endforeach; ?>
             </div>
         </main>
 
@@ -1346,8 +1341,11 @@ $hero_cta_buttons = $hero['cta_buttons'];
 
                 <!-- Action Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contact" class="flex-1 bg-gradient-to-r from-primary-500 to-emerald-500 hover:from-primary-600 hover:to-emerald-600 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 shadow-lg" id="modal-contact-btn">
-                        <i class="fas fa-envelope"></i>
+                    <a href="https://wa.me/<?= COMPANY_WHATSAPP_NUMBER ?>?text=<?= urlencode('Halo! Saya tertarik dengan proyek ini dan ingin konsultasi lebih lanjut.') ?>"
+                       target="_blank"
+                       class="flex-1 bg-gradient-to-r from-primary-500 to-emerald-500 hover:from-primary-600 hover:to-emerald-600 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 shadow-lg"
+                       id="modal-contact-btn">
+                        <i class="fab fa-whatsapp"></i>
                         <span>Konsultasi Proyek</span>
                     </a>
                     <button class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2" id="modal-share-btn">

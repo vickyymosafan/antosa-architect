@@ -35,6 +35,8 @@ define('PUBLIC_DIR', ROOT_DIR . '/public');
 // Contact information
 define('COMPANY_EMAIL', 'info@antosa-architect.com');
 define('COMPANY_PHONE', '+62 851 8952 3863');
+define('COMPANY_WHATSAPP', '+62 851-8952-3863');
+define('COMPANY_WHATSAPP_NUMBER', '6285189523863'); // WhatsApp format without + and spaces
 define('COMPANY_ADDRESS', 'Bernady Land, Cluster Camelia Blok E6, Puring, Slawu, Kec. Patrang, Kabupaten Jember, Jawa Timur 68116');
 define('OFFICE_HOURS', 'Senin - Jumat: 08:00 - 17:00');
 
