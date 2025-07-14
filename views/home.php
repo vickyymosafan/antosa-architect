@@ -189,7 +189,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
             <div class="lg:col-span-5 relative">
                 <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
                     <!-- Floating Card with Vision & Mission -->
-                    <div class="relative mt-16 lg:mt-32">
+                    <div class="relative mt-8 lg:mt-16">
                         <!-- Main Card -->
                         <div class="bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
                             <div class="space-y-8">
