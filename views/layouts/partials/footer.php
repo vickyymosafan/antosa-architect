@@ -1,131 +1,155 @@
 <?php
 /**
- * Premium Footer Architecture - Non-template Design
+ * Enhanced Footer with Magic UI Integration
+ * Eliminates redundancy by using ContentModel and config constants
  */
 
-// Data for footer links and information
-$companyName = "Antosa Architect";
-$companyDescription = "Studio arsitektur profesional yang mewujudkan visi Anda menjadi ruang yang fungsional dan estetis.";
+// Get footer data from ContentModel (passed from controller)
+$footerData = $footer ?? [];
+if (empty($footerData)) {
+    // Fallback if footer data not available
+    require_once APP_DIR . '/models/ContentModel.php';
+    $footerData = ContentModel::getFooterData();
+}
 
-$socialLinks = [
-    ['icon' => 'fab fa-facebook-f', 'url' => '#', 'label' => 'Facebook'],
-    ['icon' => 'fab fa-instagram', 'url' => '#', 'label' => 'Instagram'],
-    ['icon' => 'fab fa-linkedin-in', 'url' => '#', 'label' => 'LinkedIn'],
-    ['icon' => 'fab fa-pinterest-p', 'url' => '#', 'label' => 'Pinterest'],
-];
-
-$quickLinks = [
-    ['text' => 'Beranda', 'url' => '/'],
-    ['text' => 'Tentang Kami', 'url' => '/tentang-kami'],
-    ['text' => 'Layanan', 'url' => '/layanan'],
-    ['text' => 'Portofolio', 'url' => '/portofolio'],
-    ['text' => 'Testimoni', 'url' => '/testimoni'],
-    ['text' => 'Blog', 'url' => '/blog'],
-    ['text' => 'Hubungi Kami', 'url' => '/kontak'],
-];
-
-$serviceLinks = [
-    ['text' => 'Desain Arsitektur', 'url' => '#services'],
-    ['text' => 'Desain Interior', 'url' => '#services'],
-    ['text' => 'Konsultasi Proyek', 'url' => '#services']
-];
-
-$contactInfo = [
-    ['icon' => 'fas fa-map-marker-alt', 'lines' => ['Bernady Land, Cluster Camelia Blok E6, Puring, Slawu, Kec. Patrang, Kabupaten Jember, Jawa Timur 68116'], 'type' => 'address'],
-    ['icon' => 'fas fa-phone-alt', 'text' => '+62 851 8952 3863', 'type' => 'phone', 'url' => 'tel:+6285189523863'],
-    ['icon' => 'fas fa-envelope', 'text' => 'info@antosaarchitect.com', 'type' => 'email', 'url' => 'mailto:info@antosaarchitect.com'],
-    ['icon' => 'fas fa-clock', 'text' => 'Senin - Jumat: 08:00 - 17:00 WIB', 'type' => 'hours'],
-];
-
-// Premium styling variables - optimized for non-template look
-$footerBgColor = "bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950";
-$footerTextColor = "text-dark-300";
-$headingClasses = "text-xs font-medium text-white/90 uppercase tracking-widest mb-4";
-$companyNameClasses = "text-base font-semibold text-white mb-2";
-$paragraphClasses = "text-dark-400 text-xs leading-relaxed mb-4";
-$socialIconClasses = "w-8 h-8 flex items-center justify-center bg-dark-800/50 hover:bg-primary-500/20 border border-dark-700 hover:border-primary-500/30 rounded-lg text-dark-400 hover:text-primary-400 transition-all duration-300 text-sm";
-$listLinkClasses = "text-dark-400 hover:text-primary-400 transition-colors duration-300 text-xs py-1.5 block hover:translate-x-1";
-$contactIconClasses = "text-primary-500 text-sm flex-shrink-0";
-$contactTextClasses = "text-dark-400 text-xs";
-$dividerColor = "border-dark-800/50";
-$copyrightTextClasses = "text-dark-500 text-xs";
-$bottomLinkClasses = "text-dark-500 hover:text-primary-400 text-xs mx-2 transition-colors duration-300";
+// Extract data sections
+$company = $footerData['company'] ?? [];
+$navigation = $footerData['navigation'] ?? [];
+$services = $footerData['services'] ?? [];
+$contact = $footerData['contact'] ?? [];
+$social = $footerData['social'] ?? [];
+$legal = $footerData['legal'] ?? [];
 
 ?>
-<!-- Premium Footer Architecture - Non-template Design -->
-<footer class="<?= $footerBgColor ?> <?= $footerTextColor ?> relative overflow-hidden">
-    <!-- Subtle background pattern -->
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary-500/10 to-transparent transform -skew-y-1"></div>
+<!-- Enhanced Footer with Magic UI Interactive Grid Pattern -->
+<footer class="relative bg-gradient-to-br from-gray-900 via-black to-gray-800 text-gray-300 overflow-hidden">
+
+    <!-- Magic UI Interactive Grid Pattern Background -->
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0" style="
+            background-image:
+                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 20s linear infinite;
+        "></div>
     </div>
+
+    <!-- Animated Grid CSS -->
+    <style>
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        .footer-card:hover .grid-dot {
+            transform: scale(1.5);
+            background: rgba(56, 189, 248, 0.6);
+        }
+    </style>
 
     <div class="relative">
         <!-- Main Footer Content -->
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <!-- Premium asymmetric layout -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
-                <!-- Company Brand Section - Takes more space for premium feel -->
-                <div class="lg:col-span-5 space-y-4">
-                    <div class="flex items-center space-x-3 mb-3">
-                        <div class="w-8 h-8 bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-building text-white text-sm"></i>
+                <!-- Company Brand Section -->
+                <div class="lg:col-span-4 space-y-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="footer-card group">
+                        <!-- Company Logo & Name -->
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="relative">
+                                <div class="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-primary-500/25 transition-all duration-300">
+                                    <i class="fas fa-building text-white text-lg"></i>
+                                </div>
+                                <div class="grid-dot absolute -top-1 -right-1 w-3 h-3 bg-primary-400/30 rounded-full transition-all duration-300"></div>
+                            </div>
+                            <h3 class="text-xl font-bold text-white"><?= htmlspecialchars($company['name'] ?? SITE_NAME) ?></h3>
                         </div>
-                        <h3 class="<?= $companyNameClasses ?>"><?= htmlspecialchars($companyName) ?></h3>
-                    </div>
-                    <p class="<?= $paragraphClasses ?> max-w-md"><?= htmlspecialchars($companyDescription) ?></p>
 
-                    <!-- Social Links with premium styling -->
-                    <div class="flex space-x-3 pt-2">
-                        <?php foreach ($socialLinks as $link): ?>
-                            <a href="<?= htmlspecialchars($link['url']) ?>" target="_blank" rel="noopener noreferrer"
-                               class="<?= $socialIconClasses ?>" aria-label="<?= htmlspecialchars($link['label']) ?>">
-                                <i class="<?= htmlspecialchars($link['icon']) ?>"></i>
-                            </a>
-                        <?php endforeach; ?>
+                        <!-- Company Description -->
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
+                            <?= htmlspecialchars($company['description'] ?? '') ?>
+                        </p>
+
+                        <!-- Social Links with Enhanced Styling -->
+                        <div class="flex space-x-4">
+                            <?php foreach ($social['links'] ?? [] as $link): ?>
+                                <a href="<?= htmlspecialchars($link['url']) ?>"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="group/social w-10 h-10 flex items-center justify-center bg-gray-800/50 hover:bg-primary-500/20 border border-gray-700 hover:border-primary-500/50 rounded-xl text-gray-400 <?= $link['color'] ?? 'hover:text-primary-400' ?> transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                                   aria-label="<?= htmlspecialchars($link['label']) ?>">
+                                    <i class="<?= htmlspecialchars($link['icon']) ?> text-sm"></i>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Navigation Links - Compact columns -->
-                <div class="lg:col-span-2">
-                    <h3 class="<?= $headingClasses ?>">Navigasi</h3>
-                    <ul class="space-y-1">
-                        <?php foreach ($quickLinks as $link): ?>
-                            <li><a href="<?= htmlspecialchars($link['url']) ?>" class="<?= $listLinkClasses ?>"><?= htmlspecialchars($link['text']) ?></a></li>
+                <!-- Navigation Links -->
+                <div class="lg:col-span-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-6 flex items-center">
+                        <i class="fas fa-compass mr-2 text-primary-400"></i>
+                        <?= htmlspecialchars($navigation['title'] ?? 'Navigasi') ?>
+                    </h3>
+                    <ul class="space-y-3">
+                        <?php foreach ($navigation['links'] ?? [] as $link): ?>
+                            <li>
+                                <a href="<?= htmlspecialchars($link['url']) ?>"
+                                   class="group flex items-center text-gray-400 hover:text-primary-400 transition-all duration-300 text-sm py-2 hover:translate-x-2">
+                                    <i class="<?= htmlspecialchars($link['icon']) ?> mr-3 text-xs opacity-60 group-hover:opacity-100 transition-opacity duration-300"></i>
+                                    <?= htmlspecialchars($link['text']) ?>
+                                </a>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
 
                 <!-- Services Links -->
-                <div class="lg:col-span-2">
-                    <h3 class="<?= $headingClasses ?>">Layanan Utama</h3>
-                    <ul class="space-y-1">
-                        <?php foreach ($serviceLinks as $link): ?>
-                            <li><a href="<?= htmlspecialchars($link['url']) ?>" class="<?= $listLinkClasses ?>"><?= htmlspecialchars($link['text']) ?></a></li>
+                <div class="lg:col-span-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-6 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-primary-400"></i>
+                        <?= htmlspecialchars($services['title'] ?? 'Layanan') ?>
+                    </h3>
+                    <ul class="space-y-3">
+                        <?php foreach ($services['links'] ?? [] as $link): ?>
+                            <li>
+                                <a href="<?= htmlspecialchars($link['url']) ?>"
+                                   class="group flex items-center text-gray-400 hover:text-primary-400 transition-all duration-300 text-sm py-2 hover:translate-x-2">
+                                    <i class="<?= htmlspecialchars($link['icon']) ?> mr-3 text-xs opacity-60 group-hover:opacity-100 transition-opacity duration-300"></i>
+                                    <?= htmlspecialchars($link['text']) ?>
+                                </a>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
 
-                <!-- Contact Info - Compact but prominent -->
-                <div class="lg:col-span-3">
-                    <h3 class="<?= $headingClasses ?>">Hubungi Kami</h3>
-                    <ul class="space-y-3">
-                        <?php foreach ($contactInfo as $item): ?>
+                <!-- Contact Information -->
+                <div class="lg:col-span-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                    <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-6 flex items-center">
+                        <i class="fas fa-phone mr-2 text-primary-400"></i>
+                        <?= htmlspecialchars($contact['title'] ?? 'Kontak') ?>
+                    </h3>
+                    <ul class="space-y-4">
+                        <?php foreach ($contact['info'] ?? [] as $item): ?>
                             <li class="flex <?= $item['type'] === 'address' ? 'items-start' : 'items-center' ?> group">
-                                <div class="w-6 h-6 flex items-center justify-center bg-dark-800/50 rounded-md mr-3 flex-shrink-0 group-hover:bg-primary-500/20 transition-colors duration-300">
-                                    <i class="<?= htmlspecialchars($item['icon']) ?> <?= $contactIconClasses ?>"></i>
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-800/50 rounded-lg mr-4 flex-shrink-0 group-hover:bg-primary-500/20 transition-all duration-300">
+                                    <i class="<?= htmlspecialchars($item['icon']) ?> text-primary-400 text-sm"></i>
                                 </div>
-                                <span class="<?= $contactTextClasses ?>">
-                                    <?php if (isset($item['lines'])): ?>
+                                <div class="text-gray-400 text-sm">
+                                    <?php if ($item['type'] === 'address' && isset($item['lines'])): ?>
                                         <?php foreach ($item['lines'] as $line): ?>
-                                            <?= htmlspecialchars($line) ?><br>
+                                            <div><?= htmlspecialchars($line) ?></div>
                                         <?php endforeach; ?>
                                     <?php elseif (isset($item['url'])): ?>
-                                        <a href="<?= htmlspecialchars($item['url']) ?>" class="hover:text-primary-400 transition-colors duration-300"><?= htmlspecialchars($item['text']) ?></a>
+                                        <a href="<?= htmlspecialchars($item['url']) ?>"
+                                           class="hover:text-primary-400 transition-colors duration-300">
+                                            <?= htmlspecialchars($item['text']) ?>
+                                        </a>
                                     <?php else: ?>
                                         <?= htmlspecialchars($item['text']) ?>
                                     <?php endif; ?>
-                                </span>
+                                </div>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -133,15 +157,20 @@ $bottomLinkClasses = "text-dark-500 hover:text-primary-400 text-xs mx-2 transiti
             </div>
         </div>
 
-        <!-- Bottom Bar with subtle styling -->
-        <div class="border-t <?= $dividerColor ?> bg-dark-950/50 backdrop-blur-sm">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                <div class="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
-                    <p class="<?= $copyrightTextClasses ?>">&copy; <?= date('Y') ?> <?= htmlspecialchars($companyName) ?>. Hak Cipta Dilindungi.</p>
-                    <div class="flex items-center space-x-1">
-                        <a href="/syarat-ketentuan" class="<?= $bottomLinkClasses ?>">Syarat & Ketentuan</a>
-                        <span class="<?= $copyrightTextClasses ?> mx-1">•</span>
-                        <a href="/kebijakan-privasi" class="<?= $bottomLinkClasses ?>">Kebijakan Privasi</a>
+        <!-- Bottom Bar -->
+        <div class="border-t border-gray-800/50 bg-black/50 backdrop-blur-sm" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                    <p class="text-gray-500 text-sm">
+                        <?= htmlspecialchars($legal['copyright'] ?? '© ' . date('Y') . ' ' . SITE_NAME . '. Hak Cipta Dilindungi.') ?>
+                    </p>
+                    <div class="flex items-center space-x-6">
+                        <?php foreach ($legal['links'] ?? [] as $link): ?>
+                            <a href="<?= htmlspecialchars($link['url']) ?>"
+                               class="text-gray-500 hover:text-primary-400 text-sm transition-colors duration-300">
+                                <?= htmlspecialchars($link['text']) ?>
+                            </a>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

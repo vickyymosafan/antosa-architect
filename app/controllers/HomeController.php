@@ -24,6 +24,7 @@ class HomeController
         $portfolioData = ContentModel::getPortfolioData();
         $testimonialData = ContentModel::getTestimonialsData();
         $faqData = ContentModel::getFaqData();
+        $footerData = ContentModel::getFooterData();
 
         // Combine all data
         $viewData = [
@@ -32,7 +33,8 @@ class HomeController
             'services' => $servicesData,
             'portfolio' => $portfolioData,
             'testimonials' => $testimonialData,
-            'faq' => $faqData
+            'faq' => $faqData,
+            'footer' => $footerData
         ];
 
         // Render the home page view

@@ -543,7 +543,7 @@ class ContentModel
 
     /**
      * Get contact section data
-     * 
+     *
      * @return array
      */
     public static function getContactData()
@@ -551,6 +551,87 @@ class ContentModel
         return [
             'title' => 'Hubungi Kami',
             'subtitle' => 'Punya pertanyaan atau ingin memulai proyek dengan kami? Jangan ragu untuk menghubungi kami.'
+        ];
+    }
+
+    /**
+     * Get footer section data
+     *
+     * @return array
+     */
+    public static function getFooterData()
+    {
+        return [
+            'company' => [
+                'name' => SITE_NAME,
+                'description' => 'Studio arsitektur profesional yang mewujudkan visi Anda menjadi ruang yang fungsional dan estetis dengan desain inovatif dan berkelanjutan.'
+            ],
+            'navigation' => [
+                'title' => 'Navigasi',
+                'links' => [
+                    ['text' => 'Beranda', 'url' => '/', 'icon' => 'fas fa-home'],
+                    ['text' => 'Tentang Kami', 'url' => '#about', 'icon' => 'fas fa-users'],
+                    ['text' => 'Layanan', 'url' => '#services', 'icon' => 'fas fa-cogs'],
+                    ['text' => 'Portofolio', 'url' => '#portfolio', 'icon' => 'fas fa-folder-open'],
+                    ['text' => 'Testimoni', 'url' => '#testimonials', 'icon' => 'fas fa-star'],
+                    ['text' => 'FAQ', 'url' => '#faq', 'icon' => 'fas fa-question-circle'],
+                    ['text' => 'Kontak', 'url' => '#contact', 'icon' => 'fas fa-envelope']
+                ]
+            ],
+            'services' => [
+                'title' => 'Layanan Utama',
+                'links' => [
+                    ['text' => 'Desain Arsitektur', 'url' => '#services', 'icon' => 'fas fa-drafting-compass'],
+                    ['text' => 'Desain Interior', 'url' => '#services', 'icon' => 'fas fa-couch'],
+                    ['text' => 'Konsultasi Proyek', 'url' => '#services', 'icon' => 'fas fa-handshake'],
+                    ['text' => 'Manajemen Konstruksi', 'url' => '#services', 'icon' => 'fas fa-hard-hat'],
+                    ['text' => 'Desain Lanskap', 'url' => '#services', 'icon' => 'fas fa-tree']
+                ]
+            ],
+            'contact' => [
+                'title' => 'Hubungi Kami',
+                'info' => [
+                    [
+                        'icon' => 'fas fa-map-marker-alt',
+                        'type' => 'address',
+                        'text' => COMPANY_ADDRESS,
+                        'lines' => explode(', ', COMPANY_ADDRESS)
+                    ],
+                    [
+                        'icon' => 'fas fa-phone-alt',
+                        'type' => 'phone',
+                        'text' => COMPANY_PHONE,
+                        'url' => 'tel:' . str_replace([' ', '-', '(', ')'], '', COMPANY_PHONE)
+                    ],
+                    [
+                        'icon' => 'fas fa-envelope',
+                        'type' => 'email',
+                        'text' => COMPANY_EMAIL,
+                        'url' => 'mailto:' . COMPANY_EMAIL
+                    ],
+                    [
+                        'icon' => 'fas fa-clock',
+                        'type' => 'hours',
+                        'text' => OFFICE_HOURS
+                    ]
+                ]
+            ],
+            'social' => [
+                'title' => 'Ikuti Kami',
+                'links' => [
+                    ['icon' => 'fab fa-instagram', 'url' => SOCIAL_INSTAGRAM, 'label' => 'Instagram', 'color' => 'hover:text-pink-400'],
+                    ['icon' => 'fab fa-facebook-f', 'url' => SOCIAL_FACEBOOK, 'label' => 'Facebook', 'color' => 'hover:text-blue-400'],
+                    ['icon' => 'fab fa-linkedin-in', 'url' => SOCIAL_LINKEDIN, 'label' => 'LinkedIn', 'color' => 'hover:text-blue-500'],
+                    ['icon' => 'fab fa-twitter', 'url' => SOCIAL_TWITTER, 'label' => 'Twitter', 'color' => 'hover:text-sky-400']
+                ]
+            ],
+            'legal' => [
+                'copyright' => '© ' . date('Y') . ' ' . SITE_NAME . '. Hak Cipta Dilindungi.',
+                'links' => [
+                    ['text' => 'Syarat & Ketentuan', 'url' => '/syarat-ketentuan'],
+                    ['text' => 'Kebijakan Privasi', 'url' => '/kebijakan-privasi']
+                ]
+            ]
         ];
     }
 }
