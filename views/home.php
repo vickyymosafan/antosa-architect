@@ -401,9 +401,6 @@ $hero_cta_buttons = $hero['cta_buttons'];
                                     <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-500 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 group/social">
                                         <i class="fab fa-linkedin text-sm group-hover/social:scale-110 transition-transform"></i>
                                     </a>
-                                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-500 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 group/social">
-                                        <i class="fab fa-twitter text-sm group-hover/social:scale-110 transition-transform"></i>
-                                    </a>
                                     <a href="mailto:<?= strtolower(str_replace(' ', '.', $member['name'])) ?>@antosa.com" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-emerald-500 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 group/social">
                                         <i class="fas fa-envelope text-sm group-hover/social:scale-110 transition-transform"></i>
                                     </a>

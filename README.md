@@ -80,9 +80,7 @@ Set these in Railway dashboard if needed:
 
 ## 📱 Social Media
 
-- [Instagram](https://instagram.com/antosa_architect)
-- [Facebook](https://facebook.com/antosa.architect)
-- [Twitter](https://twitter.com/antosa_architect)
+- [Instagram](https://www.instagram.com/antosa_architect/)
 - [LinkedIn](https://linkedin.com/company/antosa-architect)
 
 ## 📄 License

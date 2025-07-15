@@ -41,9 +41,7 @@ define('COMPANY_ADDRESS', 'Bernady Land, Cluster Camelia Blok E6, Puring, Slawu,
 define('OFFICE_HOURS', 'Senin - Jumat: 08:00 - 17:00');
 
 // Social media
-define('SOCIAL_INSTAGRAM', 'https://instagram.com/antosa_architect');
-define('SOCIAL_FACEBOOK', 'https://facebook.com/antosa.architect');
-define('SOCIAL_TWITTER', 'https://twitter.com/antosa_architect');
+define('SOCIAL_INSTAGRAM', 'https://www.instagram.com/antosa_architect/');
 define('SOCIAL_LINKEDIN', 'https://linkedin.com/company/antosa-architect');
 
 // SEO Settings

@@ -102,7 +102,6 @@ class ContentModel
                     'image' => 'https://source.unsplash.com/100x100/?portrait,man,architect&sig=1',
                     'social' => [
                         'linkedin' => '#',
-                        'twitter' => '#',
                         'email' => 'dwiantosa.ahmad@antosa.com'
                     ]
                 ],
@@ -113,7 +112,6 @@ class ContentModel
                     'image' => 'https://source.unsplash.com/100x100/?portrait,woman,designer&sig=2',
                     'social' => [
                         'linkedin' => '#',
-                        'twitter' => '#',
                         'email' => 'sarah.wijaya@antosa.com'
                     ]
                 ],
@@ -124,7 +122,6 @@ class ContentModel
                     'image' => 'https://source.unsplash.com/100x100/?portrait,man,manager&sig=3',
                     'social' => [
                         'linkedin' => '#',
-                        'twitter' => '#',
                         'email' => 'budi.santoso@antosa.com'
                     ]
                 ]
@@ -547,9 +544,7 @@ class ContentModel
                 'title' => 'Ikuti Kami',
                 'links' => [
                     ['icon' => 'fab fa-instagram', 'url' => SOCIAL_INSTAGRAM, 'label' => 'Instagram', 'color' => 'hover:text-pink-400'],
-                    ['icon' => 'fab fa-facebook-f', 'url' => SOCIAL_FACEBOOK, 'label' => 'Facebook', 'color' => 'hover:text-blue-400'],
-                    ['icon' => 'fab fa-linkedin-in', 'url' => SOCIAL_LINKEDIN, 'label' => 'LinkedIn', 'color' => 'hover:text-blue-500'],
-                    ['icon' => 'fab fa-twitter', 'url' => SOCIAL_TWITTER, 'label' => 'Twitter', 'color' => 'hover:text-sky-400']
+                    ['icon' => 'fab fa-linkedin-in', 'url' => SOCIAL_LINKEDIN, 'label' => 'LinkedIn', 'color' => 'hover:text-blue-500']
                 ]
             ],
             'legal' => [
