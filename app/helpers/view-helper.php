@@ -52,21 +52,4 @@ function url($path = '')
     return SITE_URL . '/' . ltrim($path, '/');
 }
 
-/**
- * Create a sanitized and limited excerpt from text
- * 
- * @param string $text Original text
- * @param int $length Maximum length of the excerpt
- * @return string Sanitized excerpt
- */
-function excerpt($text, $length = 150)
-{
-    $text = strip_tags($text);
-    
-    if (strlen($text) <= $length) {
-        return $text;
-    }
-    
-    $excerpt = substr($text, 0, $length);
-    return $excerpt . '...';
-}
+
