@@ -107,22 +107,22 @@ class ContentModel
                 ],
                 [
                     'name' => 'Rezha Reynaldi',
-                    'position' => 'Senior Interior Designer',
+                    'position' => 'Project Manager',
                     'bio' => 'Spesialis desain interior dengan fokus pada sustainable design.',
                     'image' => 'https://source.unsplash.com/100x100/?portrait,woman,designer&sig=2',
                     'social' => [
                         'linkedin' => '#',
-                        'email' => 'sarah.wijaya@antosa.com'
+                        'email' => 'rezha.reynaldi@antosa.com'
                     ]
                 ],
                 [
-                    'name' => 'Budi Santoso',
-                    'position' => 'Project Manager',
+                    'name' => '.............',
+                    'position' => 'Arsitek Konstruksi',
                     'bio' => 'Mengelola proyek konstruksi dengan efisiensi tinggi.',
                     'image' => 'https://source.unsplash.com/100x100/?portrait,man,manager&sig=3',
                     'social' => [
                         'linkedin' => '#',
-                        'email' => 'budi.santoso@antosa.com'
+                        'email' => '...........@antosa.com'
                     ]
                 ]
             ]
