@@ -97,7 +97,7 @@ class ContentModel
             'team' => [
                 [
                     'name' => 'Ir. Ar. Dwiantosa Ahmad Fathony, IAI., IPP',
-                    'position' => 'Arsitek Profesional',
+                    'position' => 'Founder / CEO',
                     'bio' => 'Berpengalaman lebih dari 15 tahun dalam bidang arsitektur.',
                     'image' => 'https://source.unsplash.com/100x100/?portrait,man,architect&sig=1',
                     'social' => [
@@ -107,22 +107,22 @@ class ContentModel
                 ],
                 [
                     'name' => 'Rezha Reynaldi',
-                    'position' => 'Senior Interior Designer',
+                    'position' => 'Marketing Manager',
                     'bio' => 'Spesialis desain interior dengan fokus pada sustainable design.',
                     'image' => 'https://source.unsplash.com/100x100/?portrait,woman,designer&sig=2',
                     'social' => [
                         'linkedin' => '#',
-                        'email' => 'sarah.wijaya@antosa.com'
+                        'email' => 'rezha.reynaldi@antosa.com'
                     ]
                 ],
                 [
-                    'name' => 'Budi Santoso',
-                    'position' => 'Project Manager',
+                    'name' => 'Syechul Hardiansyah',
+                    'position' => 'Design',
                     'bio' => 'Mengelola proyek konstruksi dengan efisiensi tinggi.',
                     'image' => 'https://source.unsplash.com/100x100/?portrait,man,manager&sig=3',
                     'social' => [
                         'linkedin' => '#',
-                        'email' => 'budi.santoso@antosa.com'
+                        'email' => 'syechul.hardiansyah@antosa.com'
                     ]
                 ]
             ]
