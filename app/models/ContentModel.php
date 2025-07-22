@@ -98,7 +98,7 @@ class ContentModel
                 [
                     'name' => 'Ir. Ar. Dwiantosa Ahmad Fathony, IAI., IPP',
                     'position' => 'Founder / CEO',
-                    'bio' => 'Berpengalaman lebih dari 15 tahun dalam bidang arsitektur.',
+                    'bio' => 'Arsitek profesional dengan pengalaman 15+ tahun yang mendirikan Antosa Architect dengan visi mewujudkan desain impian setiap klien melalui inovasi dan kualitas terbaik.',
                     'image' => 'https://source.unsplash.com/100x100/?portrait,man,architect&sig=1',
                     'social' => [
                         'linkedin' => '#',
@@ -108,7 +108,7 @@ class ContentModel
                 [
                     'name' => 'Rezha Reynaldi',
                     'position' => 'Marketing Manager',
-                    'bio' => 'Spesialis desain interior dengan fokus pada sustainable design.',
+                    'bio' => 'Spesialis marketing dan komunikasi yang berpengalaman dalam membangun hubungan klien dan mengembangkan strategi pemasaran untuk industri arsitektur.',
                     'image' => 'https://source.unsplash.com/100x100/?portrait,woman,designer&sig=2',
                     'social' => [
                         'linkedin' => '#',
@@ -118,7 +118,7 @@ class ContentModel
                 [
                     'name' => 'Syechul Hardiansyah',
                     'position' => 'Design',
-                    'bio' => 'Mengelola proyek konstruksi dengan efisiensi tinggi.',
+                    'bio' => 'Spesialis desain arsitektur dan interior dengan keahlian visualisasi 3D yang menciptakan ruang fungsional dan estetis sesuai kebutuhan klien.',
                     'image' => 'https://source.unsplash.com/100x100/?portrait,man,manager&sig=3',
                     'social' => [
                         'linkedin' => '#',
