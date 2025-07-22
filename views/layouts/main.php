@@ -146,10 +146,10 @@
     <body class="font-sans text-white bg-black">
     <!-- Logo Header (Top) -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-transparent">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4">
             <div class="flex justify-center md:justify-start">
                 <a href="<?= url('/') ?>" class="block group">
-                    <img src="assets/images/4.webp" alt="Antosa Architect Logo" class="h-10 transition-transform duration-300 group-hover:scale-105">
+                    <img src="assets/images/4.webp" alt="Antosa Architect Logo" class="h-8 md:h-10 transition-transform duration-300 group-hover:scale-105">
                     <div class="h-[3px] bg-primary-400 mt-[2px] w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
                 </a>
             </div>
