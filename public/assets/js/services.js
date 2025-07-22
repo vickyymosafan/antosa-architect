@@ -1,6 +1,6 @@
 /**
- * Optimized Bento Grid Services Animation System
- * Performance-focused animations with reduced redundancy
+ * Optimized Services Animation System with Varied AOS Effects
+ * Performance-focused animations with diverse animation types and reduced redundancy
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -45,10 +45,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (imageOverlay) imageOverlay.style.background = '';
             });
 
-            // Optimized staggered entrance timing
+            // Optimized staggered entrance timing with varied animations
             const aosTrigger = card.closest('[data-aos]');
             if (aosTrigger) {
+                // Maintain existing delay timing for smooth staggered effect
                 aosTrigger.setAttribute('data-aos-delay', 100 + (index * 120));
+
+                // Log animation type for debugging (optional)
+                const animationType = aosTrigger.getAttribute('data-aos');
+                if (animationType && window.console) {
+                    console.log(`Service card ${index + 1}: ${animationType} animation`);
+                }
             }
         });
     }

@@ -102,14 +102,14 @@ $hero_cta_buttons = $hero['cta_buttons'];
         <!-- Main Hero Content (Centered) - Compact with Enhanced Animations -->
         <main class="container mx-auto px-4 sm:px-6 lg:px-8 flex-grow flex flex-col justify-center text-center py-8 md:py-10 lg:py-12">
             <!-- Main Heading - Reduced sizes with Staggered Animation -->
-            <h1 class="hero-title font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] mb-4 lg:mb-6 text-shadow-lg" data-aos="fade-up" data-aos-duration="800">
+            <h1 class="hero-title font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] mb-4 lg:mb-6 text-shadow-lg" data-aos="fade-left" data-aos-duration="800">
                 <?php
                 $title_parts = explode(' ', $hero_title);
                 $first_part = implode(' ', array_slice($title_parts, 0, 2));
                 $second_part = implode(' ', array_slice($title_parts, 2));
                 ?>
-                <span class="hero-title-line-1 block" data-aos="fade-up" data-aos-delay="200"><?= htmlspecialchars($first_part) ?></span>
-                <span class="hero-title-line-2 block text-primary-400 drop-shadow-lg" data-aos="fade-up" data-aos-delay="400"><?= htmlspecialchars($second_part) ?></span>
+                <span class="hero-title-line-1 block" data-aos="fade-left" data-aos-delay="200"><?= htmlspecialchars($first_part) ?></span>
+                <span class="hero-title-line-2 block text-primary-400 drop-shadow-lg" data-aos="fade-left" data-aos-delay="400"><?= htmlspecialchars($second_part) ?></span>
             </h1>
 
             <!-- Subtitle - Reduced sizes with Delayed Animation -->
@@ -118,7 +118,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
             </p>
 
             <!-- Consistent CTA Buttons -->
-            <div class="hero-cta-buttons flex flex-col sm:flex-row justify-center items-center gap-4 lg:gap-6" data-aos="fade-up" data-aos-delay="800">
+            <div class="hero-cta-buttons flex flex-col sm:flex-row justify-center items-center gap-4 lg:gap-6" data-aos="fade-down" data-aos-delay="800">
                 <?php foreach ($hero_cta_buttons as $button): ?>
                     <a href="<?= $button['href'] ?>"
                        <?= isset($button['target']) ? 'target="' . $button['target'] . '"' : '' ?>
@@ -185,7 +185,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mb-16 lg:mb-24">
             <!-- Left Content - 7 columns -->
             <div class="lg:col-span-7 space-y-8">
-                <div data-aos="fade-up" data-aos-duration="800">
+                <div data-aos="zoom-in" data-aos-duration="3000">
                     <!-- Consistent Header Styling -->
                     <div class="text-left mb-12">
                         <div class="inline-flex items-center space-x-4 mb-6">
@@ -211,8 +211,12 @@ $hero_cta_buttons = $hero['cta_buttons'];
 
                         <!-- Enhanced Stats Row -->
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 mt-10 border-t border-gray-700/50 relative">
-                            <?php foreach ($about['stats'] as $index => $stat): ?>
-                                <div class="text-center lg:text-left group" data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?= 100 + ($index * 100) ?>">
+                            <?php foreach ($about['stats'] as $index => $stat):
+                                // Variasi animasi untuk stats: fade-right, fade-up, fade-left
+                                $statsAnimations = ['fade-right', 'fade-up', 'fade-left'];
+                                $currentAnimation = $statsAnimations[$index % 3];
+                            ?>
+                                <div class="text-center lg:text-left group" data-aos="<?= $currentAnimation ?>" data-aos-duration="600" data-aos-delay="<?= 100 + ($index * 100) ?>">
                                     <article class="relative bg-gray-800/30 backdrop-blur-sm border border-gray-700/20 rounded-xl p-6 hover:border-primary-400/30 transition-all duration-500 hover:shadow-lg hover:shadow-primary-500/10 hover:-translate-y-1">
                                         <!-- Background Pattern -->
                                         <div class="absolute inset-0 opacity-5">
@@ -250,7 +254,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
 
             <!-- Right Visual Element - 5 columns -->
             <div class="lg:col-span-5 relative">
-                <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
+                <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
                     <!-- Floating Card with Vision & Mission -->
                     <div class="relative mt-8 lg:mt-16">
                         <!-- Enhanced Vision & Mission Cards -->
@@ -334,7 +338,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
         <!-- Team Section - Masonry Grid -->
         <div class="space-y-12">
             <!-- Section Header -->
-            <div class="text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+            <div class="text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
                 <div class="flex items-center justify-center space-x-6 mb-8">
                     <div class="w-16 h-px bg-gradient-to-r from-transparent via-primary-400 to-emerald-400"></div>
                     <div class="relative">
@@ -359,8 +363,12 @@ $hero_cta_buttons = $hero['cta_buttons'];
 
             <!-- Consistent Team Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                <?php foreach ($about['team'] as $index => $member): ?>
-                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 200 * ($index + 1) ?>">
+                <?php foreach ($about['team'] as $index => $member):
+                    // Variasi animasi untuk team members: fade-up, fade-left, fade-right, zoom-in, slide-up, flip-left
+                    $teamAnimations = ['fade-up', 'fade-left', 'fade-right', 'zoom-in', 'slide-up', 'flip-left'];
+                    $currentTeamAnimation = $teamAnimations[$index % 6];
+                ?>
+                    <div data-aos="<?= $currentTeamAnimation ?>" data-aos-duration="800" data-aos-delay="<?= 200 * ($index + 1) ?>">
 
                         <!-- Card Container -->
                         <div class="group relative h-full bg-gradient-to-br from-gray-900/60 to-black/60 backdrop-blur-xl border border-gray-700/30 rounded-2xl overflow-hidden hover:border-primary-400/50 transition-all duration-500 hover:transform hover:scale-[1.02]">
@@ -428,7 +436,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Consistent Header Styling -->
-        <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+        <div class="text-center mb-16" data-aos="zoom-in" data-aos-duration="1500">
             <div class="inline-flex items-center space-x-4 mb-6">
                 <div class="w-12 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
                 <span class="text-sm font-bold tracking-widest text-primary-400 uppercase">Layanan</span>
@@ -448,7 +456,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
         </div>
 
         <!-- Simplified Services Grid -->
-        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+        <div data-aos="fade-down" data-aos-duration="800" data-aos-delay="200">
             <!-- Clean Grid Container -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto" role="list" aria-label="Layanan arsitektur yang tersedia">
 
@@ -457,8 +465,12 @@ $hero_cta_buttons = $hero['cta_buttons'];
                 $baseCardClasses = 'group relative h-full border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.01] min-h-[420px]';
                 ?>
 
-                <?php foreach ($services['services'] as $index => $service): ?>
-                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>" role="listitem">
+                <?php foreach ($services['services'] as $index => $service):
+                    // Variasi animasi untuk service cards: fade-right, fade-up, fade-left
+                    $serviceAnimations = ['fade-right', 'fade-up', 'fade-left'];
+                    $currentServiceAnimation = $serviceAnimations[$index % 3];
+                ?>
+                    <div data-aos="<?= $currentServiceAnimation ?>" data-aos-duration="800" data-aos-delay="<?= 100 * ($index + 1) ?>" role="listitem">
                         <article class="<?= $baseCardClasses ?>" aria-labelledby="service-title-<?= $index ?>" tabindex="0">
 
                             <!-- Service Image Background -->
@@ -629,8 +641,12 @@ $hero_cta_buttons = $hero['cta_buttons'];
 
                     // Calculate AOS delay based on index
                     $aosDelay = 100 + ($index * 50);
+
+                    // Variasi animasi untuk portfolio grid: zoom-in, fade-left, fade-right, flip-up
+                    $portfolioAnimations = ['zoom-in', 'fade-left', 'fade-right', 'flip-up'];
+                    $currentPortfolioAnimation = $portfolioAnimations[$index % 4];
                 ?>
-                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?= $aosDelay ?>">
+                <div data-aos="<?= $currentPortfolioAnimation ?>" data-aos-duration="800" data-aos-delay="<?= $aosDelay ?>">
                     <div class="<?= $basePortfolioCardClasses ?> h-full"
                          data-category="<?= $project['category'] ?>"
                          data-id="<?= $project['id'] ?>"
@@ -681,7 +697,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
                      data-location="<?= $project['location'] ?>"
                      data-tags="<?= implode(',', $project['tags'] ?? []) ?>"
                      data-featured="<?= $project['featured'] ? 'true' : 'false' ?>"
-                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?= 50 * ($index + 1) ?>"
+                     data-aos="<?= ['slide-up', 'fade-left', 'fade-right'][$index % 3] ?>" data-aos-duration="600" data-aos-delay="<?= 50 * ($index + 1) ?>"
                      onclick="openProjectModal('<?= $project['id'] ?>')">
 
                     <div class="flex flex-col md:flex-row">
@@ -824,7 +840,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
             <!-- Enhanced Categories Sidebar -->
-            <aside class="lg:col-span-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+            <aside class="lg:col-span-3" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
                 <div class="faq-card group relative bg-gray-800/50 backdrop-blur-xl border border-gray-700/30 rounded-2xl p-6 sticky top-24 hover:border-primary-400/50 transition-all duration-500">
 
                     <!-- Background Pattern -->
@@ -878,12 +894,16 @@ $hero_cta_buttons = $hero['cta_buttons'];
             </aside>
 
             <!-- Enhanced Questions/Answers - Main content area -->
-            <div class="lg:col-span-9" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+            <div class="lg:col-span-9" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
                 <?php $firstPanel = true; foreach ($faq['categories'] as $cat => $items): ?>
                     <div class="faq-panel <?php if (!$firstPanel) echo 'hidden'; ?>" data-category="<?= htmlspecialchars($cat) ?>">
                         <div class="space-y-6">
-                            <?php foreach ($items as $index => $q): ?>
-                                <div class="faq-item group" data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?= 100 + ($index * 50) ?>">
+                            <?php foreach ($items as $index => $q):
+                                // Variasi animasi untuk FAQ items: slide-up, fade-left, fade-right
+                                $faqAnimations = ['slide-up', 'fade-left', 'fade-right'];
+                                $currentFaqAnimation = $faqAnimations[$index % 3];
+                            ?>
+                                <div class="faq-item group" data-aos="<?= $currentFaqAnimation ?>" data-aos-duration="600" data-aos-delay="<?= 100 + ($index * 50) ?>">
                                     <article class="faq-card relative bg-gray-800/50 backdrop-blur-xl border border-gray-700/30 rounded-2xl overflow-hidden hover:border-primary-400/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary-500/10">
 
                                         <!-- Background Pattern -->
@@ -1034,7 +1054,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
                 <!-- Consistent Contact Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
                     <!-- Phone Card -->
-                    <div class="group relative min-h-[120px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.02] p-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
+                    <div class="group relative min-h-[120px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.02] p-6" data-aos="slide-left" data-aos-duration="800" data-aos-delay="300">
                         <div class="flex items-center h-full">
                             <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center mr-4 shadow-lg shadow-primary-500/20 flex-shrink-0">
                                 <i class="fas fa-phone-alt text-white text-base"></i>
@@ -1047,7 +1067,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
                     </div>
 
                     <!-- Email Card -->
-                    <div class="group relative min-h-[120px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.02] p-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="400">
+                    <div class="group relative min-h-[120px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.02] p-6" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
                         <div class="flex items-center h-full">
                             <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center mr-4 shadow-lg shadow-primary-500/20 flex-shrink-0">
                                 <i class="fas fa-envelope text-white text-base"></i>
@@ -1078,7 +1098,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
                 </div>
 
                 <!-- Working Hours Card -->
-                <div class="group relative min-h-[120px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.02] p-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="600">
+                <div class="group relative min-h-[120px] bg-gradient-to-br from-gray-900/95 to-black/98 backdrop-blur-xl border border-gray-700/40 rounded-2xl overflow-hidden hover:border-primary-400/70 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-primary-500/20 hover:-translate-y-1 hover:scale-[1.02] p-6" data-aos="slide-left" data-aos-duration="800" data-aos-delay="600">
                     <div class="flex items-center h-full">
                         <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center mr-4 shadow-lg shadow-primary-500/20 flex-shrink-0">
                             <i class="fas fa-clock text-white text-base"></i>
@@ -1091,7 +1111,7 @@ $hero_cta_buttons = $hero['cta_buttons'];
                 </div>
 
                 <!-- Interactive Map Card -->
-                <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden hover:scale-105 transform transition-transform duration-300" data-aos="fade-left" data-aos-duration="800" data-aos-delay="700">
+                <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden hover:scale-105 transform transition-transform duration-300" data-aos="flip-up" data-aos-duration="800" data-aos-delay="700">
                     <div class="p-4 border-b border-gray-100">
                         <div class="flex items-center">
                             <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center mr-3">

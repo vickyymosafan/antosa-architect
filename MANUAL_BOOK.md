@@ -1037,6 +1037,6 @@ echo "Peak memory: " . memory_get_peak_usage(true) . " bytes\n";
 
 ---
 
-**© 2024 Antosa Architect - Manual Book v1.0**
-**Last Updated**: December 2024
+**© 2025 Antosa Architect - Manual Book v1.0**
+**Last Updated**: 07 Juli 2025
 **Document Status**: Complete and Current
